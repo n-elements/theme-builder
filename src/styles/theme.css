@@ -1,13 +1,21 @@
-/* Native Elements configuration */
-
 :root {
+
+  /* App theme */
+
+  --shell-border-color: env(--secondary-70);
+
+  /* Native Elements configuration */
+
   --regular-font-size: 1rem;
   --small-font-size: 0.875rem;
   --ultra-small-font-size: 0.812rem;
   --ne-global-background: #fff;
+  --ne-global-foreground: env(--contrast-100);
   --ne-headings-scale: 1.125;
   --ne-body-font-size: var(--regular-font-size);
   --ne-selection-foreground: env(--secondary-70);
   --ne-selection-background: env(--contrast-100);
   --ne-outline-color: env(--accent-100);
+  --ne-links-foreground: env(--accent-100);
+  --ne-links-active-foreground: env(--accent-80);
 }

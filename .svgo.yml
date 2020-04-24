@@ -1,0 +1,19 @@
+multipass: true
+
+plugins:
+  - cleanupIDs: true
+    minify: true
+  - cleanupNumericValues: true
+    floatPrecision: 2
+  - convertColors: true
+    names2hex: true
+    rgb2hex: true
+  - removeViewBox: false
+  - removeMetadata: false
+  - removeStyleElement: true
+  - removeTitle: true
+  - removeUselessStrokeAndFill: true
+  - inlineStyles: true
+
+js2svg:
+  pretty: true

@@ -5,6 +5,8 @@ module.exports = [
   }),
   /* More info https://github.com/csstools/postcss-normalize */
   require("postcss-normalize")({}),
+  /* More info at https://github.com/jonathantneal/postcss-inset */
+  require("postcss-inset")({}),
   /* More info at https://github.com/csstools/postcss-preset-env */
   require("postcss-preset-env")({
     stage: 0,

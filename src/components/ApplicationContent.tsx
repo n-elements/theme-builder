@@ -2,7 +2,6 @@ import routes from "@routes";
 import React, { ReactNode } from "react";
 import ApplicationIconSidebar from "./ApplicationIconSidebar";
 import ApplicationNavIcon from "./ApplicationNavIcon";
-import ApplicationSection from "./ApplicationSection";
 
 export interface IApplicationContentProps {
   children?: ReactNode;
@@ -10,7 +9,7 @@ export interface IApplicationContentProps {
 
 export default function ApplicationContent(props: IApplicationContentProps) {
   return (
-    <ApplicationSection>
+    <section>
       <ApplicationIconSidebar>
         <ApplicationNavIcon to={routes.editor.colours}>
           Colours
@@ -26,6 +25,6 @@ export default function ApplicationContent(props: IApplicationContentProps) {
         </ApplicationNavIcon>
       </ApplicationIconSidebar>
       {props.children}
-    </ApplicationSection>
+    </section>
   );
 }

@@ -3,7 +3,7 @@ import React, {
   PropsWithChildren,
   ButtonHTMLAttributes,
 } from "react";
-import classNames from "classnames";
+import clsx from "clsx";
 
 import classes from "./Button.module.css";
 
@@ -15,22 +15,16 @@ export interface IButtonProps extends PropsWithChildren<ButtonAttributes> {
   small?: boolean;
 }
 
-export const Button = function ({
-  className,
-  children,
-  secondary,
-  small,
-  ...props
-}: IButtonProps) {
+export const Button = function (props: IButtonProps) {
   return (
     <button
       type="button"
-      className={classNames(classes.Button, className)}
-      data-secondary={secondary}
-      data-small={small}
+      className={clsx(classes.Button, props.className)}
+      data-secondary={props.secondary}
+      data-small={props.small}
       {...props}
     >
-      {children}
+      {props.children}
     </button>
   );
 };

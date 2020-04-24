@@ -1,19 +1,21 @@
 import React from "react";
 import withApplicationInit from "../hocs/withApplicationInit";
 import RouteMapper from "./RouteMapper";
-import "@native-elements/core";
-import ApplicationWrapper from "@components/ApplicationWrapper";
-import ApplicationHeader from "@components/ApplicationHeader";
+import { ShellLayout } from "@components/Layouts/ShellLayout";
 import ApplicationContent from "@components/ApplicationContent";
+import ApplicationEditableSettingsContainer from "@components/ApplicationEditableSettingsContainer";
 
 function App() {
   return (
-    <ApplicationWrapper>
-      <ApplicationHeader />
-      <ApplicationContent>
-        <RouteMapper />
-      </ApplicationContent>
-    </ApplicationWrapper>
+    <ShellLayout
+      sidebar={<ApplicationContent />}
+      toolbar={
+        <ApplicationEditableSettingsContainer>
+          edita qui edita li
+        </ApplicationEditableSettingsContainer>
+      }
+      canvas={<RouteMapper />}
+    />
   );
 }
 

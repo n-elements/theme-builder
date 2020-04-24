@@ -5,14 +5,10 @@ import EditorSettings from "./components/EditorSettings";
 import EditorColours from "./components/EditorColours";
 import EditorElements from "./components/EditorElements";
 import EditorTypography from "./components/EditorTypography";
-import ApplicationEditableSettingsContainer from "@components/ApplicationEditableSettingsContainer";
 
 export default function Editor() {
   return (
     <>
-      <ApplicationEditableSettingsContainer>
-        edita qui edita li
-      </ApplicationEditableSettingsContainer>
       <Switch>
         <Route component={EditorColours} path={routes.colours} />
         <Route component={EditorElements} path={routes.elements} />
