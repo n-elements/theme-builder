@@ -1,6 +1,7 @@
 {
   "stylelint.enable": true,
   "css.validate": false,
+  "postcss.validate": false,
   "scss.validate": false,
   "files.associations": {
     "*.module.css": "postcss",
@@ -9,7 +10,7 @@
     "yarn.lock": "yaml",
   },
   "stylelint.autoFixOnSave": true,
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "[markdown]": {
     "editor.rulers": [100],
     "editor.wordWrapColumn": 100,

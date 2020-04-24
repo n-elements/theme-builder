@@ -1,4 +1,7 @@
 {
   "extends": ["stylelint-config-oval"],
-  "ignoreFiles": ["node_modules"]
+  "ignoreFiles": ["node_modules"],
+  "rules": {
+    "number-max-precision": 3
+  }
 }

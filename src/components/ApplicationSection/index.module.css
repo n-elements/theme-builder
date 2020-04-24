@@ -1,5 +1,3 @@
 .ApplicationSection {
-  display: flex;
-  flex-flow: row;
-  width: 100%;
+  border: 1px solid blue;
 }

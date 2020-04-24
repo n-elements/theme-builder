@@ -1,0 +1,17 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Roboto, monospace;
+  font-weight: 900;
+}
+
+[data-size='small'] {
+  font-size: var(--small-font-size);
+}
+
+[data-size='ultra-small'] {
+  font-size: var(--ultra-small-font-size);
+}
