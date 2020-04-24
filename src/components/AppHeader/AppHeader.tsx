@@ -3,6 +3,7 @@ import { Logo } from "@components/Logo";
 import clsx from "clsx";
 import classes from "./AppHeader.module.css";
 import { Github } from "@components/Icons/16x";
+import { Edit } from "@components/Icons/12x";
 import { Link } from "react-router-dom";
 
 export interface IAppHeaderProps extends PropsClass {
@@ -17,9 +18,13 @@ export const AppHeader = function ({ className, ...props }: IAppHeaderProps) {
       </Link>
       <div className={classes.HeaderContent}>
         {/* pencil icon */}
-        theme-name
+        <div>
+          <Edit />
+          theme-name
+        </div>
         <a
-          href="https://native-elements.stackblitz.io/"
+          className={classes.HeaderLink}
+          href="https://github.com/n-elements/core"
           rel="noopener noreferrer"
           target="_blank"
         >

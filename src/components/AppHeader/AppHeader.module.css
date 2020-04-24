@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   width: 64px;
+  outline-offset: -2px;
   border-right: 1px solid var(--shell-border-color);
 }
 
@@ -17,4 +18,13 @@
   display: flex;
   justify-content: space-between;
   flex-grow: 1;
+}
+
+.HeaderLink {
+  display: inline-flex;
+  align-items: center;
+
+  & > svg {
+    margin-inline-end: 8px;
+  }
 }

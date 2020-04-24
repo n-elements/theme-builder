@@ -8,7 +8,11 @@ export interface IAppWrapperProps extends PropsClass {
 
 export const AppWrapper = function (props: IAppWrapperProps) {
   return (
-    <main className={clsx(classes.AppWrapper, props.className)} {...props}>
+    <main
+      tabIndex={-1}
+      className={clsx(classes.AppWrapper, props.className)}
+      {...props}
+    >
       {props.children}
     </main>
   );
