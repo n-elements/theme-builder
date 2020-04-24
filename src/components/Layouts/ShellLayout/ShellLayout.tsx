@@ -1,16 +1,28 @@
 import React, { ReactNode } from "react";
-import { AppWrapper } from "@components/AppWrapper";
+import clsx from "clsx";
 import { AppHeader } from "@components/AppHeader";
+import classes from "./ShellLayout.module.css";
 
-export interface IShellLayoutProps {
-  children: ReactNode;
+export interface IShellLayoutProps extends PropsClass {
+  canvas: ReactNode;
+  sidebar?: ReactNode;
+  toolbar?: ReactNode;
 }
 
 export const ShellLayout = function (props: IShellLayoutProps) {
   return (
-    <AppWrapper>
+    <main
+      tabIndex={-1}
+      className={clsx(classes.ShellLayout, props.className)}
+      {...props}
+    >
       <AppHeader />
-      <div>{props.children}</div>
-    </AppWrapper>
+
+      <section className={classes.View}>
+        {props.sidebar ? <div>{props.sidebar}</div> : null}
+        {props.toolbar ? <div>{props.toolbar}</div> : null}
+        <div className={classes.Canvas}>{props.canvas}</div>
+      </section>
+    </main>
   );
 };
