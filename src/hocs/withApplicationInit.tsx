@@ -12,12 +12,10 @@ export default function withApplicationInit<T>(
       <React.StrictMode>
         <BrowserRouter>
           <Provider store={state.store}>
-             
             <PersistGate loading={null} persistor={state.persistor}>
               <Component {...props} />
             </PersistGate>
           </Provider>
-           
         </BrowserRouter>
       </React.StrictMode>
     );

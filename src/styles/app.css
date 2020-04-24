@@ -1,9 +1,9 @@
 /* Native Element theme */
 
-@import './ne-config.css';
+@import './theme.css';
 
 /* Import app global styles */
 
 @import './normalize.css';
-@import './core.css';
+@import './document.css';
 @import './typography.css';

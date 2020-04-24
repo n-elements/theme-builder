@@ -1,0 +1,20 @@
+.AppHeader {
+  min-height: 64px;
+  display: flex;
+  border-bottom: 1px solid var(--shell-border-color);
+}
+
+.LogoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  border-right: 1px solid var(--shell-border-color);
+}
+
+.HeaderContent {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
