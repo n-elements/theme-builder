@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function SvgPlus(props) {
+function SvgPlus(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width={16} height={16} viewBox="0 0 16 16" fill="none" {...props}>
       <path
@@ -11,4 +11,5 @@ function SvgPlus(props) {
   );
 }
 
-export default SvgPlus;
+const MemoSvgPlus = React.memo(SvgPlus);
+export default MemoSvgPlus;

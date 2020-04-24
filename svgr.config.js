@@ -1,5 +1,5 @@
 module.exports = {
-  expandProps: "end",
+  memo: true,
   replaceAttrValues: {
     "#000": "currentColor",
   },

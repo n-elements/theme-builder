@@ -10,6 +10,16 @@
   grid-template-columns: auto auto 1fr;
 }
 
+.Sidebar {
+  min-width: 64px;
+  border-right: 1px solid var(--shell-border-color);
+}
+
+.Toolbar {
+  min-width: 200px;
+  border-right: 1px solid var(--shell-border-color);
+}
+
 .Canvas {
   overflow: auto;
   -webkit-overflow-scrolling: touch;

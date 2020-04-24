@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function SvgDrag(props) {
+function SvgDrag(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width={12} height={12} viewBox="0 0 12 12" fill="none" {...props}>
       <path
@@ -11,4 +11,5 @@ function SvgDrag(props) {
   );
 }
 
-export default SvgDrag;
+const MemoSvgDrag = React.memo(SvgDrag);
+export default MemoSvgDrag;

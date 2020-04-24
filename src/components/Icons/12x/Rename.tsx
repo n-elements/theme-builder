@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function SvgRename(props) {
+function SvgRename(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width={12} height={12} viewBox="0 0 12 12" fill="none" {...props}>
       <path
@@ -11,4 +11,5 @@ function SvgRename(props) {
   );
 }
 
-export default SvgRename;
+const MemoSvgRename = React.memo(SvgRename);
+export default MemoSvgRename;

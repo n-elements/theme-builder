@@ -4,9 +4,9 @@ import { AppHeader } from "@components/AppHeader";
 import classes from "./ShellLayout.module.css";
 
 export interface IShellLayoutProps extends PropsClass {
-  canvas: ReactNode;
-  sidebar?: ReactNode;
-  toolbar?: ReactNode;
+  canvasArea: ReactNode;
+  sidebarArea?: ReactNode;
+  toolbarArea?: ReactNode;
 }
 
 export const ShellLayout = function (props: IShellLayoutProps) {
@@ -19,9 +19,13 @@ export const ShellLayout = function (props: IShellLayoutProps) {
       <AppHeader />
 
       <section className={classes.View}>
-        {props.sidebar ? <div>{props.sidebar}</div> : null}
-        {props.toolbar ? <div>{props.toolbar}</div> : null}
-        <div className={classes.Canvas}>{props.canvas}</div>
+        {props.sidebarArea ? (
+          <div className={classes.Sidebar}>{props.sidebarArea}</div>
+        ) : null}
+        {props.toolbarArea ? (
+          <div className={classes.Toolbar}>{props.toolbarArea}</div>
+        ) : null}
+        <div className={classes.Canvas}>{props.canvasArea}</div>
       </section>
     </main>
   );

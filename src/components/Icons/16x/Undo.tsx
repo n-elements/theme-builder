@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function SvgUndo(props) {
+function SvgUndo(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width={16} height={16} viewBox="0 0 16 16" fill="none" {...props}>
       <path
@@ -11,4 +11,5 @@ function SvgUndo(props) {
   );
 }
 
-export default SvgUndo;
+const MemoSvgUndo = React.memo(SvgUndo);
+export default MemoSvgUndo;
