@@ -37,7 +37,9 @@
     "yup": "0.28.4"
   },
   "scripts": {
-    "start": "npm run generate:icons && react-app-rewired start",
+    "prestart": "npm run generate:icons",
+    "start": "react-app-rewired start",
+    "prebuild": "npm run generate:icons",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
