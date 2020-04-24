@@ -1,0 +1,13 @@
+/* Native Elements configuration */
+
+:root {
+  --regular-font-size: 1rem;
+  --small-font-size: 0.875rem;
+  --ultra-small-font-size: 0.812rem;
+  --ne-global-background: #fff;
+  --ne-headings-scale: 1.125;
+  --ne-body-font-size: var(--regular-font-size);
+  --ne-selection-foreground: env(--secondary-70);
+  --ne-selection-background: env(--contrast-100);
+  --ne-outline-color: env(--accent-100);
+}

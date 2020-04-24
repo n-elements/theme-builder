@@ -1,0 +1,30 @@
+.Button {
+  --ne-button-background: env(--accent-100);
+  --ne-button-hover-background: env(--accent-90);
+  --ne-button-active-background: var(--ne-button-hover-background);
+  --ne-button-disabled-background: env(--secondary-70);
+  --ne-button-foreground: #fff;
+  --ne-button-hover-foreground: var(--ne-button-foreground);
+  --ne-button-active-foreground: var(--ne-button-foreground);
+  --ne-button-disabled-foreground: env(--secondary-90);
+  --ne-button-font-weight: 700;
+  --ne-button-font-size: var(--small-font-size);
+  --ne-button-shadow: none;
+  --ne-button-y-padding: 1em;
+  --ne-button-x-padding: 1.5em;
+  --ne-button-radius: 4px;
+
+  text-transform: uppercase;
+  outline-offset: 2px;
+
+  &[data-small='true'] {
+    --ne-button-y-padding: 0.5em;
+    --ne-button-x-padding: 1em;
+  }
+
+  &[data-secondary='true'] {
+    --ne-button-background: env(--secondary-70);
+    --ne-button-foreground: env(--accent-100);
+    --ne-button-hover-background: env(--secondary-80);
+  }
+}
