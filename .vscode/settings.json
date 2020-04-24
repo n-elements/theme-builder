@@ -1,0 +1,18 @@
+{
+  "stylelint.enable": true,
+  "css.validate": false,
+  "scss.validate": false,
+  "files.associations": {
+    "*.module.css": "postcss",
+    "*.css": "postcss",
+    ".stylelintrc": "json",
+    "yarn.lock": "yaml",
+  },
+  "stylelint.autoFixOnSave": true,
+  "editor.formatOnSave": false,
+  "[markdown]": {
+    "editor.rulers": [100],
+    "editor.wordWrapColumn": 100,
+    "editor.wordWrap": "wordWrapColumn",
+	}
+}
