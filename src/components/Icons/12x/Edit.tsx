@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function SvgEdit(props) {
+function SvgEdit(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width={12} height={12} viewBox="0 0 12 12" fill="none" {...props}>
       <path
@@ -15,4 +15,5 @@ function SvgEdit(props) {
   );
 }
 
-export default SvgEdit;
+const MemoSvgEdit = React.memo(SvgEdit);
+export default MemoSvgEdit;

@@ -3,11 +3,11 @@ import React from "react";
 import routes from "@routes";
 import Editor from "./Editor";
 
-export default function RouteMapper() {
+export const RouteMapper = function () {
   return (
     <Switch>
       <Route component={Editor} path={routes.editor.root} />
       <Redirect from={routes.root} to={routes.editor.colours} />
     </Switch>
   );
-}
+};

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function SvgTypography(props) {
+function SvgTypography(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
       <path
@@ -15,4 +15,5 @@ function SvgTypography(props) {
   );
 }
 
-export default SvgTypography;
+const MemoSvgTypography = React.memo(SvgTypography);
+export default MemoSvgTypography;

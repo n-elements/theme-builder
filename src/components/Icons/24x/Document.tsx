@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function SvgDocument(props) {
+function SvgDocument(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
       <path
@@ -16,4 +16,5 @@ function SvgDocument(props) {
   );
 }
 
-export default SvgDocument;
+const MemoSvgDocument = React.memo(SvgDocument);
+export default MemoSvgDocument;

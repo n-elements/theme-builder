@@ -1,0 +1,27 @@
+.AppNavigation {
+  display: flex;
+  flex-direction: column;
+}
+
+.AppNavigationItem {
+  display: flex;
+  min-height: 56px;
+  justify-content: center;
+  align-items: center;
+  outline-offset: -2px;
+
+  & > svg {
+    filter: saturate(0);
+    opacity: 0.5;
+  }
+
+  &:hover > svg {
+    transition: opacity 300ms;
+    opacity: 1;
+  }
+
+  &.Current > svg {
+    opacity: 1;
+    filter: none;
+  }
+}

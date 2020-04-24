@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function SvgColors(props) {
+function SvgColors(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
       <path
@@ -24,4 +24,5 @@ function SvgColors(props) {
   );
 }
 
-export default SvgColors;
+const MemoSvgColors = React.memo(SvgColors);
+export default MemoSvgColors;
