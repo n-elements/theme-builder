@@ -14,15 +14,17 @@
 }
 
 .HeaderContent {
-  padding: 24px;
+  padding: 0 24px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-grow: 1;
 }
 
 .HeaderLink {
   display: inline-flex;
   align-items: center;
+  white-space: nowrap;
 
   & > svg {
     margin-inline-end: 8px;

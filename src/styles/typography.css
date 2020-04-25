@@ -15,3 +15,9 @@ h6 {
 [data-size='ultra-small'] {
   font-size: var(--ultra-small-font-size);
 }
+
+label {
+  font-size: var(--ultra-small-font-size);
+  color: var(--labels-foreground);
+  margin: 0;
+}

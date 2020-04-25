@@ -8,14 +8,12 @@ import EditorTypography from "./components/EditorTypography";
 
 export default function Editor() {
   return (
-    <>
-      <Switch>
-        <Route component={EditorColours} path={routes.colours} />
-        <Route component={EditorElements} path={routes.elements} />
-        <Route component={EditorSettings} path={routes.settings} />
-        <Route component={EditorTypography} path={routes.typography} />
-        <Redirect exact from={routes.root} to={routes.colours} />
-      </Switch>
-    </>
+    <Switch>
+      <Route component={EditorColours} path={routes.colours} />
+      <Route component={EditorElements} path={routes.elements} />
+      <Route component={EditorSettings} path={routes.settings} />
+      <Route component={EditorTypography} path={routes.typography} />
+      <Redirect exact from={routes.root} to={routes.colours} />
+    </Switch>
   );
 }
