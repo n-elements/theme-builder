@@ -22,5 +22,6 @@
 
 .Canvas {
   overflow: auto;
+  background-color: var(--shell-canvas-background);
   -webkit-overflow-scrolling: touch;
 }
