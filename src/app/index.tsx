@@ -4,13 +4,14 @@ import { RouteMapper } from "./RouteMapper";
 import { ShellLayout } from "@components/Layouts/ShellLayout";
 import { AppToolbar } from "@components/AppToolbar";
 import { AppNavigation } from "@components/AppNavigation";
+import { ThemeActions } from "@components/ThemeActions";
 
 function App() {
   return (
     <ShellLayout
       sidebarArea={<AppNavigation />}
       toolbarArea={<AppToolbar>edita qui edita li</AppToolbar>}
-      actions={<div>ACTIONS</div>}
+      actions={<ThemeActions />}
       canvasArea={<RouteMapper />}
     />
   );

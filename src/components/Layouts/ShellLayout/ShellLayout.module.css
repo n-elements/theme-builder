@@ -29,8 +29,6 @@
 
 .Actions {
   padding: 16px 8px;
-  display: flex;
-  justify-content: center;
   border-top: 1px solid var(--shell-border-color);
 }
 
