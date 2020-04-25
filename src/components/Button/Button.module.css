@@ -23,8 +23,8 @@
   }
 
   &[data-secondary='true'] {
-    --ne-button-background: env(--secondary-70);
-    --ne-button-foreground: env(--accent-100);
-    --ne-button-hover-background: env(--secondary-80);
+    --ne-button-background: var(--secondary-button-background);
+    --ne-button-foreground: var(--secondary-button-foreground);
+    --ne-button-hover-background: var(--secondary-button-hover-background);
   }
 }

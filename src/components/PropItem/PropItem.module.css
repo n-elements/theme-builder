@@ -14,9 +14,9 @@
 }
 
 .Action {
-  --ne-button-foreground: env(--secondary-100);
-  --ne-button-hover-foreground: env(--accent-100);
-  --ne-button-active-foreground: var(--ne-button-hover-foreground);
+  --ne-button-foreground: var(--field-actions-foreground);
+  --ne-button-hover-foreground: var(--field-actions-hover-foreground);
+  --ne-button-active-foreground: var(--field-actions-active-foreground);
   --ne-button-background: none;
   --ne-button-hover-background: none;
   --ne-button-active-background: none;

@@ -2,23 +2,37 @@
 
   /* App theme */
 
-  --shell-border-color: env(--secondary-70);
-  --shell-canvas-background: color-mod(env(--secondary-70) alpha(50%));
-  --prop-field-border-color: env(--secondary-80);
-  --labels-foreground: env(--contrast-70);
-
-  /* Native Elements configuration */
-
-  --regular-font-size: 1rem;
-  --small-font-size: 0.875rem;
-  --ultra-small-font-size: 0.812rem;
   --ne-global-background: #fff;
   --ne-global-foreground: env(--contrast-100);
-  --ne-headings-scale: 1.125;
-  --ne-body-font-size: var(--regular-font-size);
   --ne-selection-foreground: env(--secondary-70);
   --ne-selection-background: env(--contrast-100);
   --ne-outline-color: env(--accent-100);
   --ne-links-foreground: env(--accent-100);
   --ne-links-active-foreground: env(--accent-80);
+  --ne-button-background: env(--accent-100);
+  --ne-button-hover-background: env(--accent-90);
+  --ne-button-active-background: var(--ne-button-hover-background);
+  --ne-button-disabled-background: env(--secondary-70);
+  --ne-button-foreground: #fff;
+  --ne-button-hover-foreground: var(--ne-button-foreground);
+  --ne-button-active-foreground: var(--ne-button-foreground);
+  --ne-button-disabled-foreground: env(--secondary-90);
+  --secondary-button-background: env(--secondary-70);
+  --secondary-button-foreground: env(--accent-100);
+  --secondary-button-hover-background: env(--secondary-80);
+  --shell-border-color: env(--secondary-70);
+  --shell-canvas-background: color-mod(env(--secondary-70) alpha(50%));
+  --prop-field-border-color: env(--secondary-80);
+  --labels-foreground: env(--contrast-70);
+  --field-actions-foreground: env(--secondary-100);
+  --field-actions-hover-foreground: env(--accent-100);
+  --field-actions-active-foreground: env(--accent-100);
+
+  /* Native Elements settings */
+
+  --regular-font-size: 1rem;
+  --small-font-size: 0.875rem;
+  --ultra-small-font-size: 0.812rem;
+  --ne-headings-scale: 1.125;
+  --ne-body-font-size: var(--regular-font-size);
 }
