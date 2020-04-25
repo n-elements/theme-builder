@@ -13,15 +13,15 @@
   & > svg {
     filter: saturate(0);
     opacity: 0.5;
+    transition: filter 300ms, opacity 300ms;
   }
 
   &:hover > svg {
-    transition: opacity 300ms;
     opacity: 1;
   }
 
   &.Current > svg {
     opacity: 1;
-    filter: none;
+    filter: saturate(100%);
   }
 }

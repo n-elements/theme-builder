@@ -12,21 +12,24 @@ export interface IAppNavigationItemProps {
   to: string;
 }
 
-const AppNavigationItem = function (props: IAppNavigationItemProps) {
+const AppNavigationItem = function ({ children, to }: IAppNavigationItemProps) {
   return (
     <NavLink
       activeClassName={classes.Current}
       className={classes.AppNavigationItem}
-      to={props.to}
+      to={to}
     >
-      {props.children}
+      {children}
     </NavLink>
   );
 };
 
-export const AppNavigation = function (props: IAppNavigationProps) {
+export const AppNavigation = function ({
+  className,
+  ...props
+}: IAppNavigationProps) {
   return (
-    <nav className={clsx(classes.AppNavigation, props.className)} {...props}>
+    <nav className={clsx(classes.AppNavigation, className)} {...props}>
       <AppNavigationItem to={routes.editor.colours}>
         <Colors />
       </AppNavigationItem>

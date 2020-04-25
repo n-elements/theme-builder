@@ -1,26 +1,42 @@
 .ShellLayout {
   height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .View {
-  flex-grow: 1;
-  display: grid;
-  grid-template-columns: auto auto 1fr;
+  display: flex;
+  height: calc(100% - 66px);
 }
 
 .Sidebar {
-  min-width: 64px;
+  width: 64px;
+  flex-shrink: 0;
   border-right: 1px solid var(--shell-border-color);
 }
 
 .Toolbar {
-  min-width: 200px;
+  min-width: 380px;
+  max-width: 800px;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
   border-right: 1px solid var(--shell-border-color);
+}
+
+.Scroller {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.Actions {
+  padding: 16px 8px;
+  flex-shrink: 0;
+  border-top: 1px solid var(--shell-border-color);
 }
 
 .Canvas {
   overflow: auto;
+  flex-grow: 1;
+  background-color: var(--shell-canvas-background);
   -webkit-overflow-scrolling: touch;
 }

@@ -20,6 +20,7 @@
     "postcss-inset": "1.0.0",
     "postcss-normalize": "9.0.0",
     "postcss-preset-env": "6.7.0",
+    "re-resizable": "6.3.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-intl": "4.5.0",
