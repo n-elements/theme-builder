@@ -6,8 +6,7 @@
 
 .View {
   flex-grow: 1;
-  display: grid;
-  grid-template-columns: auto auto 1fr;
+  display: flex;
 }
 
 .Sidebar {
@@ -16,12 +15,28 @@
 }
 
 .Toolbar {
-  min-width: 380;
+  min-width: 380px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   border-right: 1px solid var(--shell-border-color);
+}
+
+.Scroller {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.Actions {
+  padding: 16px 8px;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid var(--shell-border-color);
 }
 
 .Canvas {
   overflow: auto;
+  flex-grow: 1;
   background-color: var(--shell-canvas-background);
   -webkit-overflow-scrolling: touch;
 }

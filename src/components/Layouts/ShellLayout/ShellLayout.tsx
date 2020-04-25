@@ -8,6 +8,7 @@ export interface IShellLayoutProps extends PropsClass {
   canvasArea: ReactNode;
   sidebarArea?: ReactNode;
   toolbarArea?: ReactNode;
+  actions?: ReactNode;
 }
 
 export const ShellLayout = function (props: IShellLayoutProps) {
@@ -19,31 +20,34 @@ export const ShellLayout = function (props: IShellLayoutProps) {
     >
       <AppHeader />
 
-      <section className={classes.View}>
+      <div className={classes.View}>
         {props.sidebarArea ? (
-          <div className={classes.Sidebar}>{props.sidebarArea}</div>
+          <section className={classes.Sidebar}>{props.sidebarArea}</section>
         ) : null}
-        {props.toolbarArea ? (
-          <Resizable
-            minWidth={380}
-            maxWidth={800}
-            bounds="parent"
-            enable={{
-              top: false,
-              right: true,
-              bottom: false,
-              left: false,
-              topRight: false,
-              bottomRight: false,
-              bottomLeft: false,
-              topLeft: false,
-            }}
-          >
-            <div className={classes.Toolbar}>{props.toolbarArea}</div>
-          </Resizable>
-        ) : null}
-        <div className={classes.Canvas}>{props.canvasArea}</div>
-      </section>
+        <Resizable
+          minWidth={380}
+          maxWidth={800}
+          bounds="parent"
+          enable={{
+            top: false,
+            right: true,
+            bottom: false,
+            left: false,
+            topRight: false,
+            bottomRight: false,
+            bottomLeft: false,
+            topLeft: false,
+          }}
+        >
+          <section className={classes.Toolbar}>
+            <div className={classes.Scroller}>{props.toolbarArea}</div>
+            {props.actions ? (
+              <div className={classes.Actions}>{props.actions}</div>
+            ) : null}
+          </section>
+        </Resizable>
+        <section className={classes.Canvas}>{props.canvasArea}</section>
+      </div>
     </main>
   );
 };
