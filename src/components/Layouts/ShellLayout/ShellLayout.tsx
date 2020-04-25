@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import clsx from "clsx";
+import { Resizable } from "re-resizable";
 import { AppHeader } from "@components/AppHeader";
 import classes from "./ShellLayout.module.css";
 
@@ -23,7 +24,23 @@ export const ShellLayout = function (props: IShellLayoutProps) {
           <div className={classes.Sidebar}>{props.sidebarArea}</div>
         ) : null}
         {props.toolbarArea ? (
-          <div className={classes.Toolbar}>{props.toolbarArea}</div>
+          <Resizable
+            minWidth={380}
+            maxWidth={800}
+            bounds="parent"
+            enable={{
+              top: false,
+              right: true,
+              bottom: false,
+              left: false,
+              topRight: false,
+              bottomRight: false,
+              bottomLeft: false,
+              topLeft: false,
+            }}
+          >
+            <div className={classes.Toolbar}>{props.toolbarArea}</div>
+          </Resizable>
         ) : null}
         <div className={classes.Canvas}>{props.canvasArea}</div>
       </section>
