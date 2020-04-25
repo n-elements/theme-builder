@@ -28,9 +28,9 @@ export const ShellLayout = function ({
       <AppHeader />
 
       <div className={classes.View}>
-        {sidebarArea ? (
+        {sidebarArea && (
           <section className={classes.Sidebar}>{sidebarArea}</section>
-        ) : null}
+        )}
         <Resizable
           minWidth={380}
           maxWidth={600}
@@ -52,7 +52,7 @@ export const ShellLayout = function ({
         >
           <section className={classes.Toolbar}>
             <div className={classes.Scroller}>{toolbarArea}</div>
-            {actions ? <div className={classes.Actions}>{actions}</div> : null}
+            {actions && <div className={classes.Actions}>{actions}</div>}
           </section>
         </Resizable>
         <section className={classes.Canvas}>{canvasArea}</section>

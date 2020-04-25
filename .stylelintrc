@@ -2,6 +2,9 @@
   "extends": ["stylelint-config-oval"],
   "ignoreFiles": ["node_modules"],
   "rules": {
-    "number-max-precision": 3
+    "number-max-precision": 3,
+    "at-rule-no-unknown": [true, {
+      "ignoreAtRules": ["/^import-normalize/"]
+    }]
   }
 }
