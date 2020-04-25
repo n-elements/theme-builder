@@ -6,9 +6,12 @@ import { Undo } from "@components/Icons/16x";
 
 export interface IThemeActionsProps extends PropsClass {}
 
-export const ThemeActions = function (props: IThemeActionsProps) {
+export const ThemeActions = function ({
+  className,
+  ...props
+}: IThemeActionsProps) {
   return (
-    <div className={clsx(classes.ThemeActions, props.className)}>
+    <div className={clsx(classes.ThemeActions, className)} {...props}>
       <Button secondary>
         <Undo />
         Reset

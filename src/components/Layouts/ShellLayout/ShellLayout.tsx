@@ -11,22 +11,33 @@ export interface IShellLayoutProps extends PropsClass {
   actions?: ReactNode;
 }
 
-export const ShellLayout = function (props: IShellLayoutProps) {
+export const ShellLayout = function ({
+  className,
+  sidebarArea,
+  toolbarArea,
+  canvasArea,
+  actions,
+  ...props
+}: IShellLayoutProps) {
   return (
     <main
       tabIndex={-1}
-      className={clsx(classes.ShellLayout, props.className)}
+      className={clsx(classes.ShellLayout, className)}
       {...props}
     >
       <AppHeader />
 
       <div className={classes.View}>
-        {props.sidebarArea ? (
-          <section className={classes.Sidebar}>{props.sidebarArea}</section>
+        {sidebarArea ? (
+          <section className={classes.Sidebar}>{sidebarArea}</section>
         ) : null}
         <Resizable
           minWidth={380}
-          maxWidth={800}
+          maxWidth={600}
+          defaultSize={{
+            width: 380,
+            height: "auto",
+          }}
           bounds="parent"
           enable={{
             top: false,
@@ -40,13 +51,11 @@ export const ShellLayout = function (props: IShellLayoutProps) {
           }}
         >
           <section className={classes.Toolbar}>
-            <div className={classes.Scroller}>{props.toolbarArea}</div>
-            {props.actions ? (
-              <div className={classes.Actions}>{props.actions}</div>
-            ) : null}
+            <div className={classes.Scroller}>{toolbarArea}</div>
+            {actions ? <div className={classes.Actions}>{actions}</div> : null}
           </section>
         </Resizable>
-        <section className={classes.Canvas}>{props.canvasArea}</section>
+        <section className={classes.Canvas}>{canvasArea}</section>
       </div>
     </main>
   );

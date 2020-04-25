@@ -17,18 +17,26 @@ export interface IButtonProps extends PropsWithChildren<ButtonAttributes> {
   disabled?: boolean;
 }
 
-export const Button = function (props: IButtonProps) {
+export const Button = function ({
+  children,
+  className,
+  secondary,
+  small,
+  disabled,
+  onClick,
+  ...props
+}: IButtonProps) {
   return (
     <button
       type="button"
-      className={clsx(classes.Button, props.className)}
-      data-secondary={props.secondary}
-      data-small={props.small}
-      adia-disabled={props.disabled}
-      onClick={props.onClick}
+      className={clsx(classes.Button, className)}
+      data-secondary={secondary}
+      data-small={small}
+      adia-disabled={disabled}
+      onClick={onClick}
       {...props}
     >
-      {props.children}
+      {children}
     </button>
   );
 };

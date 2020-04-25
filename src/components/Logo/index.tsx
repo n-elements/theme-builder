@@ -5,11 +5,11 @@ export interface ILogoProps {
   height?: number;
 }
 
-export const Logo = function (props: ILogoProps) {
+export const Logo = function ({ width, height, ...props }: ILogoProps) {
   return (
     <svg
-      width={props.width}
-      height={props.height || props.width}
+      width={width}
+      height={height || width}
       viewBox={`0 0 180 180`}
       aria-label="Native Elements Logo"
       fill="none"

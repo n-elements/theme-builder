@@ -6,10 +6,14 @@ export interface IAppToolbarProps extends PropsClass {
   children: ReactNode;
 }
 
-export const AppToolbar = function (props: IAppToolbarProps) {
+export const AppToolbar = function ({
+  children,
+  className,
+  ...props
+}: IAppToolbarProps) {
   return (
-    <div className={clsx(classes.AppToolbar, props.className)}>
-      {props.children}
+    <div className={clsx(classes.AppToolbar, className)} {...props}>
+      {children}
     </div>
   );
 };
