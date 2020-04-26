@@ -17,6 +17,8 @@
   --ne-button-hover-foreground: var(--ne-button-foreground);
   --ne-button-active-foreground: var(--ne-button-foreground);
   --ne-button-disabled-foreground: env(--secondary-90);
+  --ne-textfield-selection-background: var(--ne-selection-foreground);
+  --ne-textfield-selection-foreground: var(--ne-selection-background);
   --secondary-button-background: env(--secondary-70);
   --secondary-button-foreground: env(--accent-100);
   --secondary-button-hover-background: env(--secondary-80);
@@ -24,9 +26,9 @@
   --shell-canvas-background: color-mod(env(--secondary-70) alpha(50%));
   --prop-field-border-color: env(--secondary-80);
   --labels-foreground: env(--contrast-70);
-  --field-actions-foreground: env(--secondary-100);
-  --field-actions-hover-foreground: env(--accent-100);
-  --field-actions-active-foreground: env(--accent-100);
+  --prop-field-actions-foreground: env(--secondary-100);
+  --prop-field-actions-hover-foreground: env(--accent-100);
+  --prop-field-actions-active-foreground: env(--accent-100);
 
   /* Native Elements settings */
 
