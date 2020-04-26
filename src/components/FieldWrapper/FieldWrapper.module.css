@@ -8,4 +8,6 @@
   border: 1px solid var(--prop-field-border-color);
   border-radius: 4px;
   font-size: var(--small-font-size);
+  display: flex;
+  align-items: center;
 }

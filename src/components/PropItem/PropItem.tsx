@@ -23,7 +23,13 @@ export const PropItem = function ({
   return (
     <fieldset className={clsx(classes.PropItem, className)} {...props}>
       <div className={classes.FieldHeader}>
-        <label>--{propName}</label>
+        <input
+          readOnly={true}
+          tabIndex={-1}
+          className={classes.PropName}
+          type="text"
+          defaultValue={`--${propName}`}
+        />
 
         {showActions && (
           <div className={classes.Actions}>

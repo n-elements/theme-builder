@@ -6,6 +6,19 @@
   margin-bottom: 8px;
   display: flex;
   justify-content: space-between;
+  font-size: var(--ultra-small-font-size);
+}
+
+.PropName {
+  --ne-textfield-y-padding: 0;
+  --ne-textfield-x-padding: 0;
+  --ne-textfield-min-height: auto;
+  --ne-textfield-border: none;
+  --ne-textfield-foreground: env(--contrast-70);
+  --ne-textfield-readonly-foreground: var(--ne-textfield-foreground);
+  --ne-textfield-readonly-border: none;
+  --ne-textfield-readonly-focus-border: none;
+  --ne-textfield-font-weight: 400;
 }
 
 .Actions {
@@ -14,9 +27,9 @@
 }
 
 .Action {
-  --ne-button-foreground: var(--field-actions-foreground);
-  --ne-button-hover-foreground: var(--field-actions-hover-foreground);
-  --ne-button-active-foreground: var(--field-actions-active-foreground);
+  --ne-button-foreground: var(--prop-field-actions-foreground);
+  --ne-button-hover-foreground: var(--prop-field-actions-hover-foreground);
+  --ne-button-active-foreground: var(--prop-field-actions-active-foreground);
   --ne-button-background: none;
   --ne-button-hover-background: none;
   --ne-button-active-background: none;
@@ -28,8 +41,8 @@
   transform: none;
 
   & > svg {
-    width: auto;
-    height: auto;
+    width: 12px;
+    height: 12px;
     margin: 0;
   }
 }

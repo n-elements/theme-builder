@@ -2,9 +2,11 @@ import React from "react";
 import classes from "./ColorField.module.css";
 import clsx from "clsx";
 import { FieldWrapper } from "@components/FieldWrapper";
+import { Color } from "react-color";
+// import { ChromePicker, Color, ColorResult } from "react-color";
 
 export interface IColorFieldProps extends PropsClass {
-  defaultValue?: string;
+  defaultValue?: Color;
   readOnly?: boolean;
 }
 
@@ -15,9 +17,10 @@ export const ColorField = function ({
   ...props
 }: IColorFieldProps) {
   return (
-    <div className={clsx(classes.ColorField, className)}>
+    <div className={clsx(classes.ColorField, className)} {...props}>
       <FieldWrapper>
-        <input type="text" defaultValue={defaultValue} readOnly={readOnly} />
+        <input type="text" readOnly={readOnly} />
+        <span className={classes.ColorPreview}></span>
       </FieldWrapper>
     </div>
   );
