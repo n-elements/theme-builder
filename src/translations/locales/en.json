@@ -1,2 +1,4 @@
 {
+  "components.ThemeSwitcher.dark": "Dark",
+  "components.ThemeSwitcher.light": "Light"
 }

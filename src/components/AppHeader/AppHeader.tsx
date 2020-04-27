@@ -6,6 +6,7 @@ import { Github } from "@components/Icons/16x";
 import { Edit } from "@components/Icons/12x";
 import { Link } from "react-router-dom";
 import routes from "@routes";
+import { ThemeSwitcher } from "@components/ThemeSwitcher";
 
 export interface IAppHeaderProps extends PropsClass {
   children?: ReactNode;
@@ -23,6 +24,7 @@ export const AppHeader = function ({ className, ...props }: IAppHeaderProps) {
           <Edit />
           theme-name
         </div>
+        <ThemeSwitcher />
         <a
           className={classes.HeaderLink}
           href="https://github.com/n-elements/core"

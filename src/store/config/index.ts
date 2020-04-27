@@ -1,9 +1,23 @@
 import { createReducer } from "redux-aar";
+import * as actions from "./actions";
 
-function initialState() {
-  return {};
+export type Theme = "light" | "dark";
+
+interface IConfig {
+  theme: Theme;
+}
+
+function initialState(): IConfig {
+  return {
+    theme: "light",
+  };
 }
 
 const reducer = createReducer(initialState());
+
+reducer.on(actions.updatesetting, (state, setting) => ({
+  ...state,
+  [setting.name]: setting.value,
+}));
 
 export default reducer.reduce();
