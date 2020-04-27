@@ -1,0 +1,14 @@
+.ShellLayout {
+  height: 100%;
+}
+
+.View {
+  display: flex;
+  height: calc(100% - 66px);
+}
+
+.Sidebar {
+  width: 64px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--shell-border-color);
+}

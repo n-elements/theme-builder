@@ -1,0 +1,6 @@
+.Canvas {
+  overflow: auto;
+  flex-grow: 1;
+  background-color: var(--shell-canvas-background);
+  -webkit-overflow-scrolling: touch;
+}

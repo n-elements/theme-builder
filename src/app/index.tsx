@@ -1,10 +1,9 @@
 import React from "react";
 import withApplicationInit from "../hocs/withApplicationInit";
 import { RouteMapper } from "./RouteMapper";
-import { ShellLayout } from "@components/Layouts/ShellLayout";
+import { ShellLayout } from "@components/ShellLayout";
 import { AppToolbar } from "@components/AppToolbar";
 import { AppNavigation } from "@components/AppNavigation";
-import { ThemeActions } from "@components/ThemeActions";
 import { PropItem } from "@components/PropItem";
 
 function App() {
@@ -26,7 +25,6 @@ function App() {
           />
         </AppToolbar>
       }
-      actions={<ThemeActions />}
       canvasArea={<RouteMapper />}
     />
   );
