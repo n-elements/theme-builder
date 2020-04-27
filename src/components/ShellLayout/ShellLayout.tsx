@@ -6,16 +6,12 @@ import classes from "./ShellLayout.module.css";
 export interface IShellLayoutProps extends PropsClass {
   canvasArea: ReactNode;
   sidebarArea?: ReactNode;
-  toolbarArea?: ReactNode;
-  actions?: ReactNode;
 }
 
 export const ShellLayout = function ({
   className,
   sidebarArea,
-  toolbarArea,
   canvasArea,
-  actions,
   ...props
 }: IShellLayoutProps) {
   return (
