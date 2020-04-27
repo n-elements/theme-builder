@@ -8,11 +8,12 @@ import EditorTypography from "./components/EditorTypography";
 import { Toolbar } from "./components/Toolbar";
 import { ThemeActions } from "./components/ThemeActions";
 import { Canvas } from "./components/Canvas";
+import ToolbarArea from "./components/ToolbarArea";
 
 export default function Editor() {
   return (
     <>
-      <Toolbar actions={<ThemeActions />} />
+      <Toolbar actions={<ThemeActions />} toolbarArea={<ToolbarArea />} />
       <Canvas>
         <Switch>
           <Route component={EditorColours} path={routes.colours} />
