@@ -5,6 +5,7 @@ import classes from "./AppHeader.module.css";
 import { Github } from "@components/Icons/16x";
 import { Edit } from "@components/Icons/12x";
 import { Link } from "react-router-dom";
+import routes from "@routes";
 
 export interface IAppHeaderProps extends PropsClass {
   children?: ReactNode;
@@ -13,7 +14,7 @@ export interface IAppHeaderProps extends PropsClass {
 export const AppHeader = function ({ className, ...props }: IAppHeaderProps) {
   return (
     <header className={clsx(classes.AppHeader, className)} {...props}>
-      <Link to="/" className={classes.LogoWrapper}>
+      <Link to={routes.root} className={classes.LogoWrapper}>
         <Logo width={20} />
       </Link>
       <div className={classes.HeaderContent}>
