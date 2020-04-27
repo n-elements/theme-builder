@@ -1,13 +1,14 @@
+import actions from "@store/actions";
+import { IVariable, VariableType } from "@store/theming/types";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
-import actions from "@store/actions";
-import { VariableType, IVariable } from "@store/theming/types";
+import useVariables from "./useVariables";
 
 function createAdd(dispatch: Dispatch, group: string) {
   return (name: string, type: VariableType) => {
     dispatch(
       actions.theming.addVariable({
-        group,
+        domain: group,
         name,
         type,
       })
@@ -25,12 +26,14 @@ function createUpdate(dispatch: Dispatch) {
     dispatch(actions.theming.updateVariable(variable));
 }
 
-export default function useVariableEditing(group: string) {
+export default function useVariableEditing(domain: string) {
   const dispatch = useDispatch();
+  const list = useVariables(domain);
 
   return {
-    add: createAdd(dispatch, group),
+    add: createAdd(dispatch, domain),
     delete: createDelete(dispatch),
+    list,
     update: createUpdate(dispatch),
   };
 }

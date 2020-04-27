@@ -4,11 +4,13 @@ import * as actions from "./actions";
 import { assignId, createUpdateVariableMap } from "./helpers";
 
 interface ITheming {
+  name: string;
   variables: VariableArray;
 }
 
 function initialState(): ITheming {
   return {
+    name: "theme-name",
     variables: [],
   };
 }
@@ -23,6 +25,11 @@ reducer.on(actions.addVariable, (state, variable) => ({
 reducer.on(actions.deleteVariable, (state, variable) => ({
   ...state,
   variables: state.variables.filter((v) => v._id !== variable._id),
+}));
+
+reducer.on(actions.updateName, (state, name) => ({
+  ...state,
+  name,
 }));
 
 reducer.on(actions.updateVariable, (state, variable) => ({
