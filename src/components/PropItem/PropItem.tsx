@@ -3,21 +3,18 @@ import clsx from "clsx";
 import classes from "./PropItem.module.css";
 import { ColorField } from "@components/ColorField/ColorField";
 import { Rename, Bin } from "@components/Icons/12x";
+import { IVariable } from "@store/theming/types";
 
-export interface IPropItemProps extends PropsClass {
-  type: "color" | "unit" | "text";
+export interface IPropItemProps extends PropsClass, IVariable {
   showActions?: boolean;
-  propName: string;
-  propValue?: string;
-  defaultValue?: string;
 }
 
 export const PropItem = function ({
   className,
   type,
   showActions,
-  propName,
-  propValue,
+  name,
+  value,
   ...props
 }: IPropItemProps) {
   return (
@@ -28,7 +25,7 @@ export const PropItem = function ({
           tabIndex={-1}
           className={classes.PropName}
           type="text"
-          defaultValue={`--${propName}`}
+          defaultValue={`--${name}`}
         />
 
         {showActions && (
@@ -42,7 +39,7 @@ export const PropItem = function ({
           </div>
         )}
       </div>
-      {type === "color" && <ColorField defaultValue={propValue} />}
+      {type === "color" && <ColorField defaultValue={value} />}
     </fieldset>
   );
 };
