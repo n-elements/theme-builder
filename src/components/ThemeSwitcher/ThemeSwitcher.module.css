@@ -20,6 +20,10 @@
   min-height: 24px;
   position: relative;
 
+  &[aria-current='true'] {
+    --ne-button-foreground: env(--accent-100);
+  }
+
   &:hover {
     color: var(--theme-switcher-hover-foreground);
   }

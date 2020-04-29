@@ -31,27 +31,31 @@ export const ThemeSwitcher = function ({
   const intl = useIntl();
   const theme = useThemeModeSwitch();
   const createClickHandler = (type: Theme) => () => theme.change(type);
+  const currentTheme = theme.type;
 
   return (
     <div className={clsx(classes.ThemeSwitcher, className)} {...attributes}>
       <Helmet
         htmlAttributes={{
-          "data-theme": theme.type,
+          "data-theme": currentTheme,
         }}
       />
       <button
+        aria-current={currentTheme === "auto"}
         className={classes.ThemeTrigger}
         onClick={createClickHandler("auto")}
       >
         <small>{intl.formatMessage(messages.auto)}</small>
       </button>
       <button
+        aria-current={currentTheme === "light"}
         className={classes.ThemeTrigger}
         onClick={createClickHandler("light")}
       >
         <Sun />
       </button>
       <button
+        aria-current={currentTheme === "dark"}
         className={classes.ThemeTrigger}
         onClick={createClickHandler("dark")}
       >
