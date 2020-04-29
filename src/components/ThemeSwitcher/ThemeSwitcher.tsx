@@ -5,6 +5,7 @@ import { defineMessages, useIntl } from "react-intl";
 import clsx from "clsx";
 import { Theme } from "@store/config";
 import { Helmet } from "react-helmet";
+import { Sun, Moon } from "@components/Icons/16x";
 
 export interface IThemeSwitcherProps extends PropsClass {}
 
@@ -32,29 +33,29 @@ export const ThemeSwitcher = function ({
   const createClickHandler = (type: Theme) => () => theme.change(type);
 
   return (
-    <div {...attributes}>
+    <div className={clsx(classes.ThemeSwitcher, className)} {...attributes}>
       <Helmet
         htmlAttributes={{
           "data-theme": theme.type,
         }}
       />
       <button
-        className={clsx(classes.ThemeSwitcher, className)}
+        className={classes.ThemeTrigger}
         onClick={createClickHandler("auto")}
       >
-        {intl.formatMessage(messages.auto)}
+        <small>{intl.formatMessage(messages.auto)}</small>
       </button>
       <button
-        className={clsx(classes.ThemeSwitcher, className)}
+        className={classes.ThemeTrigger}
         onClick={createClickHandler("light")}
       >
-        {intl.formatMessage(messages.light)}
+        <Sun />
       </button>
       <button
-        className={clsx(classes.ThemeSwitcher, className)}
+        className={classes.ThemeTrigger}
         onClick={createClickHandler("dark")}
       >
-        {intl.formatMessage(messages.dark)}
+        <Moon />
       </button>
     </div>
   );

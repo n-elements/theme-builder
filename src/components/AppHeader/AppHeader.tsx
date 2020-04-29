@@ -27,16 +27,18 @@ export const AppHeader = function ({
           <Edit />
           theme-name
         </div>
-        <ThemeSwitcher />
-        <a
-          className={classes.HeaderLink}
-          href="https://github.com/n-elements/core"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <Github />
-          Native elements
-        </a>
+        <div>
+          <ThemeSwitcher />
+          <a
+            className={classes.HeaderLink}
+            href="https://github.com/n-elements/core"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Native elements
+            <Github />
+          </a>
+        </div>
       </div>
     </header>
   );

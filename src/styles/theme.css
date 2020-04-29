@@ -29,6 +29,8 @@
   --prop-field-actions-foreground: env(--secondary-100);
   --prop-field-actions-hover-foreground: env(--accent-100);
   --prop-field-actions-active-foreground: env(--accent-100);
+  --theme-switcher-foreground: env(--secondary-100);
+  --theme-switcher-hover-foreground: env(--contrast-70);
 
   /* Native Elements settings */
 
@@ -71,6 +73,8 @@
     --prop-field-actions-foreground: env(--secondary-100);
     --prop-field-actions-hover-foreground: env(--accent-100);
     --prop-field-actions-active-foreground: env(--accent-100);
+    --theme-switcher-foreground: env(--contrast-70);
+    --theme-switcher-hover-foreground: env(--secondary-100);
 
     /* Native Elements settings */
 
