@@ -1,6 +1,7 @@
 .AppHeader {
   min-height: 64px;
   display: flex;
+  transition: border 200ms;
   border-bottom: 1px solid var(--shell-border-color);
 }
 
@@ -10,6 +11,7 @@
   align-items: center;
   width: 64px;
   outline-offset: -2px;
+  transition: border 200ms;
   border-right: 1px solid var(--shell-border-color);
 }
 

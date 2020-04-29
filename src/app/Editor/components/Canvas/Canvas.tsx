@@ -7,10 +7,10 @@ export interface ICanvasProps
   extends Partial<ComponentPropsWithRef<"section">> {}
 
 function Canvas(props: ICanvasProps) {
-  const { className, ...otherprops } = props;
+  const { className, ...attributes } = props;
 
   return (
-    <section className={clsx(classes.Canvas, className)} {...otherprops} />
+    <section className={clsx(classes.Canvas, className)} {...attributes} />
   );
 }
 

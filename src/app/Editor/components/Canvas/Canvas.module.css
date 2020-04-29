@@ -2,5 +2,6 @@
   overflow: auto;
   flex-grow: 1;
   background-color: var(--shell-canvas-background);
+  transition: background-color 200ms;
   -webkit-overflow-scrolling: touch;
 }

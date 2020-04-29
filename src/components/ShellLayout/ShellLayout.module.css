@@ -11,4 +11,5 @@
   width: 64px;
   flex-shrink: 0;
   border-right: 1px solid var(--shell-border-color);
+  transition: border 200ms;
 }
