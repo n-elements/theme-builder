@@ -4,6 +4,7 @@
 
 /* Import app global styles */
 
+@import './ne-settings.css';
 @import './normalize.css';
 @import './document.css';
 @import './typography.css';

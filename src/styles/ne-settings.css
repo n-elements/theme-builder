@@ -1,0 +1,10 @@
+:root {
+
+  /* Native Elements settings */
+
+  --regular-font-size: 1rem;
+  --small-font-size: 0.875rem;
+  --ultra-small-font-size: 0.812rem;
+  --ne-headings-scale: 1.125;
+  --ne-body-font-size: var(--regular-font-size);
+}
