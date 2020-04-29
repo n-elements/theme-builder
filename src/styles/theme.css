@@ -38,3 +38,46 @@
   --ne-headings-scale: 1.125;
   --ne-body-font-size: var(--regular-font-size);
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+
+    /* App theme */
+
+    --ne-global-background: env(--contrast-90);
+    --ne-global-foreground: #fff;
+    --ne-selection-foreground: env(--secondary-70);
+    --ne-selection-background: env(--contrast-100);
+    --ne-outline-color: env(--accent-100);
+    --ne-links-foreground: env(--accent-100);
+    --ne-links-active-foreground: env(--accent-80);
+    --ne-button-background: env(--accent-100);
+    --ne-button-hover-background: env(--accent-90);
+    --ne-button-active-background: var(--ne-button-hover-background);
+    --ne-button-disabled-background: env(--secondary-70);
+    --ne-button-foreground: #fff;
+    --ne-button-hover-foreground: var(--ne-button-foreground);
+    --ne-button-active-foreground: var(--ne-button-foreground);
+    --ne-button-disabled-foreground: env(--secondary-90);
+    --ne-textfield-selection-background: var(--ne-selection-foreground);
+    --ne-textfield-selection-foreground: var(--ne-selection-background);
+    --secondary-button-background: env(--contrast-80);
+    --secondary-button-foreground: env(--secondary-70);
+    --secondary-button-hover-background: env(--contrast-70);
+    --shell-border-color: env(--contrast-80);
+    --shell-canvas-background: env(--contrast-100);
+    --prop-field-border-color: env(--secondary-80);
+    --labels-foreground: env(--contrast-70);
+    --prop-field-actions-foreground: env(--secondary-100);
+    --prop-field-actions-hover-foreground: env(--accent-100);
+    --prop-field-actions-active-foreground: env(--accent-100);
+
+    /* Native Elements settings */
+
+    --regular-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --ultra-small-font-size: 0.812rem;
+    --ne-headings-scale: 1.125;
+    --ne-body-font-size: var(--regular-font-size);
+  }
+}

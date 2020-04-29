@@ -12,13 +12,13 @@ export const ShellLayout = function ({
   className,
   sidebarArea,
   canvasArea,
-  ...props
+  ...attributes
 }: IShellLayoutProps) {
   return (
     <main
       tabIndex={-1}
       className={clsx(classes.ShellLayout, className)}
-      {...props}
+      {...attributes}
     >
       <AppHeader />
 

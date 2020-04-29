@@ -16,6 +16,7 @@
     "cssnano-preset-advanced": "4.0.7",
     "formik": "2.1.4",
     "postcss-color-mod-function": "3.0.3",
+    "postcss-dark-theme-class": "0.4.0",
     "postcss-easy-import": "3.0.0",
     "postcss-inset": "1.0.0",
     "postcss-normalize": "9.0.0",

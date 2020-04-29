@@ -11,7 +11,7 @@
   outline-offset: -2px;
 
   & > svg {
-    filter: saturate(0);
+    filter: grayscale(70%);
     opacity: 0.5;
     transition: filter 300ms, opacity 300ms;
   }

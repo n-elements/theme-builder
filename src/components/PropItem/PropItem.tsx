@@ -15,10 +15,10 @@ export const PropItem = function ({
   showActions,
   name,
   value,
-  ...props
+  ...attributes
 }: IPropItemProps) {
   return (
-    <fieldset className={clsx(classes.PropItem, className)} {...props}>
+    <fieldset className={clsx(classes.PropItem, className)} {...attributes}>
       <div className={classes.FieldHeader}>
         <input
           readOnly={true}

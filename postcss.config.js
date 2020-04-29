@@ -16,6 +16,10 @@ module.exports = [
   require("postcss-color-mod-function")({
     unresolved: "warn",
   }),
+  require("postcss-dark-theme-class")({
+    darkSelector: '[data-theme="dark"]',
+    lightSelector: '[data-theme="light"]',
+  }),
   /* More info at https://cssnano.co/ */
   require("cssnano")({
     preset: [

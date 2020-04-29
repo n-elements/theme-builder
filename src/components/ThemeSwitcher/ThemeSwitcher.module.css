@@ -3,13 +3,3 @@
   height: 32px;
   width: 80px;
 }
-
-.ThemeSwitcherDark {
-  background-color: black;
-  color: white;
-}
-
-.ThemeSwitcherLight {
-  background-color: white;
-  color: black;
-}

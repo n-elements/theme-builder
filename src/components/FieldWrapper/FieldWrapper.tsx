@@ -9,10 +9,10 @@ export interface IFieldWrapperProps extends PropsClass {
 export const FieldWrapper = function ({
   className,
   children,
-  ...props
+  ...attributes
 }: IFieldWrapperProps) {
   return (
-    <div className={clsx(classes.FieldWrapper, className)} {...props}>
+    <div className={clsx(classes.FieldWrapper, className)} {...attributes}>
       {children}
     </div>
   );

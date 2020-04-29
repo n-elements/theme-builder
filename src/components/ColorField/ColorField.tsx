@@ -14,10 +14,10 @@ export const ColorField = function ({
   className,
   defaultValue,
   readOnly,
-  ...props
+  ...attributes
 }: IColorFieldProps) {
   return (
-    <div className={clsx(classes.ColorField, className)} {...props}>
+    <div className={clsx(classes.ColorField, className)} {...attributes}>
       <FieldWrapper>
         <input type="text" readOnly={readOnly} />
         <span className={classes.ColorPreview}></span>
