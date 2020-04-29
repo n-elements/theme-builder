@@ -5,6 +5,8 @@ import { defineMessages, useIntl } from "react-intl";
 import clsx from "clsx";
 import { Helmet } from "react-helmet";
 
+export interface IThemeSwitcherProps extends PropsClass {}
+
 const messages = defineMessages({
   dark: {
     defaultMessage: "Dark",
@@ -16,26 +18,27 @@ const messages = defineMessages({
   },
 });
 
-export default function ThemeSwitcher() {
+export const ThemeSwitcher = function ({
+  className,
+  ...attributes
+}: IThemeSwitcherProps) {
   const intl = useIntl();
   const theme = useThemeModeSwitch();
-  const className = clsx(
-    classes.ThemeSwitcher,
-    theme.type === "dark" && classes.ThemeSwitcherDark,
-    theme.type === "light" && classes.ThemeSwitcherLight
-  );
 
   return (
-    <>
+    <div {...attributes}>
       <Helmet
         htmlAttributes={{
           "data-theme": theme.type,
         }}
       />
-      <button className={className} onClick={theme.change}>
+      <button
+        className={clsx(classes.ThemeSwitcher, className)}
+        onClick={theme.change}
+      >
         {theme.type === "dark" && intl.formatMessage(messages.dark)}
         {theme.type === "light" && intl.formatMessage(messages.light)}
       </button>
-    </>
+    </div>
   );
-}
+};

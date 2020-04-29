@@ -8978,6 +8978,13 @@ postcss-custom-selectors@^5.1.2:
     postcss "^7.0.2"
     postcss-selector-parser "^5.0.0-rc.3"
 
+postcss-dark-theme-class@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/postcss-dark-theme-class/-/postcss-dark-theme-class-0.4.0.tgz#12bb4595b6566450289438fae4338d0e8429073f"
+  integrity sha512-Sx7qaiGuIiy2PSQDFTrJ5cpFV3n5JhDYtHKGdzDn6+ZREndUbj1rV88/+O25y95oSZihrqy7sI0k+Y9N2afs9Q==
+  dependencies:
+    postcss "^7.0.26"
+
 postcss-dir-pseudo-class@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/postcss-dir-pseudo-class/-/postcss-dir-pseudo-class-5.0.0.tgz#6e3a4177d0edb3abcc85fdb6fbb1c26dabaeaba2"

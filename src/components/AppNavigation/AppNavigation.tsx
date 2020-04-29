@@ -26,10 +26,10 @@ const AppNavigationItem = function ({ children, to }: IAppNavigationItemProps) {
 
 export const AppNavigation = function ({
   className,
-  ...props
+  ...attributes
 }: IAppNavigationProps) {
   return (
-    <nav className={clsx(classes.AppNavigation, className)} {...props}>
+    <nav className={clsx(classes.AppNavigation, className)} {...attributes}>
       <AppNavigationItem to={routes.editor.colours}>
         <Colors />
       </AppNavigationItem>

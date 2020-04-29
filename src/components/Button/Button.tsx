@@ -24,7 +24,7 @@ export const Button = function ({
   small,
   disabled,
   onClick,
-  ...props
+  ...attributes
 }: IButtonProps) {
   return (
     <button
@@ -34,7 +34,7 @@ export const Button = function ({
       data-small={small}
       adia-disabled={disabled}
       onClick={onClick}
-      {...props}
+      {...attributes}
     >
       {children}
     </button>

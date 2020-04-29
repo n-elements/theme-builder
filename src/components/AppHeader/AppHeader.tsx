@@ -12,9 +12,12 @@ export interface IAppHeaderProps extends PropsClass {
   children?: ReactNode;
 }
 
-export const AppHeader = function ({ className, ...props }: IAppHeaderProps) {
+export const AppHeader = function ({
+  className,
+  ...attributes
+}: IAppHeaderProps) {
   return (
-    <header className={clsx(classes.AppHeader, className)} {...props}>
+    <header className={clsx(classes.AppHeader, className)} {...attributes}>
       <Link to={routes.root} className={classes.LogoWrapper}>
         <Logo width={20} />
       </Link>

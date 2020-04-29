@@ -9,10 +9,10 @@ export interface IAppToolbarProps extends PropsClass {
 export const AppToolbar = function ({
   children,
   className,
-  ...props
+  ...attributes
 }: IAppToolbarProps) {
   return (
-    <div className={clsx(classes.AppToolbar, className)} {...props}>
+    <div className={clsx(classes.AppToolbar, className)} {...attributes}>
       {children}
     </div>
   );

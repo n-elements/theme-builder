@@ -8,10 +8,10 @@ export interface IThemeActionsProps extends PropsClass {}
 
 export const ThemeActions = function ({
   className,
-  ...props
+  ...attributes
 }: IThemeActionsProps) {
   return (
-    <div className={clsx(classes.ThemeActions, className)} {...props}>
+    <div className={clsx(classes.ThemeActions, className)} {...attributes}>
       <Button secondary>
         <Undo />
         Reset
