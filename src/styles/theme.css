@@ -8,7 +8,7 @@
   --ne-selection-background: env(--contrast-100);
   --ne-outline-color: env(--accent-100);
   --ne-links-foreground: env(--accent-100);
-  --ne-links-active-foreground: env(--accent-80);
+  --ne-links-active-foreground: env(--accent-90);
   --ne-button-background: env(--accent-100);
   --ne-button-hover-background: env(--accent-90);
   --ne-button-active-background: var(--ne-button-hover-background);
@@ -50,7 +50,7 @@
     --ne-selection-background: env(--contrast-100);
     --ne-outline-color: env(--accent-100);
     --ne-links-foreground: env(--accent-100);
-    --ne-links-active-foreground: env(--accent-80);
+    --ne-links-active-foreground: env(--accent-90);
     --ne-button-background: env(--accent-100);
     --ne-button-hover-background: env(--accent-90);
     --ne-button-active-background: var(--ne-button-hover-background);
