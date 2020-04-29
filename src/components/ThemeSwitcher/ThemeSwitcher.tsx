@@ -3,11 +3,16 @@ import classes from "./ThemeSwitcher.module.css";
 import useThemeModeSwitch from "@hooks/useThemeModeSwitch";
 import { defineMessages, useIntl } from "react-intl";
 import clsx from "clsx";
+import { Theme } from "@store/config";
 import { Helmet } from "react-helmet";
 
 export interface IThemeSwitcherProps extends PropsClass {}
 
 const messages = defineMessages({
+  auto: {
+    defaultMessage: "Auto",
+    id: "components.ThemeSwitcher.auto",
+  },
   dark: {
     defaultMessage: "Dark",
     id: "components.ThemeSwitcher.dark",
@@ -24,6 +29,7 @@ export const ThemeSwitcher = function ({
 }: IThemeSwitcherProps) {
   const intl = useIntl();
   const theme = useThemeModeSwitch();
+  const createClickHandler = (type: Theme) => () => theme.change(type);
 
   return (
     <div {...attributes}>
@@ -34,10 +40,21 @@ export const ThemeSwitcher = function ({
       />
       <button
         className={clsx(classes.ThemeSwitcher, className)}
-        onClick={theme.change}
+        onClick={createClickHandler("auto")}
       >
-        {theme.type === "dark" && intl.formatMessage(messages.dark)}
-        {theme.type === "light" && intl.formatMessage(messages.light)}
+        {intl.formatMessage(messages.auto)}
+      </button>
+      <button
+        className={clsx(classes.ThemeSwitcher, className)}
+        onClick={createClickHandler("light")}
+      >
+        {intl.formatMessage(messages.light)}
+      </button>
+      <button
+        className={clsx(classes.ThemeSwitcher, className)}
+        onClick={createClickHandler("dark")}
+      >
+        {intl.formatMessage(messages.dark)}
       </button>
     </div>
   );

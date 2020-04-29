@@ -1,7 +1,7 @@
 import { createReducer } from "redux-aar";
 import * as actions from "./actions";
 
-export type Theme = "light" | "dark";
+export type Theme = "auto" | "light" | "dark";
 
 interface IConfig {
   theme: Theme;
@@ -9,7 +9,7 @@ interface IConfig {
 
 function initialState(): IConfig {
   return {
-    theme: "light",
+    theme: "auto",
   };
 }
 
