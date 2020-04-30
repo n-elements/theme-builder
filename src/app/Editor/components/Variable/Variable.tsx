@@ -1,5 +1,5 @@
 import useVariableEditing from "@app/Editor/hooks/useVariableEditing";
-import { Bin, Rename } from "@components/Icons/12x";
+import { Bin, Rename, Check } from "@components/Icons/12x";
 import { IVariable } from "@store/theming/types";
 import clsx from "clsx";
 import React, { useRef, useState } from "react";
@@ -45,7 +45,7 @@ export function Variable({
           value={formatVariableLabel(variable.name)}
           readOnly={!editingLabel}
           ref={ref}
-          tabIndex={editingLabel ? 1 : -1}
+          tabIndex={editingLabel ? 0 : -1}
           type="text"
         />
 
@@ -54,12 +54,17 @@ export function Variable({
             <button
               arial-label="Rename Property"
               className={classes.Action}
+              data-editing={editingLabel}
               onClick={() => {
                 setEditingLabel(!editingLabel);
                 ref.current?.focus();
               }}
             >
-              <Rename aria-hidden="true" />
+              {editingLabel ? (
+                <Check aria-hidden="true" />
+              ) : (
+                <Rename aria-hidden="true" />
+              )}
             </button>
             <button
               arial-label="Delete Property"

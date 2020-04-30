@@ -20,6 +20,13 @@
   --ne-textfield-readonly-focus-border: none;
   --ne-textfield-font-weight: 400;
   --ne-textfield-background: transparent;
+  --ne-textfield-radius: 0;
+
+  &:not([readonly]) {
+    --ne-textfield-font-weight: 700;
+
+    caret-color: env(--accent-100);
+  }
 }
 
 .Actions {
@@ -45,5 +52,9 @@
     width: 12px;
     height: 12px;
     margin: 0;
+  }
+
+  &[data-editing='true'] {
+    color: #35cc00;
   }
 }

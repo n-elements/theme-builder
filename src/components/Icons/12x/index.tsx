@@ -1,5 +1,6 @@
 export { default as Group } from "./Group";
 export { default as Bin } from "./Bin";
+export { default as Check } from "./Check";
 export { default as Drag } from "./Drag";
 export { default as Edit } from "./Edit";
 export { default as Lock } from "./Lock";
