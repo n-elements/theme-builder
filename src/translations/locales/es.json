@@ -1,4 +1,7 @@
 {
+  "app.Editor.components.AddVariable.add": "Add item",
+  "app.Editor.components.AddVariable.varname": "my-colour-{length}",
+  "components.ThemeSwitcher.auto": "Auto",
   "components.ThemeSwitcher.dark": "Dark",
   "components.ThemeSwitcher.light": "Light"
 }
