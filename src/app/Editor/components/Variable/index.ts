@@ -1,3 +1,1 @@
-import Variable from "./Variable";
-
-export default Variable;
+export { Variable } from "./Variable";

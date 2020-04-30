@@ -5,7 +5,7 @@ import VariableList from "./VariableList";
 export default function ColoursVariables() {
   return (
     <>
-      <VariableList labelEditable removable />
+      <VariableList showActions />
       <AddVariable />
     </>
   );

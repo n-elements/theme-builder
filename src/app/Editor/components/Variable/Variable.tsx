@@ -1,36 +1,15 @@
-import { ColorField } from "@components/ColorField";
+import useVariableEditing from "@app/Editor/hooks/useVariableEditing";
+import { Bin, Rename } from "@components/Icons/12x";
 import { IVariable } from "@store/theming/types";
-import React, { useState, useRef } from "react";
-import useVariableEditing from "../../hooks/useVariableEditing";
+import clsx from "clsx";
+import React, { useRef, useState } from "react";
 import { Maybe } from "tiinvo";
 import classes from "./Variable.module.css";
+import VariableField from "./VariableField";
 
-export interface IVariableProps {
-  labelEditable?: boolean;
-  onEditLabel?: (value: string) => void;
-  removable?: boolean;
+export interface IVariableProps extends PropsClass {
   variable: IVariable;
-}
-
-interface IEditableVariable {
-  variable: IVariable;
-  onChange(value?: string): void;
-}
-
-function EditableVariable(props: IEditableVariable) {
-  switch (props.variable.type) {
-    case "color":
-      return (
-        <ColorField
-          className={classes.VariableInput}
-          defaultValue={props.variable.defaultValue}
-          onChange={props.onChange}
-          value={props.variable.value}
-        />
-      );
-    default:
-      return null;
-  }
+  showActions?: boolean;
 }
 
 function formatVariableLabel(variableName: string): string {
@@ -40,48 +19,60 @@ function formatVariableLabel(variableName: string): string {
   });
 }
 
-export default function Variable(props: IVariableProps) {
+export function Variable({
+  className,
+  showActions,
+  variable,
+  ...attributes
+}: IVariableProps) {
   const ref = useRef<HTMLInputElement | null>(null);
   const [editingLabel, setEditingLabel] = useState(false);
-  const variableEditing = useVariableEditing(props.variable.domain);
+  const variableEditing = useVariableEditing(variable.domain);
   const handleChange = (value?: string) =>
-    variableEditing.update({ ...props.variable, value });
+    variableEditing.update({ ...variable, value });
 
   return (
-    <label className={classes.Variable}>
-      <input
-        className={classes.VariableLabel}
-        ref={ref}
-        readOnly={!editingLabel}
-        onChange={(event) =>
-          variableEditing.update({
-            ...props.variable,
-            name: event.target.value,
-          })
-        }
-        type="text"
-        value={formatVariableLabel(props.variable.name)}
-      />
-      {props.labelEditable && (
-        <button
-          className={classes.VariableContextualButton}
-          onClick={() => {
-            setEditingLabel(!editingLabel);
-            ref.current?.focus();
-          }}
-        >
-          E
-        </button>
-      )}
-      {props.removable && (
-        <button
-          className={classes.VariableContextualButton}
-          onClick={() => variableEditing.delete(props.variable)}
-        >
-          X
-        </button>
-      )}
-      <EditableVariable variable={props.variable} onChange={handleChange} />
-    </label>
+    <fieldset className={clsx(classes.PropItem, className)} {...attributes}>
+      <div className={classes.FieldHeader}>
+        <input
+          className={classes.PropName}
+          onChange={(event) =>
+            variableEditing.update({
+              ...variable,
+              name: event.target.value,
+            })
+          }
+          value={formatVariableLabel(variable.name)}
+          readOnly={true}
+          ref={ref}
+          tabIndex={editingLabel ? 1 : -1}
+          type="text"
+        />
+
+        {showActions && (
+          <div className={classes.Actions}>
+            <button
+              arial-label="Rename Property"
+              className={classes.Action}
+              onClick={() => setEditingLabel(!editingLabel)}
+            >
+              <Rename aria-hidden="true" />
+            </button>
+            <button
+              arial-label="Delete Property"
+              className={classes.Action}
+              onClick={() => variableEditing.delete(variable)}
+            >
+              <Bin aria-hidden="true" />
+            </button>
+          </div>
+        )}
+      </div>
+      <VariableField variable={variable} onChange={handleChange} />
+    </fieldset>
   );
 }
+
+Variable.defaultProps = {
+  showActions: false,
+} as Partial<IVariableProps>;

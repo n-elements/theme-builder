@@ -11,6 +11,7 @@ function createAdd(dispatch: Dispatch, domain: string) {
         domain,
         name,
         type,
+        value: defaultVariableValue(type),
       })
     );
   };
@@ -24,6 +25,15 @@ function createDelete(dispatch: Dispatch) {
 function createUpdate(dispatch: Dispatch) {
   return (variable: IVariable) =>
     dispatch(actions.theming.updateVariable(variable));
+}
+
+function defaultVariableValue(type: VariableType): string {
+  switch (type) {
+    case "color":
+      return "#fff";
+    default:
+      return "";
+  }
 }
 
 export default function useVariableEditing(domain: string) {

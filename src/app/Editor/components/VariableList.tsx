@@ -1,11 +1,10 @@
+import React from "react";
 import { useLocation } from "react-router-dom";
 import useVariables from "../hooks/useVariables";
-import React from "react";
-import Variable from "./Variable";
+import { Variable } from "./Variable";
 
 export interface IVariableListProps {
-  labelEditable?: boolean;
-  removable?: boolean;
+  showActions?: boolean;
 }
 
 export default function VariableList(props: IVariableListProps) {
@@ -17,8 +16,7 @@ export default function VariableList(props: IVariableListProps) {
       {variables.map((variable, index) => (
         <Variable
           key={index}
-          labelEditable={props.labelEditable}
-          removable={props.removable}
+          showActions={props.showActions}
           variable={variable}
         />
       ))}

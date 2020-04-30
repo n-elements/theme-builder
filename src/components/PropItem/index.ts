@@ -1,1 +1,0 @@
-export { PropItem } from "./PropItem";
