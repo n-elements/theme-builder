@@ -1,0 +1,32 @@
+.Variable {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+}
+
+.VariableLabel {
+  --ne-textfield-border: 0 none;
+  --ne-textfield-min-height: 0;
+  --ne-textfield-readonly-focus-border: 0 none;
+  --ne-textfield-readonly-border: 0 none;
+  --ne-textfield-width: auto;
+  --ne-textfield-x-padding: 0;
+  --ne-textfield-y-padding: 0;
+
+  flex: 1 0 auto;
+}
+
+.VariableContextualButton {
+  --ne-button-background: transparent;
+  --ne-button-foreground: rgba(0, 0, 0, 0.54);
+  --ne-button-shadow: none;
+  --ne-button-x-padding: 0;
+  --ne-button-y-padding: 0;
+
+  align-self: flex-end;
+}
+
+.VariableInput {
+  width: 100%;
+}

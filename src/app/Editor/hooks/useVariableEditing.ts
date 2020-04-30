@@ -4,11 +4,11 @@ import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 import useVariables from "./useVariables";
 
-function createAdd(dispatch: Dispatch, group: string) {
+function createAdd(dispatch: Dispatch, domain: string) {
   return (name: string, type: VariableType) => {
     dispatch(
       actions.theming.addVariable({
-        domain: group,
+        domain,
         name,
         type,
       })
