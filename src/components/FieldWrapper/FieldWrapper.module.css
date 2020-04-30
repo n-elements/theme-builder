@@ -10,4 +10,5 @@
   font-size: var(--small-font-size);
   display: flex;
   align-items: center;
+  background-color: var(--prop-field-background);
 }

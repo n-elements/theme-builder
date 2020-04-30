@@ -8,6 +8,7 @@
   cursor: pointer;
 
   & > .Swatch {
+    display: block;
     box-shadow: inset 0 0 0 1px hsl(0deg 0% 0% / 10%);
     width: 16px;
     height: 16px;
