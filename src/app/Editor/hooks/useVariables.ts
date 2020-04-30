@@ -12,5 +12,5 @@ function selector(state: ApplicationState) {
 
 export default function useVariables(domain: VariableDomain) {
   const list = useSelector(selector);
-  return list.filter(createfilter(domain));
+  return domain === "*" ? list : list.filter(createfilter(domain));
 }
