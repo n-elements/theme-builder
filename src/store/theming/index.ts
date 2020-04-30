@@ -27,6 +27,8 @@ reducer.on(actions.deleteVariable, (state, variable) => ({
   variables: state.variables.filter((v) => v._id !== variable._id),
 }));
 
+reducer.on(actions.reset, initialState);
+
 reducer.on(actions.updateName, (state, name) => ({
   ...state,
   name,

@@ -18,6 +18,8 @@ function initialState(): IConfig {
 
 const reducer = createReducer(initialState());
 
+reducer.on(actions.reset, initialState);
+
 reducer.on(actions.updatesetting, (state, setting) => ({
   ...state,
   [setting.name]: setting.value,
