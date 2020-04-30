@@ -1,8 +1,8 @@
+import React, { useRef, useState, KeyboardEvent } from "react";
 import useVariableEditing from "@app/Editor/hooks/useVariableEditing";
 import { Bin, Rename, Check } from "@components/Icons/12x";
 import { IVariable } from "@store/theming/types";
 import clsx from "clsx";
-import React, { useRef, useState } from "react";
 import { Maybe } from "tiinvo";
 import classes from "./Variable.module.css";
 import VariableField from "./VariableField";
@@ -31,6 +31,12 @@ export function Variable({
   const handleChange = (value?: string) =>
     variableEditing.update({ ...variable, value });
 
+  function confirmOnEnter(event: KeyboardEvent) {
+    if (event.key === "Enter") {
+      setEditingLabel(!editingLabel);
+    }
+  }
+
   return (
     <fieldset className={clsx(classes.PropItem, className)} {...attributes}>
       <div className={classes.FieldHeader}>
@@ -47,6 +53,7 @@ export function Variable({
           ref={ref}
           tabIndex={editingLabel ? 0 : -1}
           type="text"
+          onKeyPress={confirmOnEnter}
         />
 
         {showActions && (
