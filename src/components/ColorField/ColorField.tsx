@@ -34,11 +34,12 @@ export const ColorField = function (props: IColorFieldProps) {
           type="text"
           value={props.value}
         />
-        <span
-          className={classes.ColorPreview}
-          onClick={createOpenHandler(true)}
-          style={{ backgroundColor: props.value }}
-        />
+        <div className={classes.ColorPreview} onClick={createOpenHandler(true)}>
+          <span
+            className={classes.Swatch}
+            style={{ backgroundColor: props.value }}
+          ></span>
+        </div>
       </FieldWrapper>
       {open && (
         <div className={classes.ColorPickerDialog} ref={ref}>
