@@ -1,14 +1,17 @@
+import { ColorResult } from "react-color";
 import { createReducer } from "redux-aar";
 import * as actions from "./actions";
 
 export type Theme = "auto" | "light" | "dark";
 
 interface IConfig {
+  preferredColorFormat: keyof ColorResult;
   theme: Theme;
 }
 
 function initialState(): IConfig {
   return {
+    preferredColorFormat: "hex",
     theme: "auto",
   };
 }
