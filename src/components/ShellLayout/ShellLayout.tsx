@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import clsx from "clsx";
 import { AppHeader } from "@components/AppHeader";
+import { motion } from "framer-motion";
 import classes from "./ShellLayout.module.css";
 
 export interface IShellLayoutProps extends PropsClass {
@@ -15,7 +16,10 @@ export const ShellLayout = function ({
   ...attributes
 }: IShellLayoutProps) {
   return (
-    <main
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
       tabIndex={-1}
       className={clsx(classes.ShellLayout, className)}
       {...attributes}
@@ -28,6 +32,6 @@ export const ShellLayout = function ({
         )}
         {canvasArea}
       </div>
-    </main>
+    </motion.main>
   );
 };

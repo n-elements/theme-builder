@@ -4,8 +4,9 @@ import { Bin, Rename, Check } from "@components/Icons/12x";
 import { IVariable } from "@store/theming/types";
 import clsx from "clsx";
 import { Maybe } from "tiinvo";
-import classes from "./Variable.module.css";
+import { motion } from "framer-motion";
 import VariableField from "./VariableField";
+import classes from "./Variable.module.css";
 
 export interface IVariableProps extends PropsClass {
   variable: IVariable;
@@ -38,7 +39,14 @@ export function Variable({
   }
 
   return (
-    <fieldset className={clsx(classes.PropItem, className)} {...attributes}>
+    <motion.fieldset
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      tabIndex={-1}
+      className={clsx(classes.ShellLayout, className)}
+      {...attributes}
+    >
       <div className={classes.FieldHeader}>
         <input
           className={classes.PropName}
@@ -84,7 +92,7 @@ export function Variable({
         )}
       </div>
       <VariableField variable={variable} onChange={handleChange} />
-    </fieldset>
+    </motion.fieldset>
   );
 }
 
