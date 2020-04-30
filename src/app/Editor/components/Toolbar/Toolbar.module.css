@@ -10,6 +10,7 @@
   padding: 24px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  user-select: none;
 }
 
 .Toolbar {

@@ -5,7 +5,7 @@ import React from "react";
 import { defineMessages, useIntl } from "react-intl";
 import classes from "./AddVariable.module.css";
 
-export interface IAddVariableProps {}
+export interface IAddVariableProps extends PropsClass {}
 
 const messages = defineMessages({
   add: {
@@ -18,7 +18,10 @@ const messages = defineMessages({
   },
 });
 
-export default function AddVariable() {
+export default function AddVariable({
+  className,
+  ...attributes
+}: IAddVariableProps) {
   const intl = useIntl();
   const variables = useVariableEditing(routes.editor.colours);
   const nextname = intl.formatMessage(messages.varname, {
@@ -26,12 +29,10 @@ export default function AddVariable() {
   });
 
   return (
-    <Button
-      className={classes.AddVariable}
-      onClick={() => variables.add(nextname, "color")}
-      secondary
-    >
-      {intl.formatMessage(messages.add)}
-    </Button>
+    <div className={classes.AddVariable} {...attributes}>
+      <Button onClick={() => variables.add(nextname, "color")} secondary>
+        {intl.formatMessage(messages.add)}
+      </Button>
+    </div>
   );
 }
