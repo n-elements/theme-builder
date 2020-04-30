@@ -30,7 +30,7 @@ export default function AddVariable({
 
   return (
     <div className={classes.AddVariable} {...attributes}>
-      <Button onClick={() => variables.add(nextname, "color")} secondary>
+      <Button onClick={() => variables.add(nextname, "color")} secondary small>
         {intl.formatMessage(messages.add)}
       </Button>
     </div>
