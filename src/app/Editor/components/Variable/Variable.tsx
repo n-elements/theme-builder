@@ -43,7 +43,7 @@ export function Variable({
             })
           }
           value={formatVariableLabel(variable.name)}
-          readOnly={true}
+          readOnly={!editingLabel}
           ref={ref}
           tabIndex={editingLabel ? 1 : -1}
           type="text"
@@ -54,7 +54,10 @@ export function Variable({
             <button
               arial-label="Rename Property"
               className={classes.Action}
-              onClick={() => setEditingLabel(!editingLabel)}
+              onClick={() => {
+                setEditingLabel(!editingLabel);
+                ref.current?.focus();
+              }}
             >
               <Rename aria-hidden="true" />
             </button>
