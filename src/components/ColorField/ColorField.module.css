@@ -1,5 +1,17 @@
 .ColorField {
+  --ne-button-background: none;
+  --ne-button-hover-background: none;
+  --ne-button-active-background: none;
+
+  all: unset;
   position: relative;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.Input {
+  pointer-events: none;
 }
 
 .ColorPreview {
@@ -10,7 +22,6 @@
   all: unset;
   flex-shrink: 0;
   padding: 8px 16px;
-  cursor: pointer;
 }
 
 .ColorSwatch {
@@ -36,6 +47,7 @@
   & :global(input) {
     background-color: var(--ne-textfield-background) !important;
     color: inherit !important;
+    border: 0 !important;
     box-shadow: inset 0 0 0 1px var(--shell-border-color) !important;
   }
 }

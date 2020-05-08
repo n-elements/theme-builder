@@ -24,9 +24,13 @@ export const ColorField = function (props: IColorFieldProps) {
   useClickAway(ref, createOpenHandler(false));
 
   return (
-    <div className={clsx(classes.ColorField, props.className)}>
+    <button
+      className={clsx(classes.ColorField, props.className)}
+      onClick={createOpenHandler(true)}
+    >
       <FieldWrapper>
         <input
+          className={classes.Input}
           onChange={(event) =>
             Option(props.onChange).mapOrElse(
               () => void 0,
@@ -35,14 +39,12 @@ export const ColorField = function (props: IColorFieldProps) {
           }
           readOnly={props.readOnly}
           type="text"
+          tabIndex={-1}
           value={props.value}
         />
-        <button
-          className={classes.ColorPreview}
-          onClick={createOpenHandler(true)}
-        >
+        <span className={classes.ColorPreview}>
           <ColorPreview color={props.value} className={classes.ColorSwatch} />
-        </button>
+        </span>
       </FieldWrapper>
       <DropDown open={open} ref={ref}>
         <div className={classes.PickerContainer}>
@@ -58,6 +60,6 @@ export const ColorField = function (props: IColorFieldProps) {
           <VariableSearch />
         </div>
       </DropDown>
-    </div>
+    </button>
   );
 };

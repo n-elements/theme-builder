@@ -30,10 +30,10 @@ export default function Toolbar(props: IToolbarProps) {
         topLeft: false,
       }}
     >
-      <section className={classes.Toolbar}>
+      <div className={classes.Toolbar}>
         <div className={classes.Scroller}>{toolbarArea}</div>
         {actions && <div className={classes.Actions}>{actions}</div>}
-      </section>
+      </div>
     </Resizable>
   );
 }
