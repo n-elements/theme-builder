@@ -1,0 +1,14 @@
+.EditorHeader {
+  margin-bottom: 64px;
+  padding-bottom: 64px;
+  border-bottom: 2px solid var(--shell-border-color);
+
+  & > * {
+    margin-bottom: 0;
+  }
+
+  & p {
+    color: var(--global-foregrund);
+    opacity: 0.6;
+  }
+}

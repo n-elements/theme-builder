@@ -1,0 +1,7 @@
+.EditorWrapper {
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: var(--ne-global-background);
+}
