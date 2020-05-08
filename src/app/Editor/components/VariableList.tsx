@@ -7,9 +7,13 @@ import { Variable } from "./Variable";
 
 export interface IVariableListProps {
   showActions?: boolean;
+  showAdd?: boolean;
 }
 
-export default function VariableList(props: IVariableListProps) {
+export default function VariableList({
+  showActions,
+  showAdd,
+}: IVariableListProps) {
   const location = useLocation();
   const variables = useVariables(location.pathname);
 
@@ -19,23 +23,29 @@ export default function VariableList(props: IVariableListProps) {
         {variables.map((variable, index) => (
           <motion.div
             key={variable._id}
-            initial={{ opacity: 0, y: -3 }}
+            initial={{ opacity: 0, y: -5 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, x: 10, transition: { duration: 0.1 } }}
-            transition={{ duration: 0.1 }}
+            transition={{ duration: 0.1, delay: 0.13 }}
             positionTransition={{ ease: "easeOut" }}
           >
             <Variable
               key={index}
-              showActions={props.showActions}
+              showActions={showActions}
               variable={variable}
             />
           </motion.div>
         ))}
-        <motion.div positionTransition={{ ease: "easeOut" }}>
-          <AddVariable />
-        </motion.div>
+        {showAdd && (
+          <motion.div positionTransition={{ ease: "easeOut" }}>
+            <AddVariable />
+          </motion.div>
+        )}
       </AnimatePresence>
     </>
   );
 }
+
+VariableList.defaultProps = {
+  showAdd: false,
+} as Partial<IVariableListProps>;

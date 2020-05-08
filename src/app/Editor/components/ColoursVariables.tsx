@@ -4,7 +4,7 @@ import VariableList from "./VariableList";
 export default function ColoursVariables() {
   return (
     <>
-      <VariableList showActions />
+      <VariableList showActions showAdd />
     </>
   );
 }
