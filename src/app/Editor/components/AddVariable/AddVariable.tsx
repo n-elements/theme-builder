@@ -13,7 +13,7 @@ const messages = defineMessages({
     id: "app.Editor.components.AddVariable.add",
   },
   varname: {
-    defaultMessage: "my-colour-{length}",
+    defaultMessage: "my-color-{length}",
     id: "app.Editor.components.AddVariable.varname",
   },
 });
