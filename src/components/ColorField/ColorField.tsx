@@ -7,6 +7,7 @@ import { useClickAway } from "react-use";
 import { Option } from "tiinvo";
 import { ColorPreview } from "@components/ColorPreview";
 import { DropDown } from "@components/DropDown";
+import { VariableSearch } from "@app/Editor/components/VariableSearch";
 
 export interface IColorFieldProps extends PropsClass {
   defaultValue?: string;
@@ -54,6 +55,7 @@ export const ColorField = function (props: IColorFieldProps) {
               )
             }
           />
+          <VariableSearch />
         </div>
       </DropDown>
     </div>

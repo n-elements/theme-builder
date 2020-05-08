@@ -1,0 +1,4 @@
+.VariableSearch {
+  padding: 16px min(16px, 50%);
+  font-size: var(--small-font-size);
+}
