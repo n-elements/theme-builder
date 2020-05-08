@@ -21,13 +21,16 @@ export const ColorSwatch = function ({
   const rgbColor = color(value).toRgbString();
   const hslColor = color(value).toHslString();
   const hexColor = color(removeHexAlpha).toHexString();
+  const formattedPropName = propName.startsWith("--")
+    ? propName
+    : `--${propName}`;
 
   return (
     <div className={clsx(classes.ColorSwatch, className)} {...attributes}>
       <ColorPreview size="big" color={hexColor} />
       <div>
         <p className={classes.PropName}>
-          <strong>{propName}</strong>
+          <strong>{formattedPropName}</strong>
         </p>
         <p data-size="small" className={classes.ColorValue}>
           {rgbColor}
