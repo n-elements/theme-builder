@@ -14,13 +14,13 @@ export default function VariableList(props: IVariableListProps) {
 
   return (
     <>
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {variables.map((variable, index) => (
           <motion.div
-            key={variable.name}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            key={variable._id}
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 10 }}
             transition={{ duration: 0.3 }}
           >
             <Variable

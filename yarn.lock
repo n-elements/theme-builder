@@ -1376,10 +1376,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@native-elements/core@0.18.1":
-  version "0.18.1"
-  resolved "https://registry.yarnpkg.com/@native-elements/core/-/core-0.18.1.tgz#335c02d3e3fed462635083a6c1f9571cd7d3d286"
-  integrity sha512-fcmt8FCSKtp1+GslVehj6UOxPpNj27MiQsPLI5ZvE6G2q5syMI4T5hPYM9X0tpmcEHVPnny3lSqrTr3KOGLMvw==
+"@native-elements/core@0.18.2":
+  version "0.18.2"
+  resolved "https://registry.yarnpkg.com/@native-elements/core/-/core-0.18.2.tgz#22a76087bf96073cca45235bd712b29c9ac1e4fd"
+  integrity sha512-aXX6P55nvyFegHSXgzI3pTdTOZmk6DyK81V3UIHeTEacMnYyty+BXczhR7xOJLcmH7y2kvo+EtlE/GFZg2gxoA==
   dependencies:
     what-input "5.2.6"
 

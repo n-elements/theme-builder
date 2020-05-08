@@ -2,7 +2,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import React from "react";
 import * as routes from "./routes";
 import EditorSettings from "./components/EditorSettings";
-import EditorColours from "./components/EditorColours";
+import EditorColours from "./components/EditorColours/EditorColours";
 import EditorElements from "./components/EditorElements";
 import EditorTypography from "./components/EditorTypography";
 import { Toolbar } from "./components/Toolbar";

@@ -8,7 +8,6 @@
   }
 
   & p {
-    color: var(--global-foregrund);
     opacity: 0.6;
   }
 }

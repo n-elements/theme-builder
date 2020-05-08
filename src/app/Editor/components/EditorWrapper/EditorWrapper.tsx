@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import classes from "./EditorWrapper.module.css";
+import { motion } from "framer-motion";
 import clsx from "clsx";
 
 export interface IEditorWrapperProps extends PropsClass {
@@ -12,8 +13,14 @@ export const EditorWrapper = function ({
   ...attributes
 }: IEditorWrapperProps) {
   return (
-    <div className={clsx(classes.EditorWrapper, className)} {...attributes}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.1 }}
+      className={clsx(classes.EditorWrapper, className)}
+      {...attributes}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 };

@@ -3,5 +3,7 @@
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+  min-height: 100%;
   background-color: var(--ne-global-background);
+  color: var(--ne-global-foreground);
 }
