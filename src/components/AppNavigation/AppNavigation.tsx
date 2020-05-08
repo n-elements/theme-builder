@@ -33,7 +33,7 @@ export const AppNavigation = function ({
       <AppNavigationItem to={routes.editor.colours}>
         <Colors />
       </AppNavigationItem>
-      <AppNavigationItem to={routes.editor.settings}>
+      <AppNavigationItem to={routes.editor.document}>
         <Document />
       </AppNavigationItem>
       <AppNavigationItem to={routes.editor.typography}>

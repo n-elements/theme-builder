@@ -5,11 +5,13 @@ import clsx from "clsx";
 
 export interface IEditorWrapperProps extends PropsClass {
   children: ReactNode;
+  header?: ReactNode;
 }
 
 export const EditorWrapper = function ({
   children,
   className,
+  header,
   ...attributes
 }: IEditorWrapperProps) {
   return (
@@ -20,7 +22,8 @@ export const EditorWrapper = function ({
       className={clsx(classes.EditorWrapper, className)}
       {...attributes}
     >
-      {children}
+      {header}
+      <div className={classes.ContentDemo}>{children}</div>
     </motion.div>
   );
 };

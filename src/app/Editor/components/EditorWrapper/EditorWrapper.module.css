@@ -7,3 +7,11 @@
   background-color: var(--ne-global-background);
   color: var(--ne-global-foreground);
 }
+
+.ContentDemo {
+  position: relative;
+
+  & > * + * {
+    margin-top: 64px;
+  }
+}

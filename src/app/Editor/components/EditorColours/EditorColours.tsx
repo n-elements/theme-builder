@@ -21,7 +21,7 @@ const messages = defineMessages({
   },
 });
 
-export default function EditorColours() {
+export const EditorColours = function () {
   const intl = useIntl();
   const location = useLocation();
   const variables = useVariables(location.pathname);
@@ -29,11 +29,14 @@ export default function EditorColours() {
   return (
     <Switch>
       <Route path={routes.editor.colours}>
-        <EditorWrapper>
-          <EditorHeader
-            title={intl.formatMessage(messages.title)}
-            subtitle={intl.formatMessage(messages.subtitle)}
-          />
+        <EditorWrapper
+          header={
+            <EditorHeader
+              title={intl.formatMessage(messages.title)}
+              subtitle={intl.formatMessage(messages.subtitle)}
+            />
+          }
+        >
           <div className={classes.ColorsList}>
             <AnimatePresence>
               {variables.map((variable, index) => (
@@ -58,4 +61,4 @@ export default function EditorColours() {
       </Route>
     </Switch>
   );
-}
+};

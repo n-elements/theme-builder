@@ -5,6 +5,7 @@ import { FieldWrapper } from "@components/FieldWrapper";
 import { ChromePicker } from "react-color";
 import { useClickAway } from "react-use";
 import { Option } from "tiinvo";
+import { ColorPreview } from "@components/ColorPreview";
 
 export interface IColorFieldProps extends PropsClass {
   defaultValue?: string;
@@ -35,10 +36,7 @@ export const ColorField = function (props: IColorFieldProps) {
           value={props.value}
         />
         <div className={classes.ColorPreview} onClick={createOpenHandler(true)}>
-          <span
-            className={classes.Swatch}
-            style={{ backgroundColor: props.value }}
-          ></span>
+          <ColorPreview color={props.value} />
         </div>
       </FieldWrapper>
       {open && (

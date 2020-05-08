@@ -3,6 +3,8 @@
   "app.Editor.components.ThemeActions.reset": "Reset",
   "app.Editor.components.EditorColours.title": "Colors",
   "app.Editor.components.EditorColours.subtitle": "List of all the available colors",
+  "app.Editor.components.EditorDocument.title": "Document Settings",
+  "app.Editor.components.EditorDocument.subtitle": "Global document configurations like root font-size and text selection color",
   "app.Editor.components.AddVariable.add": "Add item",
   "app.Editor.components.AddVariable.varname": "my-color-{length}",
   "components.ThemeSwitcher.auto": "Auto",

@@ -3,6 +3,7 @@ import { IVariable } from "@store/theming/types";
 import color from "css-color-converter";
 import clsx from "clsx";
 import classes from "./ColorSwatch.module.css";
+import { ColorPreview } from "@components/ColorPreview";
 
 export interface IColorSwatchProps extends PropsClass {
   propName: IVariable["name"];
@@ -21,12 +22,7 @@ export const ColorSwatch = function ({
 
   return (
     <div className={clsx(classes.ColorSwatch, className)} {...attributes}>
-      <input
-        className={classes.Preview}
-        type="color"
-        value={hexColor}
-        disabled
-      />
+      <ColorPreview size="big" color={hexColor} />
       <div>
         <p className={classes.PropName}>
           <strong>{propName}</strong>
