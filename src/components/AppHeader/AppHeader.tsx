@@ -27,7 +27,7 @@ export const AppHeader = function ({
           <Edit />
           theme-name
         </div>
-        <div>
+        <div className={classes.HeaderActions}>
           <ThemeSwitcher />
           <a
             className={classes.HeaderLink}

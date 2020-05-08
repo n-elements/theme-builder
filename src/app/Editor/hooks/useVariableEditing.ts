@@ -31,7 +31,7 @@ function createUpdate(dispatch: Dispatch) {
 function defaultVariableValue(type: VariableType): string {
   switch (type) {
     case "color":
-      return "#fff";
+      return `#${Math.random().toString(16).substr(-6)}`;
     default:
       return "";
   }

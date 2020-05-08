@@ -23,6 +23,11 @@
   flex-grow: 1;
 }
 
+.HeaderActions {
+  display: inline-flex;
+  align-items: center;
+}
+
 .HeaderLink {
   display: inline-flex;
   align-items: center;
