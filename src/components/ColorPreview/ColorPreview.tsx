@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import classes from "./ColorPreview.module.css";
 import clsx from "clsx";
 

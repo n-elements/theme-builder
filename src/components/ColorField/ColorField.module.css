@@ -8,6 +8,10 @@
   cursor: pointer;
 }
 
+.ColorSwatch {
+  pointer-events: none;
+}
+
 .ColorPickerDialog {
   position: absolute;
   right: 0;

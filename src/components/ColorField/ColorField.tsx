@@ -36,7 +36,7 @@ export const ColorField = function (props: IColorFieldProps) {
           value={props.value}
         />
         <div className={classes.ColorPreview} onClick={createOpenHandler(true)}>
-          <ColorPreview color={props.value} />
+          <ColorPreview color={props.value} className={classes.ColorSwatch} />
         </div>
       </FieldWrapper>
       {open && (

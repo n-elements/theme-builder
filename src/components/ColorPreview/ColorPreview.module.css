@@ -4,17 +4,17 @@
 
   &[data-size='small'] {
     --ne-color-radius: 2px;
+    --ne-color-shadow: inset 0 0 0 1px hsl(0deg 0% 0% / 10%);
 
     width: 16px;
     height: 16px;
-    box-shadow: inset 0 0 0 1px hsl(0deg 0% 0% / 10%);
   }
 
   &[data-size='big'] {
     --ne-color-radius: 16px;
+    --ne-color-shadow: inset 0 0 0 2px hsl(0deg 0% 0% / 10%);
 
     width: 88px;
     height: 88px;
-    box-shadow: inset 0 0 0 2px hsl(0deg 0% 0% / 10%);
   }
 }
