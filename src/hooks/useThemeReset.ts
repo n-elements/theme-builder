@@ -5,7 +5,6 @@ export default function useThemeReset() {
   const dispatch = useDispatch();
 
   return () => {
-    dispatch(actions.config.reset());
     dispatch(actions.theming.reset());
   };
 }
