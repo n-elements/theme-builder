@@ -15,15 +15,22 @@ export const EditorWrapper = function ({
   ...attributes
 }: IEditorWrapperProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.1 }}
-      className={clsx(classes.EditorWrapper, className)}
-      {...attributes}
-    >
-      {header}
-      <div className={classes.ContentDemo}>{children}</div>
-    </motion.div>
+    <div className={clsx(classes.EditorWrapper, className)} {...attributes}>
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        {header}
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2, delay: 0.15 }}
+        className={classes.ContentDemo}
+      >
+        {children}
+      </motion.div>
+    </div>
   );
 };

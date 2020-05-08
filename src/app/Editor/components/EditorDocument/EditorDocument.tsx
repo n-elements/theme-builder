@@ -24,11 +24,14 @@ export const EditorDocument = function () {
   return (
     <Switch>
       <Route path={routes.editor.document}>
-        <EditorWrapper>
-          <EditorHeader
-            title={intl.formatMessage(messages.title)}
-            subtitle={intl.formatMessage(messages.subtitle)}
-          />
+        <EditorWrapper
+          header={
+            <EditorHeader
+              title={intl.formatMessage(messages.title)}
+              subtitle={intl.formatMessage(messages.subtitle)}
+            />
+          }
+        >
           <h2>Try to select the text!</h2>
           <p className={classes.Container}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam,
