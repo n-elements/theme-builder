@@ -3,6 +3,7 @@ import { IVariable, VariableType } from "@store/theming/types";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 import useVariables from "./useVariables";
+import useVariablesCounter from "./useVariablesCounter";
 
 function createAdd(dispatch: Dispatch, domain: string) {
   return (name: string, type: VariableType) => {
@@ -37,11 +38,13 @@ function defaultVariableValue(type: VariableType): string {
 }
 
 export default function useVariableEditing(domain: string) {
+  const counter = useVariablesCounter();
   const dispatch = useDispatch();
   const list = useVariables(domain);
 
   return {
     add: createAdd(dispatch, domain),
+    counter,
     delete: createDelete(dispatch),
     list,
     update: createUpdate(dispatch),
