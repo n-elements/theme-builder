@@ -4,7 +4,6 @@ import { Bin, Rename, Check } from "@components/Icons/12x";
 import { IVariable } from "@store/theming/types";
 import clsx from "clsx";
 import { Maybe } from "tiinvo";
-import { motion } from "framer-motion";
 import VariableField from "./VariableField";
 import classes from "./Variable.module.css";
 
@@ -39,10 +38,7 @@ export function Variable({
   }
 
   return (
-    <motion.fieldset
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+    <fieldset
       tabIndex={-1}
       className={clsx(classes.ShellLayout, className)}
       {...attributes}
@@ -86,13 +82,15 @@ export function Variable({
               className={classes.Action}
               onClick={() => variableEditing.delete(variable)}
             >
-              <Bin aria-hidden="true" />
+              <span>
+                <Bin aria-hidden="true" />
+              </span>
             </button>
           </div>
         )}
       </div>
       <VariableField variable={variable} onChange={handleChange} />
-    </motion.fieldset>
+    </fieldset>
   );
 }
 

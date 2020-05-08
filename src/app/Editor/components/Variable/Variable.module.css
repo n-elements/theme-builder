@@ -22,6 +22,11 @@
   --ne-textfield-background: transparent;
   --ne-textfield-radius: 0;
 
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+
   &:not([readonly]) {
     --ne-textfield-font-weight: 700;
 
@@ -50,13 +55,28 @@
   cursor: pointer;
   transform: none;
 
-  & > svg {
+  & svg {
     width: 12px;
     height: 12px;
     margin: 0;
+    animation-name: fade-in;
+    animation-duration: 200ms;
+    animation-iteration-count: 1;
   }
 
   &[data-editing='true'] {
     color: #35cc00;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
