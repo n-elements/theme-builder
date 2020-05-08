@@ -16,9 +16,11 @@ export const ColorSwatch = function ({
   value,
   ...attributes
 }: IColorSwatchProps) {
+  const removeHexAlpha =
+    value?.startsWith("#") && value.length > 7 ? value.slice(0, -2) : value;
   const rgbColor = color(value).toRgbString();
   const hslColor = color(value).toHslString();
-  const hexColor = color(value).toHexString();
+  const hexColor = color(removeHexAlpha).toHexString();
 
   return (
     <div className={clsx(classes.ColorSwatch, className)} {...attributes}>

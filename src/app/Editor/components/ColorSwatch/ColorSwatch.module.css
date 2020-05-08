@@ -6,6 +6,7 @@
 
 .PropName {
   margin-bottom: 5px;
+  overflow-wrap: anywhere;
 }
 
 .ColorValue {
