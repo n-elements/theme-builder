@@ -12,6 +12,10 @@
   height: 88px;
 }
 
+.PropName {
+  margin-bottom: 5px;
+}
+
 .ColorValue {
   margin-bottom: 0;
   opacity: 0.6;
