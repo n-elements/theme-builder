@@ -1,13 +1,17 @@
 .ColorField {
+  position: relative;
+}
+
+.Field {
   --ne-button-background: none;
   --ne-button-hover-background: none;
   --ne-button-active-background: none;
 
   all: unset;
-  position: relative;
-  display: block;
-  width: 100%;
   cursor: pointer;
+  display: flex;
+  width: 100%;
+  align-items: center;
 }
 
 .Input {
