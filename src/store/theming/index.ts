@@ -6,12 +6,14 @@ import { assignId, createUpdateVariableMap } from "./helpers";
 interface ITheming {
   name: string;
   variables: VariableArray;
+  variablesCounter: number;
 }
 
 function initialState(): ITheming {
   return {
     name: "theme-name",
     variables: [],
+    variablesCounter: 0,
   };
 }
 
@@ -20,6 +22,7 @@ const reducer = createReducer(initialState());
 reducer.on(actions.addVariable, (state, variable) => ({
   ...state,
   variables: state.variables.concat(assignId(variable)),
+  variablesCounter: state.variablesCounter + 1,
 }));
 
 reducer.on(actions.deleteVariable, (state, variable) => ({

@@ -25,7 +25,7 @@ export default function AddVariable({
   const intl = useIntl();
   const variables = useVariableEditing(routes.editor.colours);
   const nextname = intl.formatMessage(messages.varname, {
-    length: variables.list.length,
+    length: variables.counter,
   });
 
   return (
