@@ -1,6 +1,14 @@
 import React, { ReactElement } from "react";
 import classes from "./VariableSearch.module.css";
+import { defineMessages, useIntl } from "react-intl";
 import clsx from "clsx";
+
+const messages = defineMessages({
+  searchPlaceholder: {
+    defaultMessage: "Search variable",
+    id: "app.Editor.components.VariableSearch.searchPlaceholder",
+  },
+});
 
 export interface IVariableSearchProps extends PropsClass {
   children:
@@ -13,9 +21,15 @@ export const VariableSearch = function ({
   className,
   ...attributes
 }: IVariableSearchProps) {
+  const intl = useIntl();
+
   return (
     <div className={clsx(classes.VariableSearch, className)} {...attributes}>
-      <input type="text" list="variables" placeholder="Search variable" />
+      <input
+        type="text"
+        list="variables"
+        placeholder={intl.formatMessage(messages.searchPlaceholder)}
+      />
       <datalist id="variables">{children}</datalist>
     </div>
   );
