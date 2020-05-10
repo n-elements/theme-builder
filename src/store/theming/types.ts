@@ -17,6 +17,6 @@ export interface IVariable {
 }
 
 export interface IVariableRelation {
-  id: VariableId;
-  externalId: VariableId;
+  id?: VariableId;
+  externalId?: VariableId;
 }

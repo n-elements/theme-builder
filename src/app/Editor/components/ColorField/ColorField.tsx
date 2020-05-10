@@ -1,5 +1,5 @@
-import { ColorPreview } from "@app/Editor/components/ColorPreview";
-import { VariableSearch } from "@app/Editor/components/VariableSearch";
+import { ColorPreview } from "../ColorPreview";
+import { VariableSearch } from "../VariableSearch";
 import { formatVariableName } from "@app/Editor/helpers/variable";
 import useRelatedVariables from "@app/Editor/hooks/useRelatedVariables";
 import { DropDown } from "@components/DropDown";
@@ -11,13 +11,10 @@ import { ChromePicker } from "react-color";
 import { useClickAway } from "react-use";
 import { Option, Maybe } from "tiinvo";
 import classes from "./ColorField.module.css";
+import { IFieldProps } from "../../types/fields";
 
-export interface IColorFieldProps extends PropsClass {
-  defaultValue?: string;
-  name: string;
+export interface IColorFieldProps extends IFieldProps {
   readOnly?: boolean;
-  value?: string;
-  onChange?: (value: string) => void;
 }
 
 export const ColorField = function (props: IColorFieldProps) {
@@ -68,7 +65,16 @@ export const ColorField = function (props: IColorFieldProps) {
             hidden={Maybe(colourRelatedVariables.length).isNothing()}
           >
             {colourRelatedVariables.map((variable, index) => (
-              <option key={index} value={variable.name}>
+              <option
+                onChange={() =>
+                  Option(props.onChangeRelation).mapOrElse(
+                    () => void 0,
+                    (fn) => fn(variable)
+                  )
+                }
+                key={index}
+                value={variable.name}
+              >
                 {formatVariableName(variable.name)}
               </option>
             ))}

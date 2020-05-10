@@ -18,6 +18,11 @@ function createAdd(dispatch: Dispatch, domain: string) {
   };
 }
 
+function createaddReferenceToVariable(dispatch: Dispatch) {
+  return (id?: string, externalId?: string) =>
+    dispatch(actions.theming.addReferenceToVariable({ id, externalId }));
+}
+
 function createDelete(dispatch: Dispatch) {
   return (variable: IVariable) =>
     dispatch(actions.theming.deleteVariable(variable));
@@ -44,6 +49,7 @@ export default function useVariableEditing(domain: string) {
 
   return {
     add: createAdd(dispatch, domain),
+    addReferenceToVariable: createaddReferenceToVariable(dispatch),
     counter,
     delete: createDelete(dispatch),
     list,

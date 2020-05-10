@@ -28,6 +28,12 @@ export function Variable({
   const handleChange = (value?: string) =>
     variableEditing.update({ ...variable, value });
 
+  const handleChangeRelation = (relatingToVariable: IVariable) =>
+    variableEditing.addReferenceToVariable(
+      variable._id,
+      relatingToVariable._id
+    );
+
   function confirmOnEnter(event: KeyboardEvent) {
     if (event.key === "Enter") {
       setEditingLabel(!editingLabel);
@@ -86,7 +92,11 @@ export function Variable({
           </div>
         )}
       </div>
-      <VariableField variable={variable} onChange={handleChange} />
+      <VariableField
+        variable={variable}
+        onChange={handleChange}
+        onChangeRelation={handleChangeRelation}
+      />
     </fieldset>
   );
 }
