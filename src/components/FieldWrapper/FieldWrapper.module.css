@@ -3,6 +3,8 @@
   --ne-textfield-x-padding: 16px;
   --ne-textfield-min-height: auto;
   --ne-textfield-border: none;
+  --ne-textfield-readonly-border: none;
+  --ne-textfield-readonly-focus-border: none;
 
   position: relative;
   border: 1px solid var(--prop-field-border-color);

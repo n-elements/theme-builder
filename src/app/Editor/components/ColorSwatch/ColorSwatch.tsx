@@ -16,16 +16,21 @@ export const ColorSwatch = function ({
   value,
   ...attributes
 }: IColorSwatchProps) {
+  const removeHexAlpha =
+    value?.startsWith("#") && value.length > 7 ? value.slice(0, -2) : value;
   const rgbColor = color(value).toRgbString();
   const hslColor = color(value).toHslString();
-  const hexColor = color(value).toHexString();
+  const hexColor = color(removeHexAlpha).toHexString();
+  const formattedPropName = propName.startsWith("--")
+    ? propName
+    : `--${propName}`;
 
   return (
     <div className={clsx(classes.ColorSwatch, className)} {...attributes}>
       <ColorPreview size="big" color={hexColor} />
       <div>
         <p className={classes.PropName}>
-          <strong>{propName}</strong>
+          <strong>{formattedPropName}</strong>
         </p>
         <p data-size="small" className={classes.ColorValue}>
           {rgbColor}

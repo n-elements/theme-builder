@@ -17,6 +17,7 @@ export default function VariableField(props: IVariableField) {
           defaultValue={props.variable.defaultValue}
           onChange={props.onChange}
           value={props.variable.value}
+          readOnly
         />
       );
     default:
