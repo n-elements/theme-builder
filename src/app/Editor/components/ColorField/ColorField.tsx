@@ -9,7 +9,7 @@ import clsx from "clsx";
 import React, { useRef, useState } from "react";
 import { ChromePicker } from "react-color";
 import { useClickAway } from "react-use";
-import { Option } from "tiinvo";
+import { Option, Maybe } from "tiinvo";
 import classes from "./ColorField.module.css";
 
 export interface IColorFieldProps extends PropsClass {
@@ -64,7 +64,9 @@ export const ColorField = function (props: IColorFieldProps) {
               )
             }
           />
-          <VariableSearch hidden={colourRelatedVariables.length === 0}>
+          <VariableSearch
+            hidden={Maybe(colourRelatedVariables.length).isNothing()}
+          >
             {colourRelatedVariables.map((variable, index) => (
               <option key={index} value={variable.name}>
                 {formatVariableName(variable.name)}
