@@ -46,8 +46,7 @@ export function makeRelation(list: VariableArray, relation: IVariableRelation) {
   return maybeExternal.and(maybeOwner).mapOrElse(
     () => copied,
     (owner) => {
-      copied[copied.indexOf(owner)]._referenceId =
-        relation.externalVariableName;
+      copied[copied.indexOf(owner)]._referenceId = maybeExternal.unwrap()!._id;
       return copied;
     }
   );
