@@ -1,4 +1,8 @@
-import React, { ReactElement, ComponentPropsWithRef } from "react";
+import React, {
+  ReactElement,
+  ComponentPropsWithRef,
+  ChangeEventHandler,
+} from "react";
 import classes from "./VariableSearch.module.css";
 import { defineMessages, useIntl } from "react-intl";
 import clsx from "clsx";
@@ -11,15 +15,17 @@ const messages = defineMessages({
 });
 
 export interface IVariableSearchProps
-  extends Omit<ComponentPropsWithRef<"div">, "children"> {
+  extends Omit<ComponentPropsWithRef<"div">, "children" | "onChange"> {
   children:
     | ReactElement<HTMLOptionElement>
     | Array<ReactElement<HTMLOptionElement>>;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
 export const VariableSearch = function ({
   children,
   className,
+  onChange,
   ...attributes
 }: IVariableSearchProps) {
   const intl = useIntl();
@@ -27,6 +33,7 @@ export const VariableSearch = function ({
   return (
     <div className={clsx(classes.VariableSearch, className)} {...attributes}>
       <input
+        onChange={onChange}
         type="text"
         list="variables"
         placeholder={intl.formatMessage(messages.searchPlaceholder)}

@@ -28,11 +28,8 @@ export function Variable({
   const handleChange = (value?: string) =>
     variableEditing.update({ ...variable, value });
 
-  const handleChangeRelation = (relatingToVariable: IVariable) =>
-    variableEditing.addReferenceToVariable(
-      variable._id,
-      relatingToVariable._id
-    );
+  const handleChangeRelation = (relatingToVariable: string) =>
+    variableEditing.addReferenceToVariable(variable._id, relatingToVariable);
 
   function confirmOnEnter(event: KeyboardEvent) {
     if (event.key === "Enter") {

@@ -19,8 +19,10 @@ function createAdd(dispatch: Dispatch, domain: string) {
 }
 
 function createaddReferenceToVariable(dispatch: Dispatch) {
-  return (id?: string, externalId?: string) =>
-    dispatch(actions.theming.addReferenceToVariable({ id, externalId }));
+  return (id?: string, externalVariableName?: string) =>
+    dispatch(
+      actions.theming.addReferenceToVariable({ id, externalVariableName })
+    );
 }
 
 function createDelete(dispatch: Dispatch) {

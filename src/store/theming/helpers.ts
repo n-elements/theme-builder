@@ -21,6 +21,13 @@ export function generateId(): VariableId {
   return (Date.now() * Math.floor(Math.random() * 1000000)).toString(32);
 }
 
+export function getVariableByName(
+  list: VariableArray,
+  name?: string
+): Option<IVariable> {
+  return Option(list.find((variable) => variable.name === name)!);
+}
+
 export function getVariableById(
   list: VariableArray,
   id?: VariableId
@@ -31,12 +38,16 @@ export function getVariableById(
 export function makeRelation(list: VariableArray, relation: IVariableRelation) {
   const copied = list.slice();
   const maybeOwner = getVariableById(copied, relation.id);
-  const maybeExternal = getVariableById(copied, relation.externalId);
+  const maybeExternal = getVariableByName(
+    copied,
+    relation.externalVariableName
+  );
 
   return maybeExternal.and(maybeOwner).mapOrElse(
     () => copied,
     (owner) => {
-      copied[copied.indexOf(owner)]._referenceId = relation.externalId;
+      copied[copied.indexOf(owner)]._referenceId =
+        relation.externalVariableName;
       return copied;
     }
   );

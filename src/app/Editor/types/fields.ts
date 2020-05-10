@@ -1,8 +1,6 @@
-import { IVariable } from "@store/theming/types";
-
 export type OnChangeHandler = (value: string) => void;
 
-export type OnChangeRelationHandler = (variable: IVariable) => void;
+export type OnChangeRelationHandler = (variableName: string) => void;
 
 export interface IFieldProps extends PropsClass {
   name: string;
