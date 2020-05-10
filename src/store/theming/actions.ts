@@ -8,7 +8,7 @@ export const addReferenceToVariable = createAction<IVariableRelation>(
 );
 export const addVariable = createAction<IVariable>("addvariable");
 export const deleteVariable = createAction<IVariable>("deleteVariable");
-export const deleteReference = createAction<IVariable>("deleteVariable");
+export const deleteReference = createAction<IVariable>("deleteReference");
 export const reset = createAction("reset");
 export const updateName = createAction<string>("updateName");
 export const updateVariable = createAction<IVariable>("updatevariable");
