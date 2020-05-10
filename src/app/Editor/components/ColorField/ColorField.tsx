@@ -1,16 +1,20 @@
-import React, { useState, useRef } from "react";
-import classes from "./ColorField.module.css";
-import clsx from "clsx";
+import { ColorPreview } from "@app/Editor/components/ColorPreview";
+import { VariableSearch } from "@app/Editor/components/VariableSearch";
+import { normalizeVariableName } from "@app/Editor/helpers/variable";
+import useRelatedVariables from "@app/Editor/hooks/useRelatedVariables";
+import { DropDown } from "@components/DropDown";
 import { FieldWrapper } from "@components/FieldWrapper";
+import routes from "@routes";
+import clsx from "clsx";
+import React, { useRef, useState } from "react";
 import { ChromePicker } from "react-color";
 import { useClickAway } from "react-use";
 import { Option } from "tiinvo";
-import { ColorPreview } from "@app/Editor/components/ColorPreview";
-import { DropDown } from "@components/DropDown";
-import { VariableSearch } from "@app/Editor/components/VariableSearch";
+import classes from "./ColorField.module.css";
 
 export interface IColorFieldProps extends PropsClass {
   defaultValue?: string;
+  name: string;
   readOnly?: boolean;
   value?: string;
   onChange?: (value: string) => void;
@@ -20,6 +24,10 @@ export const ColorField = function (props: IColorFieldProps) {
   const ref = useRef(null);
   const [open, setOpen] = useState(false);
   const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
+  const colourRelatedVariables = useRelatedVariables(
+    routes.editor.colours,
+    props.name
+  );
 
   useClickAway(ref, createOpenHandler(false));
 
@@ -56,9 +64,12 @@ export const ColorField = function (props: IColorFieldProps) {
               )
             }
           />
-          <VariableSearch>
-            <option value="foreground-color">--foreground-color</option>
-            <option value="background-color">--background-color</option>
+          <VariableSearch hidden={colourRelatedVariables.length === 0}>
+            {colourRelatedVariables.map((variable, index) => (
+              <option key={index} value={variable.name}>
+                {normalizeVariableName(variable.name)}
+              </option>
+            ))}
           </VariableSearch>
         </div>
       </DropDown>

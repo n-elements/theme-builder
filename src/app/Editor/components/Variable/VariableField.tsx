@@ -16,6 +16,7 @@ export default function VariableField(props: IVariableField) {
           className={classes.VariableInput}
           defaultValue={props.variable.defaultValue}
           onChange={props.onChange}
+          name={props.variable.name}
           value={props.variable.value}
           readOnly
         />

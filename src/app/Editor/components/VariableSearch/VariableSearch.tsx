@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, ComponentPropsWithRef } from "react";
 import classes from "./VariableSearch.module.css";
 import { defineMessages, useIntl } from "react-intl";
 import clsx from "clsx";
@@ -10,7 +10,8 @@ const messages = defineMessages({
   },
 });
 
-export interface IVariableSearchProps extends PropsClass {
+export interface IVariableSearchProps
+  extends Omit<ComponentPropsWithRef<"div">, "children"> {
   children:
     | ReactElement<HTMLOptionElement>
     | Array<ReactElement<HTMLOptionElement>>;
