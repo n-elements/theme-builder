@@ -1,7 +1,7 @@
 import { createReducer } from "redux-aar";
 import { VariableArray } from "./types";
 import * as actions from "./actions";
-import { assignId, createUpdateVariableMap } from "./helpers";
+import { assignId, createUpdateVariableMap, makeRelation } from "./helpers";
 
 interface ITheming {
   name: string;
@@ -23,6 +23,11 @@ reducer.on(actions.addVariable, (state, variable) => ({
   ...state,
   variables: state.variables.concat(assignId(variable)),
   variablesCounter: state.variablesCounter + 1,
+}));
+
+reducer.on(actions.addReferenceToVariable, (state, relation) => ({
+  ...state,
+  variables: makeRelation(state.variables, relation),
 }));
 
 reducer.on(actions.deleteVariable, (state, variable) => ({

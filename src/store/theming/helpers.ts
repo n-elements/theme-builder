@@ -1,5 +1,10 @@
-import { VariableId, IVariable } from "./types";
-import { Maybe } from "tiinvo";
+import {
+  VariableId,
+  IVariable,
+  VariableArray,
+  IVariableRelation,
+} from "./types";
+import { Maybe, Option } from "tiinvo";
 
 export function assignId(variable: IVariable): IVariable {
   return {
@@ -14,6 +19,27 @@ export function createUpdateVariableMap(newvar: IVariable) {
 
 export function generateId(): VariableId {
   return (Date.now() * Math.floor(Math.random() * 1000000)).toString(32);
+}
+
+export function getVariableById(
+  list: VariableArray,
+  id?: VariableId
+): Option<IVariable> {
+  return Option(list.find((variable) => variable._id === id)!);
+}
+
+export function makeRelation(list: VariableArray, relation: IVariableRelation) {
+  const copied = list.slice();
+  const maybeOwner = getVariableById(copied, relation.id);
+  const maybeExternal = getVariableById(copied, relation.externalId);
+
+  return maybeExternal.and(maybeOwner).mapOrElse(
+    () => copied,
+    (owner) => {
+      copied[copied.indexOf(owner)]._referenceId = relation.externalId;
+      return copied;
+    }
+  );
 }
 
 export function maybeUpdateVariable(

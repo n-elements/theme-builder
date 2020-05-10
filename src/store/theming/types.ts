@@ -8,9 +8,15 @@ export type VariableType = "color" | "unit" | "text" | "url";
 
 export interface IVariable {
   _id?: VariableId;
+  _referenceId?: VariableId;
   defaultValue?: string;
   domain: VariableDomain;
   name: string;
   type: VariableType;
   value?: string;
+}
+
+export interface IVariableRelation {
+  id: VariableId;
+  externalId: VariableId;
 }
