@@ -1,6 +1,7 @@
 .DropDown {
   position: absolute;
   right: 0;
+  width: 100%;
   top: calc(100% + 8px);
   z-index: 1;
   background-color: var(--dropdown-background);

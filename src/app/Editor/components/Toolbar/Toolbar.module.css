@@ -11,6 +11,7 @@
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   user-select: none;
+  overscroll-behavior: contain;
 }
 
 .Toolbar {

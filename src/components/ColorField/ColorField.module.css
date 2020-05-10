@@ -41,6 +41,7 @@
   & :global(.chrome-picker) {
     box-shadow: none !important;
     background-color: transparent !important;
+    width: 100% !important;
   }
 
   & :global(svg) {

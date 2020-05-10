@@ -56,7 +56,10 @@ export const ColorField = function (props: IColorFieldProps) {
               )
             }
           />
-          <VariableSearch />
+          <VariableSearch>
+            <option value="var(--foreground-color)">--foreground-color</option>
+            <option value="var(--background-color)">--background-color</option>
+          </VariableSearch>
         </div>
       </DropDown>
     </div>

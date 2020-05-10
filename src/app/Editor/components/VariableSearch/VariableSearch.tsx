@@ -1,82 +1,22 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import classes from "./VariableSearch.module.css";
 import clsx from "clsx";
 
-export interface IVariableSearchProps extends PropsClass {}
+export interface IVariableSearchProps extends PropsClass {
+  children:
+    | ReactElement<HTMLOptionElement>
+    | Array<ReactElement<HTMLOptionElement>>;
+}
 
 export const VariableSearch = function ({
+  children,
   className,
   ...attributes
 }: IVariableSearchProps) {
   return (
     <div className={clsx(classes.VariableSearch, className)} {...attributes}>
       <input type="text" list="variables" placeholder="Search variable" />
-      <datalist id="variables">
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-        <option value="Firefox">Firefox</option>
-        <option value="Chrome">Chrome</option>
-        <option value="Opera">Opera</option>
-        <option value="Safari">Safari</option>
-      </datalist>
+      <datalist id="variables">{children}</datalist>
     </div>
   );
 };
