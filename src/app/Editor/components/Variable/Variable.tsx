@@ -3,7 +3,6 @@ import useVariableEditing from "@app/Editor/hooks/useVariableEditing";
 import { Bin, Rename, Check } from "@components/Icons/12x";
 import { IVariable } from "@store/theming/types";
 import clsx from "clsx";
-import { Maybe } from "tiinvo";
 import VariableField from "./VariableField";
 import classes from "./Variable.module.css";
 import {

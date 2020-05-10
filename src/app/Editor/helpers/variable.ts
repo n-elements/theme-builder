@@ -4,5 +4,5 @@ export function formatVariableName(name: string): string {
 }
 
 export function normalizeVariableName(name: string) {
-  return formatVariableName(name).replace("--", "");
+  return formatVariableName(name).replace("--", "").replace(/\s+/g, "-");
 }
