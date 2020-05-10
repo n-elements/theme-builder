@@ -5,7 +5,7 @@ import { FieldWrapper } from "@components/FieldWrapper";
 import { ChromePicker } from "react-color";
 import { useClickAway } from "react-use";
 import { Option } from "tiinvo";
-import { ColorPreview } from "@components/ColorPreview";
+import { ColorPreview } from "@app/Editor/components/ColorPreview";
 import { DropDown } from "@components/DropDown";
 import { VariableSearch } from "@app/Editor/components/VariableSearch";
 

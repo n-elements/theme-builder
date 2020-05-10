@@ -3,7 +3,7 @@ import { IVariable } from "@store/theming/types";
 import color from "css-color-converter";
 import clsx from "clsx";
 import classes from "./ColorSwatch.module.css";
-import { ColorPreview } from "@components/ColorPreview";
+import { ColorPreview } from "@app/Editor/components/ColorPreview";
 import { normalizeVariableName } from "@app/Editor/helpers/variable";
 
 export interface IColorSwatchProps extends PropsClass {

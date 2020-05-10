@@ -1,4 +1,4 @@
-import { ColorField } from "@components/ColorField";
+import { ColorField } from "@app/Editor/components/ColorField";
 import React from "react";
 import { IVariable } from "@store/theming/types";
 import classes from "./Variable.module.css";
