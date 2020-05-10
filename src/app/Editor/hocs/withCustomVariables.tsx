@@ -2,7 +2,7 @@ import { ComponentType, createElement, CSSProperties } from "react";
 import useVariables from "../hooks/useVariables";
 import { IVariable, VariableArray } from "@store/theming/types";
 import { Option } from "tiinvo";
-import { normalizeVariableName } from "../helpers/variable";
+import { formatVariableName } from "../helpers/variable";
 
 type CssVar = { [index: string]: string };
 type EnhancedCSSProperties = CSSProperties & CssVar;
@@ -21,7 +21,7 @@ function convertVariableToCssVariable(variable: IVariable): CssVar | undefined {
   return Option(variable.value).mapOrElse(
     () => undefined,
     (value) => ({
-      [normalizeVariableName(variable.name)]: value,
+      [formatVariableName(variable.name)]: value,
     })
   );
 }

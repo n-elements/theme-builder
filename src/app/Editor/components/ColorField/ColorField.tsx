@@ -1,6 +1,6 @@
 import { ColorPreview } from "@app/Editor/components/ColorPreview";
 import { VariableSearch } from "@app/Editor/components/VariableSearch";
-import { normalizeVariableName } from "@app/Editor/helpers/variable";
+import { formatVariableName } from "@app/Editor/helpers/variable";
 import useRelatedVariables from "@app/Editor/hooks/useRelatedVariables";
 import { DropDown } from "@components/DropDown";
 import { FieldWrapper } from "@components/FieldWrapper";
@@ -67,7 +67,7 @@ export const ColorField = function (props: IColorFieldProps) {
           <VariableSearch hidden={colourRelatedVariables.length === 0}>
             {colourRelatedVariables.map((variable, index) => (
               <option key={index} value={variable.name}>
-                {normalizeVariableName(variable.name)}
+                {formatVariableName(variable.name)}
               </option>
             ))}
           </VariableSearch>

@@ -4,7 +4,7 @@ import color from "css-color-converter";
 import clsx from "clsx";
 import classes from "./ColorSwatch.module.css";
 import { ColorPreview } from "@app/Editor/components/ColorPreview";
-import { normalizeVariableName } from "@app/Editor/helpers/variable";
+import { formatVariableName } from "@app/Editor/helpers/variable";
 
 export interface IColorSwatchProps extends PropsClass {
   propName: IVariable["name"];
@@ -22,7 +22,7 @@ export const ColorSwatch = function ({
   const rgbColor = color(value).toRgbString();
   const hslColor = color(value).toHslString();
   const hexColor = color(removeHexAlpha).toHexString();
-  const formattedPropName = normalizeVariableName(propName);
+  const formattedPropName = formatVariableName(propName);
 
   return (
     <div className={clsx(classes.ColorSwatch, className)} {...attributes}>

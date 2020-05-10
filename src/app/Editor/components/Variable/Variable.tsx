@@ -6,17 +6,14 @@ import clsx from "clsx";
 import { Maybe } from "tiinvo";
 import VariableField from "./VariableField";
 import classes from "./Variable.module.css";
+import {
+  formatVariableName,
+  normalizeVariableName,
+} from "@app/Editor/helpers/variable";
 
 export interface IVariableProps extends PropsClass {
   variable: IVariable;
   showActions?: boolean;
-}
-
-function formatVariableLabel(variableName: string): string {
-  return Maybe(variableName.indexOf("--") >= 0).cata({
-    Just: () => variableName,
-    Nothing: () => "--" + variableName,
-  });
 }
 
 export function Variable({
@@ -49,10 +46,10 @@ export function Variable({
           onChange={(event) =>
             variableEditing.update({
               ...variable,
-              name: event.target.value,
+              name: normalizeVariableName(event.target.value),
             })
           }
-          value={formatVariableLabel(variable.name)}
+          value={formatVariableName(variable.name)}
           readOnly={!editingLabel}
           ref={ref}
           tabIndex={editingLabel ? 0 : -1}
