@@ -6,10 +6,11 @@ import classes from "./DropDown.module.css";
 export interface IDropDownProps extends PropsClass {
   children: ReactNode;
   open: boolean;
+  position?: "left" | "center" | "right";
 }
 
 export const DropDown = forwardRef(function (
-  { children, className, open, ...attributes }: IDropDownProps,
+  { children, className, open, position, ...attributes }: IDropDownProps,
   ref: Ref<HTMLDivElement>
 ) {
   return (
@@ -21,12 +22,20 @@ export const DropDown = forwardRef(function (
           exit={{ opacity: 0, y: 20, transition: { duration: 0.1 } }}
           transition={{ duration: 0.1, delay: 0.2, ease: "easeOut" }}
           ref={ref}
-          className={clsx(classes.DropDown, className)}
-          {...attributes}
         >
-          {children}
+          <div
+            className={clsx(classes.DropDown, className)}
+            data-position={position}
+            {...attributes}
+          >
+            {children}
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
   );
 });
+
+DropDown.defaultProps = {
+  position: "right",
+} as Partial<IDropDownProps>;
