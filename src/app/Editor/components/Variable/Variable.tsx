@@ -24,6 +24,9 @@ export function Variable({
   const ref = useRef<HTMLInputElement | null>(null);
   const [editingLabel, setEditingLabel] = useState(false);
   const variableEditing = useVariableEditing(variable.domain);
+  const handleBreakReference = () =>
+    variableEditing.deleteReferenceToVariable(variable);
+
   const handleChange = (value?: string) =>
     variableEditing.update({ ...variable, value });
 
@@ -90,6 +93,7 @@ export function Variable({
       </div>
       <VariableField
         variable={variable}
+        onBreakReference={handleBreakReference}
         onChange={handleChange}
         onChangeRelation={handleChangeRelation}
       />

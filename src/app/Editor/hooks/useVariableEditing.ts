@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 import useVariables from "./useVariables";
 import useVariablesCounter from "./useVariablesCounter";
+import { Option } from "tiinvo";
 
 function createAdd(dispatch: Dispatch, domain: string) {
   return (name: string, type: VariableType) => {
@@ -30,6 +31,14 @@ function createDelete(dispatch: Dispatch) {
     dispatch(actions.theming.deleteVariable(variable));
 }
 
+function createDeleteReferenceToVariable(dispatch: Dispatch) {
+  return (variable: IVariable) =>
+    Option(variable._referenceId).mapOrElse(
+      () => void 0,
+      () => dispatch(actions.theming.deleteReference(variable))
+    );
+}
+
 function createUpdate(dispatch: Dispatch) {
   return (variable: IVariable) =>
     dispatch(actions.theming.updateVariable(variable));
@@ -54,6 +63,7 @@ export default function useVariableEditing(domain: string) {
     addReferenceToVariable: createaddReferenceToVariable(dispatch),
     counter,
     delete: createDelete(dispatch),
+    deleteReferenceToVariable: createDeleteReferenceToVariable(dispatch),
     list,
     update: createUpdate(dispatch),
   };

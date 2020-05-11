@@ -6,6 +6,8 @@ export type VariableId = string;
 
 export type VariableType = "color" | "unit" | "text" | "url";
 
+export type VariableValue = string | undefined;
+
 export interface IVariable {
   _id?: VariableId;
   _referenceId?: VariableId;
@@ -13,7 +15,7 @@ export interface IVariable {
   domain: VariableDomain;
   name: string;
   type: VariableType;
-  value?: string;
+  value?: VariableValue;
 }
 
 export interface IVariableRelation {

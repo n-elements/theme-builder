@@ -1,7 +1,6 @@
-import { ColorPreview } from "../ColorPreview";
-import { VariableSearch } from "../VariableSearch";
 import { formatVariableName } from "@app/Editor/helpers/variable";
 import useRelatedVariables from "@app/Editor/hooks/useRelatedVariables";
+import useVariableValues from "@app/Editor/hooks/useVariableValues";
 import { DropDown } from "@components/DropDown";
 import { FieldWrapper } from "@components/FieldWrapper";
 import routes from "@routes";
@@ -9,9 +8,11 @@ import clsx from "clsx";
 import React, { useRef, useState } from "react";
 import { ChromePicker } from "react-color";
 import { useClickAway } from "react-use";
-import { Option, Maybe } from "tiinvo";
-import classes from "./ColorField.module.css";
+import { Maybe, Option } from "tiinvo";
 import { IFieldProps } from "../../types/fields";
+import { ColorPreview } from "../ColorPreview";
+import { VariableSearch } from "../VariableSearch";
+import classes from "./ColorField.module.css";
 
 export interface IColorFieldProps extends IFieldProps {
   readOnly?: boolean;
@@ -25,6 +26,7 @@ export const ColorField = function (props: IColorFieldProps) {
     routes.editor.colours,
     props.variable.name
   );
+  const values = useVariableValues(props.variable);
 
   useClickAway(ref, createOpenHandler(false));
 
@@ -43,11 +45,11 @@ export const ColorField = function (props: IColorFieldProps) {
             readOnly={props.readOnly}
             type="text"
             tabIndex={-1}
-            value={props.variable.value}
+            value={values.displayValue}
           />
           <span className={classes.ColorPreview}>
             <ColorPreview
-              color={props.variable.value}
+              color={values.value}
               className={classes.ColorSwatch}
             />
           </span>
@@ -56,13 +58,17 @@ export const ColorField = function (props: IColorFieldProps) {
       <DropDown open={open} ref={ref}>
         <div className={classes.PickerContainer}>
           <ChromePicker
-            color={props.variable.value}
-            onChange={(value) =>
+            color={values.value}
+            onChange={(value) => {
               Option(props.onChange).mapOrElse(
                 () => void 0,
                 (fn) => fn(value.hex)
-              )
-            }
+              );
+              Option(props.onBreakReference).mapOrElse(
+                () => void 0,
+                (fn) => fn()
+              );
+            }}
           />
         </div>
         <VariableSearch

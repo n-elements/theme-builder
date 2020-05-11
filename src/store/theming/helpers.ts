@@ -13,6 +13,19 @@ export function assignId(variable: IVariable): IVariable {
   };
 }
 
+export function breakRelation(
+  variables: VariableArray,
+  variable: IVariable
+): VariableArray {
+  const copied = variables.slice();
+
+  copied[
+    copied.findIndex((v) => variable._id === v._id)
+  ]._referenceId = undefined;
+
+  return copied;
+}
+
 export function createUpdateVariableMap(newvar: IVariable) {
   return (oldvar: IVariable) => maybeUpdateVariable(oldvar, newvar);
 }
@@ -26,6 +39,13 @@ export function getVariableByName(
   name?: string
 ): Option<IVariable> {
   return Option(list.find((variable) => variable.name === name)!);
+}
+
+export function getReferencedVariable(
+  list: VariableArray,
+  variable: IVariable
+): Option<IVariable> {
+  return Option(list.find((v) => v._id === variable._referenceId)!);
 }
 
 export function getVariableById(

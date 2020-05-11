@@ -9,6 +9,7 @@ import { EditorWrapper } from "../EditorWrapper";
 import { EditorHeader } from "../EditorHeader";
 import { ColorSwatch } from "../ColorSwatch";
 import classes from "./EditorColours.module.css";
+import EditorColoursItem from "../EditorColoursItem";
 
 const messages = defineMessages({
   title: {
@@ -40,20 +41,7 @@ export const EditorColours = function () {
           <div className={classes.ColorsList}>
             <AnimatePresence>
               {variables.map((variable, index) => (
-                <motion.div
-                  key={variable._id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0, x: 10 }}
-                  transition={{ duration: 0.3 }}
-                  positionTransition={{ ease: "easeOut" }}
-                >
-                  <ColorSwatch
-                    key={index}
-                    propName={variable.name}
-                    value={variable.value}
-                  />
-                </motion.div>
+                <EditorColoursItem key={index} variable={variable} />
               ))}
             </AnimatePresence>
           </div>
