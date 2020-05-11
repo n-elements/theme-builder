@@ -1,16 +1,12 @@
-import React, {
-  ReactElement,
-  ComponentPropsWithRef,
-  ChangeEventHandler,
-} from "react";
-import classes from "./VariableSearch.module.css";
-import { defineMessages, useIntl } from "react-intl";
-import clsx from "clsx";
+import { formatVariableName } from "@app/Editor/helpers/variable";
+import useRelatedVariables from "@app/Editor/hooks/useRelatedVariables";
 import { OnChangeRelationHandler } from "@app/Editor/types/fields";
 import { IVariable } from "@store/theming/types";
-import useRelatedVariables from "@app/Editor/hooks/useRelatedVariables";
-import { formatVariableName } from "@app/Editor/helpers/variable";
-import { Option, Maybe } from "tiinvo";
+import clsx from "clsx";
+import React, { ComponentPropsWithRef } from "react";
+import { defineMessages, useIntl } from "react-intl";
+import { Maybe, Option } from "tiinvo";
+import classes from "./VariableSearch.module.css";
 
 const messages = defineMessages({
   searchPlaceholder: {

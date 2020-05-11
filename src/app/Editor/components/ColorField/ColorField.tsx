@@ -1,14 +1,11 @@
-import { formatVariableName } from "@app/Editor/helpers/variable";
-import useRelatedVariables from "@app/Editor/hooks/useRelatedVariables";
 import useVariableValues from "@app/Editor/hooks/useVariableValues";
 import { DropDown } from "@components/DropDown";
 import { FieldWrapper } from "@components/FieldWrapper";
-import routes from "@routes";
 import clsx from "clsx";
 import React, { useRef, useState } from "react";
 import { ChromePicker } from "react-color";
 import { useClickAway } from "react-use";
-import { Maybe, Option } from "tiinvo";
+import { Option } from "tiinvo";
 import { IFieldProps } from "../../types/fields";
 import { ColorPreview } from "../ColorPreview";
 import { VariableSearch } from "../VariableSearch";
@@ -22,10 +19,6 @@ export const ColorField = function (props: IColorFieldProps) {
   const ref = useRef(null);
   const [open, setOpen] = useState(false);
   const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
-  const colourRelatedVariables = useRelatedVariables(
-    routes.editor.colours,
-    props.variable.name
-  );
   const values = useVariableValues(props.variable);
 
   useClickAway(ref, createOpenHandler(false));
