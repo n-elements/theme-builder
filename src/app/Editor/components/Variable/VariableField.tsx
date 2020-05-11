@@ -19,10 +19,9 @@ export default function VariableField(props: IVariableField) {
       return (
         <ColorField
           className={classes.VariableInput}
+          variable={props.variable}
           onChange={props.onChange}
           onChangeRelation={props.onChangeRelation}
-          name={props.variable.name}
-          value={props.variable.value}
           readOnly
         />
       );

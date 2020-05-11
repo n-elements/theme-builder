@@ -23,7 +23,7 @@ export const ColorField = function (props: IColorFieldProps) {
   const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
   const colourRelatedVariables = useRelatedVariables(
     routes.editor.colours,
-    props.name
+    props.variable.name
   );
 
   useClickAway(ref, createOpenHandler(false));
@@ -43,17 +43,20 @@ export const ColorField = function (props: IColorFieldProps) {
             readOnly={props.readOnly}
             type="text"
             tabIndex={-1}
-            value={props.value}
+            value={props.variable.value}
           />
           <span className={classes.ColorPreview}>
-            <ColorPreview color={props.value} className={classes.ColorSwatch} />
+            <ColorPreview
+              color={props.variable.value}
+              className={classes.ColorSwatch}
+            />
           </span>
         </button>
       </FieldWrapper>
       <DropDown open={open} ref={ref}>
         <div className={classes.PickerContainer}>
           <ChromePicker
-            color={props.value}
+            color={props.variable.value}
             onChange={(value) =>
               Option(props.onChange).mapOrElse(
                 () => void 0,
