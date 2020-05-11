@@ -20,7 +20,11 @@ export default function EditorColoursItem(props: IEditorColoursItemProps) {
       transition={{ duration: 0.3 }}
       positionTransition={{ ease: "easeOut" }}
     >
-      <ColorSwatch propName={props.variable.name} value={values.value} />
+      <ColorSwatch
+        key={props.variable._id}
+        propName={props.variable.name}
+        value={values.value}
+      />
     </motion.div>
   );
 }
