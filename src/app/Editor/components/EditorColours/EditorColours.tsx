@@ -1,15 +1,13 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
 import routes from "@routes";
-import { useLocation } from "react-router-dom";
-import useVariables from "../../hooks/useVariables";
+import { AnimatePresence } from "framer-motion";
+import React from "react";
 import { defineMessages, useIntl } from "react-intl";
-import { motion, AnimatePresence } from "framer-motion";
-import { EditorWrapper } from "../EditorWrapper";
-import { EditorHeader } from "../EditorHeader";
-import { ColorSwatch } from "../ColorSwatch";
-import classes from "./EditorColours.module.css";
+import { Route, Switch, useLocation } from "react-router-dom";
+import useVariables from "../../hooks/useVariables";
 import EditorColoursItem from "../EditorColoursItem";
+import { EditorHeader } from "../EditorHeader";
+import { EditorWrapper } from "../EditorWrapper";
+import classes from "./EditorColours.module.css";
 
 const messages = defineMessages({
   title: {
