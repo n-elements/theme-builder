@@ -1,13 +1,12 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
 import routes from "@routes";
-import { useLocation } from "react-router-dom";
-import useVariables from "../../hooks/useVariables";
+import { AnimatePresence } from "framer-motion";
+import React from "react";
 import { defineMessages, useIntl } from "react-intl";
-import { motion, AnimatePresence } from "framer-motion";
-import { EditorWrapper } from "../EditorWrapper";
+import { Route, Switch, useLocation } from "react-router-dom";
+import useVariables from "../../hooks/useVariables";
+import EditorColoursItem from "../EditorColoursItem";
 import { EditorHeader } from "../EditorHeader";
-import { ColorSwatch } from "../ColorSwatch";
+import { EditorWrapper } from "../EditorWrapper";
 import classes from "./EditorColours.module.css";
 
 const messages = defineMessages({
@@ -40,20 +39,7 @@ export const EditorColours = function () {
           <div className={classes.ColorsList}>
             <AnimatePresence>
               {variables.map((variable, index) => (
-                <motion.div
-                  key={variable._id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0, x: 10 }}
-                  transition={{ duration: 0.3 }}
-                  positionTransition={{ ease: "easeOut" }}
-                >
-                  <ColorSwatch
-                    key={index}
-                    propName={variable.name}
-                    value={variable.value}
-                  />
-                </motion.div>
+                <EditorColoursItem key={index} variable={variable} />
               ))}
             </AnimatePresence>
           </div>

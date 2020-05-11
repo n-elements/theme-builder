@@ -1,11 +1,18 @@
-import { ColorField } from "@components/ColorField";
+import { ColorField } from "@app/Editor/components/ColorField";
 import React from "react";
 import { IVariable } from "@store/theming/types";
 import classes from "./Variable.module.css";
+import {
+  OnChangeRelationHandler,
+  OnChangeHandler,
+  OnBreakReferenceHandler,
+} from "@app/Editor/types/fields";
 
 export interface IVariableField {
   variable: IVariable;
-  onChange(value?: string): void;
+  onBreakReference: OnBreakReferenceHandler;
+  onChange: OnChangeHandler;
+  onChangeRelation: OnChangeRelationHandler;
 }
 
 export default function VariableField(props: IVariableField) {
@@ -14,9 +21,10 @@ export default function VariableField(props: IVariableField) {
       return (
         <ColorField
           className={classes.VariableInput}
-          defaultValue={props.variable.defaultValue}
+          variable={props.variable}
+          onBreakReference={props.onBreakReference}
           onChange={props.onChange}
-          value={props.variable.value}
+          onChangeRelation={props.onChangeRelation}
           readOnly
         />
       );

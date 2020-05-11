@@ -1,22 +1,59 @@
-import React, { ReactElement } from "react";
-import classes from "./VariableSearch.module.css";
+import { formatVariableName } from "@app/Editor/helpers/variable";
+import useRelatedVariables from "@app/Editor/hooks/useRelatedVariables";
+import { OnChangeRelationHandler } from "@app/Editor/types/fields";
+import { IVariable } from "@store/theming/types";
 import clsx from "clsx";
+import React, { ComponentPropsWithRef } from "react";
+import { defineMessages, useIntl } from "react-intl";
+import { Maybe, Option } from "tiinvo";
+import classes from "./VariableSearch.module.css";
 
-export interface IVariableSearchProps extends PropsClass {
-  children:
-    | ReactElement<HTMLOptionElement>
-    | Array<ReactElement<HTMLOptionElement>>;
+const messages = defineMessages({
+  searchPlaceholder: {
+    defaultMessage: "Search variable",
+    id: "app.Editor.components.VariableSearch.searchPlaceholder",
+  },
+});
+
+export interface IVariableSearchProps
+  extends Omit<ComponentPropsWithRef<"div">, "children"> {
+  onChangeRelation: OnChangeRelationHandler;
+  variable: IVariable;
 }
 
 export const VariableSearch = function ({
-  children,
   className,
+  onChangeRelation,
+  variable,
   ...attributes
 }: IVariableSearchProps) {
+  const intl = useIntl();
+  const relatedVariables = useRelatedVariables(variable);
+
   return (
-    <div className={clsx(classes.VariableSearch, className)} {...attributes}>
-      <input type="text" list="variables" placeholder="Search variable" />
-      <datalist id="variables">{children}</datalist>
+    <div
+      className={clsx(classes.VariableSearch, className)}
+      {...attributes}
+      hidden={Maybe(relatedVariables.length).isNothing()}
+    >
+      <input
+        onChange={(event) => {
+          Option(onChangeRelation).mapOrElse(
+            () => void 0,
+            (fn) => fn(event.target.value)
+          );
+        }}
+        type="text"
+        list="variables"
+        placeholder={intl.formatMessage(messages.searchPlaceholder)}
+      />
+      <datalist id="variables">
+        {relatedVariables.map((variable, index) => (
+          <option key={index} value={variable.name}>
+            {formatVariableName(variable.name)}
+          </option>
+        ))}
+      </datalist>
     </div>
   );
 };
