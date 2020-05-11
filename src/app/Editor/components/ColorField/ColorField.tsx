@@ -72,20 +72,9 @@ export const ColorField = function (props: IColorFieldProps) {
           />
         </div>
         <VariableSearch
-          hidden={Maybe(colourRelatedVariables.length).isNothing()}
-          onChange={(event) => {
-            Option(props.onChangeRelation).mapOrElse(
-              () => void 0,
-              (fn) => fn(event.target.value)
-            );
-          }}
-        >
-          {colourRelatedVariables.map((variable, index) => (
-            <option key={index} value={variable.name}>
-              {formatVariableName(variable.name)}
-            </option>
-          ))}
-        </VariableSearch>
+          onChangeRelation={props.onChangeRelation}
+          variable={props.variable}
+        />
       </DropDown>
     </div>
   );

@@ -6,6 +6,11 @@ import React, {
 import classes from "./VariableSearch.module.css";
 import { defineMessages, useIntl } from "react-intl";
 import clsx from "clsx";
+import { OnChangeRelationHandler } from "@app/Editor/types/fields";
+import { IVariable } from "@store/theming/types";
+import useRelatedVariables from "@app/Editor/hooks/useRelatedVariables";
+import { formatVariableName } from "@app/Editor/helpers/variable";
+import { Option, Maybe } from "tiinvo";
 
 const messages = defineMessages({
   searchPlaceholder: {
@@ -15,30 +20,44 @@ const messages = defineMessages({
 });
 
 export interface IVariableSearchProps
-  extends Omit<ComponentPropsWithRef<"div">, "children" | "onChange"> {
-  children:
-    | ReactElement<HTMLOptionElement>
-    | Array<ReactElement<HTMLOptionElement>>;
-  onChange: ChangeEventHandler<HTMLInputElement>;
+  extends Omit<ComponentPropsWithRef<"div">, "children"> {
+  onChangeRelation: OnChangeRelationHandler;
+  variable: IVariable;
 }
 
 export const VariableSearch = function ({
-  children,
   className,
-  onChange,
+  onChangeRelation,
+  variable,
   ...attributes
 }: IVariableSearchProps) {
   const intl = useIntl();
+  const relatedVariables = useRelatedVariables(variable.domain, variable.name);
 
   return (
-    <div className={clsx(classes.VariableSearch, className)} {...attributes}>
+    <div
+      className={clsx(classes.VariableSearch, className)}
+      {...attributes}
+      hidden={Maybe(relatedVariables.length).isNothing()}
+    >
       <input
-        onChange={onChange}
+        onChange={(event) => {
+          Option(onChangeRelation).mapOrElse(
+            () => void 0,
+            (fn) => fn(event.target.value)
+          );
+        }}
         type="text"
         list="variables"
         placeholder={intl.formatMessage(messages.searchPlaceholder)}
       />
-      <datalist id="variables">{children}</datalist>
+      <datalist id="variables">
+        {relatedVariables.map((variable, index) => (
+          <option key={index} value={variable.name}>
+            {formatVariableName(variable.name)}
+          </option>
+        ))}
+      </datalist>
     </div>
   );
 };
