@@ -28,7 +28,7 @@ export const VariableSearch = function ({
   ...attributes
 }: IVariableSearchProps) {
   const intl = useIntl();
-  const relatedVariables = useRelatedVariables(variable.domain, variable.name);
+  const relatedVariables = useRelatedVariables(variable);
 
   return (
     <div
