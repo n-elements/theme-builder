@@ -25,6 +25,7 @@
     "types/*"
   ],
   "exclude": [
-    "src/extracted"
+    "src/extracted",
+    "src/components/Icons",
   ]
 }
