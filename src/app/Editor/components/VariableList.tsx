@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useLocation } from "react-router-dom";
 import useVariables from "../hooks/useVariables";
 import { motion, AnimatePresence } from "framer-motion";
@@ -18,7 +18,7 @@ export default function VariableList({
   const variables = useVariables(location.pathname);
 
   return (
-    <>
+    <Fragment>
       <AnimatePresence initial={false}>
         {variables.map((variable, index) => (
           <motion.div
@@ -42,7 +42,7 @@ export default function VariableList({
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </Fragment>
   );
 }
 

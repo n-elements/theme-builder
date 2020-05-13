@@ -8,6 +8,7 @@ import { Option } from "tiinvo";
 import { IFieldProps } from "../../types/fields";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./UnitField.module.css";
+import { Button } from "@components/Button";
 
 export interface IUnitFieldProps extends IFieldProps {
   readOnly?: boolean;
@@ -24,7 +25,7 @@ export const UnitField = function (props: IUnitFieldProps) {
   return (
     <div className={clsx(classes.ColorField, props.className)}>
       <FieldWrapper>
-        <button className={classes.Field} onClick={createOpenHandler(true)}>
+        <div className={classes.Field}>
           <input
             className={classes.Input}
             onChange={(event) =>
@@ -34,12 +35,19 @@ export const UnitField = function (props: IUnitFieldProps) {
               )
             }
             readOnly={props.readOnly}
-            type="text"
+            type="number"
             tabIndex={-1}
             value={values.displayValue}
           />
-          <span className={classes.ColorPreview}>A</span>
-        </button>
+          <Button
+            secondary
+            small
+            onClick={createOpenHandler(true)}
+            className={classes.UnitPreview}
+          >
+            REM
+          </Button>
+        </div>
       </FieldWrapper>
       <DropDown open={open} ref={ref}>
         <VariableSearch

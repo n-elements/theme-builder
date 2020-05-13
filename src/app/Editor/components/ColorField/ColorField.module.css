@@ -19,10 +19,6 @@
 }
 
 .ColorPreview {
-  --ne-button-background: none;
-  --ne-button-hover-background: none;
-  --ne-button-active-background: none;
-
   all: unset;
   flex-shrink: 0;
   padding: 8px 16px;

@@ -14,45 +14,6 @@
   align-items: center;
 }
 
-.Input {
-  pointer-events: none;
-}
-
-.ColorPreview {
-  --ne-button-background: none;
-  --ne-button-hover-background: none;
-  --ne-button-active-background: none;
-
-  all: unset;
-  flex-shrink: 0;
-  padding: 8px 16px;
-}
-
-.ColorSwatch {
-  pointer-events: none;
-}
-
-.PickerContainer {
-  border-radius: 8px 8px 0 0;
-  overflow: hidden;
-
-  /* stylelint-disable */
-
-  & :global(.chrome-picker) {
-    box-shadow: none !important;
-    background-color: transparent !important;
-    width: 100% !important;
-  }
-
-  & :global(svg) {
-    fill: var(--ne-global-foreground) !important;
-    background: color-mod(var(--ne-global-foreground) alpha(10%)) !important;
-  }
-
-  & :global(input) {
-    background-color: var(--ne-textfield-background) !important;
-    color: inherit !important;
-    border: 0 !important;
-    box-shadow: inset 0 0 0 1px var(--shell-border-color) !important;
-  }
+.UnitPreview {
+  margin-right: 3px;
 }
