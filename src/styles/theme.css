@@ -17,6 +17,7 @@
   --ne-button-hover-foreground: var(--ne-button-foreground);
   --ne-button-active-foreground: var(--ne-button-foreground);
   --ne-button-disabled-foreground: env(--secondary-90);
+  --ne-textfield-border: 1px solid env(--secondary-80);
   --ne-textfield-background: var(--ne-global-background);
   --ne-textfield-selection-background: var(--ne-selection-foreground);
   --ne-textfield-selection-foreground: var(--ne-selection-background);
@@ -25,8 +26,8 @@
   --secondary-button-hover-background: env(--secondary-80);
   --shell-border-color: env(--secondary-70);
   --shell-canvas-background: color-mod(env(--secondary-70) alpha(50%));
-  --prop-field-background: var(--ne-global-background);
-  --prop-field-border-color: env(--secondary-80);
+  --prop-field-background: var(--ne-textfield-background);
+  --prop-field-border: 1px solid env(--secondary-80);
   --labels-foreground: env(--contrast-70);
   --prop-field-name: env(--contrast-70);
   --prop-field-actions-foreground: env(--secondary-100);
@@ -60,6 +61,7 @@
     --ne-button-hover-foreground: var(--ne-button-foreground);
     --ne-button-active-foreground: var(--ne-button-foreground);
     --ne-button-disabled-foreground: env(--secondary-90);
+    --ne-textfield-border: 1px solid env(--contrast-80);
     --ne-textfield-background: env(--contrast-100);
     --ne-textfield-selection-background: var(--ne-selection-foreground);
     --ne-textfield-selection-foreground: var(--ne-selection-background);
@@ -69,8 +71,8 @@
     --shell-border-color: env(--contrast-80);
     --shell-canvas-background: env(--contrast-100);
     --prop-field-name: env(--secondary-100);
-    --prop-field-background: env(--contrast-100);
-    --prop-field-border-color: env(--contrast-80);
+    --prop-field-background: var(--ne-textfield-background);
+    --prop-field-border: 1px solid env(--contrast-80);
     --labels-foreground: env(--contrast-70);
     --prop-field-actions-foreground: env(--contrast-70);
     --prop-field-actions-hover-foreground: env(--accent-100);

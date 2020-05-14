@@ -23,7 +23,7 @@ export const UnitField = function (props: IUnitFieldProps) {
   useClickAway(ref, createOpenHandler(false));
 
   return (
-    <div className={clsx(classes.ColorField, props.className)}>
+    <div className={clsx(classes.UnitField, props.className)}>
       <FieldWrapper>
         <div className={classes.Field}>
           <input

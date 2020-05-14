@@ -41,8 +41,8 @@ export function Variable({
 
   return (
     <fieldset
+      className={clsx(classes.Variable, className)}
       tabIndex={-1}
-      className={clsx(classes.ShellLayout, className)}
       {...attributes}
     >
       <div className={classes.FieldHeader}>
