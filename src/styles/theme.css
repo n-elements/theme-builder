@@ -35,6 +35,9 @@
   --theme-switcher-foreground: env(--secondary-100);
   --theme-switcher-hover-foreground: env(--contrast-70);
   --dropdown-background: var(--ne-global-background);
+  --buttongroup-border-color: env(--secondary-80);
+  --buttongroup-foreground: env(--contrast-70);
+  --buttongroup-background: env(--secondary-70);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -75,5 +78,8 @@
     --theme-switcher-foreground: env(--contrast-70);
     --theme-switcher-hover-foreground: env(--secondary-100);
     --dropdown-background: env(--contrast-80);
+    --buttongroup-border-color: env(--contrast-70);
+    --buttongroup-foreground: env(--secondary-100);
+    --buttongroup-background: env(--contrast-90);
   }
 }

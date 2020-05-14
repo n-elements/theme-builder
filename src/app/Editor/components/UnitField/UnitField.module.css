@@ -17,3 +17,32 @@
 .UnitPreview {
   margin-right: 3px;
 }
+
+.UnitsContainer {
+  display: flex;
+  margin: 16px 16px 0 16px;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid var(--buttongroup-border-color);
+  background-color: var(--buttongroup-background);
+  color: var(--buttongroup-foreground);
+}
+
+.UnitButton {
+  --ne-button-radius: 0;
+
+  outline-offset: -2px;
+  background: transparent;
+  color: inherit;
+  flex-grow: 1;
+
+  &[aria-checked='true'] {
+    color: env(--accent-100);
+  }
+}
+
+.UnitButton + .UnitButton {
+  --ne-button-active-border: initial;
+
+  box-shadow: inset 1px 0 0 var(--buttongroup-border-color);
+}

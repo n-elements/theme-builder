@@ -35,7 +35,7 @@ export const UnitField = function (props: IUnitFieldProps) {
               )
             }
             readOnly={props.readOnly}
-            type="number"
+            type="text"
             tabIndex={-1}
             value={values.displayValue}
           />
@@ -50,6 +50,66 @@ export const UnitField = function (props: IUnitFieldProps) {
         </div>
       </FieldWrapper>
       <DropDown open={open} ref={ref}>
+        <div
+          className={classes.UnitsContainer}
+          role="radiogroup"
+          aria-label="Set the value unit"
+        >
+          <Button
+            role="radio"
+            aria-checked="true"
+            className={classes.UnitButton}
+            secondary
+            small
+          >
+            PX
+          </Button>
+          <Button
+            role="radio"
+            aria-checked="false"
+            className={classes.UnitButton}
+            secondary
+            small
+          >
+            EM
+          </Button>
+          <Button
+            role="radio"
+            aria-checked="false"
+            className={classes.UnitButton}
+            secondary
+            small
+          >
+            %
+          </Button>
+          <Button
+            role="radio"
+            aria-checked="false"
+            className={classes.UnitButton}
+            secondary
+            small
+          >
+            REM
+          </Button>
+          <Button
+            role="radio"
+            aria-checked="false"
+            className={classes.UnitButton}
+            secondary
+            small
+          >
+            NONE
+          </Button>
+          <Button
+            role="radio"
+            aria-checked="false"
+            className={classes.UnitButton}
+            secondary
+            small
+          >
+            INH
+          </Button>
+        </div>
         <VariableSearch
           onChangeRelation={props.onChangeRelation}
           variable={props.variable}

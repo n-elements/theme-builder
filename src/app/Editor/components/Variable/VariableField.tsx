@@ -34,7 +34,6 @@ export default function VariableField(props: IVariableField) {
           onBreakReference={props.onBreakReference}
           onChange={props.onChange}
           onChangeRelation={props.onChangeRelation}
-          readOnly
         />
       );
     default:
