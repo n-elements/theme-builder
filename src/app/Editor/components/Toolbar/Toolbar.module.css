@@ -7,7 +7,6 @@
 
 .Scroller {
   flex-grow: 1;
-  padding: 24px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   user-select: none;

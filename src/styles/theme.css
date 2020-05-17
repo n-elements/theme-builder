@@ -21,6 +21,11 @@
   --ne-textfield-background: var(--ne-global-background);
   --ne-textfield-selection-background: var(--ne-selection-foreground);
   --ne-textfield-selection-foreground: var(--ne-selection-background);
+  --ne-details-background: none;
+  --ne-details-border-radius: 0;
+  --ne-details-summary-background: color-mod(env(--secondary-70) alpha(20%));
+  --ne-details-shadow: none;
+  --ne-details-separator: 1px solid var(--shell-border-color);
   --secondary-button-background: env(--secondary-70);
   --secondary-button-foreground: env(--accent-100);
   --secondary-button-hover-background: env(--secondary-80);
@@ -65,6 +70,11 @@
     --ne-textfield-background: env(--contrast-100);
     --ne-textfield-selection-background: var(--ne-selection-foreground);
     --ne-textfield-selection-foreground: var(--ne-selection-background);
+    --ne-details-background: none;
+    --ne-details-border-radius: 0;
+    --ne-details-summary-background: color-mod(env(--contrast-100) alpha(20%));
+    --ne-details-shadow: none;
+    --ne-details-icon: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" fill="#fff" width="12" height="12"><path d="M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z"/></svg>');
     --secondary-button-background: env(--contrast-80);
     --secondary-button-foreground: env(--secondary-70);
     --secondary-button-hover-background: env(--contrast-70);

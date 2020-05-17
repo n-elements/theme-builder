@@ -7,8 +7,8 @@
   --ultra-small-font-size: 0.812rem;
   --ne-headings-scale: 1.125;
   --ne-body-font-size: var(--regular-font-size);
-  --ne-textfield-border: 1px solid var(--prop-field-border-color);
   --ne-textfield-y-padding: 7px;
   --ne-textfield-x-padding: 16px;
   --ne-textfield-min-height: auto;
+  --ne-details-max-height: auto;
 }

@@ -9,5 +9,6 @@
 }
 
 .Input {
+  --ne-textfield-background: transparent;
   --ne-textfield-border: none;
 }
