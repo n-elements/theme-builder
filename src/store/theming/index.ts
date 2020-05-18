@@ -7,6 +7,7 @@ import {
   makeRelation,
   breakRelation,
 } from "./helpers";
+import preset from "./variables-preset";
 
 interface ITheming {
   name: string;
@@ -17,7 +18,7 @@ interface ITheming {
 function initialState(): ITheming {
   return {
     name: "theme-name",
-    variables: [],
+    variables: preset(),
     variablesCounter: 0,
   };
 }
