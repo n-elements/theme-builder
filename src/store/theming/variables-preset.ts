@@ -6,6 +6,7 @@ import {
   VariableValue,
 } from "./types";
 import routes from "@routes";
+import { assignId } from "./helpers";
 
 const domains = routes.editor;
 
@@ -22,12 +23,12 @@ function create(
   type: VariableType,
   value: VariableValue
 ): IVariable {
-  return {
+  return assignId({
     domain,
     name,
     type,
     value,
-  };
+  });
 }
 
 export default function preset(): VariableArray {
@@ -39,13 +40,14 @@ export default function preset(): VariableArray {
   );
 
   return [
-    create(domains.colours, "ne-global-background", "color", "#fff"),
-    create(domains.colours, "ne-global-foreground", "color", "#000"),
+    accentvariable,
+    create(domains.document, "ne-global-background", "color", "#fff"),
+    create(domains.document, "ne-global-foreground", "color", "#000"),
     create(domains.typography, "ne-root-font-size", "unit", "100%"),
     create(domains.typography, "ne-body-font-size", "unit", "1.125rem"),
-    create(domains.colours, "ne-selection-foreground", "color", "#fff"),
+    create(domains.document, "ne-selection-foreground", "color", "#fff"),
     create(
-      domains.colours,
+      domains.document,
       "ne-selection-background",
       "color",
       "hsl(233, 64%, 72%)"
