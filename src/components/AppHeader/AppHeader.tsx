@@ -3,10 +3,10 @@ import { Logo } from "@components/Logo";
 import clsx from "clsx";
 import classes from "./AppHeader.module.css";
 import { Github } from "@components/Icons/16x";
-import { Edit } from "@components/Icons/12x";
 import { Link } from "react-router-dom";
 import routes from "@routes";
 import { ThemeSwitcher } from "@components/ThemeSwitcher";
+import { ThemeName } from "@app/Editor/components/ThemeName";
 
 export interface IAppHeaderProps extends PropsClass {
   children?: ReactNode;
@@ -22,11 +22,7 @@ export const AppHeader = function ({
         <Logo width={20} />
       </Link>
       <div className={classes.HeaderContent}>
-        {/* pencil icon */}
-        <div>
-          <Edit />
-          theme-name
-        </div>
+        <ThemeName />
         <div className={classes.HeaderActions}>
           <ThemeSwitcher />
           <a

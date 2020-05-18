@@ -38,8 +38,8 @@ export const EditorColours = function () {
         >
           <div className={classes.ColorsList}>
             <AnimatePresence>
-              {variables.map((variable, index) => (
-                <EditorColoursItem key={index} variable={variable} />
+              {variables.map((variable) => (
+                <EditorColoursItem key={variable._id} variable={variable} />
               ))}
             </AnimatePresence>
           </div>

@@ -1,16 +1,17 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useLocation } from "react-router-dom";
-import useVariables from "../hooks/useVariables";
+import useVariables from "../../hooks/useVariables";
 import { motion, AnimatePresence } from "framer-motion";
-import { AddVariable } from "./AddVariable";
-import { Variable } from "./Variable";
+import { AddVariable } from "../AddVariable";
+import { Variable } from "../Variable";
+import classes from "./VariableList.module.css";
 
 export interface IVariableListProps {
   showActions?: boolean;
   showAdd?: boolean;
 }
 
-export default function VariableList({
+export const VariableList = function ({
   showActions,
   showAdd,
 }: IVariableListProps) {
@@ -18,7 +19,7 @@ export default function VariableList({
   const variables = useVariables(location.pathname);
 
   return (
-    <>
+    <Fragment>
       <AnimatePresence initial={false}>
         {variables.map((variable, index) => (
           <motion.div
@@ -26,6 +27,7 @@ export default function VariableList({
             initial={{ opacity: 0, y: -5 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, x: 10, transition: { duration: 0.1 } }}
+            className={classes.VariableItem}
             transition={{ duration: 0.1, delay: 0.13 }}
             positionTransition={{ ease: "easeOut" }}
           >
@@ -42,9 +44,9 @@ export default function VariableList({
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </Fragment>
   );
-}
+};
 
 VariableList.defaultProps = {
   showAdd: false,
