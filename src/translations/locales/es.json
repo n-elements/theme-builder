@@ -5,6 +5,8 @@
   "app.Editor.components.EditorColours.subtitle": "List of all the available colors",
   "app.Editor.components.EditorDocument.title": "Document Settings",
   "app.Editor.components.EditorDocument.subtitle": "Global document configurations like root font-size and text selection color",
+  "app.Editor.components.EditorTypography.title": "Typography Settings",
+  "app.Editor.components.EditorTypography.subtitle": "Typography related elements configuration",
   "app.Editor.components.AddVariable.add": "Add item",
   "app.Editor.components.AddVariable.varname": "my-color-{length}",
   "app.Editor.components.VariableSearch.searchPlaceholder": "Search variable",

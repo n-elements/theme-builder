@@ -6,7 +6,6 @@ export default function ElementsVariables() {
   return (
     // <VariableList />
 
-    // This should be inside VariableList for Elements. It's here as UI demo
     <div ne-details-group="true">
       <Expander summary="Buttons">
         <p>
