@@ -1,24 +1,34 @@
 import useVariableValues from "@app/Editor/hooks/useVariableValues";
+import { Button } from "@components/Button";
 import { DropDown } from "@components/DropDown";
 import { FieldWrapper } from "@components/FieldWrapper";
 import clsx from "clsx";
 import React, { useRef, useState } from "react";
 import { useClickAway } from "react-use";
 import { Option } from "tiinvo";
+import { guessUnitType, UnitType } from "../../helpers/unit";
 import { IFieldProps } from "../../types/fields";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./UnitField.module.css";
-import { Button } from "@components/Button";
 
 export interface IUnitFieldProps extends IFieldProps {
   readOnly?: boolean;
 }
 
+function getAriaChecked(
+  currentValue: UnitType,
+  expectedType: UnitType
+): "true" | "false" {
+  return currentValue === expectedType ? "true" : "false";
+}
+
 export const UnitField = function (props: IUnitFieldProps) {
   const ref = useRef(null);
-  const [open, setOpen] = useState(false);
-  const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
   const values = useVariableValues(props.variable);
+  const [open, setOpen] = useState(false);
+  const [unit, setUnit] = useState(guessUnitType(values.value));
+  const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
+  const createSetUnitHandler = (unit: UnitType) => () => setUnit(unit);
 
   useClickAway(ref, createOpenHandler(false));
 
@@ -31,7 +41,11 @@ export const UnitField = function (props: IUnitFieldProps) {
             onChange={(event) =>
               Option(props.onChange).mapOrElse(
                 () => void 0,
-                (fn) => fn(event.target.value)
+                (fn) => {
+                  const newValue = event.target.value;
+                  fn(newValue);
+                  setUnit(guessUnitType(newValue));
+                }
               )
             }
             readOnly={props.readOnly}
@@ -45,7 +59,7 @@ export const UnitField = function (props: IUnitFieldProps) {
             onClick={createOpenHandler(true)}
             className={classes.UnitPreview}
           >
-            REM
+            {unit}
           </Button>
         </div>
       </FieldWrapper>
@@ -57,54 +71,60 @@ export const UnitField = function (props: IUnitFieldProps) {
         >
           <Button
             role="radio"
-            aria-checked="true"
+            aria-checked={getAriaChecked(unit, UnitType.PX)}
             className={classes.UnitButton}
             secondary
+            onClick={createSetUnitHandler(UnitType.PX)}
             small
           >
-            PX
+            {UnitType.PX}
           </Button>
           <Button
             role="radio"
-            aria-checked="false"
+            aria-checked={getAriaChecked(unit, UnitType.EM)}
             className={classes.UnitButton}
             secondary
+            onClick={createSetUnitHandler(UnitType.EM)}
             small
           >
             EM
           </Button>
           <Button
             role="radio"
-            aria-checked="false"
+            aria-checked={getAriaChecked(unit, UnitType.PERC)}
             className={classes.UnitButton}
             secondary
+            onClick={createSetUnitHandler(UnitType.PERC)}
             small
           >
             %
           </Button>
           <Button
             role="radio"
-            aria-checked="false"
+            aria-checked={getAriaChecked(unit, UnitType.REM)}
             className={classes.UnitButton}
             secondary
+            onClick={createSetUnitHandler(UnitType.REM)}
             small
           >
             REM
           </Button>
           <Button
             role="radio"
-            aria-checked="false"
+            aria-checked={getAriaChecked(unit, UnitType.NONE)}
             className={classes.UnitButton}
             secondary
+            onClick={createSetUnitHandler(UnitType.NONE)}
             small
           >
             NONE
           </Button>
           <Button
             role="radio"
-            aria-checked="false"
+            aria-checked={getAriaChecked(unit, UnitType.INH)}
             className={classes.UnitButton}
             secondary
+            onClick={createSetUnitHandler(UnitType.INH)}
             small
           >
             INH

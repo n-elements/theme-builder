@@ -7,6 +7,7 @@ import {
 
 export interface IUseVariableValuesReturnValue {
   displayValue: string;
+  isReferencingOtherVariable: boolean;
   value: VariableValue;
 }
 
@@ -17,6 +18,7 @@ export default function useVariableValues(variable: IVariable) {
     maybeRelatedVariable
   );
   const value = getValueOrRelatedVariableValue(variable, maybeRelatedVariable);
+  const isReferencingOtherVariable = maybeRelatedVariable.isSome();
 
-  return { displayValue, value };
+  return { displayValue, isReferencingOtherVariable, value };
 }
