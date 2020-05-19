@@ -1,3 +1,10 @@
+export interface IMultiunitValue<T = string> {
+  bottom: T;
+  left: T;
+  right: T;
+  top: T;
+}
+
 export enum UnitType {
   EM = "EM",
   INH = "INH",
@@ -5,6 +12,23 @@ export enum UnitType {
   PERC = "%",
   PX = "PX",
   REM = "REM",
+}
+
+export function sanitizeMultiunitValue(value: string): string {
+  return value.trim().replace(/\s{2,}/g, " ");
+}
+
+export function splitMultiUnitValue(value: string): IMultiunitValue {
+  const [top = "", right, bottom, left] = sanitizeMultiunitValue(value).split(
+    " "
+  );
+
+  return {
+    top,
+    right: right ?? top,
+    bottom: bottom ?? top,
+    left: left ?? right ?? top,
+  };
 }
 
 export function guessUnitType(input?: string): UnitType {
