@@ -40,7 +40,7 @@ export const ColorField = function (props: IColorFieldProps) {
             readOnly={props.readOnly}
             type="text"
             tabIndex={-1}
-            value={values.displayValue ? values.displayValue : defaultColor}
+            value={values.displayValue || defaultColor}
           />
           <span className={classes.ColorPreview}>
             <ColorPreview
@@ -53,9 +53,9 @@ export const ColorField = function (props: IColorFieldProps) {
       <DropDown open={open}>
         <div className={classes.PickerContainer}>
           <ChromePicker
-            color={
-              values.value ? Color(values.value).hsl().toString() : defaultColor
-            }
+            color={Color(values.value || defaultColor)
+              .hsl()
+              .toString()}
             onChange={(value) => {
               Option(props.onChange).mapOrElse(
                 () => void 0,
