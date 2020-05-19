@@ -4,8 +4,7 @@ import useThemeModeSwitch from "@hooks/useThemeModeSwitch";
 import clsx from "clsx";
 import { Theme } from "@store/config";
 import { Helmet } from "react-helmet";
-import { Sun, Moon } from "@components/Icons/16x";
-import { Auto } from "@components/Icons/16x/16x";
+import { Auto, Sun, Moon } from "@components/Icons/16x";
 
 export interface IThemeSwitcherProps extends PropsClass {}
 
