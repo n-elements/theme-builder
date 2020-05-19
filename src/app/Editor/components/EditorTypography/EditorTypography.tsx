@@ -58,6 +58,7 @@ export const EditorTypography = function () {
             </blockquote>
 
             <p>
+              {/* eslint-disable-next-line */}
               <a
                 href="https://native-elements.stackblitz.io"
                 target="_blank"
@@ -67,6 +68,7 @@ export const EditorTypography = function () {
               </a>
             </p>
             <p>
+              {/* eslint-disable-next-line */}
               <a>
                 This is a link without <em>href</em>
               </a>
@@ -153,6 +155,7 @@ export const EditorTypography = function () {
               <code>&lt;kbd&gt;</code> tag
             </p>
             <p>
+              {/* eslint-disable-next-line */}
               <a
                 href="https://native-elements.stackblitz.io"
                 target="_blank"
