@@ -38,7 +38,7 @@ export const UnitField = function (props: IUnitFieldProps) {
         <div className={classes.Field}>
           <input
             className={classes.Input}
-            onChange={(event) =>
+            onChange={(event) => {
               Option(props.onChange).mapOrElse(
                 () => void 0,
                 (fn) => {
@@ -46,8 +46,12 @@ export const UnitField = function (props: IUnitFieldProps) {
                   fn(newValue);
                   setUnit(guessUnitType(newValue));
                 }
-              )
-            }
+              );
+              Option(props.onBreakReference).mapOrElse(
+                () => void 0,
+                (fn) => fn()
+              );
+            }}
             readOnly={props.readOnly}
             type="text"
             tabIndex={-1}
