@@ -65,7 +65,8 @@ export const ColorField = function (props: IColorFieldProps) {
                       value.rgb.a ?? 1
                     )
                       .hsl()
-                      .toString()
+                      .round()
+                      .string()
                   )
               );
               Option(props.onBreakReference).mapOrElse(

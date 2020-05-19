@@ -1,19 +1,32 @@
 .Swatch {
   display: block;
-  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  background-image: url('data:image/svg+xml,<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="6" height="6" fill="#808080" fill-opacity="0.5"/><rect x="6" y="6" width="6" height="6" fill="#808080" fill-opacity="0.5"/></svg>');
+  background-size: var(--grid-size, 65%);
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-color: var(--color);
+    box-shadow: inherit;
+    border-radius: inherit;
+  }
 
   &[data-size='small'] {
-    --ne-color-radius: 2px;
-    --ne-color-shadow: inset 0 0 0 1px hsl(0deg 0% 0% / 10%);
-
+    box-shadow: inset 0 0 0 1px hsl(0deg 0% 0% / 10%);
+    border-radius: 2px;
     width: 16px;
     height: 16px;
   }
 
   &[data-size='big'] {
-    --ne-color-radius: 16px;
-    --ne-color-shadow: inset 0 0 0 2px hsl(0deg 0% 0% / 10%);
+    --grid-size: 22%;
 
+    box-shadow: inset 0 0 0 2px hsl(0deg 0% 0% / 10%);
+    border-radius: 16px;
     width: 88px;
     height: 88px;
   }

@@ -58,7 +58,7 @@ export const EditorTypography = function () {
             </blockquote>
 
             <p>
-              {/* eslint-disable-next-line */}
+              {/* eslint-disable */}
               <a
                 href="https://native-elements.stackblitz.io"
                 target="_blank"
