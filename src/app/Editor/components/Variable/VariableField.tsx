@@ -36,6 +36,15 @@ export default function VariableField(props: IVariableField) {
           onChangeRelation={props.onChangeRelation}
         />
       );
+    case "unit-multiple":
+      return (
+        <UnitField
+          variable={props.variable}
+          onBreakReference={props.onBreakReference}
+          onChange={props.onChange}
+          onChangeRelation={props.onChangeRelation}
+        />
+      );
     default:
       return null;
   }
