@@ -52,7 +52,11 @@ export const ColorField = function (props: IColorFieldProps) {
       <DropDown open={open}>
         <div className={classes.PickerContainer}>
           <ChromePicker
-            color={Color(values.value).hsl().toString()}
+            color={
+              values.value
+                ? Color(values.value).hsl().toString()
+                : "hsl(0, 0, 0)"
+            }
             onChange={(value) => {
               Option(props.onChange).mapOrElse(
                 () => void 0,

@@ -18,7 +18,9 @@ export const ColorPreview = function ({
   return (
     <span
       className={clsx(classes.Swatch, className)}
-      style={{ "--color": Color(color).rgb() } as CSSProperties}
+      style={
+        { "--color": color ? Color(color).rgb() : "#000" } as CSSProperties
+      }
       data-size={size}
       {...attributes}
     ></span>
