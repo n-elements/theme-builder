@@ -4,7 +4,17 @@ export type VariableDomain = string;
 
 export type VariableId = string;
 
-export type VariableType = "color" | "unit" | "text" | "url";
+export type VariableType =
+  | "border"
+  | "box-shadow"
+  | "color"
+  | "font-family"
+  | "textfield-resize"
+  | "filter"
+  | "unit"
+  | "unit-multiple"
+  | "text"
+  | "url";
 
 export type VariableValue = string | undefined;
 

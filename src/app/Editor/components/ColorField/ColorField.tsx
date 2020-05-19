@@ -9,6 +9,7 @@ import { Option } from "tiinvo";
 import { IFieldProps } from "../../types/fields";
 import { ColorPreview } from "../ColorPreview";
 import { VariableSearch } from "../VariableSearch";
+import Color from "color";
 import classes from "./ColorField.module.css";
 
 export interface IColorFieldProps extends IFieldProps {
@@ -51,11 +52,21 @@ export const ColorField = function (props: IColorFieldProps) {
       <DropDown open={open} ref={ref}>
         <div className={classes.PickerContainer}>
           <ChromePicker
-            color={values.value}
+            color={Color(values.value).hsl().toString()}
             onChange={(value) => {
               Option(props.onChange).mapOrElse(
                 () => void 0,
-                (fn) => fn(value.hex)
+                (fn) =>
+                  fn(
+                    Color.rgb(
+                      value.rgb.r,
+                      value.rgb.g,
+                      value.rgb.b,
+                      value.rgb.a ?? 1
+                    )
+                      .hsl()
+                      .toString()
+                  )
               );
               Option(props.onBreakReference).mapOrElse(
                 () => void 0,
