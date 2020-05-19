@@ -91,7 +91,7 @@ export const UnitField = function (props: IUnitFieldProps) {
             onClick={createSetUnitHandler(UnitType.EM)}
             small
           >
-            EM
+            {UnitType.EM}
           </Button>
           <Button
             role="radio"
@@ -101,7 +101,7 @@ export const UnitField = function (props: IUnitFieldProps) {
             onClick={createSetUnitHandler(UnitType.PERC)}
             small
           >
-            %
+            {UnitType.PERC}
           </Button>
           <Button
             role="radio"
@@ -111,7 +111,7 @@ export const UnitField = function (props: IUnitFieldProps) {
             onClick={createSetUnitHandler(UnitType.REM)}
             small
           >
-            REM
+            {UnitType.REM}
           </Button>
           <Button
             role="radio"
@@ -121,7 +121,7 @@ export const UnitField = function (props: IUnitFieldProps) {
             onClick={createSetUnitHandler(UnitType.NONE)}
             small
           >
-            NONE
+            {UnitType.NONE}
           </Button>
           <Button
             role="radio"
@@ -131,7 +131,7 @@ export const UnitField = function (props: IUnitFieldProps) {
             onClick={createSetUnitHandler(UnitType.INH)}
             small
           >
-            INH
+            {UnitType.INH}
           </Button>
         </div>
         <VariableSearch
