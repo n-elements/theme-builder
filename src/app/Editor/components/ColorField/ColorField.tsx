@@ -25,7 +25,7 @@ export const ColorField = function (props: IColorFieldProps) {
   useClickAway(ref, createOpenHandler(false));
 
   return (
-    <div className={clsx(classes.ColorField, props.className)}>
+    <div className={clsx(classes.ColorField, props.className)} ref={ref}>
       <FieldWrapper>
         <button className={classes.Field} onClick={createOpenHandler(true)}>
           <input
@@ -49,7 +49,7 @@ export const ColorField = function (props: IColorFieldProps) {
           </span>
         </button>
       </FieldWrapper>
-      <DropDown open={open} ref={ref}>
+      <DropDown open={open}>
         <div className={classes.PickerContainer}>
           <ChromePicker
             color={Color(values.value).hsl().toString()}
