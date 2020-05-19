@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./ColorPreview.module.css";
 import clsx from "clsx";
+import Color from "color";
 
 export interface IColorPreviewProps extends PropsClass {
   color?: string;
@@ -18,7 +19,7 @@ export const ColorPreview = function ({
     <input
       type="color"
       className={clsx(classes.Swatch, className)}
-      value={color}
+      value={Color(color).hex()}
       data-size={size}
       disabled
       {...attributes}
