@@ -21,6 +21,7 @@ export const ColorField = function (props: IColorFieldProps) {
   const [open, setOpen] = useState(false);
   const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
   const values = useVariableValues(props.variable);
+  const defaultColor = "hsl(0, 0%, 0%)";
 
   useClickAway(ref, createOpenHandler(false));
 
@@ -39,7 +40,7 @@ export const ColorField = function (props: IColorFieldProps) {
             readOnly={props.readOnly}
             type="text"
             tabIndex={-1}
-            value={values.displayValue}
+            value={values.displayValue ? values.displayValue : defaultColor}
           />
           <span className={classes.ColorPreview}>
             <ColorPreview
@@ -53,9 +54,7 @@ export const ColorField = function (props: IColorFieldProps) {
         <div className={classes.PickerContainer}>
           <ChromePicker
             color={
-              values.value
-                ? Color(values.value).hsl().toString()
-                : "hsl(0, 0, 0)"
+              values.value ? Color(values.value).hsl().toString() : defaultColor
             }
             onChange={(value) => {
               Option(props.onChange).mapOrElse(
