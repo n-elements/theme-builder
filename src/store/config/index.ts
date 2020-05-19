@@ -11,7 +11,7 @@ interface IConfig {
 
 function initialState(): IConfig {
   return {
-    preferredColorFormat: "hex",
+    preferredColorFormat: "hsl",
     theme: "auto",
   };
 }
