@@ -44,6 +44,8 @@
   --buttongroup-border-color: env(--secondary-80);
   --buttongroup-foreground: env(--contrast-70);
   --buttongroup-background: env(--secondary-70);
+  --skeleton-loader-background: red;
+  --skeleton-loader-highlight: blue;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -93,5 +95,7 @@
     --buttongroup-border-color: env(--contrast-70);
     --buttongroup-foreground: env(--secondary-100);
     --buttongroup-background: env(--contrast-90);
+    --skeleton-loader-background: green;
+    --skeleton-loader-highlight: cyan;
   }
 }

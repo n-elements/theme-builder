@@ -1,12 +1,22 @@
-import { ColorField } from "@app/Editor/components/ColorField";
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { IVariable } from "@store/theming/types";
 import {
   OnChangeRelationHandler,
   OnChangeHandler,
   OnBreakReferenceHandler,
 } from "@app/Editor/types/fields";
-import { UnitField } from "../UnitField";
+import { SkeletonLoader } from "@components/SkeletonLoader";
+
+const ColorField = lazy(() =>
+  import("@app/Editor/components/ColorField").then(({ ColorField }) => ({
+    default: ColorField,
+  }))
+);
+const UnitField = lazy(() =>
+  import("@app/Editor/components/UnitField").then(({ UnitField }) => ({
+    default: UnitField,
+  }))
+);
 
 export interface IVariableField {
   variable: IVariable;
@@ -19,31 +29,27 @@ export default function VariableField(props: IVariableField) {
   switch (props.variable.type) {
     case "color":
       return (
-        <ColorField
-          variable={props.variable}
-          onBreakReference={props.onBreakReference}
-          onChange={props.onChange}
-          onChangeRelation={props.onChangeRelation}
-          readOnly
-        />
+        <Suspense fallback={<SkeletonLoader height={43} />}>
+          <ColorField
+            variable={props.variable}
+            onBreakReference={props.onBreakReference}
+            onChange={props.onChange}
+            onChangeRelation={props.onChangeRelation}
+            readOnly
+          />
+        </Suspense>
       );
     case "unit":
-      return (
-        <UnitField
-          variable={props.variable}
-          onBreakReference={props.onBreakReference}
-          onChange={props.onChange}
-          onChangeRelation={props.onChangeRelation}
-        />
-      );
     case "unit-multiple":
       return (
-        <UnitField
-          variable={props.variable}
-          onBreakReference={props.onBreakReference}
-          onChange={props.onChange}
-          onChangeRelation={props.onChangeRelation}
-        />
+        <Suspense fallback={<SkeletonLoader height={43} />}>
+          <UnitField
+            variable={props.variable}
+            onBreakReference={props.onBreakReference}
+            onChange={props.onChange}
+            onChangeRelation={props.onChangeRelation}
+          />
+        </Suspense>
       );
     default:
       return null;
