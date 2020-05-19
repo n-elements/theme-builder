@@ -29,7 +29,7 @@ export default function VariableField(props: IVariableField) {
   switch (props.variable.type) {
     case "color":
       return (
-        <Suspense fallback={<SkeletonLoader height={43} />}>
+        <Suspense fallback={<SkeletonLoader height={40} />}>
           <ColorField
             variable={props.variable}
             onBreakReference={props.onBreakReference}
@@ -42,7 +42,7 @@ export default function VariableField(props: IVariableField) {
     case "unit":
     case "unit-multiple":
       return (
-        <Suspense fallback={<SkeletonLoader height={43} />}>
+        <Suspense fallback={<SkeletonLoader height={40} />}>
           <UnitField
             variable={props.variable}
             onBreakReference={props.onBreakReference}

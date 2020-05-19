@@ -6,7 +6,7 @@ import ElementsVariables from "./ElementsVariables";
 import DocumentVariables from "./DocumentVariables";
 import TypographyVariables from "./TypographyVariables";
 
-export default function ToolbarArea() {
+export default function ToolbarContent() {
   return (
     <Switch>
       <Route component={ColoursVariables} path={routes.colours} />

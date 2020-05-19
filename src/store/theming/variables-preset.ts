@@ -41,8 +41,13 @@ export default function preset(): VariableArray {
 
   return [
     accentvariable,
-    create(domains.document, "ne-global-background", "color", "#fff"),
-    create(domains.document, "ne-global-foreground", "color", "#000"),
+    create(
+      domains.document,
+      "ne-global-background",
+      "color",
+      "hsl(0, 0%, 100%)"
+    ),
+    create(domains.document, "ne-global-foreground", "color", "hsl(0, 0%, 0%)"),
     create(domains.typography, "ne-root-font-size", "unit", "100%"),
     create(domains.typography, "ne-body-font-size", "unit", "1.125rem"),
     create(domains.document, "ne-selection-foreground", "color", "#fff"),
