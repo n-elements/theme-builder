@@ -54,6 +54,14 @@ export function guessUnitType(input?: string): UnitType {
   }
 }
 
+export function changeUnit(
+  input?: string,
+  unit: UnitType = UnitType.NONE
+): string {
+  const newunit = unit === UnitType.NONE ? "" : unit;
+  return stripUnit(input) + newunit;
+}
+
 export function stripUnit(input?: string): string {
   return typeof input === "string"
     ? input.toUpperCase().replace(guessUnitType(input), "")

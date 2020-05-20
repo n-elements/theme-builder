@@ -5,8 +5,13 @@ import { FieldWrapper } from "@components/FieldWrapper";
 import clsx from "clsx";
 import React, { useRef, useState } from "react";
 import { useClickAway } from "react-use";
-import { Option } from "tiinvo";
-import { guessUnitType, UnitType } from "../../helpers/unit";
+import { Option, Maybe } from "tiinvo";
+import {
+  guessUnitType,
+  UnitType,
+  stripUnit,
+  changeUnit,
+} from "../../helpers/unit";
 import { IFieldProps } from "../../types/fields";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./UnitField.module.css";
@@ -28,7 +33,18 @@ export const UnitField = function (props: IUnitFieldProps) {
   const [open, setOpen] = useState(false);
   const [unit, setUnit] = useState(guessUnitType(values.value));
   const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
-  const createSetUnitHandler = (unit: UnitType) => () => setUnit(unit);
+  const createSetUnitHandler = (unit: UnitType) => () => {
+    Maybe(values.isReferencingOtherVariable).cata({
+      Nothing: () => {
+        Option(props.onChange).mapOrElse(
+          () => void 0,
+          (fn) => fn(changeUnit(values.value, unit))
+        );
+        setUnit(unit);
+      },
+      Just: () => setUnit(unit),
+    });
+  };
 
   useClickAway(ref, createOpenHandler(false));
 
