@@ -18,6 +18,7 @@
   box-sizing: border-box;
   min-width: 62px;
   line-height: 1.7;
+  text-transform: uppercase;
 }
 
 .UnitsContainer {
@@ -37,6 +38,7 @@
   background: transparent;
   color: inherit;
   flex-grow: 1;
+  text-transform: uppercase;
 
   &[aria-checked='true'] {
     color: env(--accent-100);
