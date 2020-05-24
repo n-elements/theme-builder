@@ -6,12 +6,7 @@ import clsx from "clsx";
 import React, { useRef, useState } from "react";
 import { useClickAway } from "react-use";
 import { Option, Maybe } from "tiinvo";
-import {
-  guessUnitType,
-  UnitType,
-  stripUnit,
-  changeUnit,
-} from "../../helpers/unit";
+import { guessUnitType, UnitType, changeUnit } from "../../helpers/unit";
 import { IFieldProps } from "../../types/fields";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./UnitField.module.css";
