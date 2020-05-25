@@ -31,14 +31,14 @@ function create(
   });
 }
 
-export default function preset(): VariableArray {
-  const accentvariable = create(
-    domains.colours,
-    "accent-color",
-    "color",
-    "hsl(220, 100%, 50%)"
-  );
+export const accentvariable = create(
+  domains.colours,
+  "accent-color",
+  "color",
+  "hsl(220, 100%, 50%)"
+);
 
+export default function preset(): VariableArray {
   return [
     accentvariable,
     create(
