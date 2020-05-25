@@ -24,6 +24,7 @@ export interface IVariable {
   defaultValue?: string;
   domain: VariableDomain;
   name: string;
+  element?: string;
   type: VariableType;
   value?: VariableValue;
 }
