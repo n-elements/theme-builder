@@ -9,6 +9,7 @@ import routes from "@routes";
 import { assignId } from "./helpers";
 import nepreset, {
   IVariable as INEVariable,
+  VariableDomain as NEVariableDomain,
 } from "@native-elements/core/dist/props";
 import { Option } from "tiinvo";
 
@@ -37,7 +38,7 @@ function create(
 
 function map(variable: INEVariable): IVariable {
   const mapped = create(
-    variable.domain,
+    mapdomain(variable.domain),
     variable.name,
     <VariableType>variable.type,
     variable.defaultValue
@@ -49,6 +50,19 @@ function map(variable: INEVariable): IVariable {
   );
 
   return mapped;
+}
+
+function mapdomain(domain: NEVariableDomain): VariableDomain {
+  switch (domain) {
+    case "color":
+      return domains.colours;
+    case "document":
+      return domains.document;
+    case "element":
+      return domains.elements;
+    case "typography":
+      return domains.typography;
+  }
 }
 
 export const accentvariable = create(
