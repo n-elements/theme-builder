@@ -59,7 +59,7 @@ export function changeUnit(
   unit: UnitType = UnitType.NONE
 ): string {
   const newunit = unit === UnitType.NONE ? "" : unit;
-  return stripUnit(input) + newunit;
+  return stripUnit(input) + newunit.toLowerCase();
 }
 
 export function stripUnit(input?: string): string {
