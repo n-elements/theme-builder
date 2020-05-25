@@ -6,7 +6,7 @@ import {
   VariableValue,
 } from "./types";
 import routes from "@routes";
-import { assignId } from "./helpers";
+import { assignId, cleanVariableName, extractVariableName } from "./helpers";
 import nepreset, {
   IVariable as INEVariable,
   VariableDomain as NEVariableDomain,
@@ -14,13 +14,6 @@ import nepreset, {
 import { Option } from "tiinvo";
 
 const domains = routes.editor;
-
-function bindRelationTo(variable: IVariable, external: IVariable): IVariable {
-  return {
-    ...variable,
-    _referenceId: external._id,
-  };
-}
 
 function create(
   domain: VariableDomain,
@@ -39,7 +32,7 @@ function create(
 function map(variable: INEVariable): IVariable {
   const mapped = create(
     mapdomain(variable.domain),
-    variable.name,
+    cleanVariableName(variable.name),
     <VariableType>variable.type,
     variable.defaultValue
   );
@@ -73,5 +66,35 @@ export const accentvariable = create(
 );
 
 export default function preset(): VariableArray {
-  return [accentvariable, ...nepreset.map(map)];
+  const requiresReparentingMap = new Map<string, IVariable>();
+  const variablesMap = new Map<string, IVariable>();
+  const mappedvariables = nepreset.map(map);
+
+  for (let index = 0; index < mappedvariables.length; index++) {
+    const element = mappedvariables[index];
+    const maybeExtractedName = extractVariableName(element.value ?? "");
+
+    variablesMap.set(element.name, element);
+
+    if (maybeExtractedName.isSome()) {
+      requiresReparentingMap.set(element.name, {
+        ...element,
+        value: cleanVariableName(maybeExtractedName.unwrap()!),
+      });
+    }
+  }
+
+  const reparentingElements = Array.from(requiresReparentingMap.keys());
+
+  for (let index = 0; index < reparentingElements.length; index++) {
+    const variableToReparent = requiresReparentingMap.get(
+      reparentingElements[0]
+    )!;
+    const relatedVariable = variablesMap.get(variableToReparent.value!)!;
+
+    variableToReparent._referenceId = relatedVariable._id;
+    variableToReparent.value = relatedVariable.value;
+  }
+
+  return [accentvariable, ...mappedvariables];
 }

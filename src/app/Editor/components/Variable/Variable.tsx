@@ -1,7 +1,4 @@
-import {
-  cleanVariableName,
-  formatVariableName,
-} from "@app/Editor/helpers/variable";
+import { formatVariableName } from "@app/Editor/helpers/variable";
 import useVariableEditing from "@app/Editor/hooks/useVariableEditing";
 import { Bin, Check, Rename } from "@components/Icons/12x";
 import { IVariable } from "@store/theming/types";
@@ -9,6 +6,7 @@ import clsx from "clsx";
 import React, { KeyboardEvent, useRef, useState } from "react";
 import classes from "./Variable.module.css";
 import VariableField from "./VariableField";
+import { cleanVariableName } from "@store/theming/helpers";
 
 export interface IVariableProps extends PropsClass {
   variable: IVariable;

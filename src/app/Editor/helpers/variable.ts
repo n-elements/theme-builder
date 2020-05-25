@@ -1,16 +1,10 @@
 import { IVariable, VariableValue } from "@store/theming/types";
 import { Option } from "tiinvo";
+import { cleanVariableName } from "@store/theming/helpers";
 
 export function formatVariableName(name: string): string {
   const startingChunk = "--";
   return name.startsWith(startingChunk) ? name : startingChunk + name;
-}
-
-export function cleanVariableName(name: string) {
-  return name
-    .replace("--", "")
-    .replace(/\s+/g, "-")
-    .replace(/[^a-zA-Z0-9_-]/g, "");
 }
 
 export function getDisplayCallCSSVariableName(variable: IVariable): string {
