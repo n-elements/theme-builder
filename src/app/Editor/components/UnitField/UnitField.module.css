@@ -21,9 +21,12 @@
   text-transform: uppercase;
 }
 
+.UnitBlock {
+  margin: 16px 16px 0 16px;
+}
+
 .UnitsContainer {
   display: flex;
-  margin: 16px 16px 0 16px;
   overflow: hidden;
   border-radius: 4px;
   border: 1px solid var(--buttongroup-border-color);

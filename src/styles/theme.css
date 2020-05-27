@@ -19,6 +19,8 @@
   --ne-button-disabled-foreground: env(--secondary-90);
   --ne-textfield-border: 1px solid env(--secondary-80);
   --ne-textfield-background: var(--ne-global-background);
+  --ne-textfield-hover-background: var(--ne-global-background);
+  --ne-textfield-focus-background: var(--ne-global-background);
   --ne-textfield-selection-background: var(--ne-selection-foreground);
   --ne-textfield-selection-foreground: var(--ne-selection-background);
   --ne-details-background: none;
@@ -70,6 +72,8 @@
     --ne-button-disabled-foreground: env(--secondary-90);
     --ne-textfield-border: 1px solid env(--contrast-80);
     --ne-textfield-background: env(--contrast-100);
+    --ne-textfield-hover-background: env(--contrast-100);
+    --ne-textfield-focus-background: env(--contrast-100);
     --ne-textfield-selection-background: var(--ne-selection-foreground);
     --ne-textfield-selection-foreground: var(--ne-selection-background);
     --ne-details-background: none;

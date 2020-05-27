@@ -6,10 +6,22 @@ import clsx from "clsx";
 import React, { useRef, useState } from "react";
 import { useClickAway } from "react-use";
 import { Option, Maybe } from "tiinvo";
+import { defineMessages, useIntl } from "react-intl";
 import { guessUnitType, UnitType, changeUnit } from "../../helpers/unit";
 import { IFieldProps } from "../../types/fields";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./UnitField.module.css";
+
+const messages = defineMessages({
+  keywords: {
+    defaultMessage: "Keywords",
+    id: "app.Editor.components.UnitField.keywords",
+  },
+  commonUnits: {
+    defaultMessage: "Common units",
+    id: "app.Editor.components.UnitField.commonUnits",
+  },
+});
 
 export interface IUnitFieldProps extends IFieldProps {
   readOnly?: boolean;
@@ -23,6 +35,7 @@ function getAriaChecked(
 }
 
 export const UnitField = function (props: IUnitFieldProps) {
+  const intl = useIntl();
   const ref = useRef(null);
   const values = useVariableValues(props.variable);
   const [open, setOpen] = useState(false);
@@ -79,71 +92,117 @@ export const UnitField = function (props: IUnitFieldProps) {
         </div>
       </FieldWrapper>
       <DropDown open={open} ref={ref}>
-        <div
-          className={classes.UnitsContainer}
-          role="radiogroup"
-          aria-label="Set the value unit"
-        >
-          <Button
-            role="radio"
-            aria-checked={getAriaChecked(unit, UnitType.PX)}
-            className={classes.UnitButton}
-            secondary
-            onClick={createSetUnitHandler(UnitType.PX)}
-            small
+        <div className={classes.UnitBlock}>
+          <p data-size="ultra-small">
+            <b>{intl.formatMessage(messages.keywords)}</b>
+          </p>
+          <div
+            className={classes.UnitsContainer}
+            role="radiogroup"
+            aria-label="Set the value unit"
           >
-            {UnitType.PX}
-          </Button>
-          <Button
-            role="radio"
-            aria-checked={getAriaChecked(unit, UnitType.EM)}
-            className={classes.UnitButton}
-            secondary
-            onClick={createSetUnitHandler(UnitType.EM)}
-            small
+            <Button
+              role="radio"
+              aria-checked={getAriaChecked(unit, UnitType.REV)}
+              className={classes.UnitButton}
+              secondary
+              onClick={createSetUnitHandler(UnitType.REV)}
+              small
+            >
+              {UnitType.REV}
+            </Button>
+            <Button
+              role="radio"
+              aria-checked={getAriaChecked(unit, UnitType.UNS)}
+              className={classes.UnitButton}
+              secondary
+              onClick={createSetUnitHandler(UnitType.UNS)}
+              small
+            >
+              {UnitType.UNS}
+            </Button>
+            <Button
+              role="radio"
+              aria-checked={getAriaChecked(unit, UnitType.INIT)}
+              className={classes.UnitButton}
+              secondary
+              onClick={createSetUnitHandler(UnitType.INIT)}
+              small
+            >
+              {UnitType.INIT}
+            </Button>
+            <Button
+              role="radio"
+              aria-checked={getAriaChecked(unit, UnitType.INH)}
+              className={classes.UnitButton}
+              secondary
+              onClick={createSetUnitHandler(UnitType.INH)}
+              small
+            >
+              {UnitType.INH}
+            </Button>
+            <Button
+              role="radio"
+              aria-checked={getAriaChecked(unit, UnitType.NONE)}
+              className={classes.UnitButton}
+              secondary
+              onClick={createSetUnitHandler(UnitType.NONE)}
+              small
+            >
+              {UnitType.NONE}
+            </Button>
+          </div>
+        </div>
+        <div className={classes.UnitBlock}>
+          <p data-size="ultra-small">
+            <b>{intl.formatMessage(messages.commonUnits)}</b>
+          </p>
+          <div
+            className={classes.UnitsContainer}
+            role="radiogroup"
+            aria-label="Set the value unit"
           >
-            {UnitType.EM}
-          </Button>
-          <Button
-            role="radio"
-            aria-checked={getAriaChecked(unit, UnitType.PERC)}
-            className={classes.UnitButton}
-            secondary
-            onClick={createSetUnitHandler(UnitType.PERC)}
-            small
-          >
-            {UnitType.PERC}
-          </Button>
-          <Button
-            role="radio"
-            aria-checked={getAriaChecked(unit, UnitType.REM)}
-            className={classes.UnitButton}
-            secondary
-            onClick={createSetUnitHandler(UnitType.REM)}
-            small
-          >
-            {UnitType.REM}
-          </Button>
-          <Button
-            role="radio"
-            aria-checked={getAriaChecked(unit, UnitType.NONE)}
-            className={classes.UnitButton}
-            secondary
-            onClick={createSetUnitHandler(UnitType.NONE)}
-            small
-          >
-            {UnitType.NONE}
-          </Button>
-          <Button
-            role="radio"
-            aria-checked={getAriaChecked(unit, UnitType.INH)}
-            className={classes.UnitButton}
-            secondary
-            onClick={createSetUnitHandler(UnitType.INH)}
-            small
-          >
-            {UnitType.INH}
-          </Button>
+            <Button
+              role="radio"
+              aria-checked={getAriaChecked(unit, UnitType.PX)}
+              className={classes.UnitButton}
+              secondary
+              onClick={createSetUnitHandler(UnitType.PX)}
+              small
+            >
+              {UnitType.PX}
+            </Button>
+            <Button
+              role="radio"
+              aria-checked={getAriaChecked(unit, UnitType.EM)}
+              className={classes.UnitButton}
+              secondary
+              onClick={createSetUnitHandler(UnitType.EM)}
+              small
+            >
+              {UnitType.EM}
+            </Button>
+            <Button
+              role="radio"
+              aria-checked={getAriaChecked(unit, UnitType.REM)}
+              className={classes.UnitButton}
+              secondary
+              onClick={createSetUnitHandler(UnitType.REM)}
+              small
+            >
+              {UnitType.REM}
+            </Button>
+            <Button
+              role="radio"
+              aria-checked={getAriaChecked(unit, UnitType.PERC)}
+              className={classes.UnitButton}
+              secondary
+              onClick={createSetUnitHandler(UnitType.PERC)}
+              small
+            >
+              {UnitType.PERC}
+            </Button>
+          </div>
         </div>
         <VariableSearch
           onChangeRelation={props.onChangeRelation}
