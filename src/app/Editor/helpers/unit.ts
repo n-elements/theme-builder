@@ -7,11 +7,15 @@ export interface IMultiunitValue<T = string> {
 
 export enum UnitType {
   EM = "EM",
+  PX = "PX",
+  CH = "CH",
+  PERC = "%",
+  REM = "REM",
   INH = "INH",
   NONE = "NONE",
-  PERC = "%",
-  PX = "PX",
-  REM = "REM",
+  UNS = "UNS",
+  REV = "REV",
+  INIT = "INIT",
 }
 
 export function sanitizeMultiunitValue(value: string): string {
@@ -45,10 +49,18 @@ export function guessUnitType(input?: string): UnitType {
       return UnitType.EM;
     case uppercasedInput.includes(UnitType.INH):
       return UnitType.INH;
+    case uppercasedInput.includes(UnitType.UNS):
+      return UnitType.UNS;
+    case uppercasedInput.includes(UnitType.INIT):
+      return UnitType.INIT;
+    case uppercasedInput.includes(UnitType.REV):
+      return UnitType.REV;
     case uppercasedInput.includes(UnitType.PERC):
       return UnitType.PERC;
     case uppercasedInput.includes(UnitType.PX):
       return UnitType.PX;
+    case uppercasedInput.includes(UnitType.CH):
+      return UnitType.CH;
     default:
       return UnitType.NONE;
   }
