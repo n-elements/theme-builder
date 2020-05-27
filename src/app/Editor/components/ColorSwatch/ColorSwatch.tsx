@@ -1,6 +1,7 @@
 import React from "react";
 import { IVariable } from "@store/theming/types";
-import color from "css-color-converter";
+// import color from "css-color-converter";
+import Color from "color";
 import clsx from "clsx";
 import classes from "./ColorSwatch.module.css";
 import { ColorPreview } from "@app/Editor/components/ColorPreview";
@@ -17,16 +18,14 @@ export const ColorSwatch = function ({
   value,
   ...attributes
 }: IColorSwatchProps) {
-  const removeHexAlpha =
-    value?.startsWith("#") && value.length > 7 ? value.slice(0, -2) : value;
-  const rgbColor = color(value).toRgbString();
-  const hslColor = color(value).toHslString();
-  const hexColor = color(removeHexAlpha).toHexString();
+  const rgbColor = Color(value).rgb().string();
+  const hslColor = Color(value).hsl().string();
+  const hexColor = Color(value).hex();
   const formattedPropName = formatVariableName(propName);
 
   return (
     <div className={clsx(classes.ColorSwatch, className)} {...attributes}>
-      <ColorPreview size="big" color={hexColor} />
+      <ColorPreview size="big" color={rgbColor} />
       <div>
         <p className={classes.PropName}>
           <strong>{formattedPropName}</strong>

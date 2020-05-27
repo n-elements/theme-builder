@@ -1,0 +1,18 @@
+.ThemeName {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.Icon {
+  color: env(--accent-100);
+}
+
+.Input {
+  --ne-textfield-background: transparent;
+  --ne-textfield-hover-background: transparent;
+  --ne-textfield-focus-background: transparent;
+  --ne-textfield-border: none;
+  --ne-textfield-hover-border: none;
+  --ne-textfield-focus-border: none;
+}

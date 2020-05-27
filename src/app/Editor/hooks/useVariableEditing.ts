@@ -47,7 +47,7 @@ function createUpdate(dispatch: Dispatch) {
 function defaultVariableValue(type: VariableType): string {
   switch (type) {
     case "color":
-      return `#${Math.random().toString(16).substr(-6)}`;
+      return `hsl(${Math.floor(Math.random() * (360 - 0) + 1)}, 100%, 50%)`;
     default:
       return "";
   }

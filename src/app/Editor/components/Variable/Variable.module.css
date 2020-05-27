@@ -1,4 +1,4 @@
-.PropItem {
+.Variable {
   position: relative;
 }
 
@@ -14,6 +14,8 @@
   --ne-textfield-x-padding: 0;
   --ne-textfield-min-height: auto;
   --ne-textfield-border: none;
+  --ne-textfield-focus-border: none;
+  --ne-textfield-hover-border: none;
   --ne-textfield-foreground: var(--prop-field-name);
   --ne-textfield-readonly-foreground: var(--ne-textfield-foreground);
   --ne-textfield-readonly-border: none;

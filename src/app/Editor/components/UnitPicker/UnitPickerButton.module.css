@@ -1,0 +1,19 @@
+.UnitPickerButton {
+  --ne-button-border-radius: 0;
+
+  outline-offset: -2px;
+  background: transparent;
+  color: inherit;
+  flex-grow: 1;
+  text-transform: uppercase;
+
+  &[aria-checked='true'] {
+    color: env(--accent-100);
+  }
+}
+
+.UnitPickerButton + .UnitPickerButton {
+  --ne-button-active-border: initial;
+
+  box-shadow: inset 1px 0 0 var(--buttongroup-border-color);
+}

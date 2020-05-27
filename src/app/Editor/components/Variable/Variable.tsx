@@ -1,14 +1,12 @@
-import React, { useRef, useState, KeyboardEvent } from "react";
+import { formatVariableName } from "@app/Editor/helpers/variable";
 import useVariableEditing from "@app/Editor/hooks/useVariableEditing";
-import { Bin, Rename, Check } from "@components/Icons/12x";
+import { Bin, Check, Rename } from "@components/Icons/12x";
 import { IVariable } from "@store/theming/types";
 import clsx from "clsx";
-import VariableField from "./VariableField";
+import React, { KeyboardEvent, useRef, useState } from "react";
 import classes from "./Variable.module.css";
-import {
-  formatVariableName,
-  normalizeVariableName,
-} from "@app/Editor/helpers/variable";
+import VariableField from "./VariableField";
+import { cleanVariableName } from "@store/theming/helpers";
 
 export interface IVariableProps extends PropsClass {
   variable: IVariable;
@@ -41,8 +39,8 @@ export function Variable({
 
   return (
     <fieldset
+      className={clsx(classes.Variable, className)}
       tabIndex={-1}
-      className={clsx(classes.ShellLayout, className)}
       {...attributes}
     >
       <div className={classes.FieldHeader}>
@@ -51,7 +49,7 @@ export function Variable({
           onChange={(event) =>
             variableEditing.update({
               ...variable,
-              name: normalizeVariableName(event.target.value),
+              name: cleanVariableName(event.target.value),
             })
           }
           value={formatVariableName(variable.name)}

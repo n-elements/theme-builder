@@ -4,11 +4,11 @@ import { Resizable } from "re-resizable";
 
 export interface IToolbarProps {
   actions?: ReactNode;
-  toolbarArea?: ReactNode;
+  toolbarContent?: ReactNode;
 }
 
 export default function Toolbar(props: IToolbarProps) {
-  const { actions, toolbarArea } = props;
+  const { actions, toolbarContent } = props;
 
   return (
     <Resizable
@@ -31,7 +31,7 @@ export default function Toolbar(props: IToolbarProps) {
       }}
     >
       <div className={classes.Toolbar}>
-        <div className={classes.Scroller}>{toolbarArea}</div>
+        <div className={classes.Scroller}>{toolbarContent}</div>
         {actions && <div className={classes.Actions}>{actions}</div>}
       </div>
     </Resizable>

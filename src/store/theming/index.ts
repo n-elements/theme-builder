@@ -1,5 +1,5 @@
 import { createReducer } from "redux-aar";
-import { VariableArray } from "./types";
+import { VariableArray, IVariable } from "./types";
 import * as actions from "./actions";
 import {
   assignId,
@@ -7,6 +7,8 @@ import {
   makeRelation,
   breakRelation,
 } from "./helpers";
+import preset, { accentvariable } from "./variables-preset";
+import { Option } from "tiinvo";
 
 interface ITheming {
   name: string;
@@ -17,7 +19,7 @@ interface ITheming {
 function initialState(): ITheming {
   return {
     name: "theme-name",
-    variables: [],
+    variables: preset(),
     variablesCounter: 0,
   };
 }
@@ -45,7 +47,22 @@ reducer.on(actions.deleteVariable, (state, variable) => ({
   variables: state.variables.filter((v) => v._id !== variable._id),
 }));
 
-reducer.on(actions.reset, initialState);
+reducer.on(actions.reset, (state) => {
+  const initial = initialState();
+  const findAccent = (othervariable: IVariable): boolean =>
+    othervariable.name === accentvariable.name;
+  const maybeAccentIndex = Option(initial.variables.findIndex(findAccent));
+  const maybeFoundAccent = Option(state.variables.find(findAccent));
+
+  maybeAccentIndex.and(maybeFoundAccent).mapOrElse(
+    () => void 0,
+    (accent) => {
+      initial.variables[maybeAccentIndex.unwrap()] = accent;
+    }
+  );
+
+  return initial;
+});
 
 reducer.on(actions.updateName, (state, name) => ({
   ...state,

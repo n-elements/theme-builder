@@ -9,6 +9,7 @@ import { Option } from "tiinvo";
 import { IFieldProps } from "../../types/fields";
 import { ColorPreview } from "../ColorPreview";
 import { VariableSearch } from "../VariableSearch";
+import Color from "color";
 import classes from "./ColorField.module.css";
 
 export interface IColorFieldProps extends IFieldProps {
@@ -20,11 +21,12 @@ export const ColorField = function (props: IColorFieldProps) {
   const [open, setOpen] = useState(false);
   const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
   const values = useVariableValues(props.variable);
+  const defaultColor = "hsl(0, 0%, 0%)";
 
   useClickAway(ref, createOpenHandler(false));
 
   return (
-    <div className={clsx(classes.ColorField, props.className)}>
+    <div className={clsx(classes.ColorField, props.className)} ref={ref}>
       <FieldWrapper>
         <button className={classes.Field} onClick={createOpenHandler(true)}>
           <input
@@ -38,7 +40,7 @@ export const ColorField = function (props: IColorFieldProps) {
             readOnly={props.readOnly}
             type="text"
             tabIndex={-1}
-            value={values.displayValue}
+            value={values.displayValue || defaultColor}
           />
           <span className={classes.ColorPreview}>
             <ColorPreview
@@ -48,14 +50,27 @@ export const ColorField = function (props: IColorFieldProps) {
           </span>
         </button>
       </FieldWrapper>
-      <DropDown open={open} ref={ref}>
+      <DropDown open={open}>
         <div className={classes.PickerContainer}>
           <ChromePicker
-            color={values.value}
+            color={Color(values.value || defaultColor)
+              .hsl()
+              .toString()}
             onChange={(value) => {
               Option(props.onChange).mapOrElse(
                 () => void 0,
-                (fn) => fn(value.hex)
+                (fn) =>
+                  fn(
+                    Color.rgb(
+                      value.rgb.r,
+                      value.rgb.g,
+                      value.rgb.b,
+                      value.rgb.a ?? 1
+                    )
+                      .hsl()
+                      .round()
+                      .string()
+                  )
               );
               Option(props.onBreakReference).mapOrElse(
                 () => void 0,

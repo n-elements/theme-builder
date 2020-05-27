@@ -4,16 +4,16 @@ import * as routes from "./routes";
 import { EditorDocument } from "./components/EditorDocument";
 import { EditorColours } from "./components/EditorColours";
 import EditorElements from "./components/EditorElements";
-import EditorTypography from "./components/EditorTypography";
+import { EditorTypography } from "./components/EditorTypography";
 import { Toolbar } from "./components/Toolbar";
 import { ThemeActions } from "./components/ThemeActions";
 import { Canvas } from "./components/Canvas";
-import ToolbarArea from "./components/ToolbarArea";
+import ToolbarContent from "./components/ToolbarContent";
 
 export default function Editor() {
   return (
     <>
-      <Toolbar actions={<ThemeActions />} toolbarArea={<ToolbarArea />} />
+      <Toolbar actions={<ThemeActions />} toolbarContent={<ToolbarContent />} />
       <Canvas>
         <Switch>
           <Route component={EditorColours} path={routes.colours} />

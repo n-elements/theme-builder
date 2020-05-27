@@ -17,19 +17,16 @@ export const DropDown = forwardRef(function (
     <AnimatePresence>
       {open && (
         <motion.div
+          ref={ref}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20, transition: { duration: 0.1 } }}
           transition={{ duration: 0.1, delay: 0.2, ease: "easeOut" }}
-          ref={ref}
+          className={clsx(classes.DropDown, className)}
+          data-position={position}
+          {...attributes}
         >
-          <div
-            className={clsx(classes.DropDown, className)}
-            data-position={position}
-            {...attributes}
-          >
-            {children}
-          </div>
+          {children}
         </motion.div>
       )}
     </AnimatePresence>

@@ -1,12 +1,22 @@
-import { ColorField } from "@app/Editor/components/ColorField";
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { IVariable } from "@store/theming/types";
-import classes from "./Variable.module.css";
 import {
   OnChangeRelationHandler,
   OnChangeHandler,
   OnBreakReferenceHandler,
 } from "@app/Editor/types/fields";
+import { SkeletonLoader } from "@components/SkeletonLoader";
+
+const ColorField = lazy(() =>
+  import("@app/Editor/components/ColorField").then(({ ColorField }) => ({
+    default: ColorField,
+  }))
+);
+const UnitField = lazy(() =>
+  import("@app/Editor/components/UnitField").then(({ UnitField }) => ({
+    default: UnitField,
+  }))
+);
 
 export interface IVariableField {
   variable: IVariable;
@@ -19,14 +29,27 @@ export default function VariableField(props: IVariableField) {
   switch (props.variable.type) {
     case "color":
       return (
-        <ColorField
-          className={classes.VariableInput}
-          variable={props.variable}
-          onBreakReference={props.onBreakReference}
-          onChange={props.onChange}
-          onChangeRelation={props.onChangeRelation}
-          readOnly
-        />
+        <Suspense fallback={<SkeletonLoader height={40} />}>
+          <ColorField
+            variable={props.variable}
+            onBreakReference={props.onBreakReference}
+            onChange={props.onChange}
+            onChangeRelation={props.onChangeRelation}
+            readOnly
+          />
+        </Suspense>
+      );
+    case "unit":
+    case "unit-multiple":
+      return (
+        <Suspense fallback={<SkeletonLoader height={40} />}>
+          <UnitField
+            variable={props.variable}
+            onBreakReference={props.onBreakReference}
+            onChange={props.onChange}
+            onChangeRelation={props.onChangeRelation}
+          />
+        </Suspense>
       );
     default:
       return null;

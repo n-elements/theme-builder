@@ -1,6 +1,7 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import classes from "./ColorPreview.module.css";
 import clsx from "clsx";
+import Color from "color";
 
 export interface IColorPreviewProps extends PropsClass {
   color?: string;
@@ -15,14 +16,14 @@ export const ColorPreview = function ({
   ...attributes
 }: IColorPreviewProps) {
   return (
-    <input
-      type="color"
+    <span
       className={clsx(classes.Swatch, className)}
-      value={color}
+      style={
+        { "--color": color ? Color(color).rgb() : "#000" } as CSSProperties
+      }
       data-size={size}
-      disabled
       {...attributes}
-    />
+    ></span>
   );
 };
 

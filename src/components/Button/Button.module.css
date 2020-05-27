@@ -7,18 +7,18 @@
   --ne-button-hover-foreground: var(--ne-button-foreground);
   --ne-button-active-foreground: var(--ne-button-foreground);
   --ne-button-disabled-foreground: env(--secondary-90);
-  --ne-button-font-weight: 700;
   --ne-button-font-size: var(--small-font-size);
   --ne-button-shadow: none;
   --ne-button-y-padding: 1em;
   --ne-button-x-padding: 1.5em;
-  --ne-button-radius: 4px;
+  --ne-button-border-radius: 4px;
 
   text-transform: uppercase;
   outline-offset: 2px;
+  font-weight: 700;
 
   &[data-small='true'] {
-    --ne-button-y-padding: 0.5em;
+    --ne-button-y-padding: 0.4em;
     --ne-button-x-padding: 1em;
   }
 

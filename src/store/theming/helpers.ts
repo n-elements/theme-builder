@@ -4,7 +4,7 @@ import {
   VariableArray,
   IVariableRelation,
 } from "./types";
-import { Maybe, Option } from "tiinvo";
+import { Maybe, Option, None, Some } from "tiinvo";
 
 export function assignId(variable: IVariable): IVariable {
   return {
@@ -24,6 +24,25 @@ export function breakRelation(
   ]._referenceId = undefined;
 
   return copied;
+}
+
+export function cleanVariableName(name: string) {
+  return name
+    .replace("--", "")
+    .replace(/\s+/g, "-")
+    .replace(/[^a-zA-Z0-9_-]/g, "");
+}
+
+export function extractVariableName(value: string): Option<string> {
+  const token = "var(";
+
+  return Maybe(value.includes(token)).cata({
+    Nothing: None,
+    Just: () =>
+      Option(value.split(",")[0]).andThen((chunk) =>
+        Some(chunk.replace(token, ""))
+      ),
+  });
 }
 
 export function createUpdateVariableMap(newvar: IVariable) {

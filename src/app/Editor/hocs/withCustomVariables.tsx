@@ -2,7 +2,11 @@ import { ComponentType, createElement, CSSProperties } from "react";
 import useVariables from "../hooks/useVariables";
 import { IVariable, VariableArray } from "@store/theming/types";
 import { Option } from "tiinvo";
-import { formatVariableName } from "../helpers/variable";
+import {
+  formatVariableName,
+  getValueOrRelatedVariableValue,
+} from "../helpers/variable";
+import { getReferencedVariable } from "@store/theming/helpers";
 
 type CssVar = { [index: string]: string };
 type EnhancedCSSProperties = CSSProperties & CssVar;
@@ -11,14 +15,23 @@ function convertVariables(variables: VariableArray): CssVar {
   return variables.reduce(
     (vars, v) => ({
       ...vars,
-      ...convertVariableToCssVariable(v),
+      ...convertVariableToCssVariable(v, variables),
     }),
     {}
   );
 }
 
-function convertVariableToCssVariable(variable: IVariable): CssVar | undefined {
-  return Option(variable.value).mapOrElse(
+function convertVariableToCssVariable(
+  variable: IVariable,
+  variables: VariableArray
+): CssVar | undefined {
+  const maybeReferencedVariable = getReferencedVariable(variables, variable);
+  const maybeValue = getValueOrRelatedVariableValue(
+    variable,
+    maybeReferencedVariable
+  );
+
+  return Option(maybeValue).mapOrElse(
     () => undefined,
     (value) => ({
       [formatVariableName(variable.name)]: value,

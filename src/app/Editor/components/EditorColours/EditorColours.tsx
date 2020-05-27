@@ -15,7 +15,7 @@ const messages = defineMessages({
     id: "app.Editor.components.EditorColours.title",
   },
   subtitle: {
-    defaultMessage: "List of all the available colors",
+    defaultMessage: "Add your custom colors and reuse them across elements",
     id: "app.Editor.components.EditorColours.subtitle",
   },
 });
@@ -38,8 +38,8 @@ export const EditorColours = function () {
         >
           <div className={classes.ColorsList}>
             <AnimatePresence>
-              {variables.map((variable, index) => (
-                <EditorColoursItem key={index} variable={variable} />
+              {variables.map((variable) => (
+                <EditorColoursItem key={variable._id} variable={variable} />
               ))}
             </AnimatePresence>
           </div>
