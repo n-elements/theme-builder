@@ -15,7 +15,7 @@ const messages = defineMessages({
     id: "app.Editor.components.EditorColours.title",
   },
   subtitle: {
-    defaultMessage: "List of all the available colors",
+    defaultMessage: "Add your custom colors and reuse them across elements",
     id: "app.Editor.components.EditorColours.subtitle",
   },
 });
