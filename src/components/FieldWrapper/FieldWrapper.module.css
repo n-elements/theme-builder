@@ -9,7 +9,7 @@
 
   position: relative;
   border: var(--prop-field-border);
-  border-radius: 4px;
+  border-radius: var(--ne-textfield-border-radius, 4px);
   font-size: var(--small-font-size);
   display: flex;
   align-items: center;
