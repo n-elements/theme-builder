@@ -6,10 +6,22 @@ import clsx from "clsx";
 import React, { useRef, useState } from "react";
 import { useClickAway } from "react-use";
 import { Option, Maybe } from "tiinvo";
+import { defineMessages, useIntl } from "react-intl";
 import { guessUnitType, UnitType, changeUnit } from "../../helpers/unit";
 import { IFieldProps } from "../../types/fields";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./UnitField.module.css";
+
+const messages = defineMessages({
+  keywords: {
+    defaultMessage: "Keywords",
+    id: "app.Editor.components.UnitField.keywords",
+  },
+  commonUnits: {
+    defaultMessage: "Common units",
+    id: "app.Editor.components.UnitField.commonUnits",
+  },
+});
 
 export interface IUnitFieldProps extends IFieldProps {
   readOnly?: boolean;
@@ -23,6 +35,7 @@ function getAriaChecked(
 }
 
 export const UnitField = function (props: IUnitFieldProps) {
+  const intl = useIntl();
   const ref = useRef(null);
   const values = useVariableValues(props.variable);
   const [open, setOpen] = useState(false);
@@ -81,7 +94,7 @@ export const UnitField = function (props: IUnitFieldProps) {
       <DropDown open={open} ref={ref}>
         <div className={classes.UnitBlock}>
           <p data-size="ultra-small">
-            <b>Keywords</b>
+            <b>{intl.formatMessage(messages.keywords)}</b>
           </p>
           <div
             className={classes.UnitsContainer}
@@ -142,7 +155,7 @@ export const UnitField = function (props: IUnitFieldProps) {
         </div>
         <div className={classes.UnitBlock}>
           <p data-size="ultra-small">
-            <b>Common units</b>
+            <b>{intl.formatMessage(messages.commonUnits)}</b>
           </p>
           <div
             className={classes.UnitsContainer}

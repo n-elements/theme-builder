@@ -8,6 +8,7 @@
 .Scroller {
   flex-grow: 1;
   overflow: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   user-select: none;
   overscroll-behavior: contain;
