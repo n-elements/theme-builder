@@ -49,7 +49,6 @@ export const UnitPickerButton = ({
       onClick={createSetUnitHandler(unitType)}
       small
     >
-      {unit}
       {unitType}
     </Button>
   );
