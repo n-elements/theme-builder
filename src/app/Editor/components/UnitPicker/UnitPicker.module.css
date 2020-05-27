@@ -1,0 +1,8 @@
+.UnitsPicker {
+  display: flex;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid var(--buttongroup-border-color);
+  background-color: var(--buttongroup-background);
+  color: var(--buttongroup-foreground);
+}

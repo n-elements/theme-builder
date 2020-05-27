@@ -18,6 +18,8 @@
   --ne-button-active-foreground: var(--ne-button-foreground);
   --ne-button-disabled-foreground: env(--secondary-90);
   --ne-textfield-border: 1px solid env(--secondary-80);
+  --ne-textfield-hover-border: 1px solid env(--secondary-80);
+  --ne-textfield-focus-border: 1px solid env(--secondary-80);
   --ne-textfield-background: var(--ne-global-background);
   --ne-textfield-hover-background: var(--ne-global-background);
   --ne-textfield-focus-background: var(--ne-global-background);
@@ -71,6 +73,8 @@
     --ne-button-active-foreground: var(--ne-button-foreground);
     --ne-button-disabled-foreground: env(--secondary-90);
     --ne-textfield-border: 1px solid env(--contrast-80);
+    --ne-textfield-hover-border: 1px solid env(--contrast-80);
+    --ne-textfield-focus-border: 1px solid env(--contrast-80);
     --ne-textfield-background: env(--contrast-100);
     --ne-textfield-hover-background: env(--contrast-100);
     --ne-textfield-focus-background: env(--contrast-100);
