@@ -31,8 +31,8 @@ export interface IUnitFieldProps extends IFieldProps {
 function getAriaChecked(
   currentValue: UnitType,
   expectedType: UnitType
-): "true" | "false" {
-  return currentValue === expectedType ? "true" : "false";
+): boolean {
+  return currentValue === expectedType ? true : false;
 }
 
 export const UnitField = function (props: IUnitFieldProps) {
@@ -42,6 +42,18 @@ export const UnitField = function (props: IUnitFieldProps) {
   const [open, setOpen] = useState(false);
   const [unit, setUnit] = useState(guessUnitType(values.value));
   const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
+  const createSetUnitHandler = (unit: UnitType) => () => {
+    Maybe(values.isReferencingOtherVariable).cata({
+      Nothing: () => {
+        Option(props.onChange).mapOrElse(
+          () => void 0,
+          (fn) => fn(changeUnit(values.value, unit))
+        );
+        setUnit(unit);
+      },
+      Just: () => setUnit(unit),
+    });
+  };
 
   useClickAway(ref, createOpenHandler(false));
 
@@ -92,29 +104,29 @@ export const UnitField = function (props: IUnitFieldProps) {
           >
             <UnitPicker>
               <UnitPickerButton
-                variable={props.variable}
-                unitType={UnitType.REV}
-                onChange={props.onChange}
+                unit={UnitType.REV}
+                checked={getAriaChecked(unit, UnitType.REV)}
+                onClick={createSetUnitHandler(UnitType.REV)}
               />
               <UnitPickerButton
-                variable={props.variable}
-                unitType={UnitType.UNS}
-                onChange={props.onChange}
+                unit={UnitType.UNS}
+                checked={getAriaChecked(unit, UnitType.UNS)}
+                onClick={createSetUnitHandler(UnitType.UNS)}
               />
               <UnitPickerButton
-                variable={props.variable}
-                unitType={UnitType.INIT}
-                onChange={props.onChange}
+                unit={UnitType.INIT}
+                checked={getAriaChecked(unit, UnitType.INIT)}
+                onClick={createSetUnitHandler(UnitType.INIT)}
               />
               <UnitPickerButton
-                variable={props.variable}
-                unitType={UnitType.INH}
-                onChange={props.onChange}
+                unit={UnitType.INH}
+                checked={getAriaChecked(unit, UnitType.INH)}
+                onClick={createSetUnitHandler(UnitType.INH)}
               />
               <UnitPickerButton
-                variable={props.variable}
-                unitType={UnitType.NONE}
-                onChange={props.onChange}
+                unit={UnitType.NONE}
+                checked={getAriaChecked(unit, UnitType.NONE)}
+                onClick={createSetUnitHandler(UnitType.NONE)}
               />
             </UnitPicker>
           </div>
@@ -126,29 +138,29 @@ export const UnitField = function (props: IUnitFieldProps) {
 
           <UnitPicker>
             <UnitPickerButton
-              variable={props.variable}
-              unitType={UnitType.PX}
-              onChange={props.onChange}
+              unit={UnitType.PX}
+              checked={getAriaChecked(unit, UnitType.PX)}
+              onClick={createSetUnitHandler(UnitType.PX)}
             />
             <UnitPickerButton
-              variable={props.variable}
-              unitType={UnitType.EM}
-              onChange={props.onChange}
+              unit={UnitType.EM}
+              checked={getAriaChecked(unit, UnitType.EM)}
+              onClick={createSetUnitHandler(UnitType.EM)}
             />
             <UnitPickerButton
-              variable={props.variable}
-              unitType={UnitType.REM}
-              onChange={props.onChange}
+              unit={UnitType.REM}
+              checked={getAriaChecked(unit, UnitType.REM)}
+              onClick={createSetUnitHandler(UnitType.REM)}
             />
             <UnitPickerButton
-              variable={props.variable}
-              unitType={UnitType.CH}
-              onChange={props.onChange}
+              unit={UnitType.CH}
+              checked={getAriaChecked(unit, UnitType.CH)}
+              onClick={createSetUnitHandler(UnitType.CH)}
             />
             <UnitPickerButton
-              variable={props.variable}
-              unitType={UnitType.PERC}
-              onChange={props.onChange}
+              unit={UnitType.PERC}
+              checked={getAriaChecked(unit, UnitType.PERC)}
+              onClick={createSetUnitHandler(UnitType.PERC)}
             />
           </UnitPicker>
         </div>
