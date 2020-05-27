@@ -42,18 +42,6 @@ export const UnitField = function (props: IUnitFieldProps) {
   const [open, setOpen] = useState(false);
   const [unit, setUnit] = useState(guessUnitType(values.value));
   const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
-  const createSetUnitHandler = (unit: UnitType) => () => {
-    Maybe(values.isReferencingOtherVariable).cata({
-      Nothing: () => {
-        Option(props.onChange).mapOrElse(
-          () => void 0,
-          (fn) => fn(changeUnit(values.value, unit))
-        );
-        setUnit(unit);
-      },
-      Just: () => setUnit(unit),
-    });
-  };
 
   useClickAway(ref, createOpenHandler(false));
 
