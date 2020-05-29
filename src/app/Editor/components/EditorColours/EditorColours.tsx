@@ -1,7 +1,6 @@
-import React from "react";
 import routes from "@routes";
-import withCustomVariables from "@app/Editor/hocs/withCustomVariables";
 import { AnimatePresence } from "framer-motion";
+import React from "react";
 import { defineMessages, useIntl } from "react-intl";
 import { Route, Switch, useLocation } from "react-router-dom";
 import useVariables from "../../hooks/useVariables";
@@ -9,7 +8,6 @@ import EditorColoursItem from "../EditorColoursItem";
 import { EditorHeader } from "../EditorHeader";
 import { EditorWrapper } from "../EditorWrapper";
 import classes from "./EditorColours.module.css";
-import { VariableArray } from "@store/theming/types";
 
 const messages = defineMessages({
   title: {
@@ -21,18 +19,6 @@ const messages = defineMessages({
     id: "app.Editor.components.EditorColours.subtitle",
   },
 });
-
-const Preview = withCustomVariables(
-  ({ variables }: { variables: VariableArray }) => (
-    <div className={classes.ColorsList}>
-      <AnimatePresence initial={false}>
-        {variables.map((variable) => (
-          <EditorColoursItem key={variable._id} variable={variable} />
-        ))}
-      </AnimatePresence>
-    </div>
-  )
-);
 
 export const EditorColours = function () {
   const intl = useIntl();
@@ -50,7 +36,13 @@ export const EditorColours = function () {
             />
           }
         >
-          <Preview variables={variables} />
+          <div className={classes.ColorsList}>
+            <AnimatePresence>
+              {variables.map((variable) => (
+                <EditorColoursItem key={variable._id} variable={variable} />
+              ))}
+            </AnimatePresence>
+          </div>
         </EditorWrapper>
       </Route>
     </Switch>

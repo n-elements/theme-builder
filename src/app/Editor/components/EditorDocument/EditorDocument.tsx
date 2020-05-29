@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import withCustomVariables from "@app/Editor/hocs/withCustomVariables";
 import routes from "@routes";
 import { defineMessages, useIntl } from "react-intl";
 import { EditorWrapper } from "../EditorWrapper";
@@ -19,23 +18,6 @@ const messages = defineMessages({
   },
 });
 
-const Preview = withCustomVariables(() => (
-  <>
-    <h2>Try to select the text!</h2>
-    <p className={classes.Container}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, in
-      incidunt, id quos facere hic corrupti, quia perferendis atque consectetur
-      ipsum eaque quo quod explicabo.
-      <br />
-      <br />
-      Aspernatur repudiandae voluptas dolore impedit? Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Quibusdam, in incidunt, id quos facere hic
-      corrupti, quia perferendis atque consectetur ipsum eaque quo quod
-      explicabo. Aspernatur repudiandae voluptas dolore impedit?
-    </p>
-  </>
-));
-
 export const EditorDocument = function () {
   const intl = useIntl();
 
@@ -50,7 +32,19 @@ export const EditorDocument = function () {
             />
           }
         >
-          <Preview />
+          <h2>Try to select the text!</h2>
+          <p className={classes.Container}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam,
+            in incidunt, id quos facere hic corrupti, quia perferendis atque
+            consectetur ipsum eaque quo quod explicabo.
+            <br />
+            <br />
+            Aspernatur repudiandae voluptas dolore impedit? Lorem ipsum dolor
+            sit amet consectetur adipisicing elit. Quibusdam, in incidunt, id
+            quos facere hic corrupti, quia perferendis atque consectetur ipsum
+            eaque quo quod explicabo. Aspernatur repudiandae voluptas dolore
+            impedit?
+          </p>
         </EditorWrapper>
       </Route>
     </Switch>
