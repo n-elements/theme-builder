@@ -5,6 +5,8 @@ import { defineMessages, useIntl } from "react-intl";
 import { EditorWrapper } from "../EditorWrapper";
 import { EditorHeader } from "../EditorHeader";
 import classes from "./EditorTypography.module.css";
+import useCSSVariables from "@app/Editor/hooks/useCSSVariables";
+import clsx from "clsx";
 
 const messages = defineMessages({
   title: {
@@ -19,6 +21,7 @@ const messages = defineMessages({
 
 export const EditorTypography = function () {
   const intl = useIntl();
+  const cssvariables = useCSSVariables();
 
   return (
     <Switch>
@@ -31,7 +34,7 @@ export const EditorTypography = function () {
             />
           }
         >
-          <div className={classes.Container}>
+          <div className={clsx(classes.Container, cssvariables)}>
             <h1>H1 Heading Title</h1>
             <h2>H2 Heading Title</h2>
             <h3>H3 Heading Title</h3>
