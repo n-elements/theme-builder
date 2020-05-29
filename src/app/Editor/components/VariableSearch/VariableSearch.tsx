@@ -1,4 +1,3 @@
-import { formatVariableName } from "@app/Editor/helpers/variable";
 import useRelatedVariables from "@app/Editor/hooks/useRelatedVariables";
 import { OnChangeRelationHandler } from "@app/Editor/types/fields";
 import { IVariable } from "@store/theming/types";

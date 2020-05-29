@@ -1,0 +1,30 @@
+.UnitField {
+  position: relative;
+}
+
+.Field {
+  display: flex;
+  width: 100%;
+  align-items: stretc;
+}
+
+.Input {
+  --ne-textfield-background: transparent;
+  --ne-textfield-border: none;
+
+  margin: 0;
+}
+
+.UnitPreview {
+  --ne-button-border-radius: calc(var(--ne-textfield-border-radius, 4px) / 2);
+
+  margin: 2px;
+  box-sizing: border-box;
+  min-width: 62px;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.UnitBlock {
+  margin: 16px 16px 0 16px;
+}

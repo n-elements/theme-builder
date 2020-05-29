@@ -53,6 +53,7 @@
   --buttongroup-background: env(--secondary-70);
   --skeleton-loader-background: env(--secondary-70);
   --skeleton-loader-highlight: #fff;
+  --colorfield-foreground: env(--contrast-100);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -111,5 +112,6 @@
     --buttongroup-background: env(--contrast-90);
     --skeleton-loader-background: env(--contrast-100);
     --skeleton-loader-highlight: env(--contrast-90);
+    --colorfield-foreground: #fff;
   }
 }
