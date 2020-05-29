@@ -3,7 +3,6 @@ import nepreset, {
   VariableDomain as NEVariableDomain,
 } from "@native-elements/core/dist/props";
 import routes from "@routes";
-import { Option } from "tiinvo";
 import { assignId, cleanVariableName, extractVariableName } from "./helpers";
 import {
   IVariable,
