@@ -9,6 +9,7 @@
   --ne-body-font-size: var(--regular-font-size);
   --ne-textfield-y-padding: 7px;
   --ne-textfield-x-padding: 16px;
+  --ne-textfield-border-radius: 4px;
   --ne-textfield-min-height: auto;
   --ne-details-max-height: auto;
 }
