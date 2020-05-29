@@ -29,19 +29,9 @@ export const ColorField = function (props: IColorFieldProps) {
     <div className={clsx(classes.ColorField, props.className)} ref={ref}>
       <FieldWrapper>
         <button className={classes.Field} onClick={createOpenHandler(true)}>
-          <input
-            className={classes.Input}
-            onChange={(event) =>
-              Option(props.onChange).mapOrElse(
-                () => void 0,
-                (fn) => fn(event.target.value)
-              )
-            }
-            readOnly={props.readOnly}
-            type="text"
-            tabIndex={-1}
-            value={values.displayValue || defaultColor}
-          />
+          <span className={classes.Value}>
+            {values.displayValue || defaultColor}
+          </span>
           <span className={classes.ColorPreview}>
             <ColorPreview
               color={values.value}
