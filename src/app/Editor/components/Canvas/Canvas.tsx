@@ -1,4 +1,3 @@
-import withCustomVariables from "@app/Editor/hocs/withCustomVariables";
 import clsx from "clsx";
 import React, { ComponentPropsWithRef } from "react";
 import classes from "./Canvas.module.css";
@@ -14,4 +13,4 @@ function Canvas(props: ICanvasProps) {
   );
 }
 
-export default withCustomVariables(Canvas);
+export default Canvas;
