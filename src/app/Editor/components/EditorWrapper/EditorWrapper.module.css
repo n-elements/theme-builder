@@ -11,7 +11,8 @@
 .ContentDemo {
   position: relative;
   flex-grow: 1;
-  background-color: var(--ne-global-background);
+  display: flex;
+  flex-direction: column;
 
   & > * + * {
     margin-top: 64px;

@@ -31,7 +31,7 @@ export const AppHeader = function ({
             rel="noopener noreferrer"
             target="_blank"
           >
-            Native elements
+            Github
             <Github />
           </a>
         </div>
