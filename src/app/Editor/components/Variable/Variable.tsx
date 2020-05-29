@@ -3,7 +3,7 @@ import useVariableEditing from "@app/Editor/hooks/useVariableEditing";
 import { Bin, Check, Rename } from "@components/Icons/12x";
 import { IVariable } from "@store/theming/types";
 import clsx from "clsx";
-import React, { KeyboardEvent, useRef, useState } from "react";
+import React, { KeyboardEvent, useRef, useState, MouseEvent } from "react";
 import classes from "./Variable.module.css";
 import VariableField from "./VariableField";
 import { cleanVariableName } from "@store/theming/helpers";
@@ -36,6 +36,23 @@ export function Variable({
       setEditingLabel(!editingLabel);
     }
   }
+  // function handleEditing(event: MouseEvent<HTMLButtonElement>) {
+  //   if (editingLabel) {
+  //     setEditingLabel(!editingLabel);
+  //   } else {
+  //     ref.current?.focus();
+  //     ref.current?.select();
+  //   }
+  // }
+  function handleEditing(event: MouseEvent<HTMLButtonElement>) {
+    if (editingLabel === true) {
+      setEditingLabel(false);
+    } else {
+      setEditingLabel(true);
+      ref.current?.focus();
+      ref.current?.select();
+    }
+  }
 
   return (
     <fieldset
@@ -66,10 +83,7 @@ export function Variable({
               arial-label="Rename Property"
               className={classes.Action}
               data-editing={editingLabel}
-              onClick={() => {
-                setEditingLabel(!editingLabel);
-                ref.current?.focus();
-              }}
+              onClick={handleEditing}
             >
               {editingLabel ? (
                 <Check aria-hidden="true" />

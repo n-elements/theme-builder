@@ -57,6 +57,8 @@ export default function VariableField(props: IVariableField) {
         </Suspense>
       );
     case "text":
+    case "border":
+    case "box-shadow":
       return (
         <Suspense fallback={<SkeletonLoader height={40} />}>
           <TextField
