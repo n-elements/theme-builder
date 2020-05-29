@@ -34,7 +34,9 @@ export const Expander = function ({
       className={clsx(classes.Expander, className)}
       {...attributes}
     >
-      <summary>{summary}</summary>
+      <summary>
+        <strong>{summary}</strong>
+      </summary>
       {open && <div>{children}</div>}
     </details>
   );

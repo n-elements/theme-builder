@@ -5,6 +5,8 @@ import { defineMessages, useIntl } from "react-intl";
 import { EditorWrapper } from "../EditorWrapper";
 import { EditorHeader } from "../EditorHeader";
 import classes from "./EditorDocument.module.css";
+import useCSSVariables from "@app/Editor/hooks/useCSSVariables";
+import clsx from "clsx";
 
 const messages = defineMessages({
   title: {
@@ -20,6 +22,7 @@ const messages = defineMessages({
 
 export const EditorDocument = function () {
   const intl = useIntl();
+  const cssvariables = useCSSVariables();
 
   return (
     <Switch>
@@ -32,19 +35,21 @@ export const EditorDocument = function () {
             />
           }
         >
-          <h2>Try to select the text!</h2>
-          <p className={classes.Container}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam,
-            in incidunt, id quos facere hic corrupti, quia perferendis atque
-            consectetur ipsum eaque quo quod explicabo.
-            <br />
-            <br />
-            Aspernatur repudiandae voluptas dolore impedit? Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quibusdam, in incidunt, id
-            quos facere hic corrupti, quia perferendis atque consectetur ipsum
-            eaque quo quod explicabo. Aspernatur repudiandae voluptas dolore
-            impedit?
-          </p>
+          <div className={clsx(cssvariables)}>
+            <h2>Try to select the text!</h2>
+            <p className={classes.Container}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Quibusdam, in incidunt, id quos facere hic corrupti, quia
+              perferendis atque consectetur ipsum eaque quo quod explicabo.
+              <br />
+              <br />
+              Aspernatur repudiandae voluptas dolore impedit? Lorem ipsum dolor
+              sit amet consectetur adipisicing elit. Quibusdam, in incidunt, id
+              quos facere hic corrupti, quia perferendis atque consectetur ipsum
+              eaque quo quod explicabo. Aspernatur repudiandae voluptas dolore
+              impedit?
+            </p>
+          </div>
         </EditorWrapper>
       </Route>
     </Switch>
