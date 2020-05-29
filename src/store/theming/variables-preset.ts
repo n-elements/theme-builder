@@ -11,6 +11,7 @@ import {
   VariableType,
   VariableValue,
 } from "./types";
+import { Option } from "tiinvo";
 
 const domains = routes.editor;
 
@@ -36,7 +37,10 @@ function map(variable: INEVariable): IVariable {
     variable.defaultValue
   );
 
-  mapped.element = variable.element;
+  mapped.element = Option(variable.element).mapOrElse(
+    () => "",
+    (arg) => arg.toLowerCase()
+  );
 
   return mapped;
 }
@@ -68,7 +72,7 @@ export default function preset(): VariableArray {
   >();
   const variablesMap = new Map<string, IVariable>();
   const mappedvariables = nepreset.map(map);
-  console.log(mappedvariables);
+
   for (let index = 0; index < mappedvariables.length; index++) {
     const element = mappedvariables[index];
     const maybeExtractedName = extractVariableName(element.value ?? "");
