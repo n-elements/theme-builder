@@ -12,6 +12,7 @@ import { IFieldProps } from "../../types/fields";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./UnitField.module.css";
 import { UnitPicker, UnitPickerButton } from "../UnitPicker";
+import { Gear } from "@components/Icons/16x";
 
 const messages = defineMessages({
   keywords: {
@@ -88,7 +89,7 @@ export const UnitField = function (props: IUnitFieldProps) {
             onClick={createOpenHandler(true)}
             className={classes.UnitPreview}
           >
-            {unit}
+            <Gear />
           </Button>
         </div>
       </FieldWrapper>

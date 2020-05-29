@@ -36,14 +36,7 @@ export function Variable({
       setEditingLabel(!editingLabel);
     }
   }
-  // function handleEditing(event: MouseEvent<HTMLButtonElement>) {
-  //   if (editingLabel) {
-  //     setEditingLabel(!editingLabel);
-  //   } else {
-  //     ref.current?.focus();
-  //     ref.current?.select();
-  //   }
-  // }
+
   function handleEditing(event: MouseEvent<HTMLButtonElement>) {
     if (editingLabel === true) {
       setEditingLabel(false);

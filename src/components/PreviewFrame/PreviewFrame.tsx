@@ -1,10 +1,4 @@
-import React, {
-  ReactNode,
-  CSSProperties,
-  useRef,
-  useEffect,
-  useCallback,
-} from "react";
+import React, { ReactNode, useRef, useEffect, useCallback } from "react";
 import Frame, { FrameContextConsumer } from "react-frame-component";
 import useCSSVariables from "@app/Editor/hooks/useCSSVariables";
 import clsx from "clsx";
