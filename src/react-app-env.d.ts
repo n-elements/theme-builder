@@ -6,7 +6,7 @@ declare module "*.module.pcss" {
 }
 
 declare module "@native-elements/core/dist/props" {
-  export type VariableDomain = "color" | "document" | "element" | "typography";
+  export type VariableDomain = "color" | "document" | "elements" | "typography";
 
   export interface IVariable {
     defaultValue: string;

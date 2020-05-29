@@ -1,17 +1,16 @@
-import {
-  VariableArray,
-  IVariable,
-  VariableType,
-  VariableDomain,
-  VariableValue,
-} from "./types";
-import routes from "@routes";
-import { assignId, cleanVariableName, extractVariableName } from "./helpers";
 import nepreset, {
   IVariable as INEVariable,
   VariableDomain as NEVariableDomain,
 } from "@native-elements/core/dist/props";
-import { Option } from "tiinvo";
+import routes from "@routes";
+import { assignId, cleanVariableName, extractVariableName } from "./helpers";
+import {
+  IVariable,
+  VariableArray,
+  VariableDomain,
+  VariableType,
+  VariableValue,
+} from "./types";
 
 const domains = routes.editor;
 
@@ -33,14 +32,11 @@ function map(variable: INEVariable): IVariable {
   const mapped = create(
     mapdomain(variable.domain),
     cleanVariableName(variable.name),
-    <VariableType>variable.type,
+    variable.type as VariableType,
     variable.defaultValue
   );
 
-  Option(variable.element).mapOrElse(
-    () => void 0,
-    (element) => (mapped.domain += "#" + element)
-  );
+  mapped.element = variable.element;
 
   return mapped;
 }
@@ -51,7 +47,7 @@ function mapdomain(domain: NEVariableDomain): VariableDomain {
       return domains.colours;
     case "document":
       return domains.document;
-    case "element":
+    case "elements":
       return domains.elements;
     case "typography":
       return domains.typography;
@@ -66,10 +62,13 @@ export const accentvariable = create(
 );
 
 export default function preset(): VariableArray {
-  const requiresReparentingMap = new Map<string, IVariable>();
+  const requiresReparentingMap = new Map<
+    string,
+    { value: string; index: number }
+  >();
   const variablesMap = new Map<string, IVariable>();
   const mappedvariables = nepreset.map(map);
-
+  console.log(mappedvariables);
   for (let index = 0; index < mappedvariables.length; index++) {
     const element = mappedvariables[index];
     const maybeExtractedName = extractVariableName(element.value ?? "");
@@ -78,7 +77,7 @@ export default function preset(): VariableArray {
 
     if (maybeExtractedName.isSome()) {
       requiresReparentingMap.set(element.name, {
-        ...element,
+        index,
         value: cleanVariableName(maybeExtractedName.unwrap()!),
       });
     }
@@ -87,13 +86,16 @@ export default function preset(): VariableArray {
   const reparentingElements = Array.from(requiresReparentingMap.keys());
 
   for (let index = 0; index < reparentingElements.length; index++) {
-    const variableToReparent = requiresReparentingMap.get(
-      reparentingElements[0]
-    )!;
-    const relatedVariable = variablesMap.get(variableToReparent.value!)!;
+    const relation = requiresReparentingMap.get(reparentingElements[0])!;
+    const variableToReparent = mappedvariables[relation.index];
+    const relatedVariable = variablesMap.get(relation.value!)!;
 
     variableToReparent._referenceId = relatedVariable._id;
     variableToReparent.value = relatedVariable.value;
+
+    if (variableToReparent._id === relatedVariable._id) {
+      variableToReparent.value = "";
+    }
   }
 
   return [accentvariable, ...mappedvariables];
