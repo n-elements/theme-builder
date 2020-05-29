@@ -37,10 +37,7 @@ function map(variable: INEVariable): IVariable {
     variable.defaultValue
   );
 
-  Option(variable.element).mapOrElse(
-    () => void 0,
-    (element) => (mapped.domain += "#" + element)
-  );
+  mapped.element = variable.element;
 
   return mapped;
 }
@@ -51,7 +48,7 @@ function mapdomain(domain: NEVariableDomain): VariableDomain {
       return domains.colours;
     case "document":
       return domains.document;
-    case "element":
+    case "elements":
       return domains.elements;
     case "typography":
       return domains.typography;
@@ -72,7 +69,7 @@ export default function preset(): VariableArray {
   >();
   const variablesMap = new Map<string, IVariable>();
   const mappedvariables = nepreset.map(map);
-
+  console.log(mappedvariables);
   for (let index = 0; index < mappedvariables.length; index++) {
     const element = mappedvariables[index];
     const maybeExtractedName = extractVariableName(element.value ?? "");

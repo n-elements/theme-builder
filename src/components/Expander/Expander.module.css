@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.Expander summary {
+  text-transform: capitalize;
+}
+
 /*
 .Content {
 } */
