@@ -1,5 +1,4 @@
 import useVariables from "./useVariables";
-import { useCss } from "react-use";
 import { CSSProperties } from "react";
 import { VariableArray, IVariable } from "@store/theming/types";
 import { getReferencedVariable } from "@store/theming/helpers";
@@ -42,5 +41,5 @@ function convertVariableToCssVariable(
 
 export default function useCSSVariables() {
   const variables = useVariables("*");
-  return useCss(convertVariables(variables));
+  return convertVariables(variables);
 }
