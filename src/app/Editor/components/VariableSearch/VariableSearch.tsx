@@ -49,9 +49,7 @@ export const VariableSearch = function ({
       />
       <datalist id="variables">
         {relatedVariables.map((variable, index) => (
-          <option key={index} value={variable.name}>
-            {formatVariableName(variable.name)}
-          </option>
+          <option key={index} value={variable.name}></option>
         ))}
       </datalist>
     </div>
