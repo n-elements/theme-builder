@@ -1,14 +1,24 @@
-import React from "react";
 import { Expander } from "@components/Expander";
+import React from "react";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import useElementsVariables from "../hooks/useElementsVariables";
 
 export default function ElementsVariables() {
   const elementsvars = useElementsVariables();
+  const history = useHistory();
+  const match = useRouteMatch<{ element: string }>();
 
   return (
     <div ne-details-group="true">
       {elementsvars.elements.map((name, index) => (
-        <Expander summary={name}></Expander>
+        <Expander
+          open={match.params.element === name}
+          key={index}
+          onExpand={() => {
+            history.push(elementsvars.getRouteForElement(name!));
+          }}
+          summary={name}
+        ></Expander>
       ))}
     </div>
   );
