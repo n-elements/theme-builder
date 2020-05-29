@@ -1,15 +1,17 @@
 .EditorWrapper {
-  padding: 48px 40px;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
   min-height: 100%;
   background-color: var(--ne-global-background);
   color: var(--ne-global-foreground);
+  display: flex;
+  flex-direction: column;
 }
 
 .ContentDemo {
   position: relative;
+  flex-grow: 1;
 
   & > * + * {
     margin-top: 64px;

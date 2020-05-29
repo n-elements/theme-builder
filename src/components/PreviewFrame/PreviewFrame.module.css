@@ -1,0 +1,5 @@
+.PreviewFrame {
+  border: 0;
+  width: var(--maxWidth, 100%);
+  display: block;
+}

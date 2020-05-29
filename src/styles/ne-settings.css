@@ -5,6 +5,7 @@
   --regular-font-size: 1rem;
   --small-font-size: 0.875rem;
   --ultra-small-font-size: 0.812rem;
+  --ne-body-font-family: 'Roboto Mono', sans-serif;
   --ne-headings-scale: 1.125;
   --ne-body-font-size: var(--regular-font-size);
   --ne-textfield-y-padding: 7px;

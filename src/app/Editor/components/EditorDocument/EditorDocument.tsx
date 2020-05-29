@@ -4,9 +4,7 @@ import routes from "@routes";
 import { defineMessages, useIntl } from "react-intl";
 import { EditorWrapper } from "../EditorWrapper";
 import { EditorHeader } from "../EditorHeader";
-import classes from "./EditorDocument.module.css";
-import useCSSVariables from "@app/Editor/hooks/useCSSVariables";
-import clsx from "clsx";
+import { PreviewFrame } from "@components/PreviewFrame";
 
 const messages = defineMessages({
   title: {
@@ -22,7 +20,6 @@ const messages = defineMessages({
 
 export const EditorDocument = function () {
   const intl = useIntl();
-  const cssvariables = useCSSVariables();
 
   return (
     <Switch>
@@ -35,9 +32,9 @@ export const EditorDocument = function () {
             />
           }
         >
-          <div className={clsx(cssvariables)}>
+          <PreviewFrame maxWidth="50%">
             <h2>Try to select the text!</h2>
-            <p className={classes.Container}>
+            <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Quibusdam, in incidunt, id quos facere hic corrupti, quia
               perferendis atque consectetur ipsum eaque quo quod explicabo.
@@ -49,7 +46,7 @@ export const EditorDocument = function () {
               eaque quo quod explicabo. Aspernatur repudiandae voluptas dolore
               impedit?
             </p>
-          </div>
+          </PreviewFrame>
         </EditorWrapper>
       </Route>
     </Switch>
