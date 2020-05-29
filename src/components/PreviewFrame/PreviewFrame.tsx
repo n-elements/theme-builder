@@ -25,16 +25,15 @@ export const PreviewFrame = ({
   const cssvariables = useCSSVariables();
   const computedWidth =
     typeof maxWidth === "number" ? `${maxWidth}px` : maxWidth;
-  const dynamicStyle = { "--maxWidth": computedWidth } as CSSProperties;
 
   const previewTemplate = `
   <!DOCTYPE html>
   <html>
     <head>
       <link rel="preconnect" href="https://cdn.jsdelivr.net">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@native-elements/core@0.20.0/dist/native-elements.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@native-elements/core@latest/dist/native-elements.min.css">
     </head>
-    <body style="margin: 0; padding: 40px">
+    <body style="margin: 0; padding: 40px; max-width: ${computedWidth}">
       <div id="mount"></div>
     </body>
   </html>`;
@@ -57,7 +56,6 @@ export const PreviewFrame = ({
   return (
     <Frame
       initialContent={previewTemplate}
-      style={dynamicStyle}
       ref={iframeRef}
       mountTarget="#mount"
       scrolling="no"
