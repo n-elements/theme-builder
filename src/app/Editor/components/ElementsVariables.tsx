@@ -2,6 +2,7 @@ import { Expander } from "@components/Expander";
 import React from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import useElementsVariables from "../hooks/useElementsVariables";
+import { Variable } from "./Variable";
 
 export default function ElementsVariables() {
   const elementsvars = useElementsVariables();
@@ -18,7 +19,11 @@ export default function ElementsVariables() {
             history.push(elementsvars.getRouteForElement(name!));
           }}
           summary={name}
-        ></Expander>
+        >
+          {elementsvars.getVariablesForElement(name!).map((variable, index) => (
+            <Variable key={index} variable={variable} />
+          ))}
+        </Expander>
       ))}
     </div>
   );
