@@ -97,39 +97,33 @@ export const UnitField = function (props: IUnitFieldProps) {
           <p data-size="ultra-small">
             <b>{intl.formatMessage(messages.keywords)}</b>
           </p>
-          <div
-            className={classes.UnitsContainer}
-            role="radiogroup"
-            aria-label="Set the value unit"
-          >
-            <UnitPicker>
-              <UnitPickerButton
-                unit={UnitType.REV}
-                checked={getAriaChecked(unit, UnitType.REV)}
-                onClick={createSetUnitHandler(UnitType.REV)}
-              />
-              <UnitPickerButton
-                unit={UnitType.UNS}
-                checked={getAriaChecked(unit, UnitType.UNS)}
-                onClick={createSetUnitHandler(UnitType.UNS)}
-              />
-              <UnitPickerButton
-                unit={UnitType.INIT}
-                checked={getAriaChecked(unit, UnitType.INIT)}
-                onClick={createSetUnitHandler(UnitType.INIT)}
-              />
-              <UnitPickerButton
-                unit={UnitType.INH}
-                checked={getAriaChecked(unit, UnitType.INH)}
-                onClick={createSetUnitHandler(UnitType.INH)}
-              />
-              <UnitPickerButton
-                unit={UnitType.NONE}
-                checked={getAriaChecked(unit, UnitType.NONE)}
-                onClick={createSetUnitHandler(UnitType.NONE)}
-              />
-            </UnitPicker>
-          </div>
+          <UnitPicker>
+            <UnitPickerButton
+              unit={UnitType.REV}
+              checked={getAriaChecked(unit, UnitType.REV)}
+              onClick={createSetUnitHandler(UnitType.REV)}
+            />
+            <UnitPickerButton
+              unit={UnitType.UNS}
+              checked={getAriaChecked(unit, UnitType.UNS)}
+              onClick={createSetUnitHandler(UnitType.UNS)}
+            />
+            <UnitPickerButton
+              unit={UnitType.INIT}
+              checked={getAriaChecked(unit, UnitType.INIT)}
+              onClick={createSetUnitHandler(UnitType.INIT)}
+            />
+            <UnitPickerButton
+              unit={UnitType.INH}
+              checked={getAriaChecked(unit, UnitType.INH)}
+              onClick={createSetUnitHandler(UnitType.INH)}
+            />
+            <UnitPickerButton
+              unit={UnitType.NONE}
+              checked={getAriaChecked(unit, UnitType.NONE)}
+              onClick={createSetUnitHandler(UnitType.NONE)}
+            />
+          </UnitPicker>
         </div>
         <div className={classes.UnitBlock}>
           <p data-size="ultra-small">
