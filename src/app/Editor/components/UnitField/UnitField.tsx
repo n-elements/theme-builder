@@ -80,7 +80,6 @@ export const UnitField = function (props: IUnitFieldProps) {
             }}
             readOnly={props.readOnly}
             type="text"
-            tabIndex={-1}
             value={values.displayValue}
           />
           <Button

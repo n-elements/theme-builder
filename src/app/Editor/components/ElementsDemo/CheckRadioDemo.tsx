@@ -38,7 +38,11 @@ export const CheckRadioDemo = function () {
           <h5>Checkboxes</h5>
           <fieldset>
             <input type="checkbox" /> <input defaultChecked type="checkbox" />{" "}
-            <input ref={indetSetter} type="checkbox" />{" "}
+            <input
+              ref={indetSetter}
+              type="checkbox"
+              onClick={(e) => e.preventDefault()}
+            />{" "}
             <input type="checkbox" disabled />
           </fieldset>
         </section>

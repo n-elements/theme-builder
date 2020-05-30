@@ -15,6 +15,7 @@
   "app.Editor.components.ElementsDemo.title": "Elements",
   "app.Editor.elements.button.subtitle": "Buttons elements and call to actions",
   "app.Editor.elements.checkradio.subtitle": "Check and Radio inputs",
+  "app.Editor.elements.code.subtitle": "Preformatted code block",
   "components.ThemeSwitcher.auto": "Auto",
   "components.ThemeSwitcher.dark": "Dark",
   "components.ThemeSwitcher.light": "Light"
