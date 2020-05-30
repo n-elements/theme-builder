@@ -30,7 +30,7 @@ export const SelectDemo = function () {
     >
       <PreviewFrame>
         <section>
-          <h5>Resting</h5>
+          <h5>Default</h5>
           <select id="select" name="select">
             <option selected hidden>
               Pick an option
@@ -55,6 +55,21 @@ export const SelectDemo = function () {
         <section>
           <h5>Multiple</h5>
           <select multiple size={8} id="multi-select">
+            <optgroup label="Option Group">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </optgroup>
+            <optgroup label="Option Group 2">
+              <option>Option 4</option>
+              <option>Option 5</option>
+              <option>Option 6</option>
+            </optgroup>
+          </select>
+        </section>
+        <section>
+          <h5>Multiple disabled</h5>
+          <select multiple disabled size={8} id="multi-select">
             <optgroup label="Option Group">
               <option>Option 1</option>
               <option>Option 2</option>
