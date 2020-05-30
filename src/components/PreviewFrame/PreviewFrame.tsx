@@ -25,7 +25,17 @@ export const PreviewFrame = ({
   <html>
     <head>
       <link rel="preconnect" href="https://cdn.jsdelivr.net">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@native-elements/core@latest/dist/native-elements.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@latest/modern-normalize.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@native-elements/core@0.21.0/dist/native-elements.min.css">
+      <style>
+        section > h5 {
+          margin-bottom: 24px;
+        }
+
+        section + section {
+          margin-top: 40px;
+        }
+      </style>
     </head>
     <body style="margin: 0; padding: 40px; max-width: ${computedWidth}">
       <div id="mount"></div>
