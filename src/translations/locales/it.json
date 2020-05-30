@@ -24,6 +24,8 @@
   "app.Editor.elements.hr.subtitle": "Horizontal rule used as content separator",
   "app.Editor.elements.meter.title": "Meter",
   "app.Editor.elements.meter.subtitle": "Element used to provide a visual feedback about password strength",
+  "app.Editor.elements.progress.title": "Progress",
+  "app.Editor.elements.progress.subtitle": "The progress bar element is used as loading indicator or overall progress status",
   "components.ThemeSwitcher.auto": "Auto",
   "components.ThemeSwitcher.dark": "Dark",
   "components.ThemeSwitcher.light": "Light"

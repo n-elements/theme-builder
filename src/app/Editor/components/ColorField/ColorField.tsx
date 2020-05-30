@@ -105,11 +105,6 @@ export const ColorField = function (props: IColorFieldProps) {
               checked={false}
               onClick={() => {}}
             />
-            <UnitPickerButton
-              unit={UnitType.NONE}
-              checked={false}
-              onClick={() => {}}
-            />
           </UnitPicker>
         </div>
         <VariableSearch

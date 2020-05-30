@@ -5,6 +5,7 @@ import { CodeDemo } from "./CodeDemo";
 import { DetailsDemo } from "./DetailsDemo";
 import { HrDemo } from "./HrDemo";
 import { MeterDemo } from "./MeterDemo";
+import { ProgressDemo } from "./ProgressDemo";
 
 const demomap = new Map<string, ComponentType>();
 
@@ -14,5 +15,6 @@ demomap.set("code", CodeDemo);
 demomap.set("details", DetailsDemo);
 demomap.set("hr", HrDemo);
 demomap.set("meter", MeterDemo);
+demomap.set("progress", ProgressDemo);
 
 export default demomap;
