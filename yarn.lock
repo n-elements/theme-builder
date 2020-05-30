@@ -1448,10 +1448,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@native-elements/core@0.21.1":
-  version "0.21.1"
-  resolved "https://registry.yarnpkg.com/@native-elements/core/-/core-0.21.1.tgz#bbb0a67af6cd7e7dd51b0df6b8c8cdf967ff8699"
-  integrity sha512-KNEL6s8eBGlteeaiyJVls8YOfPmJir20t/e9opUuseM969iWoVg7IT6DDMQXr8kFe8YAzo9QhbOtR3RAUjdQrQ==
+"@native-elements/core@0.21.3":
+  version "0.21.3"
+  resolved "https://registry.yarnpkg.com/@native-elements/core/-/core-0.21.3.tgz#bbce9c6a98b02c635e8852133dc6000a0cb7d8cf"
+  integrity sha512-UUoq8odUbVKyVr6fBGtwKS9a7Qrv1Qo/NfkrG9xNwzTjwcZvDHDqVfAtg+JLCu8OZkB0ogWXXCuO8aVxzzFUOA==
   dependencies:
     copyfiles "2.2.0"
     serialize-to-js "3.1.1"

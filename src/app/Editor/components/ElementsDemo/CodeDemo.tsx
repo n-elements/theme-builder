@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { defineMessages, useIntl } from "react-intl";
 import { EditorWrapper } from "../EditorWrapper";
 import { EditorHeader } from "../EditorHeader";
@@ -17,12 +17,6 @@ const messages = defineMessages({
 
 export const CodeDemo = function () {
   const intl = useIntl();
-
-  const indetSetter = useCallback((el) => {
-    if (el) {
-      el.indeterminate = true;
-    }
-  }, []);
 
   return (
     <EditorWrapper

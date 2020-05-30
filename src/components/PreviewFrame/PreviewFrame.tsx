@@ -26,7 +26,7 @@ export const PreviewFrame = ({
     <head>
       <link rel="preconnect" href="https://cdn.jsdelivr.net">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@latest/modern-normalize.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@native-elements/core@0.21.1/dist/native-elements.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@native-elements/core@0.21.3/dist/native-elements.min.css">
       <script src="https://cdn.jsdelivr.net/npm/what-input@5.2.9/dist/what-input.min.js" defer></script>
       <style>
         section > h5 {
@@ -72,6 +72,9 @@ export const PreviewFrame = ({
         {({ document }) => {
           Object.keys(cssvariables).forEach((key) =>
             document.documentElement.style.setProperty(key, cssvariables[key])
+          );
+          document.documentElement.addEventListener("click", (e: any) =>
+            setIframeHeight(e)
           );
           return children;
         }}
