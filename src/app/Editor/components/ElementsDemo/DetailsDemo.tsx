@@ -6,11 +6,11 @@ import { PreviewFrame } from "@components/PreviewFrame";
 
 const messages = defineMessages({
   title: {
-    defaultMessage: "Elements",
-    id: "app.Editor.components.ElementsDemo.title",
+    defaultMessage: "Details / Folding",
+    id: "app.Editor.elements.details.title",
   },
   subtitle: {
-    defaultMessage: "Preformatted code block",
+    defaultMessage: "Folding element that can be combined to build a group",
     id: "app.Editor.elements.details.subtitle",
   },
 });
@@ -87,12 +87,16 @@ export const DetailsDemo = function () {
                   alt=""
                   src="https://images.unsplash.com/photo-1577898485757-7c8e111a32a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
                 />
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Temporibus provident saepe deserunt veritatis? Totam,
-                  corrupti. Dolor quos, numquam totam quae ea enim maiores sequi
-                  et? Optio harum adipisci neque nemo.
-                </p>
+                <small>
+                  Photo by{" "}
+                  <a
+                    href="https://unsplash.com/@equinusocio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Mattia Astorino
+                  </a>
+                </small>
               </div>
             </details>
             <details>

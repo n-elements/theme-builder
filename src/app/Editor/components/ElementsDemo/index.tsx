@@ -3,6 +3,8 @@ import { ButtonDemo } from "./ButtonDemo";
 import { CheckRadioDemo } from "./CheckRadioDemo";
 import { CodeDemo } from "./CodeDemo";
 import { DetailsDemo } from "./DetailsDemo";
+import { HrDemo } from "./HrDemo";
+import { MeterDemo } from "./MeterDemo";
 
 const demomap = new Map<string, ComponentType>();
 
@@ -10,5 +12,7 @@ demomap.set("button", ButtonDemo);
 demomap.set("check-radio", CheckRadioDemo);
 demomap.set("code", CodeDemo);
 demomap.set("details", DetailsDemo);
+demomap.set("hr", HrDemo);
+demomap.set("meter", MeterDemo);
 
 export default demomap;

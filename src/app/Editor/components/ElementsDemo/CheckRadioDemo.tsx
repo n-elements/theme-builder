@@ -6,11 +6,11 @@ import { PreviewFrame } from "@components/PreviewFrame";
 
 const messages = defineMessages({
   title: {
-    defaultMessage: "Elements",
-    id: "app.Editor.components.ElementsDemo.title",
+    defaultMessage: "Check and Radio inputs",
+    id: "app.Editor.elements.checkradio.title",
   },
   subtitle: {
-    defaultMessage: "Check and Radio inputs",
+    defaultMessage: "Checkbox and radio button elements used to select options",
     id: "app.Editor.elements.checkradio.subtitle",
   },
 });
