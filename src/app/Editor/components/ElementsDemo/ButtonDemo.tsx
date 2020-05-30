@@ -6,11 +6,11 @@ import { PreviewFrame } from "@components/PreviewFrame";
 
 const messages = defineMessages({
   title: {
-    defaultMessage: "Buttons",
-    id: "app.Editor.elements.button.title",
+    defaultMessage: "Elements",
+    id: "app.Editor.components.ElementsDemo.title",
   },
   subtitle: {
-    defaultMessage: "HTML Element: <button>",
+    defaultMessage: "Buttons",
     id: "app.Editor.elements.button.subtitle",
   },
 });
