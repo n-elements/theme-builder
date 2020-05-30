@@ -14,6 +14,8 @@
   "app.Editor.components.VariableSearch.searchPlaceholder": "Search variable",
   "app.Editor.elements.button.title": "Buttons",
   "app.Editor.elements.button.subtitle": "HTML Element: <button>",
+  "app.Editor.elements.checkradio.title": "Check and Radio inputs",
+  "app.Editor.elements.checkradio.subtitle": "HTML Elements: <input type='checkbox'> | <input type='radio'>",
   "components.ThemeSwitcher.auto": "Auto",
   "components.ThemeSwitcher.dark": "Dark",
   "components.ThemeSwitcher.light": "Light"

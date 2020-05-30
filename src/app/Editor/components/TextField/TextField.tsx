@@ -36,7 +36,6 @@ export const TextField = function (props: IUnitFieldProps) {
             }}
             readOnly={props.readOnly}
             type="text"
-            tabIndex={-1}
             value={values.displayValue}
           />
         </div>

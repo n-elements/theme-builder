@@ -1,97 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="auto">
-  <head>
-    <meta charset="utf-8" />
-    <link
-      rel="mask-icon"
-      href="%PUBLIC_URL%/safari-favicon.svg"
-      color="#0057FF"
-    />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.svg" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <meta name="theme-color" content="#000000" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,900;1,400;1,900&display=swap"
-      rel="stylesheet"
-    />
 
-    <!-- Primary Meta Tags -->
-    <title>Native Elements — Theme Builder</title>
-    <meta name="title" content="Native Elements — Theme Builder" />
-    <meta
-      name="description"
-      content="The best companion tool for Native Elements. Build you own theme easily!"
-    />
+<head>
+  <meta charset="utf-8" />
+  <link rel="mask-icon" href="%PUBLIC_URL%/safari-favicon.svg" color="#0057FF" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,900;1,400;1,900&display=swap"
+    rel="stylesheet" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta
-      name="url"
-      property="og:url"
-      content="https://native-elements.netlify.app/"
-    />
-    <meta
-      name="title"
-      property="og:title"
-      content="Native Elements — Theme Builder"
-    />
-    <meta
-      name="description"
-      property="og:description"
-      content="The best companion tool for Native Elements. Build you own theme easily!"
-    />
-    <meta
-      name="image"
-      property="og:image"
-      content="%PUBLIC_URL%/share-image.png"
-    />
-    <meta name="author" content="Native Elements" />
+  <!-- Primary Meta Tags -->
+  <title>Native Elements — Theme Builder</title>
+  <meta name="title" content="Native Elements — Theme Builder" />
+  <meta name="description" content="The best companion tool for Native Elements. Build you own theme easily!" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta
-      property="twitter:url"
-      content="https://native-elements.netlify.app/"
-    />
-    <meta property="twitter:title" content="Native Elements — Theme Builder" />
-    <meta
-      property="twitter:description"
-      content="The best companion tool for Native Elements. Build you own theme easily!"
-    />
-    <meta property="twitter:image" content="%PUBLIC_URL%/share-image.png" />
-  </head>
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta name="url" property="og:url" content="https://native-elements.netlify.app/" />
+  <meta name="title" property="og:title" content="Native Elements — Theme Builder" />
+  <meta name="description" property="og:description"
+    content="The best companion tool for Native Elements. Build you own theme easily!" />
+  <meta name="image" property="og:image" content="%PUBLIC_URL%/share-image.png" />
+  <meta name="author" content="Native Elements" />
 
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <script>
-      (function (e, t, n, i, s, a, c) {
-        e[n] =
-          e[n] ||
-          function () {
-            (e[n].q = e[n].q || []).push(arguments);
-          };
-        a = t.createElement(i);
-        c = t.getElementsByTagName(i)[0];
-        a.async = true;
-        a.src = s;
-        c.parentNode.insertBefore(a, c);
-      })(
-        window,
-        document,
-        "galite",
-        "script",
-        "https://cdn.jsdelivr.net/npm/ga-lite@2/dist/ga-lite.min.js"
-      );
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://native-elements.netlify.app/" />
+  <meta property="twitter:title" content="Native Elements — Theme Builder" />
+  <meta property="twitter:description"
+    content="The best companion tool for Native Elements. Build you own theme easily!" />
+  <meta property="twitter:image" content="%PUBLIC_URL%/share-image.png" />
+</head>
 
-      galite("create", "UA-167955942-1", "auto");
-      galite("send", "pageview");
-    </script>
-  </body>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script>
+    (function (e, t, n, i, s, a, c) {
+      e[n] =
+        e[n] ||
+        function () {
+          (e[n].q = e[n].q || []).push(arguments);
+        };
+      a = t.createElement(i);
+      c = t.getElementsByTagName(i)[0];
+      a.async = true;
+      a.src = s;
+      c.parentNode.insertBefore(a, c);
+    })(
+      window,
+      document,
+      "galite",
+      "script",
+      "https://cdn.jsdelivr.net/npm/ga-lite@2/dist/ga-lite.min.js"
+    );
+
+    galite("create", "UA-167955942-1", "auto");
+    galite("send", "pageview");
+
+  </script>
+</body>
+
 </html>
