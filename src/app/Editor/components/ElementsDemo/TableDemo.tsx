@@ -3,6 +3,7 @@ import { defineMessages, useIntl } from "react-intl";
 import { EditorWrapper } from "../EditorWrapper";
 import { EditorHeader } from "../EditorHeader";
 import { PreviewFrame } from "@components/PreviewFrame";
+import { BrowsersLogos } from "@components/BrowsersLogos";
 
 const messages = defineMessages({
   title: {
@@ -24,7 +25,12 @@ export const TableDemo = function () {
       header={
         <EditorHeader
           title={intl.formatMessage(messages.title)}
-          subtitle={intl.formatMessage(messages.subtitle)}
+          subtitle={
+            <>
+              {intl.formatMessage(messages.subtitle)}
+              <BrowsersLogos />
+            </>
+          }
         />
       }
     >
