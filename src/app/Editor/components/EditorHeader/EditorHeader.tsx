@@ -16,7 +16,7 @@ export const EditorHeader = function ({
   return (
     <div className={clsx(classes.EditorHeader, className)} {...attributes}>
       <h1>{title}</h1>
-      {subtitle && <p>{subtitle}</p>}
+      {subtitle}
     </div>
   );
 };
