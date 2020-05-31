@@ -11,7 +11,7 @@ import { guessUnitType, UnitType, changeUnit } from "../../helpers/unit";
 import { IFieldProps } from "../../types/fields";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./UnitField.module.css";
-import { ButtonsGroup, ButtonsGroupButton } from "../ButtonsGroup";
+import { ButtonsGroup, ButtonsGroupButton } from "@components/ButtonsGroup";
 import { Gear } from "@components/Icons/16x";
 
 const messages = defineMessages({
@@ -104,27 +104,27 @@ export const UnitField = function (props: IUnitFieldProps) {
           </p>
           <ButtonsGroup>
             <ButtonsGroupButton
-              unit={UnitType.REV}
+              text={UnitType.REV}
               checked={getAriaChecked(unit, UnitType.REV)}
               onClick={createSetUnitHandler(UnitType.REV)}
             />
             <ButtonsGroupButton
-              unit={UnitType.UNS}
+              text={UnitType.UNS}
               checked={getAriaChecked(unit, UnitType.UNS)}
               onClick={createSetUnitHandler(UnitType.UNS)}
             />
             <ButtonsGroupButton
-              unit={UnitType.INIT}
+              text={UnitType.INIT}
               checked={getAriaChecked(unit, UnitType.INIT)}
               onClick={createSetUnitHandler(UnitType.INIT)}
             />
             <ButtonsGroupButton
-              unit={UnitType.INH}
+              text={UnitType.INH}
               checked={getAriaChecked(unit, UnitType.INH)}
               onClick={createSetUnitHandler(UnitType.INH)}
             />
             <ButtonsGroupButton
-              unit={UnitType.NONE}
+              text={UnitType.NONE}
               checked={getAriaChecked(unit, UnitType.NONE)}
               onClick={createSetUnitHandler(UnitType.NONE)}
             />
@@ -137,27 +137,27 @@ export const UnitField = function (props: IUnitFieldProps) {
 
           <ButtonsGroup>
             <ButtonsGroupButton
-              unit={UnitType.PX}
+              text={UnitType.PX}
               checked={getAriaChecked(unit, UnitType.PX)}
               onClick={createSetUnitHandler(UnitType.PX)}
             />
             <ButtonsGroupButton
-              unit={UnitType.EM}
+              text={UnitType.EM}
               checked={getAriaChecked(unit, UnitType.EM)}
               onClick={createSetUnitHandler(UnitType.EM)}
             />
             <ButtonsGroupButton
-              unit={UnitType.REM}
+              text={UnitType.REM}
               checked={getAriaChecked(unit, UnitType.REM)}
               onClick={createSetUnitHandler(UnitType.REM)}
             />
             <ButtonsGroupButton
-              unit={UnitType.CH}
+              text={UnitType.CH}
               checked={getAriaChecked(unit, UnitType.CH)}
               onClick={createSetUnitHandler(UnitType.CH)}
             />
             <ButtonsGroupButton
-              unit={UnitType.PERC}
+              text={UnitType.PERC}
               checked={getAriaChecked(unit, UnitType.PERC)}
               onClick={createSetUnitHandler(UnitType.PERC)}
             />

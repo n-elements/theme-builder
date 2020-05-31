@@ -11,7 +11,7 @@ import { guessUnitType, UnitType, changeUnit } from "../../helpers/unit";
 import { IFieldProps } from "../../types/fields";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./TextField.module.css";
-import { ButtonsGroup, ButtonsGroupButton } from "../ButtonsGroup";
+import { ButtonsGroup, ButtonsGroupButton } from "@components/ButtonsGroup";
 import { motion, AnimatePresence } from "framer-motion";
 import { Gear } from "@components/Icons/16x";
 
@@ -112,27 +112,27 @@ export const TextField = function (props: IUnitFieldProps) {
           </p>
           <ButtonsGroup>
             <ButtonsGroupButton
-              unit={UnitType.REV}
+              text={UnitType.REV}
               checked={getAriaChecked(unit, UnitType.REV)}
               onClick={createSetUnitHandler(UnitType.REV)}
             />
             <ButtonsGroupButton
-              unit={UnitType.UNS}
+              text={UnitType.UNS}
               checked={getAriaChecked(unit, UnitType.UNS)}
               onClick={createSetUnitHandler(UnitType.UNS)}
             />
             <ButtonsGroupButton
-              unit={UnitType.INIT}
+              text={UnitType.INIT}
               checked={getAriaChecked(unit, UnitType.INIT)}
               onClick={createSetUnitHandler(UnitType.INIT)}
             />
             <ButtonsGroupButton
-              unit={UnitType.INH}
+              text={UnitType.INH}
               checked={getAriaChecked(unit, UnitType.INH)}
               onClick={createSetUnitHandler(UnitType.INH)}
             />
             <ButtonsGroupButton
-              unit={UnitType.NONE}
+              text={UnitType.NONE}
               checked={getAriaChecked(unit, UnitType.NONE)}
               onClick={createSetUnitHandler(UnitType.NONE)}
             />

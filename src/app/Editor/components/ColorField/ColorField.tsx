@@ -11,7 +11,7 @@ import { ColorPreview } from "../ColorPreview";
 import { VariableSearch } from "../VariableSearch";
 import Color from "color";
 import classes from "./ColorField.module.css";
-import { ButtonsGroup, ButtonsGroupButton } from "../ButtonsGroup";
+import { ButtonsGroup, ButtonsGroupButton } from "@components/ButtonsGroup";
 import { UnitType } from "@app/Editor/helpers/unit";
 import { defineMessage, useIntl } from "react-intl";
 
@@ -86,22 +86,22 @@ export const ColorField = function (props: IColorFieldProps) {
           </p>
           <ButtonsGroup>
             <ButtonsGroupButton
-              unit={UnitType.REV}
+              text={UnitType.REV}
               checked={true}
               onClick={() => {}}
             />
             <ButtonsGroupButton
-              unit={UnitType.UNS}
+              text={UnitType.UNS}
               checked={false}
               onClick={() => {}}
             />
             <ButtonsGroupButton
-              unit={UnitType.INIT}
+              text={UnitType.INIT}
               checked={false}
               onClick={() => {}}
             />
             <ButtonsGroupButton
-              unit={UnitType.INH}
+              text={UnitType.INH}
               checked={false}
               onClick={() => {}}
             />

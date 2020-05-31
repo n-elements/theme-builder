@@ -3,13 +3,13 @@ import { Button } from "@components/Button";
 import classes from "./ButtonsGroupButton.module.css";
 
 export interface ButtonsGroupButtonProps {
-  unit: string;
+  text: string;
   checked: boolean;
   onClick: () => void;
 }
 
 export const ButtonsGroupButton = ({
-  unit,
+  text,
   checked,
   onClick,
 }: ButtonsGroupButtonProps) => {
@@ -22,7 +22,7 @@ export const ButtonsGroupButton = ({
       onClick={onClick}
       small
     >
-      {unit}
+      {text}
     </Button>
   );
 };
