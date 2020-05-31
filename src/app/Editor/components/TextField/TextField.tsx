@@ -12,6 +12,7 @@ import { IFieldProps } from "../../types/fields";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./TextField.module.css";
 import { UnitPicker, UnitPickerButton } from "../UnitPicker";
+import { motion, AnimatePresence } from "framer-motion";
 import { Gear } from "@components/Icons/16x";
 
 const messages = defineMessages({
@@ -82,11 +83,18 @@ export const TextField = function (props: IUnitFieldProps) {
             type="text"
             value={values.displayValue}
           />
-          {values.displayValue !== values.value ? (
-            <span className={classes.RelatedValue}>
-              <small>{values.value}</small>
-            </span>
-          ) : null}
+          <AnimatePresence>
+            {values.displayValue !== values.value ? (
+              <motion.span
+                initial={{ opacity: 0, x: -5 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -5, transition: { duration: 0.1 } }}
+                className={classes.RelatedValue}
+              >
+                <small>{values.value}</small>
+              </motion.span>
+            ) : null}
+          </AnimatePresence>
           <Button
             secondary
             small
