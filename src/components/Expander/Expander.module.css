@@ -1,4 +1,6 @@
 .Expander {
+  --ne-details-max-height: auto;
+
   position: relative;
 }
 

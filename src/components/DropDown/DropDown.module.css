@@ -1,9 +1,7 @@
 .DropDown {
-  position: absolute;
-  right: 0;
   width: 100%;
-  top: calc(100% + 8px);
-  z-index: 1;
+  margin-top: 8px;
+  overflow: hidden;
   background-color: var(--dropdown-background);
   border-radius: 8px;
   max-width: min(100%, 331px);
@@ -14,4 +12,11 @@
     0 8px 16px rgba(0, 0, 0, 0.07),
     0 16px 32px rgba(0, 0, 0, 0.07),
     0 32px 64px rgba(0, 0, 0, 0.07);
+
+  &[data-floating='true'] {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    top: calc(100% + 8px);
+  }
 }
