@@ -11,7 +11,7 @@ import { ColorPreview } from "../ColorPreview";
 import { VariableSearch } from "../VariableSearch";
 import Color from "color";
 import classes from "./ColorField.module.css";
-import { UnitPicker, UnitPickerButton } from "../UnitPicker";
+import { ButtonsGroup, ButtonsGroupButton } from "../ButtonsGroup";
 import { UnitType } from "@app/Editor/helpers/unit";
 import { defineMessage, useIntl } from "react-intl";
 
@@ -84,28 +84,28 @@ export const ColorField = function (props: IColorFieldProps) {
           <p data-size="ultra-small">
             <b>{intl.formatMessage(messages.keywords)}</b>
           </p>
-          <UnitPicker>
-            <UnitPickerButton
+          <ButtonsGroup>
+            <ButtonsGroupButton
               unit={UnitType.REV}
               checked={true}
               onClick={() => {}}
             />
-            <UnitPickerButton
+            <ButtonsGroupButton
               unit={UnitType.UNS}
               checked={false}
               onClick={() => {}}
             />
-            <UnitPickerButton
+            <ButtonsGroupButton
               unit={UnitType.INIT}
               checked={false}
               onClick={() => {}}
             />
-            <UnitPickerButton
+            <ButtonsGroupButton
               unit={UnitType.INH}
               checked={false}
               onClick={() => {}}
             />
-          </UnitPicker>
+          </ButtonsGroup>
         </div>
         <VariableSearch
           onChangeRelation={props.onChangeRelation}

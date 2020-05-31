@@ -11,7 +11,7 @@ import { guessUnitType, UnitType, changeUnit } from "../../helpers/unit";
 import { IFieldProps } from "../../types/fields";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./UnitField.module.css";
-import { UnitPicker, UnitPickerButton } from "../UnitPicker";
+import { ButtonsGroup, ButtonsGroupButton } from "../ButtonsGroup";
 import { Gear } from "@components/Icons/16x";
 
 const messages = defineMessages({
@@ -102,66 +102,66 @@ export const UnitField = function (props: IUnitFieldProps) {
           <p data-size="ultra-small">
             <b>{intl.formatMessage(messages.keywords)}</b>
           </p>
-          <UnitPicker>
-            <UnitPickerButton
+          <ButtonsGroup>
+            <ButtonsGroupButton
               unit={UnitType.REV}
               checked={getAriaChecked(unit, UnitType.REV)}
               onClick={createSetUnitHandler(UnitType.REV)}
             />
-            <UnitPickerButton
+            <ButtonsGroupButton
               unit={UnitType.UNS}
               checked={getAriaChecked(unit, UnitType.UNS)}
               onClick={createSetUnitHandler(UnitType.UNS)}
             />
-            <UnitPickerButton
+            <ButtonsGroupButton
               unit={UnitType.INIT}
               checked={getAriaChecked(unit, UnitType.INIT)}
               onClick={createSetUnitHandler(UnitType.INIT)}
             />
-            <UnitPickerButton
+            <ButtonsGroupButton
               unit={UnitType.INH}
               checked={getAriaChecked(unit, UnitType.INH)}
               onClick={createSetUnitHandler(UnitType.INH)}
             />
-            <UnitPickerButton
+            <ButtonsGroupButton
               unit={UnitType.NONE}
               checked={getAriaChecked(unit, UnitType.NONE)}
               onClick={createSetUnitHandler(UnitType.NONE)}
             />
-          </UnitPicker>
+          </ButtonsGroup>
         </div>
         <div className={classes.UnitBlock}>
           <p data-size="ultra-small">
             <b>{intl.formatMessage(messages.commonUnits)}</b>
           </p>
 
-          <UnitPicker>
-            <UnitPickerButton
+          <ButtonsGroup>
+            <ButtonsGroupButton
               unit={UnitType.PX}
               checked={getAriaChecked(unit, UnitType.PX)}
               onClick={createSetUnitHandler(UnitType.PX)}
             />
-            <UnitPickerButton
+            <ButtonsGroupButton
               unit={UnitType.EM}
               checked={getAriaChecked(unit, UnitType.EM)}
               onClick={createSetUnitHandler(UnitType.EM)}
             />
-            <UnitPickerButton
+            <ButtonsGroupButton
               unit={UnitType.REM}
               checked={getAriaChecked(unit, UnitType.REM)}
               onClick={createSetUnitHandler(UnitType.REM)}
             />
-            <UnitPickerButton
+            <ButtonsGroupButton
               unit={UnitType.CH}
               checked={getAriaChecked(unit, UnitType.CH)}
               onClick={createSetUnitHandler(UnitType.CH)}
             />
-            <UnitPickerButton
+            <ButtonsGroupButton
               unit={UnitType.PERC}
               checked={getAriaChecked(unit, UnitType.PERC)}
               onClick={createSetUnitHandler(UnitType.PERC)}
             />
-          </UnitPicker>
+          </ButtonsGroup>
         </div>
         <VariableSearch
           onChangeRelation={props.onChangeRelation}

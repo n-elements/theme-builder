@@ -11,7 +11,7 @@ import { guessUnitType, UnitType, changeUnit } from "../../helpers/unit";
 import { IFieldProps } from "../../types/fields";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./TextField.module.css";
-import { UnitPicker, UnitPickerButton } from "../UnitPicker";
+import { ButtonsGroup, ButtonsGroupButton } from "../ButtonsGroup";
 import { motion, AnimatePresence } from "framer-motion";
 import { Gear } from "@components/Icons/16x";
 
@@ -110,33 +110,33 @@ export const TextField = function (props: IUnitFieldProps) {
           <p data-size="ultra-small">
             <b>{intl.formatMessage(messages.keywords)}</b>
           </p>
-          <UnitPicker>
-            <UnitPickerButton
+          <ButtonsGroup>
+            <ButtonsGroupButton
               unit={UnitType.REV}
               checked={getAriaChecked(unit, UnitType.REV)}
               onClick={createSetUnitHandler(UnitType.REV)}
             />
-            <UnitPickerButton
+            <ButtonsGroupButton
               unit={UnitType.UNS}
               checked={getAriaChecked(unit, UnitType.UNS)}
               onClick={createSetUnitHandler(UnitType.UNS)}
             />
-            <UnitPickerButton
+            <ButtonsGroupButton
               unit={UnitType.INIT}
               checked={getAriaChecked(unit, UnitType.INIT)}
               onClick={createSetUnitHandler(UnitType.INIT)}
             />
-            <UnitPickerButton
+            <ButtonsGroupButton
               unit={UnitType.INH}
               checked={getAriaChecked(unit, UnitType.INH)}
               onClick={createSetUnitHandler(UnitType.INH)}
             />
-            <UnitPickerButton
+            <ButtonsGroupButton
               unit={UnitType.NONE}
               checked={getAriaChecked(unit, UnitType.NONE)}
               onClick={createSetUnitHandler(UnitType.NONE)}
             />
-          </UnitPicker>
+          </ButtonsGroup>
         </div>
         <VariableSearch
           onChangeRelation={props.onChangeRelation}
