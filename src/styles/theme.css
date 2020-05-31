@@ -54,6 +54,7 @@
   --skeleton-loader-background: env(--secondary-70);
   --skeleton-loader-highlight: #fff;
   --colorfield-foreground: env(--contrast-100);
+  --unitfield-related-value-foreground: env(--contrast-70);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -113,5 +114,6 @@
     --skeleton-loader-background: env(--contrast-100);
     --skeleton-loader-highlight: env(--contrast-90);
     --colorfield-foreground: #fff;
+    --unitfield-related-value-foreground: env(--secondary-100);
   }
 }

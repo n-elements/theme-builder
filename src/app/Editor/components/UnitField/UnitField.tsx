@@ -82,6 +82,11 @@ export const UnitField = function (props: IUnitFieldProps) {
             type="text"
             value={values.displayValue}
           />
+          {values.displayValue !== values.value ? (
+            <span className={classes.RelatedValue}>
+              <small>{values.value}</small>
+            </span>
+          ) : null}
           <Button
             secondary
             small
