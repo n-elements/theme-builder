@@ -47,7 +47,7 @@
   --prop-field-actions-active-foreground: env(--accent-100);
   --theme-switcher-foreground: env(--secondary-100);
   --theme-switcher-hover-foreground: env(--contrast-70);
-  --dropdown-background: var(--ne-global-background);
+  --dropdown-background: color-mod(env(--secondary-70) alpha(30%));
   --buttongroup-border-color: env(--secondary-80);
   --buttongroup-foreground: env(--contrast-70);
   --buttongroup-background: env(--secondary-70);
