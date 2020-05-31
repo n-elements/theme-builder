@@ -8,6 +8,7 @@
 
 .Expander summary {
   text-transform: capitalize;
+  z-index: unset;
 }
 
 /*

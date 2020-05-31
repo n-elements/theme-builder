@@ -47,8 +47,8 @@
   --prop-field-actions-active-foreground: env(--accent-100);
   --theme-switcher-foreground: env(--secondary-100);
   --theme-switcher-hover-foreground: env(--contrast-70);
-  --dropdown-background: color-mod(env(--secondary-70) alpha(30%));
-  --buttongroup-border-color: env(--secondary-80);
+  --dropdown-background: var(--ne-global-background);
+  --buttongroup-border-color: var(--ne-global-background);
   --buttongroup-foreground: env(--contrast-70);
   --buttongroup-background: env(--secondary-70);
   --skeleton-loader-background: env(--secondary-70);
@@ -108,7 +108,7 @@
     --theme-switcher-foreground: env(--contrast-70);
     --theme-switcher-hover-foreground: env(--secondary-100);
     --dropdown-background: env(--contrast-80);
-    --buttongroup-border-color: env(--contrast-70);
+    --buttongroup-border-color: env(--contrast-80);
     --buttongroup-foreground: env(--secondary-100);
     --buttongroup-background: env(--contrast-90);
     --skeleton-loader-background: env(--contrast-100);

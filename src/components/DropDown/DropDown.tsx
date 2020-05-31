@@ -44,5 +44,5 @@ export const DropDown = forwardRef(function (
 
 DropDown.defaultProps = {
   position: "right",
-  floating: false,
+  floating: true,
 } as Partial<IDropDownProps>;

@@ -91,7 +91,7 @@ export const UnitField = function (props: IUnitFieldProps) {
             secondary
             small
             onClick={createOpenHandler(true)}
-            className={classes.UnitPreview}
+            className={classes.SettingButton}
           >
             <Gear />
           </Button>

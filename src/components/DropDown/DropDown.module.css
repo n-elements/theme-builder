@@ -2,12 +2,12 @@
   width: 100%;
   margin-top: 8px;
   overflow: hidden;
-  background-color: var(--dropdown-background);
   border-radius: 8px;
   max-width: min(100%, 331px);
   position: relative;
 
   &[data-floating='true'] {
+    background-color: var(--dropdown-background);
     margin-top: 0;
     position: absolute;
     z-index: 1;

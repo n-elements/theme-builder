@@ -15,7 +15,7 @@
   margin: 0;
 }
 
-.UnitPreview {
+.SettingButton {
   --ne-button-border-radius: calc(var(--ne-textfield-border-radius, 4px) / 2);
 
   margin: 2px;

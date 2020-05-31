@@ -51,7 +51,7 @@ export const ColorField = function (props: IColorFieldProps) {
           </span>
         </button>
       </FieldWrapper>
-      <DropDown open={open}>
+      <DropDown open={open} floating>
         <div className={classes.PickerContainer}>
           <ChromePicker
             color={Color(values.value || defaultColor)
