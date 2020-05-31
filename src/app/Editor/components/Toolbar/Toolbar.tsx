@@ -13,7 +13,7 @@ export default function Toolbar(props: IToolbarProps) {
   return (
     <Resizable
       minWidth={380}
-      maxWidth={800}
+      maxWidth={600}
       defaultSize={{
         width: 480,
         height: "auto",

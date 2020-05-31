@@ -7,7 +7,7 @@ export interface IDropDownProps extends PropsClass {
   children: ReactNode;
   open: boolean;
   floating?: boolean;
-  position?: "left" | "center" | "right";
+  position?: "left" | "right";
 }
 
 export const DropDown = forwardRef(function (
