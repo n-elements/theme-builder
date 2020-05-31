@@ -8,6 +8,8 @@ import EditorColoursItem from "../EditorColoursItem";
 import { EditorHeader } from "../EditorHeader";
 import { EditorWrapper } from "../EditorWrapper";
 import classes from "./EditorColours.module.css";
+import clsx from "clsx";
+import useCSSVariables from "@app/Editor/hooks/useCSSVariables";
 
 const messages = defineMessages({
   title: {
@@ -24,6 +26,7 @@ export const EditorColours = function () {
   const intl = useIntl();
   const location = useLocation();
   const variables = useVariables(location.pathname);
+  const cssvariables = useCSSVariables();
 
   return (
     <Switch>
@@ -36,7 +39,7 @@ export const EditorColours = function () {
             />
           }
         >
-          <div className={classes.ColorsList}>
+          <div className={clsx(classes.ColorsList, cssvariables)}>
             <AnimatePresence>
               {variables.map((variable) => (
                 <EditorColoursItem key={variable._id} variable={variable} />

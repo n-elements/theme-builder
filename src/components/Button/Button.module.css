@@ -9,8 +9,8 @@
   --ne-button-disabled-foreground: env(--secondary-90);
   --ne-button-font-size: var(--small-font-size);
   --ne-button-shadow: none;
-  --ne-button-y-padding: 1em;
-  --ne-button-x-padding: 1.5em;
+  --ne-button-y-padding: 1rem;
+  --ne-button-x-padding: 1.5rem;
   --ne-button-border-radius: 4px;
 
   text-transform: uppercase;

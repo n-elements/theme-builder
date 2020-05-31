@@ -17,6 +17,11 @@ const UnitField = lazy(() =>
     default: UnitField,
   }))
 );
+const TextField = lazy(() =>
+  import("@app/Editor/components/TextField").then(({ TextField }) => ({
+    default: TextField,
+  }))
+);
 
 export interface IVariableField {
   variable: IVariable;
@@ -44,6 +49,19 @@ export default function VariableField(props: IVariableField) {
       return (
         <Suspense fallback={<SkeletonLoader height={40} />}>
           <UnitField
+            variable={props.variable}
+            onBreakReference={props.onBreakReference}
+            onChange={props.onChange}
+            onChangeRelation={props.onChangeRelation}
+          />
+        </Suspense>
+      );
+    case "text":
+    case "border":
+    case "box-shadow":
+      return (
+        <Suspense fallback={<SkeletonLoader height={40} />}>
+          <TextField
             variable={props.variable}
             onBreakReference={props.onBreakReference}
             onChange={props.onChange}

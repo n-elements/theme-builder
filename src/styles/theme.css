@@ -17,6 +17,9 @@
   --ne-button-hover-foreground: var(--ne-button-foreground);
   --ne-button-active-foreground: var(--ne-button-foreground);
   --ne-button-disabled-foreground: env(--secondary-90);
+  --ne-textfield-foreground: env(--contrast-100);
+  --ne-textfield-hover-foreground: env(--contrast-100);
+  --ne-textfield-focus-foreground: env(--contrast-100);
   --ne-textfield-border: 1px solid env(--secondary-80);
   --ne-textfield-hover-border: 1px solid env(--secondary-80);
   --ne-textfield-focus-border: 1px solid env(--secondary-80);
@@ -50,6 +53,7 @@
   --buttongroup-background: env(--secondary-70);
   --skeleton-loader-background: env(--secondary-70);
   --skeleton-loader-highlight: #fff;
+  --colorfield-foreground: env(--contrast-100);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -72,6 +76,9 @@
     --ne-button-hover-foreground: var(--ne-button-foreground);
     --ne-button-active-foreground: var(--ne-button-foreground);
     --ne-button-disabled-foreground: env(--secondary-90);
+    --ne-textfield-foreground: env(--secondary-70);
+    --ne-textfield-hover-foreground: env(--secondary-70);
+    --ne-textfield-focus-foreground: env(--secondary-70);
     --ne-textfield-border: 1px solid env(--contrast-80);
     --ne-textfield-hover-border: 1px solid env(--contrast-80);
     --ne-textfield-focus-border: 1px solid env(--contrast-80);
@@ -105,5 +112,6 @@
     --buttongroup-background: env(--contrast-90);
     --skeleton-loader-background: env(--contrast-100);
     --skeleton-loader-highlight: env(--contrast-90);
+    --colorfield-foreground: #fff;
   }
 }

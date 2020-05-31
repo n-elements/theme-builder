@@ -4,7 +4,7 @@ import routes from "@routes";
 import { defineMessages, useIntl } from "react-intl";
 import { EditorWrapper } from "../EditorWrapper";
 import { EditorHeader } from "../EditorHeader";
-import classes from "./EditorTypography.module.css";
+import { PreviewFrame } from "@components/PreviewFrame";
 
 const messages = defineMessages({
   title: {
@@ -31,7 +31,7 @@ export const EditorTypography = function () {
             />
           }
         >
-          <div className={classes.Container}>
+          <PreviewFrame>
             <h1>H1 Heading Title</h1>
             <h2>H2 Heading Title</h2>
             <h3>H3 Heading Title</h3>
@@ -173,7 +173,7 @@ export const EditorTypography = function () {
             <p>
               Sample inline <code>code</code>
             </p>
-          </div>
+          </PreviewFrame>
         </EditorWrapper>
       </Route>
     </Switch>

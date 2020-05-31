@@ -1,0 +1,18 @@
+.BrowsersLogos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16px, max-content));
+  grid-gap: 8px;
+  margin-block-start: 8px;
+  margin-block-end: 8px;
+  align-items: center;
+
+  & > img {
+    filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.2));
+    user-select: none;
+    pointer-events: none;
+  }
+
+  &[data-inline='true'] {
+    display: inline-grid;
+  }
+}

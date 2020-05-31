@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import * as routes from "../routes";
 import ColoursVariables from "./ColoursVariables";
-import ElementsVariables from "./ElementsVariables";
+import { ElementsVariables } from "./ElementsVariables";
 import DocumentVariables from "./DocumentVariables";
 import TypographyVariables from "./TypographyVariables";
 

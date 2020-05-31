@@ -11,12 +11,23 @@ import { ColorPreview } from "../ColorPreview";
 import { VariableSearch } from "../VariableSearch";
 import Color from "color";
 import classes from "./ColorField.module.css";
+import { UnitPicker, UnitPickerButton } from "../UnitPicker";
+import { UnitType } from "@app/Editor/helpers/unit";
+import { defineMessage, useIntl } from "react-intl";
 
 export interface IColorFieldProps extends IFieldProps {
   readOnly?: boolean;
 }
 
+const messages = defineMessage({
+  keywords: {
+    defaultMessage: "Keywords",
+    id: "app.Editor.components.UnitField.keywords",
+  },
+});
+
 export const ColorField = function (props: IColorFieldProps) {
+  const intl = useIntl();
   const ref = useRef(null);
   const [open, setOpen] = useState(false);
   const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
@@ -29,19 +40,9 @@ export const ColorField = function (props: IColorFieldProps) {
     <div className={clsx(classes.ColorField, props.className)} ref={ref}>
       <FieldWrapper>
         <button className={classes.Field} onClick={createOpenHandler(true)}>
-          <input
-            className={classes.Input}
-            onChange={(event) =>
-              Option(props.onChange).mapOrElse(
-                () => void 0,
-                (fn) => fn(event.target.value)
-              )
-            }
-            readOnly={props.readOnly}
-            type="text"
-            tabIndex={-1}
-            value={values.displayValue || defaultColor}
-          />
+          <span className={classes.Value}>
+            {values.displayValue || defaultColor}
+          </span>
           <span className={classes.ColorPreview}>
             <ColorPreview
               color={values.value}
@@ -78,6 +79,33 @@ export const ColorField = function (props: IColorFieldProps) {
               );
             }}
           />
+        </div>
+        <div className={classes.UnitBlock}>
+          <p data-size="ultra-small">
+            <b>{intl.formatMessage(messages.keywords)}</b>
+          </p>
+          <UnitPicker>
+            <UnitPickerButton
+              unit={UnitType.REV}
+              checked={true}
+              onClick={() => {}}
+            />
+            <UnitPickerButton
+              unit={UnitType.UNS}
+              checked={false}
+              onClick={() => {}}
+            />
+            <UnitPickerButton
+              unit={UnitType.INIT}
+              checked={false}
+              onClick={() => {}}
+            />
+            <UnitPickerButton
+              unit={UnitType.INH}
+              checked={false}
+              onClick={() => {}}
+            />
+          </UnitPicker>
         </div>
         <VariableSearch
           onChangeRelation={props.onChangeRelation}

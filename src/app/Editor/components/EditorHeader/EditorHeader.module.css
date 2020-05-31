@@ -1,13 +1,8 @@
 .EditorHeader {
-  margin-bottom: 64px;
-  padding-bottom: 64px;
+  padding: 48px 40px 64px;
   border-bottom: 2px solid var(--shell-border-color);
 
   & > * {
     margin-bottom: 0;
-  }
-
-  & p {
-    opacity: 0.8;
   }
 }

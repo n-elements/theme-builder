@@ -20,13 +20,9 @@
 
   margin: 2px;
   box-sizing: border-box;
-  min-width: 48px;
+  min-width: 62px;
   line-height: 1.7;
   text-transform: uppercase;
-
-  & > svg {
-    margin: 0;
-  }
 }
 
 .UnitBlock {

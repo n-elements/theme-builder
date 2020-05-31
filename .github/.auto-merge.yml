@@ -1,0 +1,5 @@
+minApprovals:
+  COLLABORATOR: 0
+mergeCommitMessage: |
+  {title} (#{number})
+  {body}

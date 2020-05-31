@@ -1,12 +1,12 @@
-import { ComponentType, createElement, CSSProperties } from "react";
-import useVariables from "../hooks/useVariables";
-import { IVariable, VariableArray } from "@store/theming/types";
-import { Option } from "tiinvo";
-import {
-  formatVariableName,
-  getValueOrRelatedVariableValue,
-} from "../helpers/variable";
+import useVariables from "./useVariables";
+import { CSSProperties } from "react";
+import { VariableArray, IVariable } from "@store/theming/types";
 import { getReferencedVariable } from "@store/theming/helpers";
+import {
+  getValueOrRelatedVariableValue,
+  formatVariableName,
+} from "../helpers/variable";
+import { Option } from "tiinvo";
 
 type CssVar = { [index: string]: string };
 type EnhancedCSSProperties = CSSProperties & CssVar;
@@ -39,16 +39,7 @@ function convertVariableToCssVariable(
   );
 }
 
-export default function withCustomVariables<T>(
-  Component: ComponentType<T & { style: EnhancedCSSProperties }>
-): ComponentType<T> {
-  return (props) => {
-    const variables = useVariables("*");
-    const style = convertVariables(variables);
-
-    return createElement(Component, {
-      ...props,
-      style,
-    });
-  };
+export default function useCSSVariables() {
+  const variables = useVariables("*");
+  return convertVariables(variables);
 }

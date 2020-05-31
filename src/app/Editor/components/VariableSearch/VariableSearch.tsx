@@ -1,4 +1,3 @@
-import { formatVariableName } from "@app/Editor/helpers/variable";
 import useRelatedVariables from "@app/Editor/hooks/useRelatedVariables";
 import { OnChangeRelationHandler } from "@app/Editor/types/fields";
 import { IVariable } from "@store/theming/types";
@@ -31,27 +30,23 @@ export const VariableSearch = function ({
   const relatedVariables = useRelatedVariables(variable);
 
   return (
-    <div
-      className={clsx(classes.VariableSearch, className)}
-      {...attributes}
-      hidden={Maybe(relatedVariables.length).isNothing()}
-    >
-      <input
-        onChange={(event) => {
-          Option(onChangeRelation).mapOrElse(
-            () => void 0,
-            (fn) => fn(event.target.value)
-          );
-        }}
-        type="text"
-        list="variables"
-        placeholder={intl.formatMessage(messages.searchPlaceholder)}
-      />
+    <div className={clsx(classes.VariableSearch, className)} {...attributes}>
+      <div hidden={Maybe(relatedVariables.length).isNothing()}>
+        <input
+          onChange={(event) => {
+            Option(onChangeRelation).mapOrElse(
+              () => void 0,
+              (fn) => fn(event.target.value)
+            );
+          }}
+          type="text"
+          list="variables"
+          placeholder={intl.formatMessage(messages.searchPlaceholder)}
+        />
+      </div>
       <datalist id="variables">
         {relatedVariables.map((variable, index) => (
-          <option key={index} value={variable.name}>
-            {formatVariableName(variable.name)}
-          </option>
+          <option key={index} value={variable.name}></option>
         ))}
       </datalist>
     </div>
