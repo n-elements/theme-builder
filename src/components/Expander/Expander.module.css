@@ -1,5 +1,7 @@
 .Expander {
   --ne-details-max-height: auto;
+  --ne-details-overflow: none;
+  --ne-details-summary-position: relative;
 
   position: relative;
 }
