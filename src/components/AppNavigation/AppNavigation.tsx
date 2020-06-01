@@ -1,16 +1,14 @@
-import React, { ReactNode } from "react";
-import clsx from "clsx";
+import { Colors, Document, Elements, Typography } from "@components/Icons/24x";
 import routes from "@routes";
-import { NavLink } from "react-router-dom";
+import clsx from "clsx";
+import React from "react";
+import { NavLink, NavLinkProps } from "react-router-dom";
 import classes from "./AppNavigation.module.css";
-import { Colors, Document, Typography, Elements } from "@components/Icons/24x";
 
 export interface IAppNavigationProps extends PropsClass {}
 
-export interface IAppNavigationItemProps {
-  children?: ReactNode;
-  to: string;
-}
+export interface IAppNavigationItemProps
+  extends Omit<NavLinkProps, "activeClassName" | "className"> {}
 
 const AppNavigationItem = function ({ children, to }: IAppNavigationItemProps) {
   return (
@@ -39,7 +37,12 @@ export const AppNavigation = function ({
       <AppNavigationItem to={routes.editor.typography}>
         <Typography />
       </AppNavigationItem>
-      <AppNavigationItem to={routes.editor.elements}>
+      <AppNavigationItem
+        isActive={(_, location) =>
+          location.pathname.includes(routes.editor.elementsroot)
+        }
+        to={routes.editor.elementsroot}
+      >
         <Elements />
       </AppNavigationItem>
     </nav>
