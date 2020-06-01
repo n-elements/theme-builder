@@ -8,11 +8,13 @@ import classes from "./VariableList.module.css";
 
 export interface IVariableListProps {
   showActions?: boolean;
+  showRevert?: boolean;
   showAdd?: boolean;
 }
 
 export const VariableList = function ({
   showActions,
+  showRevert,
   showAdd,
 }: IVariableListProps) {
   const location = useLocation();
@@ -34,6 +36,7 @@ export const VariableList = function ({
             <Variable
               key={index}
               showActions={showActions}
+              showRevert={showRevert}
               variable={variable}
             />
           </motion.div>

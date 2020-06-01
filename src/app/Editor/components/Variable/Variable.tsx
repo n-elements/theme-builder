@@ -7,15 +7,18 @@ import React, { KeyboardEvent, useRef, useState, MouseEvent } from "react";
 import classes from "./Variable.module.css";
 import VariableField from "./VariableField";
 import { cleanVariableName } from "@store/theming/helpers";
+import { Undo } from "@components/Icons/16x";
 
 export interface IVariableProps extends PropsClass {
   variable: IVariable;
   showActions?: boolean;
+  showRevert?: boolean;
 }
 
 export function Variable({
   className,
   showActions,
+  showRevert,
   variable,
   ...attributes
 }: IVariableProps) {
@@ -70,31 +73,44 @@ export function Variable({
           onKeyPress={confirmOnEnter}
         />
 
-        {showActions && (
-          <div className={classes.Actions}>
-            <button
-              arial-label="Rename Property"
-              className={classes.Action}
-              data-editing={editingLabel}
-              onClick={handleEditing}
-            >
-              {editingLabel ? (
-                <Check aria-hidden="true" />
-              ) : (
-                <Rename aria-hidden="true" />
+        {showActions ||
+          (showRevert && (
+            <div className={classes.Actions}>
+              {showActions && (
+                <>
+                  <button
+                    arial-label="Rename Property"
+                    className={classes.Action}
+                    data-editing={editingLabel}
+                    onClick={handleEditing}
+                  >
+                    {editingLabel ? (
+                      <Check aria-hidden="true" />
+                    ) : (
+                      <Rename aria-hidden="true" />
+                    )}
+                  </button>
+                  <button
+                    arial-label="Delete Property"
+                    className={classes.Action}
+                    onClick={() => variableEditing.delete(variable)}
+                  >
+                    <Bin aria-hidden="true" />
+                  </button>
+                </>
               )}
-            </button>
-            <button
-              arial-label="Delete Property"
-              className={classes.Action}
-              onClick={() => variableEditing.delete(variable)}
-            >
-              <span>
-                <Bin aria-hidden="true" />
-              </span>
-            </button>
-          </div>
-        )}
+
+              {showRevert && (
+                <button
+                  arial-label="Delete Property"
+                  className={classes.Action}
+                  onClick={() => variableEditing.delete(variable)}
+                >
+                  <Undo aria-hidden="true" />
+                </button>
+              )}
+            </div>
+          ))}
       </div>
       <VariableField
         variable={variable}
