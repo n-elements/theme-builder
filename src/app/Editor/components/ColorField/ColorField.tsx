@@ -1,3 +1,4 @@
+import { isKeyword, transcodeKeyword } from "@app/Editor/helpers/keywords";
 import useVariableValues from "@app/Editor/hooks/useVariableValues";
 import { DropDown } from "@components/DropDown";
 import { FieldWrapper } from "@components/FieldWrapper";
@@ -13,11 +14,6 @@ import { ColorPreview } from "../ColorPreview";
 import Keywords from "../Keywords";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./ColorField.module.css";
-import {
-  isKeyword,
-  transcodeValueToKeyword,
-  transcodeKeyword,
-} from "@app/Editor/helpers/keywords";
 
 export interface IColorFieldProps extends IFieldProps {
   readOnly?: boolean;
