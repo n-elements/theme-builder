@@ -18,10 +18,12 @@ interface ITheming {
 }
 
 function initialState(): ITheming {
+  const variablespreset = preset();
+
   return {
     name: "theme-name",
-    variablespreset: preset(),
-    variables: preset(),
+    variablespreset,
+    variables: variablespreset.slice(),
     variablesCounter: 0,
   };
 }
