@@ -80,7 +80,6 @@ export default function preset(): VariableArray {
     variablesMap.set(element.name, element);
 
     if (element.value === accentvariable.value) {
-      console.log(element);
       element._referenceId = accentvariable._id;
     }
 
