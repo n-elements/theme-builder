@@ -22,8 +22,8 @@ export function ElementsVariables() {
           summary={name}
         >
           {elementsvars.getVariablesForElement(name!).map((variable, index) => (
-            <div className={classes.VariableItem}>
-              <Variable key={index} variable={variable} />
+            <div className={classes.VariableItem} key={index}>
+              <Variable variable={variable} />
             </div>
           ))}
         </Expander>
