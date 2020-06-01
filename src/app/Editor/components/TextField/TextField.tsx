@@ -1,19 +1,19 @@
+import { transcodeKeyword } from "@app/Editor/helpers/keywords";
 import useVariableValues from "@app/Editor/hooks/useVariableValues";
 import { Button } from "@components/Button";
 import { DropDown } from "@components/DropDown";
 import { FieldWrapper } from "@components/FieldWrapper";
+import { Gear } from "@components/Icons/16x";
 import clsx from "clsx";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useRef, useState } from "react";
-import { useClickAway } from "react-use";
-import { Option, Maybe } from "tiinvo";
 import { defineMessages, useIntl } from "react-intl";
-import { guessUnitType, UnitType, changeUnit } from "../../helpers/unit";
+import { useClickAway } from "react-use";
+import { Option } from "tiinvo";
 import { IFieldProps } from "../../types/fields";
+import Keywords from "../Keywords";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./TextField.module.css";
-import { ButtonsGroup, ButtonsGroupButton } from "@components/ButtonsGroup";
-import { motion, AnimatePresence } from "framer-motion";
-import { Gear } from "@components/Icons/16x";
 
 const messages = defineMessages({
   keywords: {
@@ -30,33 +30,22 @@ export interface IUnitFieldProps extends IFieldProps {
   readOnly?: boolean;
 }
 
-function getAriaChecked(
-  currentValue: UnitType,
-  expectedType: UnitType
-): boolean {
-  return currentValue === expectedType ? true : false;
-}
-
 export const TextField = function (props: IUnitFieldProps) {
   const intl = useIntl();
   const ref = useRef(null);
   const values = useVariableValues(props.variable);
   const [open, setOpen] = useState(false);
-  const [unit, setValue] = useState(guessUnitType(values.value));
   const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
-  const createSetUnitHandler = (unit: UnitType) => () => {
-    Maybe(values.isReferencingOtherVariable).cata({
-      Nothing: () => {
-        Option(props.onChange).mapOrElse(
-          () => void 0,
-          (fn) => fn(changeUnit(values.value, unit))
-        );
-        setValue(unit);
-      },
-      Just: () => setValue(unit),
-    });
+  const handleChange = (value: any) => {
+    Option(props.onChange).mapOrElse(
+      () => void 0,
+      (fn) => fn(transcodeKeyword(value) as string)
+    );
+    Option(props.onBreakReference).mapOrElse(
+      () => void 0,
+      (fn) => fn()
+    );
   };
-
   useClickAway(ref, createOpenHandler(false));
 
   return (
@@ -65,20 +54,7 @@ export const TextField = function (props: IUnitFieldProps) {
         <div className={classes.Field}>
           <input
             className={classes.Input}
-            onChange={(event) => {
-              Option(props.onChange).mapOrElse(
-                () => void 0,
-                (fn) => {
-                  const newValue = event.target.value;
-                  fn(newValue);
-                  setValue(guessUnitType(newValue));
-                }
-              );
-              Option(props.onBreakReference).mapOrElse(
-                () => void 0,
-                (fn) => fn()
-              );
-            }}
+            onChange={(event) => handleChange(event.target.value)}
             readOnly={props.readOnly}
             type="text"
             value={values.displayValue}
@@ -110,33 +86,7 @@ export const TextField = function (props: IUnitFieldProps) {
           <p data-size="ultra-small">
             <b>{intl.formatMessage(messages.keywords)}</b>
           </p>
-          <ButtonsGroup>
-            <ButtonsGroupButton
-              text={UnitType.REV}
-              checked={getAriaChecked(unit, UnitType.REV)}
-              onClick={createSetUnitHandler(UnitType.REV)}
-            />
-            <ButtonsGroupButton
-              text={UnitType.UNS}
-              checked={getAriaChecked(unit, UnitType.UNS)}
-              onClick={createSetUnitHandler(UnitType.UNS)}
-            />
-            <ButtonsGroupButton
-              text={UnitType.INIT}
-              checked={getAriaChecked(unit, UnitType.INIT)}
-              onClick={createSetUnitHandler(UnitType.INIT)}
-            />
-            <ButtonsGroupButton
-              text={UnitType.INH}
-              checked={getAriaChecked(unit, UnitType.INH)}
-              onClick={createSetUnitHandler(UnitType.INH)}
-            />
-            <ButtonsGroupButton
-              text={UnitType.NONE}
-              checked={getAriaChecked(unit, UnitType.NONE)}
-              onClick={createSetUnitHandler(UnitType.NONE)}
-            />
-          </ButtonsGroup>
+          <Keywords onSelect={handleChange} value={values.value} />
         </div>
         <VariableSearch
           onChangeRelation={props.onChangeRelation}

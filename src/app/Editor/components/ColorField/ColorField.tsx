@@ -2,18 +2,17 @@ import useVariableValues from "@app/Editor/hooks/useVariableValues";
 import { DropDown } from "@components/DropDown";
 import { FieldWrapper } from "@components/FieldWrapper";
 import clsx from "clsx";
+import Color from "color";
 import React, { useRef, useState } from "react";
 import { ChromePicker } from "react-color";
+import { defineMessage, useIntl } from "react-intl";
 import { useClickAway } from "react-use";
 import { Option } from "tiinvo";
 import { IFieldProps } from "../../types/fields";
 import { ColorPreview } from "../ColorPreview";
+import Keywords from "../Keywords";
 import { VariableSearch } from "../VariableSearch";
-import Color from "color";
 import classes from "./ColorField.module.css";
-import { ButtonsGroup, ButtonsGroupButton } from "@components/ButtonsGroup";
-import { UnitType } from "@app/Editor/helpers/unit";
-import { defineMessage, useIntl } from "react-intl";
 
 export interface IColorFieldProps extends IFieldProps {
   readOnly?: boolean;
@@ -84,28 +83,7 @@ export const ColorField = function (props: IColorFieldProps) {
           <p data-size="ultra-small">
             <b>{intl.formatMessage(messages.keywords)}</b>
           </p>
-          <ButtonsGroup>
-            <ButtonsGroupButton
-              text={UnitType.REV}
-              checked={true}
-              onClick={() => {}}
-            />
-            <ButtonsGroupButton
-              text={UnitType.UNS}
-              checked={false}
-              onClick={() => {}}
-            />
-            <ButtonsGroupButton
-              text={UnitType.INIT}
-              checked={false}
-              onClick={() => {}}
-            />
-            <ButtonsGroupButton
-              text={UnitType.INH}
-              checked={false}
-              onClick={() => {}}
-            />
-          </ButtonsGroup>
+          <Keywords onSelect={console.log} value={values.value} />
         </div>
         <VariableSearch
           onChangeRelation={props.onChangeRelation}
