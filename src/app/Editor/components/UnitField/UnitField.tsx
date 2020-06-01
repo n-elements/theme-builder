@@ -14,6 +14,7 @@ import Keywords from "../Keywords";
 import Units from "../Units";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./UnitField.module.css";
+import { transcodeKeyword } from "@app/Editor/helpers/keywords";
 
 const messages = defineMessages({
   keywords: {
@@ -69,7 +70,7 @@ export const UnitField = function (props: IUnitFieldProps) {
             onChange={(event) => handleChange(event.target.value)}
             readOnly={props.readOnly}
             type="text"
-            value={values.displayValue}
+            value={transcodeKeyword(values.displayValue)}
           />
           {values.displayValue !== values.value ? (
             <span className={classes.RelatedValue}>
