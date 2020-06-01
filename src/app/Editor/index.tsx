@@ -17,7 +17,7 @@ export default function Editor() {
       <Canvas>
         <Switch>
           <Route component={EditorColours} path={routes.colours} />
-          <Route component={EditorElements} path={routes.elements} />
+          <Route component={EditorElements} path={routes.elementsroot} />
           <Route component={EditorDocument} path={routes.document} />
           <Route component={EditorTypography} path={routes.typography} />
           <Redirect exact from={routes.root} to={routes.colours} />
