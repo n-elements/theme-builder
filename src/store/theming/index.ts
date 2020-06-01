@@ -53,19 +53,17 @@ reducer.on(actions.deleteVariable, (state, variable) => ({
 
 reducer.on(actions.reset, (state) => {
   const initial = initialState();
-  const findAccent = (othervariable: IVariable): boolean =>
-    othervariable.name === accentvariable.name;
-  const maybeAccentIndex = Option(initial.variables.findIndex(findAccent));
-  const maybeFoundAccent = Option(state.variables.find(findAccent));
 
-  maybeAccentIndex.and(maybeFoundAccent).mapOrElse(
-    () => void 0,
-    (accent) => {
-      initial.variables[maybeAccentIndex.unwrap()] = accent;
-    }
-  );
-
-  return initial;
+  return {
+    ...initial,
+    variablespreset: state.variablespreset,
+    variables: state.variables
+      .filter((a) => state.variablespreset.find((b) => b._id === a._id))
+      .map((a) => {
+        a.value = state.variablespreset.find((b) => b._id === a._id)?.value;
+        return a;
+      }),
+  };
 });
 
 reducer.on(actions.revertVariable, (state, variable) => {
