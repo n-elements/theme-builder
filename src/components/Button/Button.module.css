@@ -18,7 +18,7 @@
   font-weight: 700;
 
   &[data-small='true'] {
-    --ne-button-y-padding: 0.4em;
+    --ne-button-y-padding: 0.5em;
     --ne-button-x-padding: 1em;
   }
 
