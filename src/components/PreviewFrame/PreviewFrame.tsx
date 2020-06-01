@@ -43,20 +43,20 @@ export const PreviewFrame = ({
     </body>
   </html>`;
 
-  const setIframeHeight = useCallback(
-    (e: any) => {
-      const iframe = iframeRef.current.node;
-      setTimeout(() => {
-        iframe.height = `${iframe.contentWindow.document.body.scrollHeight}px`;
-      }, 50);
-    },
-    [iframeRef]
-  );
+  const setIframeHeight = () => {
+    const iframe = iframeRef.current.node;
+    setTimeout(() => {
+      iframe.height = `${iframe.contentWindow.document.body.scrollHeight}px`;
+    }, 50);
+  };
 
   useEffect(() => {
     window.addEventListener("resize", setIframeHeight);
+
+    setIframeHeight();
+
     return () => window.removeEventListener("resize", setIframeHeight);
-  }, [setIframeHeight]);
+  }, [setIframeHeight, cssvariables]);
 
   return (
     <Frame
@@ -73,9 +73,7 @@ export const PreviewFrame = ({
           Object.keys(cssvariables).forEach((key) =>
             document.documentElement.style.setProperty(key, cssvariables[key])
           );
-          document.documentElement.addEventListener("click", (e: any) =>
-            setIframeHeight(e)
-          );
+          document.documentElement.addEventListener("click", setIframeHeight);
           return children;
         }}
       </FrameContextConsumer>
