@@ -63,3 +63,15 @@
 .UnitBlock {
   margin: 8px 16px 0 16px;
 }
+
+.RelatedValue {
+  display: block;
+  padding: 0 16px;
+  color: var(--unitfield-related-value-foreground);
+  opacity: 0.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  position: absolute;
+  font-size: 0.8rem;
+}

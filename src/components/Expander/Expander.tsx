@@ -30,11 +30,10 @@ export const Expander = function ({
   return (
     <details
       open={open}
-      onClick={handleClick}
       className={clsx(classes.Expander, className)}
       {...attributes}
     >
-      <summary>
+      <summary onClick={handleClick}>
         <strong>{summary}</strong>
       </summary>
       {open && <div>{children}</div>}

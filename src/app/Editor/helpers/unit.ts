@@ -18,21 +18,12 @@ export enum UnitType {
   INIT = "INIT",
 }
 
-export function sanitizeMultiunitValue(value: string): string {
-  return value.trim().replace(/\s{2,}/g, " ");
-}
-
-export function splitMultiUnitValue(value: string): IMultiunitValue {
-  const [top = "", right, bottom, left] = sanitizeMultiunitValue(value).split(
-    " "
-  );
-
-  return {
-    top,
-    right: right ?? top,
-    bottom: bottom ?? top,
-    left: left ?? right ?? top,
-  };
+export function changeUnit(
+  input?: string,
+  unit: UnitType = UnitType.NONE
+): string {
+  const newunit = unit === UnitType.NONE ? "" : unit;
+  return stripUnit(input) + newunit.toLowerCase();
 }
 
 export function guessUnitType(input?: string): UnitType {
@@ -66,12 +57,21 @@ export function guessUnitType(input?: string): UnitType {
   }
 }
 
-export function changeUnit(
-  input?: string,
-  unit: UnitType = UnitType.NONE
-): string {
-  const newunit = unit === UnitType.NONE ? "" : unit;
-  return stripUnit(input) + newunit.toLowerCase();
+export function sanitizeMultiunitValue(value: string): string {
+  return value.trim().replace(/\s{2,}/g, " ");
+}
+
+export function splitMultiUnitValue(value: string): IMultiunitValue {
+  const [top = "", right, bottom, left] = sanitizeMultiunitValue(value).split(
+    " "
+  );
+
+  return {
+    top,
+    right: right ?? top,
+    bottom: bottom ?? top,
+    left: left ?? right ?? top,
+  };
 }
 
 export function stripUnit(input?: string): string {

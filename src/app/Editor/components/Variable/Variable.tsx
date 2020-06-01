@@ -7,21 +7,43 @@ import React, { KeyboardEvent, useRef, useState, MouseEvent } from "react";
 import classes from "./Variable.module.css";
 import VariableField from "./VariableField";
 import { cleanVariableName } from "@store/theming/helpers";
+import { Undo } from "@components/Icons/16x";
+import useVariableRevert from "@app/Editor/hooks/useVariableRevert";
+import { useIntl, defineMessages } from "react-intl";
 
 export interface IVariableProps extends PropsClass {
   variable: IVariable;
   showActions?: boolean;
+  showRevert?: boolean;
 }
+
+const messages = defineMessages({
+  ariaRename: {
+    defaultMessage: "Rename Property",
+    id: "app.Editor.components.Variable.ariaRename",
+  },
+  ariaDelete: {
+    defaultMessage: "Delete Property",
+    id: "app.Editor.components.Variable.ariaDelete",
+  },
+  ariaRevert: {
+    defaultMessage: "Revert Property",
+    id: "app.Editor.components.Variable.ariaRevert",
+  },
+});
 
 export function Variable({
   className,
   showActions,
+  showRevert,
   variable,
   ...attributes
 }: IVariableProps) {
+  const intl = useIntl();
   const ref = useRef<HTMLInputElement | null>(null);
   const [editingLabel, setEditingLabel] = useState(false);
   const variableEditing = useVariableEditing(variable.domain);
+  const variableRevert = useVariableRevert(variable);
   const handleBreakReference = () =>
     variableEditing.deleteReferenceToVariable(variable);
 
@@ -70,29 +92,41 @@ export function Variable({
           onKeyPress={confirmOnEnter}
         />
 
-        {showActions && (
+        {(showActions || showRevert) && (
           <div className={classes.Actions}>
-            <button
-              arial-label="Rename Property"
-              className={classes.Action}
-              data-editing={editingLabel}
-              onClick={handleEditing}
-            >
-              {editingLabel ? (
-                <Check aria-hidden="true" />
-              ) : (
-                <Rename aria-hidden="true" />
-              )}
-            </button>
-            <button
-              arial-label="Delete Property"
-              className={classes.Action}
-              onClick={() => variableEditing.delete(variable)}
-            >
-              <span>
-                <Bin aria-hidden="true" />
-              </span>
-            </button>
+            {showActions && (
+              <>
+                <button
+                  arial-label={intl.formatMessage(messages.ariaRename)}
+                  className={classes.Action}
+                  data-editing={editingLabel}
+                  onClick={handleEditing}
+                >
+                  {editingLabel ? (
+                    <Check aria-hidden="true" />
+                  ) : (
+                    <Rename aria-hidden="true" />
+                  )}
+                </button>
+                <button
+                  arial-label={intl.formatMessage(messages.ariaDelete)}
+                  className={classes.Action}
+                  onClick={() => variableEditing.delete(variable)}
+                >
+                  <Bin aria-hidden="true" />
+                </button>
+              </>
+            )}
+
+            {showRevert && (
+              <button
+                arial-label={intl.formatMessage(messages.ariaRevert)}
+                className={classes.Action}
+                onClick={variableRevert}
+              >
+                <Undo aria-hidden="true" />
+              </button>
+            )}
           </div>
         )}
       </div>

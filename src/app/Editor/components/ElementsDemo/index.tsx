@@ -8,6 +8,10 @@ import { MeterDemo } from "./MeterDemo";
 import { ProgressDemo } from "./ProgressDemo";
 import { SelectDemo } from "./SelectDemo";
 import { TableDemo } from "./TableDemo";
+import { ColorDemo } from "./ColorDemo";
+import { DialogDemo } from "./DialogDemo";
+import { RangeDemo } from "./RangeDemo";
+import { TextfieldDemo } from "./TextfieldDemo";
 
 const demomap = new Map<string, ComponentType>();
 
@@ -20,5 +24,9 @@ demomap.set("meter", MeterDemo);
 demomap.set("progress", ProgressDemo);
 demomap.set("select", SelectDemo);
 demomap.set("table", TableDemo);
+demomap.set("color", ColorDemo);
+demomap.set("dialog", DialogDemo);
+demomap.set("range", RangeDemo);
+demomap.set("textfield", TextfieldDemo);
 
 export default demomap;

@@ -1,15 +1,13 @@
-import useVariables from "./useVariables";
-import { CSSProperties } from "react";
-import { VariableArray, IVariable } from "@store/theming/types";
 import { getReferencedVariable } from "@store/theming/helpers";
-import {
-  getValueOrRelatedVariableValue,
-  formatVariableName,
-} from "../helpers/variable";
+import { IVariable, VariableArray } from "@store/theming/types";
 import { Option } from "tiinvo";
+import {
+  formatVariableName,
+  getValueOrRelatedVariableValue,
+} from "../helpers/variable";
+import useVariables from "./useVariables";
 
-type CssVar = { [index: string]: string };
-type EnhancedCSSProperties = CSSProperties & CssVar;
+export type CssVar = { [index: string]: string };
 
 function convertVariables(variables: VariableArray): CssVar {
   return variables.reduce(

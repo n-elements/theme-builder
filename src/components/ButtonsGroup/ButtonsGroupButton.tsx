@@ -1,28 +1,28 @@
 import React from "react";
 import { Button } from "@components/Button";
-import classes from "./UnitPickerButton.module.css";
+import classes from "./ButtonsGroupButton.module.css";
 
-export interface UnitPickerButtonProps {
-  unit: string;
+export interface ButtonsGroupButtonProps {
+  text: string;
   checked: boolean;
   onClick: () => void;
 }
 
-export const UnitPickerButton = ({
-  unit,
+export const ButtonsGroupButton = ({
+  text,
   checked,
   onClick,
-}: UnitPickerButtonProps) => {
+}: ButtonsGroupButtonProps) => {
   return (
     <Button
       role="radio"
       aria-checked={checked}
-      className={classes.UnitPickerButton}
+      className={classes.ButtonsGroupButton}
       secondary
       onClick={onClick}
       small
     >
-      {unit}
+      {text}
     </Button>
   );
 };

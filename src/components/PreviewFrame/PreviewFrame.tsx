@@ -1,7 +1,7 @@
-import React, { ReactNode, useRef, useEffect, useCallback } from "react";
-import Frame, { FrameContextConsumer } from "react-frame-component";
 import useCSSVariables from "@app/Editor/hooks/useCSSVariables";
 import clsx from "clsx";
+import React, { ReactNode, useEffect, useRef } from "react";
+import Frame, { FrameContextConsumer } from "react-frame-component";
 import classes from "./PreviewFrame.module.css";
 
 export interface IPreviewFrameProps extends PropsClass {
@@ -26,7 +26,7 @@ export const PreviewFrame = ({
     <head>
       <link rel="preconnect" href="https://cdn.jsdelivr.net">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@latest/modern-normalize.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@native-elements/core@0.23.1/dist/native-elements.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@native-elements/core@0.23.3/dist/native-elements.min.css">
       <script src="https://cdn.jsdelivr.net/npm/what-input@5.2.9/dist/what-input.min.js" defer></script>
       <style>
         section > h5 {
@@ -43,20 +43,21 @@ export const PreviewFrame = ({
     </body>
   </html>`;
 
-  const setIframeHeight = useCallback(
-    (e: any) => {
-      const iframe = iframeRef.current.node;
-      setTimeout(() => {
-        iframe.height = `${iframe.contentWindow.document.body.scrollHeight}px`;
-      }, 50);
-    },
-    [iframeRef]
-  );
+  // eslint-disable-next-line
+  const setIframeHeight = () => {
+    const iframe = iframeRef.current.node;
+    setTimeout(() => {
+      iframe.height = `${iframe.contentWindow.document.body.scrollHeight}px`;
+    }, 50);
+  };
 
   useEffect(() => {
     window.addEventListener("resize", setIframeHeight);
+
+    setIframeHeight();
+
     return () => window.removeEventListener("resize", setIframeHeight);
-  }, [setIframeHeight]);
+  }, [setIframeHeight, cssvariables]);
 
   return (
     <Frame
@@ -73,9 +74,7 @@ export const PreviewFrame = ({
           Object.keys(cssvariables).forEach((key) =>
             document.documentElement.style.setProperty(key, cssvariables[key])
           );
-          document.documentElement.addEventListener("click", (e: any) =>
-            setIframeHeight(e)
-          );
+          document.documentElement.addEventListener("click", setIframeHeight);
           return children;
         }}
       </FrameContextConsumer>

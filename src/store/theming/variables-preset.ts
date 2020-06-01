@@ -79,6 +79,10 @@ export default function preset(): VariableArray {
 
     variablesMap.set(element.name, element);
 
+    if (element.value === accentvariable.value) {
+      element._referenceId = accentvariable._id;
+    }
+
     if (maybeExtractedName.isSome()) {
       requiresReparentingMap.set(element.name, {
         index,

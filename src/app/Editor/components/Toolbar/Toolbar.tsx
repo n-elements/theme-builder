@@ -15,7 +15,7 @@ export default function Toolbar(props: IToolbarProps) {
       minWidth={380}
       maxWidth={600}
       defaultSize={{
-        width: 380,
+        width: 480,
         height: "auto",
       }}
       bounds="parent"

@@ -15,7 +15,7 @@
   margin: 0;
 }
 
-.UnitPreview {
+.SettingButton {
   --ne-button-border-radius: calc(var(--ne-textfield-border-radius, 4px) / 2);
 
   margin: 2px;
@@ -31,4 +31,16 @@
 
 .UnitBlock {
   margin: 16px 16px 0 16px;
+}
+
+.RelatedValue {
+  display: block;
+  padding: 0 16px;
+  color: var(--unitfield-related-value-foreground);
+  opacity: 0.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  position: absolute;
+  font-size: 0.8rem;
 }

@@ -7,7 +7,7 @@ export interface IDropDownProps extends PropsClass {
   children: ReactNode;
   open: boolean;
   floating?: boolean;
-  position?: "left" | "center" | "right";
+  position?: "left" | "right";
 }
 
 export const DropDown = forwardRef(function (
@@ -44,5 +44,5 @@ export const DropDown = forwardRef(function (
 
 DropDown.defaultProps = {
   position: "right",
-  floating: false,
+  floating: true,
 } as Partial<IDropDownProps>;

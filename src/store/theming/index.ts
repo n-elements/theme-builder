@@ -1,25 +1,31 @@
 import { createReducer } from "redux-aar";
-import { VariableArray, IVariable } from "./types";
+import { Option } from "tiinvo";
 import * as actions from "./actions";
 import {
   assignId,
+  breakRelation,
   createUpdateVariableMap,
   makeRelation,
-  breakRelation,
+  revertvariable,
+  createFindInPreset,
 } from "./helpers";
-import preset, { accentvariable } from "./variables-preset";
-import { Option } from "tiinvo";
+import { VariableArray } from "./types";
+import preset from "./variables-preset";
 
 interface ITheming {
   name: string;
+  variablespreset: VariableArray;
   variables: VariableArray;
   variablesCounter: number;
 }
 
 function initialState(): ITheming {
+  const variablespreset = preset();
+
   return {
     name: "theme-name",
-    variables: preset(),
+    variablespreset,
+    variables: variablespreset.slice(),
     variablesCounter: 0,
   };
 }
@@ -49,19 +55,39 @@ reducer.on(actions.deleteVariable, (state, variable) => ({
 
 reducer.on(actions.reset, (state) => {
   const initial = initialState();
-  const findAccent = (othervariable: IVariable): boolean =>
-    othervariable.name === accentvariable.name;
-  const maybeAccentIndex = Option(initial.variables.findIndex(findAccent));
-  const maybeFoundAccent = Option(state.variables.find(findAccent));
+  const find = createFindInPreset(state.variablespreset);
 
-  maybeAccentIndex.and(maybeFoundAccent).mapOrElse(
+  return {
+    ...initial,
+    variablespreset: state.variablespreset,
+    variables: state.variables
+      .filter(find)
+      .map((a) => revertvariable(a, find(a))),
+  };
+});
+
+reducer.on(actions.revertVariable, (state, variable) => {
+  const variables = state.variables.slice();
+  const maybeDefaultIndexOf = state.variablespreset.findIndex(
+    (a) => a._id === variable._id
+  );
+  const maybeIndexOf = state.variables.findIndex((a) => a._id === variable._id);
+
+  Option(maybeIndexOf).mapOrElse(
     () => void 0,
-    (accent) => {
-      initial.variables[maybeAccentIndex.unwrap()] = accent;
-    }
+    (index) =>
+      Option(maybeDefaultIndexOf).mapOrElse(
+        () => void 0,
+        (defaultIndex) => {
+          variables[index] = { ...state.variablespreset[defaultIndex] };
+        }
+      )
   );
 
-  return initial;
+  return {
+    ...state,
+    variables,
+  };
 });
 
 reducer.on(actions.updateName, (state, name) => ({

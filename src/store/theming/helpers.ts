@@ -49,6 +49,12 @@ export function createUpdateVariableMap(newvar: IVariable) {
   return (oldvar: IVariable) => maybeUpdateVariable(oldvar, newvar);
 }
 
+export function createFindInPreset(
+  presetvars: VariableArray
+): (variable: IVariable) => IVariable | undefined {
+  return (a) => presetvars.find((b) => b._id === a._id);
+}
+
 export function generateId(): VariableId {
   return (Date.now() * Math.floor(Math.random() * 1000000)).toString(32);
 }
@@ -99,6 +105,17 @@ export function maybeUpdateVariable(
     Just: () => updateVariable(oldvar, newvar),
     Nothing: () => oldvar,
   });
+}
+
+export function revertvariable(
+  current: IVariable,
+  frompreset?: IVariable
+): IVariable {
+  return {
+    ...current,
+    _referenceId: frompreset?._referenceId,
+    value: frompreset?.value,
+  };
 }
 
 export function updateVariable(

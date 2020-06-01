@@ -1,25 +1,25 @@
+import { isKeyword, transcodeKeyword } from "@app/Editor/helpers/keywords";
 import useVariableValues from "@app/Editor/hooks/useVariableValues";
 import { DropDown } from "@components/DropDown";
 import { FieldWrapper } from "@components/FieldWrapper";
 import clsx from "clsx";
+import Color from "color";
 import React, { useRef, useState } from "react";
 import { ChromePicker } from "react-color";
+import { defineMessages, useIntl } from "react-intl";
 import { useClickAway } from "react-use";
 import { Option } from "tiinvo";
 import { IFieldProps } from "../../types/fields";
 import { ColorPreview } from "../ColorPreview";
+import Keywords from "../Keywords";
 import { VariableSearch } from "../VariableSearch";
-import Color from "color";
 import classes from "./ColorField.module.css";
-import { UnitPicker, UnitPickerButton } from "../UnitPicker";
-import { UnitType } from "@app/Editor/helpers/unit";
-import { defineMessage, useIntl } from "react-intl";
 
 export interface IColorFieldProps extends IFieldProps {
   readOnly?: boolean;
 }
 
-const messages = defineMessage({
+const messages = defineMessages({
   keywords: {
     defaultMessage: "Keywords",
     id: "app.Editor.components.UnitField.keywords",
@@ -33,49 +33,62 @@ export const ColorField = function (props: IColorFieldProps) {
   const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
   const values = useVariableValues(props.variable);
   const defaultColor = "hsl(0, 0%, 0%)";
+  const fallbackValueForNonColours = isKeyword(values.value)
+    ? defaultColor
+    : values.value;
 
   useClickAway(ref, createOpenHandler(false));
+
+  const handleChange = (value: any) => {
+    Option(props.onChange).mapOrElse(
+      () => void 0,
+      (fn) => fn(value)
+    );
+    Option(props.onBreakReference).mapOrElse(
+      () => void 0,
+      (fn) => fn()
+    );
+  };
 
   return (
     <div className={clsx(classes.ColorField, props.className)} ref={ref}>
       <FieldWrapper>
         <button className={classes.Field} onClick={createOpenHandler(true)}>
           <span className={classes.Value}>
-            {values.displayValue || defaultColor}
+            {isKeyword(values.displayValue)
+              ? transcodeKeyword(values.displayValue)
+              : values.displayValue || defaultColor}
           </span>
-          <span className={classes.ColorPreview}>
-            <ColorPreview
-              color={values.value}
-              className={classes.ColorSwatch}
-            />
-          </span>
+          {!isKeyword(values.value) ? (
+            <span className={classes.ColorPreview}>
+              <ColorPreview
+                color={fallbackValueForNonColours}
+                className={classes.ColorSwatch}
+              />
+            </span>
+          ) : null}
         </button>
       </FieldWrapper>
-      <DropDown open={open}>
+      {values.displayValue !== values.value ? (
+        <span className={classes.RelatedValue}>
+          <small>{values.value}</small>
+        </span>
+      ) : null}
+      <DropDown open={open} floating>
         <div className={classes.PickerContainer}>
           <ChromePicker
-            color={Color(values.value || defaultColor)
-              .hsl()
-              .toString()}
+            color={Color(fallbackValueForNonColours).hsl().toString()}
             onChange={(value) => {
-              Option(props.onChange).mapOrElse(
-                () => void 0,
-                (fn) =>
-                  fn(
-                    Color.rgb(
-                      value.rgb.r,
-                      value.rgb.g,
-                      value.rgb.b,
-                      value.rgb.a ?? 1
-                    )
-                      .hsl()
-                      .round()
-                      .string()
-                  )
-              );
-              Option(props.onBreakReference).mapOrElse(
-                () => void 0,
-                (fn) => fn()
+              handleChange(
+                Color.rgb(
+                  value.rgb.r,
+                  value.rgb.g,
+                  value.rgb.b,
+                  value.rgb.a ?? 1
+                )
+                  .hsl()
+                  .round()
+                  .string()
               );
             }}
           />
@@ -84,28 +97,7 @@ export const ColorField = function (props: IColorFieldProps) {
           <p data-size="ultra-small">
             <b>{intl.formatMessage(messages.keywords)}</b>
           </p>
-          <UnitPicker>
-            <UnitPickerButton
-              unit={UnitType.REV}
-              checked={true}
-              onClick={() => {}}
-            />
-            <UnitPickerButton
-              unit={UnitType.UNS}
-              checked={false}
-              onClick={() => {}}
-            />
-            <UnitPickerButton
-              unit={UnitType.INIT}
-              checked={false}
-              onClick={() => {}}
-            />
-            <UnitPickerButton
-              unit={UnitType.INH}
-              checked={false}
-              onClick={() => {}}
-            />
-          </UnitPicker>
+          <Keywords onSelect={handleChange} value={values.value} />
         </div>
         <VariableSearch
           onChangeRelation={props.onChangeRelation}
