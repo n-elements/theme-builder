@@ -7,12 +7,12 @@ import { BrowsersLogos } from "@components/BrowsersLogos";
 
 const messages = defineMessages({
   title: {
-    defaultMessage: "Color picker",
-    id: "app.Editor.elements.color.title",
+    defaultMessage: "Dialog",
+    id: "app.Editor.elements.dialog.title",
   },
   subtitle: {
-    defaultMessage: "Inputs used to pick or enter a color value",
-    id: "app.Editor.elements.color.subtitle",
+    defaultMessage: "Element to display a modal dialog",
+    id: "app.Editor.elements.dialog.subtitle",
   },
 });
 

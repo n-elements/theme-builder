@@ -10,6 +10,7 @@ import { SelectDemo } from "./SelectDemo";
 import { TableDemo } from "./TableDemo";
 import { ColorDemo } from "./ColorDemo";
 import { DialogDemo } from "./DialogDemo";
+import { RangeDemo } from "./RangeDemo";
 
 const demomap = new Map<string, ComponentType>();
 
@@ -24,5 +25,6 @@ demomap.set("select", SelectDemo);
 demomap.set("table", TableDemo);
 demomap.set("color", ColorDemo);
 demomap.set("dialog", DialogDemo);
+demomap.set("range", RangeDemo);
 
 export default demomap;
