@@ -15,6 +15,7 @@ import Units from "../Units";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./UnitField.module.css";
 import { transcodeKeyword } from "@app/Editor/helpers/keywords";
+import { AnimatePresence, motion } from "framer-motion";
 
 const messages = defineMessages({
   keywords: {
@@ -72,11 +73,6 @@ export const UnitField = function (props: IUnitFieldProps) {
             type="text"
             value={transcodeKeyword(values.displayValue)}
           />
-          {values.displayValue !== values.value ? (
-            <span className={classes.RelatedValue}>
-              <small>{values.value}</small>
-            </span>
-          ) : null}
           <Button
             secondary
             small
@@ -87,6 +83,18 @@ export const UnitField = function (props: IUnitFieldProps) {
           </Button>
         </div>
       </FieldWrapper>
+      <AnimatePresence>
+        {values.displayValue !== values.value ? (
+          <motion.span
+            initial={{ opacity: 0, x: -5 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -5, transition: { duration: 0.1 } }}
+            className={classes.RelatedValue}
+          >
+            <small>{values.value}</small>
+          </motion.span>
+        ) : null}
+      </AnimatePresence>
       <DropDown open={open} ref={ref}>
         <div className={classes.UnitBlock}>
           <p data-size="ultra-small">
