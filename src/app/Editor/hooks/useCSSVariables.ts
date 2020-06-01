@@ -7,7 +7,7 @@ import {
 } from "../helpers/variable";
 import useVariables from "./useVariables";
 
-type CssVar = { [index: string]: string };
+export type CssVar = { [index: string]: string };
 
 function convertVariables(variables: VariableArray): CssVar {
   return variables.reduce(
