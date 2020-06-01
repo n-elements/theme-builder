@@ -6,6 +6,7 @@ import clsx from "clsx";
 import classes from "./ColorSwatch.module.css";
 import { ColorPreview } from "@app/Editor/components/ColorPreview";
 import { formatVariableName } from "@app/Editor/helpers/variable";
+import { isKeyword } from "@app/Editor/helpers/keywords";
 
 export interface IColorSwatchProps extends PropsClass {
   propName: IVariable["name"];
@@ -18,9 +19,10 @@ export const ColorSwatch = function ({
   value,
   ...attributes
 }: IColorSwatchProps) {
-  const rgbColor = Color(value).rgb().string();
-  const hslColor = Color(value).hsl().string();
-  const hexColor = Color(value).hex();
+  const fallbackValue = isKeyword(value) ? "rgb(0, 0, 0)" : value;
+  const rgbColor = Color(fallbackValue).rgb().string();
+  const hslColor = Color(fallbackValue).hsl().string();
+  const hexColor = Color(fallbackValue).hex();
   const formattedPropName = formatVariableName(propName);
 
   return (
