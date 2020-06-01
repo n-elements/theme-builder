@@ -8,7 +8,7 @@ function blobby(input: string): Blob {
 }
 
 function normalizeThemeName(name: string): string {
-  return [name.replace(/\s+/, "-"), "css"].join(".");
+  return [name.trim().replace(/\s+/, "-"), "css"].join(".");
 }
 
 function serialize(variables: CssVar) {
