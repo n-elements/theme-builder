@@ -1,14 +1,14 @@
 import { createReducer } from "redux-aar";
-import { VariableArray, IVariable } from "./types";
+import { Option } from "tiinvo";
 import * as actions from "./actions";
 import {
   assignId,
+  breakRelation,
   createUpdateVariableMap,
   makeRelation,
-  breakRelation,
 } from "./helpers";
-import preset, { accentvariable } from "./variables-preset";
-import { Option } from "tiinvo";
+import { VariableArray } from "./types";
+import preset from "./variables-preset";
 
 interface ITheming {
   name: string;
