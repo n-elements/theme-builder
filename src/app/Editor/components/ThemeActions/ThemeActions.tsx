@@ -25,7 +25,7 @@ export const ThemeActions = function ({
   ...attributes
 }: IThemeActionsProps) {
   const intl = useIntl();
-  const { filename, filepath } = useCSSExport();
+  const exported = useCSSExport();
   const handleReset = useThemeReset();
 
   return (
@@ -34,12 +34,9 @@ export const ThemeActions = function ({
         <Undo />
         {intl.formatMessage(messages.reset)}
       </Button>
-      <a href={filepath} download={filename}>
+      <Button onClick={exported.download}>
         {intl.formatMessage(messages.downloadTheme)}
-      </a>
-      {/* <Button>
-        {intl.formatMessage(messages.downloadTheme)}
-      </Button> */}
+      </Button>
     </div>
   );
 };

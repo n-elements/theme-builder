@@ -8,7 +8,7 @@ function blobby(input: string): Blob {
 }
 
 function normalizeThemeName(name: string): string {
-  return [name, "css"].join(".");
+  return [name.replace(/\s+/, "-"), "css"].join(".");
 }
 
 function serialize(variables: CssVar) {
@@ -35,5 +35,13 @@ export default function useCSSExport() {
   return {
     filename,
     filepath,
+    download() {
+      const a = document.createElement("a");
+      a.href = filepath;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    },
   };
 }
