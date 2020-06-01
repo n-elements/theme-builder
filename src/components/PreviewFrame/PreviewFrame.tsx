@@ -36,6 +36,10 @@ export const PreviewFrame = ({
         section + section {
           margin-top: 40px;
         }
+        [data-whatintent='mouse'] :focus,
+        [data-whatintent='mouse'] :visited:focus {
+          outline: none;
+        }
       </style>
     </head>
     <body style="margin: 0; padding: 40px; max-width: ${computedWidth}">
