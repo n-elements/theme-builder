@@ -1,7 +1,7 @@
-import React, { ReactNode, useRef, useEffect, useCallback } from "react";
-import Frame, { FrameContextConsumer } from "react-frame-component";
 import useCSSVariables from "@app/Editor/hooks/useCSSVariables";
 import clsx from "clsx";
+import React, { ReactNode, useEffect, useRef } from "react";
+import Frame, { FrameContextConsumer } from "react-frame-component";
 import classes from "./PreviewFrame.module.css";
 
 export interface IPreviewFrameProps extends PropsClass {
@@ -43,6 +43,7 @@ export const PreviewFrame = ({
     </body>
   </html>`;
 
+  // eslint-disable-next-line
   const setIframeHeight = () => {
     const iframe = iframeRef.current.node;
     setTimeout(() => {
