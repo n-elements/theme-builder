@@ -69,6 +69,11 @@ export const ColorField = function (props: IColorFieldProps) {
           ) : null}
         </button>
       </FieldWrapper>
+      {values.displayValue !== values.value ? (
+        <span className={classes.RelatedValue}>
+          <small>{values.value}</small>
+        </span>
+      ) : null}
       <DropDown open={open} floating>
         <div className={classes.PickerContainer}>
           <ChromePicker

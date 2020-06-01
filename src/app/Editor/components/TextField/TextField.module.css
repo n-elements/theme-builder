@@ -41,4 +41,6 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  position: absolute;
+  font-size: 0.8rem;
 }
