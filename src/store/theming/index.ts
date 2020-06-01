@@ -68,6 +68,30 @@ reducer.on(actions.reset, (state) => {
   return initial;
 });
 
+reducer.on(actions.revertVariable, (state, variable) => {
+  const variables = state.variables.slice();
+  const maybeDefaultIndexOf = state.variablespreset.findIndex(
+    (a) => a._id === variable._id
+  );
+  const maybeIndexOf = state.variables.findIndex((a) => a._id === variable._id);
+
+  Option(maybeIndexOf).mapOrElse(
+    () => void 0,
+    (index) =>
+      Option(maybeDefaultIndexOf).mapOrElse(
+        () => void 0,
+        (defaultIndex) => {
+          variables[index] = { ...state.variablespreset[defaultIndex] };
+        }
+      )
+  );
+
+  return {
+    ...state,
+    variables,
+  };
+});
+
 reducer.on(actions.updateName, (state, name) => ({
   ...state,
   name,

@@ -4,7 +4,7 @@ import { VariableList } from "./VariableList";
 export default function TypographyVariables() {
   return (
     <>
-      <VariableList />
+      <VariableList showRevert />
     </>
   );
 }

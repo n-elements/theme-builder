@@ -6,7 +6,7 @@ import clsx from "clsx";
 import Color from "color";
 import React, { useRef, useState } from "react";
 import { ChromePicker } from "react-color";
-import { defineMessage, useIntl } from "react-intl";
+import { defineMessages, useIntl } from "react-intl";
 import { useClickAway } from "react-use";
 import { Option } from "tiinvo";
 import { IFieldProps } from "../../types/fields";
@@ -19,7 +19,7 @@ export interface IColorFieldProps extends IFieldProps {
   readOnly?: boolean;
 }
 
-const messages = defineMessage({
+const messages = defineMessages({
   keywords: {
     defaultMessage: "Keywords",
     id: "app.Editor.components.UnitField.keywords",

@@ -31,7 +31,7 @@ export function ElementsVariables() {
         >
           {elementsvars.getVariablesForElement(name!).map((variable, index) => (
             <div className={classes.VariableItem} key={index}>
-              <Variable variable={variable} />
+              <Variable variable={variable} showRevert />
             </div>
           ))}
         </Expander>
