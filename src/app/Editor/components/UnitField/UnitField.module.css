@@ -34,15 +34,11 @@
 }
 
 .RelatedValue {
-  display: inline-flex;
-  padding: 8px 8px 8px 0;
-  justify-content: center;
-  align-items: center;
+  display: block;
+  padding: 0 16px;
   color: var(--unitfield-related-value-foreground);
   opacity: 0.5;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  max-width: 100px;
-  flex-shrink: 0;
 }

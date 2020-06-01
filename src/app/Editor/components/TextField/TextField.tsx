@@ -59,18 +59,7 @@ export const TextField = function (props: IUnitFieldProps) {
             type="text"
             value={values.displayValue}
           />
-          <AnimatePresence>
-            {values.displayValue !== values.value ? (
-              <motion.span
-                initial={{ opacity: 0, x: -5 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -5, transition: { duration: 0.1 } }}
-                className={classes.RelatedValue}
-              >
-                <small>{values.value}</small>
-              </motion.span>
-            ) : null}
-          </AnimatePresence>
+
           <Button
             secondary
             small
@@ -81,6 +70,18 @@ export const TextField = function (props: IUnitFieldProps) {
           </Button>
         </div>
       </FieldWrapper>
+      <AnimatePresence>
+        {values.displayValue !== values.value ? (
+          <motion.span
+            initial={{ opacity: 0, x: -5 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -5, transition: { duration: 0.1 } }}
+            className={classes.RelatedValue}
+          >
+            <small>{values.value}</small>
+          </motion.span>
+        ) : null}
+      </AnimatePresence>
       <DropDown open={open} ref={ref}>
         <div className={classes.UnitBlock}>
           <p data-size="ultra-small">

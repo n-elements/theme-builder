@@ -59,12 +59,14 @@ export const ColorField = function (props: IColorFieldProps) {
               ? transcodeKeyword(values.displayValue)
               : values.displayValue || defaultColor}
           </span>
-          <span className={classes.ColorPreview}>
-            <ColorPreview
-              color={fallbackValueForNonColours}
-              className={classes.ColorSwatch}
-            />
-          </span>
+          {!isKeyword(values.value) ? (
+            <span className={classes.ColorPreview}>
+              <ColorPreview
+                color={fallbackValueForNonColours}
+                className={classes.ColorSwatch}
+              />
+            </span>
+          ) : null}
         </button>
       </FieldWrapper>
       <DropDown open={open} floating>

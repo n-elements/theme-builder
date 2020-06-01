@@ -2,6 +2,9 @@
   "name": "theme-builder",
   "version": "0.1.0",
   "private": true,
+  "contributors": [
+    "Mattia Astorino <astorino.design@gmail.com> (https://equinusocio.dev)"
+  ],
   "dependencies": {
     "@native-elements/core": "0.23.3",
     "@testing-library/jest-dom": "4.2.4",
