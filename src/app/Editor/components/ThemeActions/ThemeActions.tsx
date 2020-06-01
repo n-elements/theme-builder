@@ -4,8 +4,8 @@ import clsx from "clsx";
 import { Button } from "@components/Button";
 import { Undo } from "@components/Icons/16x";
 import useThemeReset from "@hooks/useThemeReset";
-import useThemeDownload from "@hooks/useThemeDownload";
 import { defineMessages, useIntl } from "react-intl";
+import useCSSExport from "@app/Editor/hooks/useCSSExport";
 
 const messages = defineMessages({
   downloadTheme: {
@@ -25,7 +25,7 @@ export const ThemeActions = function ({
   ...attributes
 }: IThemeActionsProps) {
   const intl = useIntl();
-  const handleDownload = useThemeDownload();
+  const { filename, filepath } = useCSSExport();
   const handleReset = useThemeReset();
 
   return (
@@ -34,9 +34,12 @@ export const ThemeActions = function ({
         <Undo />
         {intl.formatMessage(messages.reset)}
       </Button>
-      <Button onClick={handleDownload}>
+      <a href={filepath} download={filename}>
         {intl.formatMessage(messages.downloadTheme)}
-      </Button>
+      </a>
+      {/* <Button>
+        {intl.formatMessage(messages.downloadTheme)}
+      </Button> */}
     </div>
   );
 };
