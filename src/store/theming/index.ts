@@ -6,6 +6,8 @@ import {
   breakRelation,
   createUpdateVariableMap,
   makeRelation,
+  revertvariable,
+  createFindInPreset,
 } from "./helpers";
 import { VariableArray } from "./types";
 import preset from "./variables-preset";
@@ -53,18 +55,14 @@ reducer.on(actions.deleteVariable, (state, variable) => ({
 
 reducer.on(actions.reset, (state) => {
   const initial = initialState();
+  const find = createFindInPreset(state.variablespreset);
 
   return {
     ...initial,
     variablespreset: state.variablespreset,
     variables: state.variables
-      .filter((a) => state.variablespreset.find((b) => b._id === a._id))
-      .map((a) => {
-        const found = state.variablespreset.find((b) => b._id === a._id);
-        a.value = found?.value;
-        a._referenceId = found?._referenceId;
-        return a;
-      }),
+      .filter(find)
+      .map((a) => revertvariable(a, find(a))),
   };
 });
 
