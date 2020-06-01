@@ -60,7 +60,9 @@ reducer.on(actions.reset, (state) => {
     variables: state.variables
       .filter((a) => state.variablespreset.find((b) => b._id === a._id))
       .map((a) => {
-        a.value = state.variablespreset.find((b) => b._id === a._id)?.value;
+        const found = state.variablespreset.find((b) => b._id === a._id);
+        a.value = found?.value;
+        a._referenceId = found?._referenceId;
         return a;
       }),
   };
