@@ -12,6 +12,7 @@ import { Option } from "tiinvo";
 
 interface ITheming {
   name: string;
+  variablespreset: VariableArray;
   variables: VariableArray;
   variablesCounter: number;
 }
@@ -19,6 +20,7 @@ interface ITheming {
 function initialState(): ITheming {
   return {
     name: "theme-name",
+    variablespreset: preset(),
     variables: preset(),
     variablesCounter: 0,
   };
