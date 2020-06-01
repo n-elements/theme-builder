@@ -1,4 +1,5 @@
 import { VariableValue } from "@store/theming/types";
+import { Option } from "tiinvo";
 
 export enum Keyword {
   INH = "INH",
@@ -7,8 +8,13 @@ export enum Keyword {
   UNS = "UNS",
 }
 
-export function isKeyword(input: string): input is Keyword {
-  return transcodeValueToKeyword(input) !== undefined;
+export function isKeyword(input: string | VariableValue): input is Keyword {
+  const transcoded = transcodeValueToKeyword(input);
+
+  return Option(transcoded).mapOrElse(
+    () => false,
+    (value) => value in Keyword
+  );
 }
 
 export function transcodeValueToKeyword(

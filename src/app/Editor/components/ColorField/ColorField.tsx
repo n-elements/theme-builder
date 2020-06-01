@@ -13,6 +13,11 @@ import { ColorPreview } from "../ColorPreview";
 import Keywords from "../Keywords";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./ColorField.module.css";
+import {
+  isKeyword,
+  transcodeValueToKeyword,
+  transcodeKeyword,
+} from "@app/Editor/helpers/keywords";
 
 export interface IColorFieldProps extends IFieldProps {
   readOnly?: boolean;
@@ -32,19 +37,35 @@ export const ColorField = function (props: IColorFieldProps) {
   const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
   const values = useVariableValues(props.variable);
   const defaultColor = "hsl(0, 0%, 0%)";
+  const fallbackValueForNonColours = isKeyword(values.value)
+    ? defaultColor
+    : values.value;
 
   useClickAway(ref, createOpenHandler(false));
+
+  const handleChange = (value: any) => {
+    Option(props.onChange).mapOrElse(
+      () => void 0,
+      (fn) => fn(value)
+    );
+    Option(props.onBreakReference).mapOrElse(
+      () => void 0,
+      (fn) => fn()
+    );
+  };
 
   return (
     <div className={clsx(classes.ColorField, props.className)} ref={ref}>
       <FieldWrapper>
         <button className={classes.Field} onClick={createOpenHandler(true)}>
           <span className={classes.Value}>
-            {values.displayValue || defaultColor}
+            {isKeyword(values.displayValue)
+              ? transcodeKeyword(values.displayValue)
+              : values.displayValue || defaultColor}
           </span>
           <span className={classes.ColorPreview}>
             <ColorPreview
-              color={values.value}
+              color={fallbackValueForNonColours}
               className={classes.ColorSwatch}
             />
           </span>
@@ -53,28 +74,18 @@ export const ColorField = function (props: IColorFieldProps) {
       <DropDown open={open} floating>
         <div className={classes.PickerContainer}>
           <ChromePicker
-            color={Color(values.value || defaultColor)
-              .hsl()
-              .toString()}
+            color={Color(fallbackValueForNonColours).hsl().toString()}
             onChange={(value) => {
-              Option(props.onChange).mapOrElse(
-                () => void 0,
-                (fn) =>
-                  fn(
-                    Color.rgb(
-                      value.rgb.r,
-                      value.rgb.g,
-                      value.rgb.b,
-                      value.rgb.a ?? 1
-                    )
-                      .hsl()
-                      .round()
-                      .string()
-                  )
-              );
-              Option(props.onBreakReference).mapOrElse(
-                () => void 0,
-                (fn) => fn()
+              handleChange(
+                Color.rgb(
+                  value.rgb.r,
+                  value.rgb.g,
+                  value.rgb.b,
+                  value.rgb.a ?? 1
+                )
+                  .hsl()
+                  .round()
+                  .string()
               );
             }}
           />
@@ -83,7 +94,7 @@ export const ColorField = function (props: IColorFieldProps) {
           <p data-size="ultra-small">
             <b>{intl.formatMessage(messages.keywords)}</b>
           </p>
-          <Keywords onSelect={console.log} value={values.value} />
+          <Keywords onSelect={handleChange} value={values.value} />
         </div>
         <VariableSearch
           onChangeRelation={props.onChangeRelation}
