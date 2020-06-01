@@ -21,6 +21,8 @@
   "app.Editor.elements.checkradio.title": "Check and Radio inputs",
   "app.Editor.elements.code.subtitle": "Preformatted code blocks used to display code sample and indented text",
   "app.Editor.elements.code.title": "Code blocks",
+  "app.Editor.elements.color.subtitle": "Inputs used to pick or enter a color value",
+  "app.Editor.elements.color.title": "Color picker",
   "app.Editor.elements.details.subtitle": "Folding element that can be combined to build a group",
   "app.Editor.elements.details.title": "Details / Folding",
   "app.Editor.elements.hr.subtitle": "Horizontal rule used as content separator",

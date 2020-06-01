@@ -5,7 +5,6 @@ import { DropDown } from "@components/DropDown";
 import { FieldWrapper } from "@components/FieldWrapper";
 import { Gear } from "@components/Icons/16x";
 import clsx from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
 import React, { useRef, useState } from "react";
 import { defineMessages, useIntl } from "react-intl";
 import { useClickAway } from "react-use";
@@ -70,18 +69,11 @@ export const TextField = function (props: IUnitFieldProps) {
           </Button>
         </div>
       </FieldWrapper>
-      <AnimatePresence>
-        {values.displayValue !== values.value ? (
-          <motion.span
-            initial={{ opacity: 0, x: -5 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -5, transition: { duration: 0.1 } }}
-            className={classes.RelatedValue}
-          >
-            <small>{values.value}</small>
-          </motion.span>
-        ) : null}
-      </AnimatePresence>
+      {values.displayValue !== values.value ? (
+        <span className={classes.RelatedValue}>
+          <small>{values.value}</small>
+        </span>
+      ) : null}
       <DropDown open={open} ref={ref}>
         <div className={classes.UnitBlock}>
           <p data-size="ultra-small">
