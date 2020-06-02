@@ -1,6 +1,7 @@
 import { createElement } from "react";
 import ReactDOM from "react-dom";
 import "what-input";
+import "@native-elements/core";
 import "./styles/app.css";
 import App from "./app";
 import * as serviceWorker from "./serviceWorker";
