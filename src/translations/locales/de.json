@@ -40,5 +40,8 @@
   "app.Editor.elements.upload.subtitle": "HTML element to select a file from the device",
   "app.Editor.elements.upload.title": "Upload",
   "app.Editor.elements.textfield.subtitle": "Editable elements in which enter data",
-  "app.Editor.elements.textfield.title": "Texfields and Textareas"
+  "app.Editor.elements.textfield.title": "Texfields and Textareas",
+  "components.ThemeSwitcer.auto": "Set theme based on OS preferences",
+  "components.ThemeSwitcer.light": "Set light theme",
+  "components.ThemeSwitcer.dark": "Set dark theme"
 }

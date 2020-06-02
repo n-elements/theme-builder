@@ -65,6 +65,7 @@ export const PreviewFrame = ({
 
   return (
     <Frame
+      title="Elements preview frame"
       initialContent={previewTemplate}
       ref={iframeRef}
       mountTarget="#mount"
