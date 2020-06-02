@@ -8,13 +8,20 @@ import classes from "./AppNavigation.module.css";
 export interface IAppNavigationProps extends PropsClass {}
 
 export interface IAppNavigationItemProps
-  extends Omit<NavLinkProps, "activeClassName" | "className"> {}
+  extends Omit<NavLinkProps, "activeClassName" | "className"> {
+  label?: string;
+}
 
-const AppNavigationItem = function ({ children, to }: IAppNavigationItemProps) {
+const AppNavigationItem = function ({
+  children,
+  to,
+  label,
+}: IAppNavigationItemProps) {
   return (
     <NavLink
       activeClassName={classes.Current}
       className={classes.AppNavigationItem}
+      aria-label={label}
       to={to}
     >
       {children}
@@ -28,16 +35,20 @@ export const AppNavigation = function ({
 }: IAppNavigationProps) {
   return (
     <nav className={clsx(classes.AppNavigation, className)} {...attributes}>
-      <AppNavigationItem to={routes.editor.colours}>
+      <AppNavigationItem to={routes.editor.colours} label="Colors settings">
         <Colors />
       </AppNavigationItem>
-      <AppNavigationItem to={routes.editor.document}>
+      <AppNavigationItem to={routes.editor.document} label="Document settings">
         <Document />
       </AppNavigationItem>
-      <AppNavigationItem to={routes.editor.typography}>
+      <AppNavigationItem
+        to={routes.editor.typography}
+        label="Typography settings"
+      >
         <Typography />
       </AppNavigationItem>
       <AppNavigationItem
+        label="Elements settings"
         isActive={(_, location) =>
           location.pathname.includes(routes.editor.elementsroot)
         }
