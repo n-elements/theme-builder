@@ -15,6 +15,7 @@ import Units from "../Units";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./UnitField.module.css";
 import { transcodeKeyword } from "@app/Editor/helpers/keywords";
+import useEscapeKey from "@hooks/useEscapeKey";
 
 const messages = defineMessages({
   keywords: {
@@ -60,6 +61,7 @@ export const UnitField = function (props: IUnitFieldProps) {
   };
 
   useClickAway(ref, createOpenHandler(false));
+  useEscapeKey(createOpenHandler(false));
 
   return (
     <div className={clsx(classes.UnitField, props.className)}>

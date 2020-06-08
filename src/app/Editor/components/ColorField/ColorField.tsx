@@ -14,6 +14,7 @@ import { ColorPreview } from "../ColorPreview";
 import Keywords from "../Keywords";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./ColorField.module.css";
+import useEscapeKey from "@hooks/useEscapeKey";
 
 export interface IColorFieldProps extends IFieldProps {
   readOnly?: boolean;
@@ -38,6 +39,7 @@ export const ColorField = function (props: IColorFieldProps) {
     : values.value;
 
   useClickAway(ref, createOpenHandler(false));
+  useEscapeKey(createOpenHandler(false));
 
   const handleChange = (value: any) => {
     Option(props.onChange).mapOrElse(

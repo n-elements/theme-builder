@@ -13,6 +13,7 @@ import { IFieldProps } from "../../types/fields";
 import Keywords from "../Keywords";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./TextField.module.css";
+import useEscapeKey from "@hooks/useEscapeKey";
 
 const messages = defineMessages({
   keywords: {
@@ -46,6 +47,7 @@ export const TextField = function (props: IUnitFieldProps) {
     );
   };
   useClickAway(ref, createOpenHandler(false));
+  useEscapeKey(createOpenHandler(false));
 
   return (
     <div className={clsx(classes.UnitField, props.className)}>
