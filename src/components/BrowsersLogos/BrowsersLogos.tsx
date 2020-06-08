@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./BrowsersLogos.module.css";
 import clsx from "clsx";
+import { useIntl, defineMessages } from "react-intl";
 
 export interface IBrowsersLogosProps extends PropsClass {
   inline?: boolean;
@@ -10,6 +11,13 @@ export interface IBrowsersLogosProps extends PropsClass {
   chrome?: boolean;
   opera?: boolean;
 }
+
+const messages = defineMessages({
+  supportedBy: {
+    defaultMessage: "Supported by:",
+    id: "components.BrowsersLogos.supportedBy",
+  },
+});
 
 export function BrowsersLogos({
   className,
@@ -21,6 +29,8 @@ export function BrowsersLogos({
   opera,
   ...attributes
 }: IBrowsersLogosProps) {
+  const intl = useIntl();
+
   return (
     <div
       className={clsx(classes.BrowsersLogos, className)}
@@ -28,7 +38,7 @@ export function BrowsersLogos({
       {...attributes}
     >
       <small>
-        <strong>Supported by:</strong>
+        <strong>{intl.formatMessage(messages.supportedBy)}</strong>
       </small>
       {edge && (
         <img

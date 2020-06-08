@@ -37,11 +37,17 @@
   "app.Editor.elements.range.title": "Input range",
   "app.Editor.elements.select.subtitle": "Common dropdown select element used to select ony one choice from a set",
   "app.Editor.elements.select.title": "Select",
-  "app.Editor.elements.upload.subtitle": "HTML element to select a file from the device",
-  "app.Editor.elements.upload.title": "Upload",
   "app.Editor.elements.textfield.subtitle": "Editable elements in which enter data",
   "app.Editor.elements.textfield.title": "Texfields and Textareas",
+  "app.Editor.elements.upload.subtitle": "HTML element to select a file from the device",
+  "app.Editor.elements.upload.title": "Upload",
+  "components.AppNavigation.colorSettings": "Colors settings",
+  "components.AppNavigation.documentSettings": "Document settings",
+  "components.AppNavigation.elementsSettings": "Elements settings",
+  "components.AppNavigation.typographySettings": "Typography settings",
+  "components.BrowsersLogos.supportedBy": "Supported by:",
+  "components.ButtonsGroup.ariaLabel": "Set the value unit",
   "components.ThemeSwitcer.auto": "Set theme based on OS preferences",
-  "components.ThemeSwitcer.light": "Set light theme",
-  "components.ThemeSwitcer.dark": "Set dark theme"
+  "components.ThemeSwitcer.dark": "Set dark theme",
+  "components.ThemeSwitcer.light": "Set light theme"
 }

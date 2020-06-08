@@ -4,6 +4,7 @@ import clsx from "clsx";
 import React from "react";
 import { NavLink, NavLinkProps } from "react-router-dom";
 import classes from "./AppNavigation.module.css";
+import { useIntl, defineMessages } from "react-intl";
 
 export interface IAppNavigationProps extends PropsClass {}
 
@@ -29,26 +30,53 @@ const AppNavigationItem = function ({
   );
 };
 
+const messages = defineMessages({
+  colorSettings: {
+    defaultMessage: "Colors settings",
+    id: "components.AppNavigation.colorSettings",
+  },
+  documentSettings: {
+    defaultMessage: "Document settings",
+    id: "components.AppNavigation.documentSettings",
+  },
+  elementsSettings: {
+    defaultMessage: "Elements settings",
+    id: "components.AppNavigation.elementsSettings",
+  },
+  typographySettings: {
+    defaultMessage: "Typography settings",
+    id: "components.AppNavigation.typographySettings",
+  },
+});
+
 export const AppNavigation = function ({
   className,
   ...attributes
 }: IAppNavigationProps) {
+  const intl = useIntl();
+
   return (
     <nav className={clsx(classes.AppNavigation, className)} {...attributes}>
-      <AppNavigationItem to={routes.editor.colours} label="Colors settings">
+      <AppNavigationItem
+        to={routes.editor.colours}
+        label={intl.formatMessage(messages.colorSettings)}
+      >
         <Colors />
       </AppNavigationItem>
-      <AppNavigationItem to={routes.editor.document} label="Document settings">
+      <AppNavigationItem
+        to={routes.editor.document}
+        label={intl.formatMessage(messages.documentSettings)}
+      >
         <Document />
       </AppNavigationItem>
       <AppNavigationItem
         to={routes.editor.typography}
-        label="Typography settings"
+        label={intl.formatMessage(messages.typographySettings)}
       >
         <Typography />
       </AppNavigationItem>
       <AppNavigationItem
-        label="Elements settings"
+        label={intl.formatMessage(messages.elementsSettings)}
         isActive={(_, location) =>
           location.pathname.includes(routes.editor.elementsroot)
         }
