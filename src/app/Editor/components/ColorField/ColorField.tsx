@@ -1,20 +1,19 @@
 import { isKeyword, transcodeKeyword } from "@app/Editor/helpers/keywords";
+import useFieldEditing from "@app/Editor/hooks/useFieldEditing";
 import useVariableValues from "@app/Editor/hooks/useVariableValues";
 import { DropDown } from "@components/DropDown";
 import { FieldWrapper } from "@components/FieldWrapper";
 import clsx from "clsx";
 import Color from "color";
-import React, { useRef, useState } from "react";
+import React from "react";
 import { ChromePicker } from "react-color";
 import { defineMessages, useIntl } from "react-intl";
-import { useClickAway } from "react-use";
 import { Option } from "tiinvo";
 import { IFieldProps } from "../../types/fields";
 import { ColorPreview } from "../ColorPreview";
 import Keywords from "../Keywords";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./ColorField.module.css";
-import useEscapeKey from "@hooks/useEscapeKey";
 
 export interface IColorFieldProps extends IFieldProps {
   readOnly?: boolean;
@@ -28,18 +27,13 @@ const messages = defineMessages({
 });
 
 export const ColorField = function (props: IColorFieldProps) {
+  const field = useFieldEditing();
   const intl = useIntl();
-  const ref = useRef(null);
-  const [open, setOpen] = useState(false);
-  const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
   const values = useVariableValues(props.variable);
   const defaultColor = "hsl(0, 0%, 0%)";
   const fallbackValueForNonColours = isKeyword(values.value)
     ? defaultColor
     : values.value;
-
-  useClickAway(ref, createOpenHandler(false));
-  useEscapeKey(createOpenHandler(false));
 
   const handleChange = (value: any) => {
     Option(props.onChange).mapOrElse(
@@ -53,9 +47,12 @@ export const ColorField = function (props: IColorFieldProps) {
   };
 
   return (
-    <div className={clsx(classes.ColorField, props.className)} ref={ref}>
+    <div className={clsx(classes.ColorField, props.className)} ref={field.ref}>
       <FieldWrapper>
-        <button className={classes.Field} onClick={createOpenHandler(true)}>
+        <button
+          className={classes.Field}
+          onClick={field.createOpenHandler(true)}
+        >
           <span className={classes.Value}>
             {isKeyword(values.displayValue)
               ? transcodeKeyword(values.displayValue)
@@ -76,7 +73,7 @@ export const ColorField = function (props: IColorFieldProps) {
           <small>{values.value}</small>
         </span>
       ) : null}
-      <DropDown open={open} floating>
+      <DropDown open={field.open} floating>
         <div className={classes.PickerContainer}>
           <ChromePicker
             color={Color(fallbackValueForNonColours).hsl().toString()}
