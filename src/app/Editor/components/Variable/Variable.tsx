@@ -105,6 +105,7 @@ export function Variable({
                   className={classes.Action}
                   data-editing={editingLabel}
                   onClick={handleEditing}
+                  title={intl.formatMessage(messages.ariaRename)}
                 >
                   {editingLabel ? (
                     <Check aria-hidden="true" />
@@ -116,6 +117,7 @@ export function Variable({
                   arial-label={intl.formatMessage(messages.ariaClone)}
                   className={classes.Action}
                   onClick={() => variableEditing.clone(variable)}
+                  title={intl.formatMessage(messages.ariaClone)}
                 >
                   <Copy aria-hidden="true" />
                 </button>
@@ -123,6 +125,7 @@ export function Variable({
                   arial-label={intl.formatMessage(messages.ariaDelete)}
                   className={classes.Action}
                   onClick={() => variableEditing.delete(variable)}
+                  title={intl.formatMessage(messages.ariaDelete)}
                 >
                   <Bin aria-hidden="true" />
                 </button>
