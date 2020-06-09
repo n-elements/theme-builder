@@ -115,7 +115,7 @@ export function Variable({
                 <button
                   arial-label={intl.formatMessage(messages.ariaClone)}
                   className={classes.Action}
-                  onClick={() => alert("Clone this 🍆")}
+                  onClick={() => variableEditing.clone(variable)}
                 >
                   <Copy aria-hidden="true" />
                 </button>

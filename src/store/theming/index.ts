@@ -8,6 +8,7 @@ import {
   makeRelation,
   revertvariable,
   createFindInPreset,
+  cloneVariable,
 } from "./helpers";
 import { VariableArray } from "./types";
 import preset from "./variables-preset";
@@ -42,6 +43,21 @@ reducer.on(actions.addReferenceToVariable, (state, relation) => ({
   ...state,
   variables: makeRelation(state.variables, relation),
 }));
+
+reducer.on(actions.cloneVariable, (state, variableToClone) => {
+  const variableIndex = state.variables.findIndex(
+    (v) => v._id === variableToClone._id
+  );
+  const clone = cloneVariable(variableToClone);
+  const variables = state.variables.slice();
+
+  variables.splice(variableIndex + 1, 0, clone);
+
+  return {
+    ...state,
+    variables,
+  };
+});
 
 reducer.on(actions.deleteReference, (state, variable) => ({
   ...state,

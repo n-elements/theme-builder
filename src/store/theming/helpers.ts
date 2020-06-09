@@ -33,6 +33,10 @@ export function cleanVariableName(name: string) {
     .replace(/[^a-zA-Z0-9_-]/g, "");
 }
 
+export function cloneVariable(variable: IVariable) {
+  return assignId(variable);
+}
+
 export function extractVariableName(value: string): Option<string> {
   const token = "var(";
 
