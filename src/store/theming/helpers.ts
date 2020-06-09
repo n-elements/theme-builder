@@ -37,6 +37,16 @@ export function cloneVariable(variable: IVariable) {
   return assignId(variable);
 }
 
+export function createUpdateVariableMap(newvar: IVariable) {
+  return (oldvar: IVariable) => maybeUpdateVariable(oldvar, newvar);
+}
+
+export function createFindInPreset(
+  presetvars: VariableArray
+): (variable: IVariable) => IVariable | undefined {
+  return (a) => presetvars.find((b) => b._id === a._id);
+}
+
 export function extractVariableName(value: string): Option<string> {
   const token = "var(";
 
@@ -47,16 +57,6 @@ export function extractVariableName(value: string): Option<string> {
         Some(chunk.replace(token, ""))
       ),
   });
-}
-
-export function createUpdateVariableMap(newvar: IVariable) {
-  return (oldvar: IVariable) => maybeUpdateVariable(oldvar, newvar);
-}
-
-export function createFindInPreset(
-  presetvars: VariableArray
-): (variable: IVariable) => IVariable | undefined {
-  return (a) => presetvars.find((b) => b._id === a._id);
 }
 
 export function generateId(): VariableId {
