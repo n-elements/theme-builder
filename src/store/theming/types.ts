@@ -19,6 +19,7 @@ export type VariableType =
 export type VariableValue = string | undefined;
 
 export interface IVariable {
+  _clonedfrom?: VariableId;
   _id?: VariableId;
   _referenceId?: VariableId;
   defaultValue?: string;

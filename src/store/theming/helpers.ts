@@ -33,8 +33,12 @@ export function cleanVariableName(name: string) {
     .replace(/[^a-zA-Z0-9_-]/g, "");
 }
 
-export function cloneVariable(variable: IVariable) {
-  return assignId(variable);
+export function cloneVariable(variable: IVariable, copies: number): IVariable {
+  return {
+    ...assignId(variable),
+    _clonedfrom: variable._id,
+    name: variable.name + `(${copies})`,
+  };
 }
 
 export function createUpdateVariableMap(newvar: IVariable) {
