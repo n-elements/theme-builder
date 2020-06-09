@@ -19,6 +19,11 @@ function createAdd(dispatch: Dispatch, domain: string) {
   };
 }
 
+function createClone(dispatch: Dispatch) {
+  return (variable: IVariable) =>
+    dispatch(actions.theming.cloneVariable(variable));
+}
+
 function createaddReferenceToVariable(dispatch: Dispatch) {
   return (id?: string, externalVariableName?: string) =>
     dispatch(
@@ -64,6 +69,7 @@ export default function useVariableEditing(domain: string) {
   return {
     add: createAdd(dispatch, domain),
     addReferenceToVariable: createaddReferenceToVariable(dispatch),
+    clone: createClone(dispatch),
     counter,
     delete: createDelete(dispatch),
     deleteReferenceToVariable: createDeleteReferenceToVariable(dispatch),
