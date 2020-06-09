@@ -52,7 +52,7 @@ function createUpdate(dispatch: Dispatch) {
 function defaultVariableValue(type: VariableType): string {
   switch (type) {
     case "color":
-      const h = Math.floor(Math.random() * (360 - 0) + 1);
+      const h = Math.floor(Math.random() * (360 - 1) + 1);
       const s = Math.floor(Math.random() * (100 - 60) + 60);
       const l = Math.floor(Math.random() * (95 - 30) + 30);
       return `hsl(${h}, ${s}%, ${l}%)`;

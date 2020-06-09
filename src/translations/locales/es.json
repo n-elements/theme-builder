@@ -14,6 +14,7 @@
   "app.Editor.components.Variable.ariaDelete": "Delete Property",
   "app.Editor.components.Variable.ariaRename": "Rename Property",
   "app.Editor.components.Variable.ariaRevert": "Revert Property",
+  "app.Editor.components.Variable.ariaClone": "Clone Property",
   "app.Editor.components.VariableSearch.searchPlaceholder": "Search variable",
   "app.Editor.elements.button.subtitle": "Buttons elements and call to actions",
   "app.Editor.elements.button.title": "Buttons",
