@@ -37,7 +37,7 @@ export function cloneVariable(variable: IVariable, copies: number): IVariable {
   return {
     ...assignId(variable),
     _clonedfrom: variable._id,
-    name: variable.name + `(${copies})`,
+    name: variable.name + `-${copies}`,
   };
 }
 
