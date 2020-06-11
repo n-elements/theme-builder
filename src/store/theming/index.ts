@@ -11,7 +11,7 @@ import {
   cloneVariable,
 } from "./helpers";
 import { VariableArray } from "./types";
-import preset from "./variables-preset";
+import preset, { accentvariable } from "./variables-preset";
 
 interface ITheming {
   name: string;
@@ -81,13 +81,21 @@ reducer.on(actions.deleteVariable, (state, variable) => ({
 reducer.on(actions.reset, (state) => {
   const initial = initialState();
   const find = createFindInPreset(state.variablespreset);
+  const variables = state.variables
+    .filter(find)
+    .map((a) => revertvariable(a, find(a)));
+
+  Option(variables.find((a) => a._id === accentvariable._id)).mapOrElse(
+    () => {
+      variables.unshift(accentvariable);
+    },
+    () => void 0
+  );
 
   return {
     ...initial,
     variablespreset: state.variablespreset,
-    variables: state.variables
-      .filter(find)
-      .map((a) => revertvariable(a, find(a))),
+    variables,
   };
 });
 
