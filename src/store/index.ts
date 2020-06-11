@@ -3,9 +3,10 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import rootReducer from "./root-reducer";
+import version from "../version";
 
 const persistConfig = {
-  key: makestoragekey("ne.redux.state"),
+  key: makestoragekey("ne.redux.state", version),
   storage,
 };
 
@@ -17,6 +18,6 @@ export type ApplicationState = ReturnType<typeof store["getState"]>;
 
 export default { persistor, store };
 
-function makestoragekey(key: string): string {
-  return [window.location.host, key].join("/");
+function makestoragekey(key: string, version: any): string {
+  return [window.location.host, key, "v", version].join("/");
 }
