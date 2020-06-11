@@ -1,6 +1,6 @@
 import { formatVariableName } from "@app/Editor/helpers/variable";
 import useVariableEditing from "@app/Editor/hooks/useVariableEditing";
-import { Bin, Check, Rename } from "@components/Icons/12x";
+import { Bin, Check, Rename, Copy } from "@components/Icons/12x";
 import { IVariable } from "@store/theming/types";
 import clsx from "clsx";
 import React, { KeyboardEvent, useRef, useState, MouseEvent } from "react";
@@ -25,6 +25,10 @@ const messages = defineMessages({
   ariaDelete: {
     defaultMessage: "Delete Property",
     id: "app.Editor.components.Variable.ariaDelete",
+  },
+  ariaClone: {
+    defaultMessage: "Clone Property",
+    id: "app.Editor.components.Variable.ariaClone",
   },
   ariaRevert: {
     defaultMessage: "Revert Property",
@@ -101,6 +105,7 @@ export function Variable({
                   className={classes.Action}
                   data-editing={editingLabel}
                   onClick={handleEditing}
+                  title={intl.formatMessage(messages.ariaRename)}
                 >
                   {editingLabel ? (
                     <Check aria-hidden="true" />
@@ -109,9 +114,18 @@ export function Variable({
                   )}
                 </button>
                 <button
+                  arial-label={intl.formatMessage(messages.ariaClone)}
+                  className={classes.Action}
+                  onClick={() => variableEditing.clone(variable)}
+                  title={intl.formatMessage(messages.ariaClone)}
+                >
+                  <Copy aria-hidden="true" />
+                </button>
+                <button
                   arial-label={intl.formatMessage(messages.ariaDelete)}
                   className={classes.Action}
                   onClick={() => variableEditing.delete(variable)}
+                  title={intl.formatMessage(messages.ariaDelete)}
                 >
                   <Bin aria-hidden="true" />
                 </button>

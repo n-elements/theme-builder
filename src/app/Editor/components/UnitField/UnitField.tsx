@@ -1,12 +1,13 @@
+import { transcodeKeyword } from "@app/Editor/helpers/keywords";
+import useFieldEditing from "@app/Editor/hooks/useFieldEditing";
 import useVariableValues from "@app/Editor/hooks/useVariableValues";
 import { Button } from "@components/Button";
 import { DropDown } from "@components/DropDown";
 import { FieldWrapper } from "@components/FieldWrapper";
 import { Gear } from "@components/Icons/16x";
 import clsx from "clsx";
-import React, { useRef, useState } from "react";
+import React from "react";
 import { defineMessages, useIntl } from "react-intl";
-import { useClickAway } from "react-use";
 import { Maybe, Option } from "tiinvo";
 import { changeUnit, UnitType } from "../../helpers/unit";
 import { IFieldProps } from "../../types/fields";
@@ -14,7 +15,6 @@ import Keywords from "../Keywords";
 import Units from "../Units";
 import { VariableSearch } from "../VariableSearch";
 import classes from "./UnitField.module.css";
-import { transcodeKeyword } from "@app/Editor/helpers/keywords";
 
 const messages = defineMessages({
   keywords: {
@@ -32,11 +32,9 @@ export interface IUnitFieldProps extends IFieldProps {
 }
 
 export const UnitField = function (props: IUnitFieldProps) {
+  const field = useFieldEditing();
   const intl = useIntl();
-  const ref = useRef(null);
   const values = useVariableValues(props.variable);
-  const [open, setOpen] = useState(false);
-  const createOpenHandler = (isOpen: boolean) => () => setOpen(isOpen);
   const handleChange = (value: any) => {
     Option(props.onChange).mapOrElse(
       () => void 0,
@@ -59,8 +57,6 @@ export const UnitField = function (props: IUnitFieldProps) {
     });
   };
 
-  useClickAway(ref, createOpenHandler(false));
-
   return (
     <div className={clsx(classes.UnitField, props.className)}>
       <FieldWrapper>
@@ -75,7 +71,7 @@ export const UnitField = function (props: IUnitFieldProps) {
           <Button
             secondary
             small
-            onClick={createOpenHandler(true)}
+            onClick={field.createOpenHandler(true)}
             className={classes.SettingButton}
           >
             <Gear />
@@ -87,7 +83,7 @@ export const UnitField = function (props: IUnitFieldProps) {
           <small>{values.value}</small>
         </span>
       ) : null}
-      <DropDown open={open} ref={ref}>
+      <DropDown open={field.open} ref={field.ref}>
         <div className={classes.UnitBlock}>
           <p data-size="ultra-small">
             <b>{intl.formatMessage(messages.keywords)}</b>

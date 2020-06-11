@@ -1,5 +1,5 @@
 import { createReducer } from "redux-aar";
-import { Option } from "tiinvo";
+import { Option, Maybe } from "tiinvo";
 import * as actions from "./actions";
 import {
   assignId,
@@ -8,6 +8,7 @@ import {
   makeRelation,
   revertvariable,
   createFindInPreset,
+  cloneVariable,
 } from "./helpers";
 import { VariableArray } from "./types";
 import preset from "./variables-preset";
@@ -42,6 +43,30 @@ reducer.on(actions.addReferenceToVariable, (state, relation) => ({
   ...state,
   variables: makeRelation(state.variables, relation),
 }));
+
+reducer.on(actions.cloneVariable, (state, variableToClone) => {
+  const variableIndex = state.variables.findIndex(
+    (v) => v._id === variableToClone._id
+  );
+  const copies = state.variables.filter(
+    (v) => v._clonedfrom === variableToClone._id
+  );
+  const clone = cloneVariable(variableToClone, copies.length + 1);
+  const variables = state.variables.slice();
+  const index = Maybe(copies.length)
+    .option()
+    .mapOrElse(
+      () => variableIndex + 1,
+      (count) => variableIndex + count + 1
+    );
+
+  variables.splice(index, 0, clone);
+
+  return {
+    ...state,
+    variables,
+  };
+});
 
 reducer.on(actions.deleteReference, (state, variable) => ({
   ...state,

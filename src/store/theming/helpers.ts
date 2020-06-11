@@ -33,16 +33,12 @@ export function cleanVariableName(name: string) {
     .replace(/[^a-zA-Z0-9_-]/g, "");
 }
 
-export function extractVariableName(value: string): Option<string> {
-  const token = "var(";
-
-  return Maybe(value.includes(token)).cata({
-    Nothing: None,
-    Just: () =>
-      Option(value.split(",")[0]).andThen((chunk) =>
-        Some(chunk.replace(token, ""))
-      ),
-  });
+export function cloneVariable(variable: IVariable, copies: number): IVariable {
+  return {
+    ...assignId(variable),
+    _clonedfrom: variable._id,
+    name: variable.name + `-${copies}`,
+  };
 }
 
 export function createUpdateVariableMap(newvar: IVariable) {
@@ -53,6 +49,18 @@ export function createFindInPreset(
   presetvars: VariableArray
 ): (variable: IVariable) => IVariable | undefined {
   return (a) => presetvars.find((b) => b._id === a._id);
+}
+
+export function extractVariableName(value: string): Option<string> {
+  const token = "var(";
+
+  return Maybe(value.includes(token)).cata({
+    Nothing: None,
+    Just: () =>
+      Option(value.split(",")[0]).andThen((chunk) =>
+        Some(chunk.replace(token, ""))
+      ),
+  });
 }
 
 export function generateId(): VariableId {
