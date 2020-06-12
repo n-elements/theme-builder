@@ -7,13 +7,12 @@ import { BrowsersLogos } from "@components/BrowsersLogos";
 
 const messages = defineMessages({
   title: {
-    defaultMessage: "Select",
-    id: "app.Editor.elements.select.title",
+    defaultMessage: "Table",
+    id: "app.Editor.elements.table.title",
   },
   subtitle: {
-    defaultMessage:
-      "Common dropdown select element used to select ony one choice from a set",
-    id: "app.Editor.elements.select.subtitle",
+    defaultMessage: "Basic element used to show tabular data",
+    id: "app.Editor.elements.table.subtitle",
   },
 });
 
