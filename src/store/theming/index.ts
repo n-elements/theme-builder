@@ -26,7 +26,7 @@ function initialState(): ITheming {
   return {
     name: "theme-name",
     variablespreset,
-    variables: variablespreset.slice(),
+    variables: variablespreset.slice().map((a) => ({ ...a })),
     variablesCounter: 0,
   };
 }
