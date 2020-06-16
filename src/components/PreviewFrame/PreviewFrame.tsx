@@ -26,7 +26,7 @@ export const PreviewFrame = ({
     <head>
       <link rel="preconnect" href="https://cdn.jsdelivr.net">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@latest/modern-normalize.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@native-elements/core@1.0.2/dist/native-elements.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@native-elements/core@1/dist/native-elements.css">
       <script src="https://cdn.jsdelivr.net/npm/what-input@5.2.9/dist/what-input.min.js" defer></script>
       <style>
         section > h5 {
@@ -50,9 +50,11 @@ export const PreviewFrame = ({
   // eslint-disable-next-line
   const setIframeHeight = () => {
     const iframe = iframeRef.current.node;
-    setTimeout(() => {
-      iframe.height = `${iframe.contentWindow.document.body.scrollHeight}px`;
-    }, 50);
+    if (iframe.contentWindow !== null) {
+      setTimeout(() => {
+        iframe.height = `${iframe.contentWindow.document.body.scrollHeight}px`;
+      }, 50);
+    }
   };
 
   useEffect(() => {
