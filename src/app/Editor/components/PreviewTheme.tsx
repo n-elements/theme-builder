@@ -333,6 +333,228 @@ export default function PreviewTheme() {
           </footer>
         </dialog>
       </section>
+      <section style={{ maxWidth: "40ch" }}>
+        <h5>Horizontal Rule</h5>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic in odit
+          soluta incidunt libero a sunt tenetur, nihil provident reprehenderit,
+          nam reiciendis minus possimus dolores autem eius ea obcaecati.
+          Nesciunt.
+        </p>
+        <hr />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic in odit
+          soluta incidunt libero a sunt tenetur, nihil provident reprehenderit,
+          nam reiciendis minus possimus dolores autem eius ea obcaecati.
+          Nesciunt.
+        </p>
+      </section>
+      <section>
+        <h5>Meter</h5>
+        <meter
+          min="0"
+          max="100"
+          low={25}
+          high={75}
+          optimum={100}
+          value="10"
+        ></meter>
+      </section>
+      <section>
+        <meter
+          min="0"
+          max="100"
+          low={25}
+          high={75}
+          optimum={100}
+          value="50"
+        ></meter>
+      </section>
+      <section>
+        <meter
+          min="0"
+          max="100"
+          low={25}
+          high={75}
+          optimum={100}
+          value="80"
+        ></meter>
+      </section>
+      <section style={{ maxWidth: "40ch" }}>
+        <h5>Progress with value</h5>
+        <progress value="50" max="100"></progress>
+      </section>
+      <section style={{ maxWidth: "40ch" }}>
+        <h5>Indeterminate progress</h5>
+        <progress max="100"></progress>
+      </section>
+      <section style={{ maxWidth: "40ch" }}>
+        <h5>Range</h5>
+        <input
+          type="range"
+          id="range"
+          name="range"
+          min="0"
+          max="500"
+          step="10"
+          defaultValue="250"
+        />
+      </section>
+      <section style={{ maxWidth: "40ch" }}>
+        <input
+          type="range"
+          id="range"
+          name="range"
+          min="0"
+          max="500"
+          step="10"
+          defaultValue="250"
+          disabled
+        />
+      </section>
+      <section style={{ maxWidth: "40ch" }}>
+        <h5>Select</h5>
+        <select id="select" name="select" defaultValue="selected">
+          <option value="selected" hidden>
+            Pick an option
+          </option>
+          <optgroup label="Option Group">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+      </section>
+      <section style={{ maxWidth: "40ch" }}>
+        <select id="select" name="select" disabled defaultValue="selected">
+          <optgroup label="Option Group">
+            <option value="selected">Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+        </select>
+      </section>
+      <section style={{ maxWidth: "40ch" }}>
+        <select multiple size={8} id="multi-select">
+          <optgroup label="Option Group">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+          <optgroup label="Option Group 2">
+            <option>Option 4</option>
+            <option>Option 5</option>
+            <option>Option 6</option>
+          </optgroup>
+        </select>
+      </section>
+      <section style={{ maxWidth: "40ch" }}>
+        <select multiple disabled size={8} id="multi-select">
+          <optgroup label="Option Group">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </optgroup>
+          <optgroup label="Option Group 2">
+            <option>Option 4</option>
+            <option>Option 5</option>
+            <option>Option 6</option>
+          </optgroup>
+        </select>
+      </section>
+      <section style={{ maxWidth: "40ch" }}>
+        <h5>Table</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>
+                <b>A</b>
+              </th>
+              <th>
+                <b>B</b>
+              </th>
+              <th>
+                <b>C</b>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Content 1</td>
+              <td>Content 2</td>
+              <td>Content 3</td>
+            </tr>
+            <tr>
+              <td>Content 1</td>
+              <td>Content 2</td>
+              <td>Content 3</td>
+            </tr>
+            <tr>
+              <td>Content 1</td>
+              <td>Content 2</td>
+              <td>Content 3</td>
+            </tr>
+            <tr>
+              <td>Content 1</td>
+              <td>Content 2</td>
+              <td>Content 3</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section style={{ maxWidth: "40ch" }}>
+        <h5>Textfields</h5>
+        <p>
+          <input type="text" placeholder="Text" />
+        </p>
+        <p>
+          <input type="text" disabled placeholder="Text" />
+        </p>
+        <p>
+          <input
+            type="text"
+            readOnly
+            value="I'm readonly"
+            placeholder="Readonly text"
+          />
+        </p>
+        <p>
+          <input type="password" placeholder="Password" />
+        </p>
+        <p>
+          <input type="url" placeholder="Url" />
+        </p>
+        <p>
+          <input type="email" placeholder="Email" />
+        </p>
+        <p>
+          <input type="tel" placeholder="Phone" />
+        </p>
+        <p>
+          <input type="search" placeholder="Search" />
+        </p>
+        <p>
+          <input type="number" required placeholder="Number" />
+        </p>
+        <p>
+          <input type="date" required placeholder="Date" />
+        </p>
+        <p>
+          <input type="time" placeholder="Time" />
+        </p>
+        <p>
+          <input type="month" placeholder="Month" />
+        </p>
+        <p>
+          <input type="week" placeholder="Week" />
+        </p>
+        <p>
+          <input type="datetime-local" placeholder="Datetime Local" />
+        </p>
+        <p>
+          <textarea></textarea>
+        </p>
+      </section>
     </Fragment>
   );
 }

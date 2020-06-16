@@ -50,11 +50,9 @@ export const PreviewFrame = ({
   // eslint-disable-next-line
   const setIframeHeight = () => {
     const iframe = iframeRef.current.node;
-    if (iframe.contentWindow !== null) {
-      setTimeout(() => {
-        iframe.height = `${iframe.contentWindow.document.body.scrollHeight}px`;
-      }, 50);
-    }
+    setTimeout(() => {
+      iframe.height = `${iframe.contentWindow.document.body.scrollHeight}px`;
+    }, 50);
   };
 
   useEffect(() => {
