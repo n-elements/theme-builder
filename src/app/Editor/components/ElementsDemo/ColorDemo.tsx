@@ -35,8 +35,8 @@ export const ColorDemo = function () {
     >
       <PreviewFrame>
         <section>
-          <input type="color" value="#606fdc" />{" "}
-          <input type="color" value="#70e7bd" />
+          <input type="color" defaultValue="#606fdc" />{" "}
+          <input type="color" defaultValue="#70e7bd" />
         </section>
       </PreviewFrame>
     </EditorWrapper>
