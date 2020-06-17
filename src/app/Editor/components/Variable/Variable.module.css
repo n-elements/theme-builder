@@ -23,6 +23,9 @@
   --ne-textfield-font-weight: 400;
   --ne-textfield-background: transparent;
   --ne-textfield-radius: 0;
+  --ne-textfield-background: none;
+  --ne-textfield-focus-background: none;
+  --ne-textfield-hover-background: none;
 
   text-overflow: ellipsis;
   overflow: hidden;

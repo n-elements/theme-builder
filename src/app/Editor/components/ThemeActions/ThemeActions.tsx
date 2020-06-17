@@ -58,8 +58,22 @@ export const ThemeActions = function ({
         {intl.formatMessage(messages.previewTheme)}
       </Button>
 
-      <Modal isOpen={modalIsOpen} contentLabel="Example Modal">
-        <header>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={{
+          overlay: {
+            backgroundColor: "rgba(0, 0, 0, 0.75)",
+          },
+          content: {
+            left: "15%",
+            right: "15%",
+            border: 0,
+            padding: 0,
+          },
+        }}
+      >
+        <header className={classes.PreviewHeader}>
           <Button onClick={closeModal} secondary>
             {intl.formatMessage(messages.close)}
           </Button>
