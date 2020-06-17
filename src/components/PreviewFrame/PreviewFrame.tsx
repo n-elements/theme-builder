@@ -3,6 +3,7 @@ import clsx from "clsx";
 import React, { ReactNode, useEffect, useRef } from "react";
 import Frame, { FrameContextConsumer } from "react-frame-component";
 import classes from "./PreviewFrame.module.css";
+import { Option } from "tiinvo";
 
 export interface IPreviewFrameProps extends PropsClass {
   children: ReactNode;
@@ -26,7 +27,7 @@ export const PreviewFrame = ({
     <head>
       <link rel="preconnect" href="https://cdn.jsdelivr.net">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@latest/modern-normalize.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@native-elements/core@1.0.2/dist/native-elements.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@native-elements/core@1/dist/native-elements.css">
       <script src="https://cdn.jsdelivr.net/npm/what-input@5.2.9/dist/what-input.min.js" defer></script>
       <style>
         section > h5 {
@@ -49,9 +50,15 @@ export const PreviewFrame = ({
 
   // eslint-disable-next-line
   const setIframeHeight = () => {
-    const iframe = iframeRef.current.node;
     setTimeout(() => {
-      iframe.height = `${iframe.contentWindow.document.body.scrollHeight}px`;
+      Option(iframeRef)
+        .andThen((ir) => Option(ir.current))
+        .andThen((ic) => Option(ic.node))
+        .mapOrElse(
+          () => void 0,
+          (iframe) =>
+            (iframe.height = `${iframe.contentWindow.document.body.scrollHeight}px`)
+        );
     }, 50);
   };
 

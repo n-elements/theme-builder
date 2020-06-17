@@ -10,6 +10,7 @@ export interface IBrowsersLogosProps extends PropsClass {
   firefox?: boolean;
   chrome?: boolean;
   opera?: boolean;
+  showLabel?: boolean;
 }
 
 const messages = defineMessages({
@@ -27,19 +28,22 @@ export function BrowsersLogos({
   firefox,
   chrome,
   opera,
+  showLabel,
   ...attributes
 }: IBrowsersLogosProps) {
   const intl = useIntl();
 
   return (
-    <div
+    <span
       className={clsx(classes.BrowsersLogos, className)}
       data-inline={inline}
       {...attributes}
     >
-      <small>
-        <strong>{intl.formatMessage(messages.supportedBy)}</strong>
-      </small>
+      {showLabel && (
+        <small>
+          <strong>{intl.formatMessage(messages.supportedBy)}</strong>
+        </small>
+      )}
       {edge && (
         <img
           src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_32x32.png"
@@ -80,7 +84,7 @@ export function BrowsersLogos({
           draggable={false}
         />
       )}
-    </div>
+    </span>
   );
 }
 
@@ -90,4 +94,5 @@ BrowsersLogos.defaultProps = {
   firefox: true,
   chrome: true,
   opera: true,
+  showLabel: true,
 } as Partial<IBrowsersLogosProps>;

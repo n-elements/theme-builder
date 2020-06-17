@@ -1,6 +1,6 @@
 {
   "name": "theme-builder",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "contributors": [
     "Mattia Astorino <astorino.design@gmail.com> (https://equinusocio.dev)",
@@ -36,6 +36,7 @@
     "react-helmet": "6.0.0",
     "react-intl": "4.6.3",
     "react-loading-skeleton": "2.0.1",
+    "react-modal": "3.11.2",
     "react-redux": "7.2.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
@@ -104,6 +105,7 @@
     "@types/react-color": "3.0.2",
     "@types/react-frame-component": "4.1.1",
     "@types/react-helmet": "6.0.0",
+    "@types/react-modal": "3.10.5",
     "@types/react-redux": "7.1.9",
     "@types/react-router-dom": "5.1.5",
     "autoprefixer": "9.8.0",

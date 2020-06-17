@@ -5,8 +5,11 @@ import "@native-elements/core";
 import "./styles/app.css";
 import App from "./app";
 import * as serviceWorker from "./serviceWorker";
+import Modal from "react-modal";
 
 const rootelement = document.getElementById("root");
+
+Modal.setAppElement("#root");
 
 ReactDOM.render(createElement(App), rootelement);
 

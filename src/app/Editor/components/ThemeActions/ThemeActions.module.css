@@ -6,3 +6,18 @@
     margin-left: 8px;
   }
 }
+
+.PreviewHeader {
+  background-color: var(--ne-global-background);
+  position: sticky;
+  padding: 16px 8px;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid var(--shell-border-color);
+
+  & > * + * {
+    margin-left: 16px;
+  }
+}
