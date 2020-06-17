@@ -3,6 +3,7 @@ import clsx from "clsx";
 import React, { ReactNode, useEffect, useRef } from "react";
 import Frame, { FrameContextConsumer } from "react-frame-component";
 import classes from "./PreviewFrame.module.css";
+import { Option } from "tiinvo";
 
 export interface IPreviewFrameProps extends PropsClass {
   children: ReactNode;
@@ -49,9 +50,15 @@ export const PreviewFrame = ({
 
   // eslint-disable-next-line
   const setIframeHeight = () => {
-    const iframe = iframeRef.current.node;
     setTimeout(() => {
-      iframe.height = `${iframe.contentWindow.document.body.scrollHeight}px`;
+      Option(iframeRef)
+        .andThen((ir) => Option(ir.current))
+        .andThen((ic) => Option(ic.node))
+        .mapOrElse(
+          () => void 0,
+          (iframe) =>
+            (iframe.height = `${iframe.contentWindow.document.body.scrollHeight}px`)
+        );
     }, 50);
   };
 
