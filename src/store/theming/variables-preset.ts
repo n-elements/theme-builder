@@ -1,7 +1,7 @@
 import nepreset, {
   IVariable as INEVariable,
   VariableDomain as NEVariableDomain,
-} from "@native-elements/core/dist/props";
+} from "@native-elements/core/props";
 import routes from "@routes";
 import { assignId, cleanVariableName, extractVariableName } from "./helpers";
 import {
