@@ -1,4 +1,5 @@
 import React, { Fragment, useRef } from "react";
+import { BrowsersLogos } from "@components/BrowsersLogos";
 
 export default function PreviewTheme() {
   const dialogRef = useRef(null) as any;
@@ -315,6 +316,10 @@ export default function PreviewTheme() {
         </div>
       </section>
       <section>
+        <h5>
+          Dialog{" "}
+          <BrowsersLogos showLabel={false} safari={false} firefox={false} />
+        </h5>
         <button onClick={openDialog}>Open dialog</button>
         <dialog ref={dialogRef}>
           <header>
@@ -351,42 +356,21 @@ export default function PreviewTheme() {
       </section>
       <section>
         <h5>Meter</h5>
-        <meter
-          min="0"
-          max="100"
-          low={25}
-          high={75}
-          optimum={100}
-          value="10"
-        ></meter>
+        <meter min="0" max="100" low={25} high={75} optimum={100} value="10" />
       </section>
       <section>
-        <meter
-          min="0"
-          max="100"
-          low={25}
-          high={75}
-          optimum={100}
-          value="50"
-        ></meter>
+        <meter min="0" max="100" low={25} high={75} optimum={100} value="50" />
       </section>
       <section>
-        <meter
-          min="0"
-          max="100"
-          low={25}
-          high={75}
-          optimum={100}
-          value="80"
-        ></meter>
+        <meter min="0" max="100" low={25} high={75} optimum={100} value="80" />
       </section>
       <section style={{ maxWidth: "40ch" }}>
         <h5>Progress with value</h5>
-        <progress value="50" max="100"></progress>
+        <progress value="50" max="100" />
       </section>
       <section style={{ maxWidth: "40ch" }}>
         <h5>Indeterminate progress</h5>
-        <progress max="100"></progress>
+        <progress max="100" />
       </section>
       <section style={{ maxWidth: "40ch" }}>
         <h5>Range</h5>
@@ -552,8 +536,14 @@ export default function PreviewTheme() {
           <input type="datetime-local" placeholder="Datetime Local" />
         </p>
         <p>
-          <textarea></textarea>
+          <textarea />
         </p>
+      </section>
+      <section>
+        <h5>
+          Upload <BrowsersLogos showLabel={false} firefox={false} />
+        </h5>
+        <input type="file" />
       </section>
     </Fragment>
   );
