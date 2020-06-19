@@ -2,7 +2,6 @@ import React, { ReactNode } from "react";
 import { Logo } from "@components/Logo";
 import clsx from "clsx";
 import classes from "./AppHeader.module.css";
-import { Github } from "@components/Icons/16x";
 import { Link } from "react-router-dom";
 import routes from "@routes";
 import { ThemeSwitcher } from "@components/ThemeSwitcher";
