@@ -27,12 +27,11 @@ export const AppHeader = function ({
           <ThemeSwitcher />
           <a
             className={classes.HeaderLink}
-            href="https://github.com/n-elements/core"
+            href="https://native-elements.dev"
             rel="noopener noreferrer"
             target="_blank"
           >
-            Github
-            <Github />
+            Documentation
           </a>
         </div>
       </div>
