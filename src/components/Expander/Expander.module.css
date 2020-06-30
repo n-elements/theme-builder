@@ -2,6 +2,8 @@
   --ne-details-max-height: auto;
   --ne-details-overflow: none;
   --ne-details-summary-position: relative;
+  --ne-details-border: 0;
+  --ne-details-separator-border: 1px solid var(--shell-border-color);
 
   position: relative;
 }
