@@ -7,13 +7,13 @@
     "Paolo Roth <iamoctod@gmail.com> (https://iamoctod.com)"
   ],
   "dependencies": {
-    "@native-elements/core": "1.1.8",
+    "@native-elements/core": "1.2.0",
     "@testing-library/jest-dom": "5.9.0",
     "@testing-library/react": "10.0.4",
     "@testing-library/user-event": "10.4.0",
     "@types/jest": "25.2.3",
-    "@types/node": "14.0.6",
-    "@types/react": "16.9.35",
+    "@types/node": "14.0.14",
+    "@types/react": "16.9.41",
     "@types/react-dom": "16.9.8",
     "clsx": "1.1.1",
     "color": "3.1.2",
@@ -21,7 +21,7 @@
     "cssnano": "4.1.10",
     "cssnano-preset-advanced": "4.0.7",
     "formik": "2.1.4",
-    "framer-motion": "1.11.0",
+    "framer-motion": "1.11.1",
     "postcss-color-mod-function": "3.0.3",
     "postcss-dark-theme-class": "0.4.0",
     "postcss-easy-import": "3.0.0",
@@ -46,7 +46,7 @@
     "redux-devtools-extension": "2.13.8",
     "redux-persist": "6.0.0",
     "tiinvo": "1.8.0",
-    "typescript": "3.9.3",
+    "typescript": "3.9.5",
     "what-input": "5.2.10",
     "yup": "0.29.1"
   },
@@ -63,7 +63,9 @@
     "translate:extract": "babel ./src/extracted",
     "translate:manage": "node ./manageTranslations.js",
     "translate:mkdirp": "mkdirp ./src/extracted",
-    "translate": "npm run translate:mkdirp && npm run translate:compile && npm run translate:extract && npm run translate:manage && npm run translate:clean"
+    "translate": "npm run translate:mkdirp && npm run translate:compile && npm run translate:extract && npm run translate:manage && npm run translate:clean",
+    "update:deps": "yarn upgrade-interactive --latest && yarn upgrade",
+    "update:cssdb": "npx browserslist@latest --update-db"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -95,28 +97,29 @@
     "src/**/*.css": "stylelint"
   },
   "devDependencies": {
-    "@babel/cli": "7.10.1",
-    "@babel/core": "7.10.2",
-    "@babel/preset-env": "7.10.2",
-    "@babel/preset-react": "7.10.1",
+    "@babel/cli": "7.10.4",
+    "@babel/core": "7.10.4",
+    "@babel/helper-call-delegate": "7.10.4",
+    "@babel/preset-env": "7.10.4",
+    "@babel/preset-react": "7.10.4",
     "@svgr/cli": "5.4.0",
     "@types/classnames": "2.2.10",
     "@types/color": "3.0.1",
-    "@types/react-color": "3.0.2",
+    "@types/react-color": "3.0.4",
     "@types/react-frame-component": "4.1.1",
     "@types/react-helmet": "6.0.0",
-    "@types/react-modal": "3.10.5",
+    "@types/react-modal": "3.10.6",
     "@types/react-redux": "7.1.9",
     "@types/react-router-dom": "5.1.5",
-    "autoprefixer": "9.8.0",
-    "babel-plugin-react-intl": "7.5.15",
+    "autoprefixer": "9.8.4",
+    "babel-plugin-react-intl": "7.5.24",
     "husky": "4.2.5",
-    "lint-staged": "10.2.7",
+    "lint-staged": "10.2.11",
     "prettier": "2.0.5",
     "react-app-rewire-postcss": "3.0.2",
     "react-app-rewired": "2.1.6",
     "react-intl-translations-manager": "5.0.3",
-    "stylelint": "13.5.0",
+    "stylelint": "13.6.1",
     "stylelint-config-oval": "1.0.6"
   }
 }
