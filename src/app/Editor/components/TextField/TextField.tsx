@@ -25,11 +25,11 @@ const messages = defineMessages({
   },
 });
 
-export interface IUnitFieldProps extends IFieldProps {
+export interface ITextFieldProps extends IFieldProps {
   readOnly?: boolean;
 }
 
-export const TextField = function (props: IUnitFieldProps) {
+export const TextField = function (props: ITextFieldProps) {
   const field = useFieldEditing();
   const intl = useIntl();
   const values = useVariableValues(props.variable);
