@@ -20,22 +20,27 @@ export const BorderField = function (props: IBorderFieldProps) {
         onBreakReference={props.onBreakReference}
         onChange={props.onChange}
         onChangeRelation={props.onChangeRelation}
-      />
-      size
-      <UnitField
-        onBreakReference={border.createOnBreakrelation(variables.size)}
-        onChange={border.createOnChange(variables.size)}
-        onChangeRelation={border.createOnChangeRelation(variables.size)}
-        variable={variables.size}
-      />
-      style
-      <TextField
-        onBreakReference={border.createOnBreakrelation(variables.style)}
-        onChange={border.createOnChange(variables.style)}
-        onChangeRelation={border.createOnChangeRelation(variables.style)}
-        variable={variables.style}
-      />
-      color
+      >
+        <div className={classes.Details}>
+          <label>size</label>
+          <UnitField
+            onBreakReference={border.createOnBreakrelation(variables.size)}
+            onChange={border.createOnChange(variables.size)}
+            onChangeRelation={border.createOnChangeRelation(variables.size)}
+            variable={variables.size}
+            hideSetting
+          />
+          <label>style</label>
+          <TextField
+            onBreakReference={border.createOnBreakrelation(variables.style)}
+            onChange={border.createOnChange(variables.style)}
+            onChangeRelation={border.createOnChangeRelation(variables.style)}
+            variable={variables.style}
+            hideSetting
+          />
+        </div>
+      </TextField>
+      <label>color</label>
       <ColorField
         onBreakReference={border.createOnBreakrelation(variables.color)}
         onChange={border.createOnChange(variables.color)}

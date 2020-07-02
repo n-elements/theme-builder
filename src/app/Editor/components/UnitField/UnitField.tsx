@@ -29,6 +29,7 @@ const messages = defineMessages({
 
 export interface IUnitFieldProps extends IFieldProps {
   readOnly?: boolean;
+  hideSetting?: boolean;
 }
 
 export const UnitField = function (props: IUnitFieldProps) {
@@ -68,14 +69,16 @@ export const UnitField = function (props: IUnitFieldProps) {
             type="text"
             value={transcodeKeyword(values.displayValue)}
           />
-          <Button
-            secondary
-            small
-            onClick={field.createOpenHandler(true)}
-            className={classes.SettingButton}
-          >
-            <Gear />
-          </Button>
+          {!props.hideSetting && (
+            <Button
+              secondary
+              small
+              onClick={field.createOpenHandler(true)}
+              className={classes.SettingButton}
+            >
+              <Gear />
+            </Button>
+          )}
         </div>
       </FieldWrapper>
       {values.displayValue !== values.value ? (
@@ -83,25 +86,31 @@ export const UnitField = function (props: IUnitFieldProps) {
           <small>{values.value}</small>
         </span>
       ) : null}
-      <DropDown open={field.open} ref={field.ref}>
-        <div className={classes.UnitBlock}>
-          <p data-size="ultra-small">
-            <b>{intl.formatMessage(messages.keywords)}</b>
-          </p>
-          <Keywords onSelect={handleChange} value={values.value} />
-        </div>
-        <div className={classes.UnitBlock}>
-          <p data-size="ultra-small">
-            <b>{intl.formatMessage(messages.commonUnits)}</b>
-          </p>
+      {!props.hideSetting && (
+        <DropDown open={field.open} ref={field.ref}>
+          <div className={classes.UnitBlock}>
+            <p data-size="ultra-small">
+              <b>{intl.formatMessage(messages.keywords)}</b>
+            </p>
+            <Keywords onSelect={handleChange} value={values.value} />
+          </div>
+          <div className={classes.UnitBlock}>
+            <p data-size="ultra-small">
+              <b>{intl.formatMessage(messages.commonUnits)}</b>
+            </p>
 
-          <Units value={values.value} onSelect={handleUnitChange} />
-        </div>
-        <VariableSearch
-          onChangeRelation={props.onChangeRelation}
-          variable={props.variable}
-        />
-      </DropDown>
+            <Units value={values.value} onSelect={handleUnitChange} />
+          </div>
+          <VariableSearch
+            onChangeRelation={props.onChangeRelation}
+            variable={props.variable}
+          />
+        </DropDown>
+      )}
     </div>
   );
 };
+
+UnitField.defaultProps = {
+  hideSetting: false,
+} as Partial<IUnitFieldProps>;

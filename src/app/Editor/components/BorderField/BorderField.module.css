@@ -1,3 +1,7 @@
 .BorderField {
   position: relative;
 }
+
+.Details {
+  padding: 16px;
+}
