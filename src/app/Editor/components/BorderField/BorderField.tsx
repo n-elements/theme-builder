@@ -15,8 +15,7 @@ export const BorderField = function (props: IBorderFieldProps) {
   const border = useCSSBorder(props.variable);
   const variables = border.generatepseudovariables();
   const values = useVariableValues(props.variable);
-  const checkKeyword = !isKeyword(values.displayValue);
-  console.log(values);
+  const showColorPicker = !isKeyword(values.displayValue);
   return (
     <div className={clsx(classes.BorderField, props.className)}>
       <TextField
@@ -48,7 +47,7 @@ export const BorderField = function (props: IBorderFieldProps) {
           </fieldset>
         </div>
       </TextField>
-      {checkKeyword && (
+      {showColorPicker && (
         <ColorField
           data-iskeyword={false}
           onBreakReference={border.createOnBreakrelation(variables.color)}
