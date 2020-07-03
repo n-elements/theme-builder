@@ -22,26 +22,31 @@ export const BorderField = function (props: IBorderFieldProps) {
         onChangeRelation={props.onChangeRelation}
       >
         <div className={classes.Details}>
-          <label>size</label>
-          <UnitField
-            onBreakReference={border.createOnBreakrelation(variables.size)}
-            onChange={border.createOnChange(variables.size)}
-            onChangeRelation={border.createOnChangeRelation(variables.size)}
-            variable={variables.size}
-            hideSetting
-          />
-          <label>style</label>
-          <TextField
-            onBreakReference={border.createOnBreakrelation(variables.style)}
-            onChange={border.createOnChange(variables.style)}
-            onChangeRelation={border.createOnChangeRelation(variables.style)}
-            variable={variables.style}
-            hideSetting
-          />
+          <fieldset>
+            <label>size</label>
+            <UnitField
+              onBreakReference={border.createOnBreakrelation(variables.size)}
+              onChange={border.createOnChange(variables.size)}
+              onChangeRelation={border.createOnChangeRelation(variables.size)}
+              variable={variables.size}
+              hideSetting
+            />
+          </fieldset>
+          <fieldset>
+            <label>style</label>
+            <TextField
+              onBreakReference={border.createOnBreakrelation(variables.style)}
+              onChange={border.createOnChange(variables.style)}
+              onChangeRelation={border.createOnChangeRelation(variables.style)}
+              variable={variables.style}
+              hideSetting
+            />
+          </fieldset>
         </div>
       </TextField>
       <label>color</label>
       <ColorField
+        data-iskeyword={false}
         onBreakReference={border.createOnBreakrelation(variables.color)}
         onChange={border.createOnChange(variables.color)}
         onChangeRelation={border.createOnChangeRelation(variables.color)}
