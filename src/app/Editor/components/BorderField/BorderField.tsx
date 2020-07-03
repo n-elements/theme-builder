@@ -44,7 +44,6 @@ export const BorderField = function (props: IBorderFieldProps) {
           </fieldset>
         </div>
       </TextField>
-      <label>color</label>
       <ColorField
         data-iskeyword={false}
         onBreakReference={border.createOnBreakrelation(variables.color)}
