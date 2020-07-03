@@ -1,4 +1,6 @@
 import React from "react";
+import { isKeyword } from "@app/Editor/helpers/keywords";
+import useVariableValues from "@app/Editor/hooks/useVariableValues";
 import { IFieldProps } from "@app/Editor/types/fields";
 import { TextField } from "../TextField";
 import { ColorField } from "../ColorField";
@@ -12,7 +14,9 @@ export interface IBorderFieldProps extends IFieldProps {}
 export const BorderField = function (props: IBorderFieldProps) {
   const border = useCSSBorder(props.variable);
   const variables = border.generatepseudovariables();
-
+  const values = useVariableValues(props.variable);
+  const checkKeyword = !isKeyword(values.displayValue);
+  console.log(values);
   return (
     <div className={clsx(classes.BorderField, props.className)}>
       <TextField
@@ -44,13 +48,15 @@ export const BorderField = function (props: IBorderFieldProps) {
           </fieldset>
         </div>
       </TextField>
-      <ColorField
-        data-iskeyword={false}
-        onBreakReference={border.createOnBreakrelation(variables.color)}
-        onChange={border.createOnChange(variables.color)}
-        onChangeRelation={border.createOnChangeRelation(variables.color)}
-        variable={variables.color}
-      />
+      {checkKeyword && (
+        <ColorField
+          data-iskeyword={false}
+          onBreakReference={border.createOnBreakrelation(variables.color)}
+          onChange={border.createOnChange(variables.color)}
+          onChangeRelation={border.createOnChangeRelation(variables.color)}
+          variable={variables.color}
+        />
+      )}
     </div>
   );
 };
