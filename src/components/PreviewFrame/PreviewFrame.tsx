@@ -27,7 +27,7 @@ export const PreviewFrame = ({
     <head>
       <link rel="preconnect" href="https://cdn.jsdelivr.net">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@latest/modern-normalize.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@native-elements/core@1.2/native-elements.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@native-elements/core@1.3/native-elements.css">
       <script src="https://cdn.jsdelivr.net/npm/what-input@5.2.9/dist/what-input.min.js" defer></script>
       <style>
         section > h5 {
