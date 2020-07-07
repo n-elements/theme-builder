@@ -26,28 +26,39 @@ const messages = defineMessages({
   },
 });
 
-export const ColorField = function (props: IColorFieldProps) {
+export const ColorField = function ({
+  variable,
+  onChange,
+  onChangeRelation,
+  onBreakReference,
+  className,
+  ...attributes
+}: IColorFieldProps) {
   const field = useFieldEditing();
   const intl = useIntl();
-  const values = useVariableValues(props.variable);
+  const values = useVariableValues(variable);
   const defaultColor = "hsl(0, 0%, 0%)";
   const fallbackValueForNonColours = isKeyword(values.value)
     ? defaultColor
     : values.value;
 
   const handleChange = (value: any) => {
-    Option(props.onChange).mapOrElse(
+    Option(onChange).mapOrElse(
       () => void 0,
       (fn) => fn(value)
     );
-    Option(props.onBreakReference).mapOrElse(
+    Option(onBreakReference).mapOrElse(
       () => void 0,
       (fn) => fn()
     );
   };
 
   return (
-    <div className={clsx(classes.ColorField, props.className)} ref={field.ref}>
+    <div
+      className={clsx(classes.ColorField, className)}
+      {...attributes}
+      ref={field.ref}
+    >
       <FieldWrapper>
         <button
           className={classes.Field}
@@ -99,8 +110,8 @@ export const ColorField = function (props: IColorFieldProps) {
           <Keywords onSelect={handleChange} value={values.value} />
         </div>
         <VariableSearch
-          onChangeRelation={props.onChangeRelation}
-          variable={props.variable}
+          onChangeRelation={onChangeRelation}
+          variable={variable}
         />
       </DropDown>
     </div>
