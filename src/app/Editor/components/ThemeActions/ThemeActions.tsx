@@ -9,6 +9,7 @@ import Modal from "react-modal";
 import useCSSExport from "@app/Editor/hooks/useCSSExport";
 import { PreviewFrame } from "@components/PreviewFrame";
 import PreviewTheme from "../PreviewTheme";
+import { useLocation } from "react-router-dom";
 
 const messages = defineMessages({
   downloadTheme: {
@@ -36,9 +37,12 @@ export const ThemeActions = function ({
   ...attributes
 }: IThemeActionsProps) {
   const intl = useIntl();
+  const location = useLocation();
   const exported = useCSSExport();
   const handleReset = useThemeReset();
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(
+    location.search.includes("show-preview")
+  );
 
   const openModal = () => {
     setModalIsOpen(true);
