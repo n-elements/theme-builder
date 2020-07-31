@@ -25,7 +25,6 @@ export interface IBorder {
 
 export type PseudoVariables = Record<keyof IBorder, IVariable>;
 
-const splitToParts = (bordervalue: string): string[] => bordervalue.split(" ");
 const createborder = (chunks: string[]): IBorder => ({
   color: chunks[2],
   size: chunks[0],
@@ -53,6 +52,26 @@ const mergeborder = (
   style: string = "",
   color: string = ""
 ) => [size, style, color].join(" ");
+
+const splitToParts = (bordervalue: string): string[] => bordervalue.split(" ");
+
+function choosefallback(
+  pseudovariable: IVariable,
+  size: string,
+  style: string,
+  color: string
+): string {
+  switch (pseudovariable.type) {
+    case "color":
+      return color;
+    case "text":
+      return style;
+    case "unit":
+      return size;
+  }
+
+  return "";
+}
 
 function updateborder(
   pseudovariable: IVariable,
@@ -114,7 +133,21 @@ export default function useCSSBorder(
   return {
     generatepseudovariables: () => pseudovariables,
     createOnBreakrelation: (pseudovariable) => {
-      return () => {};
+      return () => {
+        variableediting.update({
+          ...variable,
+          value: updateborder(
+            pseudovariable,
+            pseudovariables,
+            choosefallback(
+              pseudovariable,
+              fallbacksize,
+              fallbackstyle,
+              fallbackcolor
+            )
+          ),
+        });
+      };
     },
     createOnChange: (pseudovariable) => {
       return (value) => {
@@ -125,7 +158,16 @@ export default function useCSSBorder(
       };
     },
     createOnChangeRelation: (pseudovariable) => {
-      return (variablename) => {};
+      return (variablename) => {
+        variableediting.update({
+          ...variable,
+          value: updateborder(
+            pseudovariable,
+            pseudovariables,
+            `var(--${variablename})`
+          ),
+        });
+      };
     },
   };
 }
