@@ -6,8 +6,12 @@ import {
   OnBreakReferenceHandler,
 } from "@app/Editor/types/fields";
 import { SkeletonLoader } from "@components/SkeletonLoader";
-import { BorderField } from "../BorderField";
 
+const BorderField = lazy(() =>
+  import("@app/Editor/components/BorderField").then(({ BorderField }) => ({
+    default: BorderField,
+  }))
+);
 const ColorField = lazy(() =>
   import("@app/Editor/components/ColorField").then(({ ColorField }) => ({
     default: ColorField,
