@@ -37,8 +37,10 @@ const generatepseudovariable = (
   variable: IVariable,
   name: string,
   type: VariableType,
-  value: any
+  value: any,
+  _referenceId?: any
 ): IVariable => ({
+  _referenceId,
   domain: variable.domain,
   name: variable.name + "__" + name,
   type,
