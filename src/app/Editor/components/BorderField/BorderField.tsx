@@ -14,8 +14,9 @@ export interface IBorderFieldProps extends IFieldProps {}
 export const BorderField = function (props: IBorderFieldProps) {
   const border = useCSSBorder(props.variable);
   const variables = border.generatepseudovariables();
-  const values = useVariableValues(props.variable);
+  const values = useVariableValues(variables.color);
   const showColorPicker = !isKeyword(values.displayValue);
+
   return (
     <div className={clsx(classes.BorderField, props.className)}>
       <TextField
