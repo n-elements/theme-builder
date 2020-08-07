@@ -25,11 +25,14 @@ export interface IBorder {
 
 export type PseudoVariables = Record<keyof IBorder, IVariable>;
 
-const createborder = (chunks: string[]): IBorder => ({
-  color: chunks[2],
-  size: chunks[0],
-  style: chunks[1],
-});
+const createborder = (chunks: string[]): IBorder => {
+  const [size, style, color, ...colors] = chunks;
+  return {
+    color: [color, ...colors].join(""),
+    size,
+    style,
+  };
+};
 const generatepseudovariable = (
   variable: IVariable,
   name: string,
