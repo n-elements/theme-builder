@@ -47,10 +47,13 @@ export const ColorField = function ({
       () => void 0,
       (fn) => fn(value)
     );
-    Option(onBreakReference).mapOrElse(
-      () => void 0,
-      (fn) => fn()
-    );
+
+    Option(variable._referenceId)
+      .and(Option(onBreakReference))
+      .mapOrElse(
+        () => void 0,
+        (fn) => fn()
+      );
   };
 
   return (
