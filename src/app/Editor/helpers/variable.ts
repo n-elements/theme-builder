@@ -1,5 +1,5 @@
-import { IVariable, VariableValue } from "@store/theming/types";
-import { Option } from "tiinvo";
+import { IVariable, VariableArray, VariableValue } from "@store/theming/types";
+import { None, Option } from "tiinvo";
 import { cleanVariableName } from "@store/theming/helpers";
 
 export function formatVariableName(name: string): string {
@@ -37,30 +37,32 @@ export function getValueOrRelatedVariableValue(
   );
 }
 
+export function isValueAVariableName(value: unknown): boolean {
+  return typeof value === "string" && value.startsWith("var(");
+}
+
 export function normalizeVariableName(name: string) {
   return formatVariableName(cleanVariableName(name));
 }
 
-// export function getCSSCustomProp(propKey: string, element = document.documentElement, castAs: string = 'string') {
-// 	let response = getComputedStyle(element).getPropertyValue(propKey);
+export function maybeGetRelatedVariables(
+  variables: VariableArray,
+  ...values: string[]
+): Option<IVariable>[] {
+  const results: Option<IVariable>[] = [];
 
-// 	// Tidy up the string if there's something to work with
-// 	if (response.length) {
-// 		response = response.replace(/\'|"/g, '').trim();
-// 	}
+  for (let i = 0; i < values.length; i++) {
+    const element = values[i];
 
-// 	// Convert the response into a whatever type we wanted
-// 	switch (castAs) {
-// 		case 'number':
-// 		case 'int':
-// 			return parseInt(response, 10);
-// 		case 'float':
-// 			return parseFloat(response, 10);
-// 		case 'boolean':
-// 		case 'bool':
-// 			return response === 'true' || response === '1';
-// 	}
+    if (isValueAVariableName(element)) {
+      const cleaned = element.replace("var(--", "").replace(")", "");
+      const found = variables.find((v) => v.name === cleaned)!;
 
-// 	// Return the string response by default
-// 	return response;
-// }
+      results.push(Option(found));
+    } else {
+      results.push(None());
+    }
+  }
+
+  return results;
+}

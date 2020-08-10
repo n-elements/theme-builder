@@ -1,12 +1,15 @@
 import { IVariable, VariableType } from "@store/theming/types";
 import Color from "color";
-import { TryCatch } from "tiinvo";
+import { parse } from "path";
+import { Option, TryCatch } from "tiinvo";
+import { maybeGetRelatedVariables } from "../helpers/variable";
 import {
   OnBreakReferenceHandler,
   OnChangeHandler,
   OnChangeRelationHandler,
 } from "../types/fields";
 import useVariableEditing from "./useVariableEditing";
+import useVariables from "./useVariables";
 
 export interface IUseCSSBorderReturnValue {
   generatepseudovariables(): Record<keyof IBorder, IVariable>;
@@ -105,6 +108,17 @@ function updateborder(
   }
 }
 
+function getVariableIdFromArray(
+  index: number,
+  array: Option<IVariable>[]
+): string | undefined {
+  return Option(array[index]).mapOrElse(() => undefined, getVariableId);
+}
+
+function getVariableId(maybevariable: Option<IVariable>): string | undefined {
+  return maybevariable.map((arg) => arg?._id).unwrapOr(undefined);
+}
+
 export default function useCSSBorder(
   variable: IVariable,
   fallbacksize: string = "0",
@@ -112,26 +126,36 @@ export default function useCSSBorder(
   fallbackcolor: string = "hsl(0, 0%, 0%)"
 ): IUseCSSBorderReturnValue {
   const variableediting = useVariableEditing(variable.domain);
+  const variables = useVariables("*");
   const chunks = splitToParts(variable.value ?? "0 none");
   const parsedborder = createborder(chunks);
+  const mayberelatedVariables = maybeGetRelatedVariables(
+    variables,
+    parsedborder.color,
+    parsedborder.size,
+    parsedborder.style
+  );
   const pseudovariables = {
     color: generatepseudovariable(
       variable,
       "color",
       "color",
-      ensurecolor(parsedborder.color, fallbackcolor)
+      ensurecolor(parsedborder.color, fallbackcolor),
+      getVariableIdFromArray(0, mayberelatedVariables)
     ),
     size: generatepseudovariable(
       variable,
       "size",
       "unit",
-      parsedborder.size ?? fallbacksize
+      parsedborder.size ?? fallbacksize,
+      getVariableIdFromArray(1, mayberelatedVariables)
     ),
     style: generatepseudovariable(
       variable,
       "style",
       "text",
-      parsedborder.style ?? fallbackstyle
+      parsedborder.style ?? fallbackstyle,
+      getVariableIdFromArray(2, mayberelatedVariables)
     ),
   };
 
@@ -160,6 +184,7 @@ export default function useCSSBorder(
           ...variable,
           value: updateborder(pseudovariable, pseudovariables, value),
         });
+        variableediting.deleteReferenceToVariable(variable);
       };
     },
     createOnChangeRelation: (pseudovariable) => {

@@ -14,8 +14,9 @@ export interface IBorderFieldProps extends IFieldProps {}
 export const BorderField = function (props: IBorderFieldProps) {
   const border = useCSSBorder(props.variable);
   const variables = border.generatepseudovariables();
-  const values = useVariableValues(variables.color);
-  const showColorPicker = !isKeyword(values.displayValue);
+  const values = useVariableValues(props.variable);
+  const showColorPicker =
+    !isKeyword(values.displayValue) && !props.variable._referenceId;
 
   return (
     <div className={clsx(classes.BorderField, props.className)}>
@@ -29,9 +30,7 @@ export const BorderField = function (props: IBorderFieldProps) {
           <fieldset>
             <label>size</label>
             <UnitField
-              onBreakReference={border.createOnBreakrelation(variables.size)}
               onChange={border.createOnChange(variables.size)}
-              onChangeRelation={border.createOnChangeRelation(variables.size)}
               variable={variables.size}
               hideSetting
             />
@@ -39,9 +38,7 @@ export const BorderField = function (props: IBorderFieldProps) {
           <fieldset>
             <label>style</label>
             <TextField
-              onBreakReference={border.createOnBreakrelation(variables.style)}
               onChange={border.createOnChange(variables.style)}
-              onChangeRelation={border.createOnChangeRelation(variables.style)}
               variable={variables.style}
               hideSetting
             />
