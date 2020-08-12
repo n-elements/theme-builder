@@ -1,6 +1,5 @@
 import { IVariable, VariableType } from "@store/theming/types";
 import Color from "color";
-import { parse } from "path";
 import { Option, TryCatch } from "tiinvo";
 import { maybeGetRelatedVariables } from "../helpers/variable";
 import {
