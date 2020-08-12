@@ -1,3 +1,4 @@
+import React, { ReactNode } from "react";
 import { transcodeKeyword } from "@app/Editor/helpers/keywords";
 import useFieldEditing from "@app/Editor/hooks/useFieldEditing";
 import useVariableValues from "@app/Editor/hooks/useVariableValues";
@@ -6,7 +7,6 @@ import { DropDown } from "@components/DropDown";
 import { FieldWrapper } from "@components/FieldWrapper";
 import { Gear } from "@components/Icons/16x";
 import clsx from "clsx";
-import React from "react";
 import { defineMessages, useIntl } from "react-intl";
 import { Option } from "tiinvo";
 import { IFieldProps } from "../../types/fields";
@@ -25,11 +25,13 @@ const messages = defineMessages({
   },
 });
 
-export interface IUnitFieldProps extends IFieldProps {
+export interface ITextFieldProps extends IFieldProps {
+  children?: ReactNode;
   readOnly?: boolean;
+  hideSetting?: boolean;
 }
 
-export const TextField = function (props: IUnitFieldProps) {
+export const TextField = function (props: ITextFieldProps) {
   const field = useFieldEditing();
   const intl = useIntl();
   const values = useVariableValues(props.variable);
@@ -56,14 +58,16 @@ export const TextField = function (props: IUnitFieldProps) {
             value={values.displayValue}
           />
 
-          <Button
-            secondary
-            small
-            onClick={field.createOpenHandler(true)}
-            className={classes.SettingButton}
-          >
-            <Gear />
-          </Button>
+          {!props.hideSetting && (
+            <Button
+              secondary
+              small
+              onClick={field.createOpenHandler(true)}
+              className={classes.SettingButton}
+            >
+              <Gear />
+            </Button>
+          )}
         </div>
       </FieldWrapper>
       {values.displayValue !== values.value ? (
@@ -71,18 +75,25 @@ export const TextField = function (props: IUnitFieldProps) {
           <small>{values.value}</small>
         </span>
       ) : null}
-      <DropDown open={field.open} ref={field.ref}>
-        <div className={classes.UnitBlock}>
-          <p data-size="ultra-small">
-            <b>{intl.formatMessage(messages.keywords)}</b>
-          </p>
-          <Keywords onSelect={handleChange} value={values.value} />
-        </div>
-        <VariableSearch
-          onChangeRelation={props.onChangeRelation}
-          variable={props.variable}
-        />
-      </DropDown>
+      {!props.hideSetting && (
+        <DropDown open={field.open} ref={field.ref}>
+          {props.children}
+          <div className={classes.UnitBlock}>
+            <p data-size="ultra-small">
+              <b>{intl.formatMessage(messages.keywords)}</b>
+            </p>
+            <Keywords onSelect={handleChange} value={values.value} />
+          </div>
+          <VariableSearch
+            onChangeRelation={props.onChangeRelation}
+            variable={props.variable}
+          />
+        </DropDown>
+      )}
     </div>
   );
 };
+
+TextField.defaultProps = {
+  hideSetting: false,
+} as Partial<ITextFieldProps>;

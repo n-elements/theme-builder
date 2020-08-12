@@ -7,6 +7,11 @@ import {
 } from "@app/Editor/types/fields";
 import { SkeletonLoader } from "@components/SkeletonLoader";
 
+const BorderField = lazy(() =>
+  import("@app/Editor/components/BorderField").then(({ BorderField }) => ({
+    default: BorderField,
+  }))
+);
 const ColorField = lazy(() =>
   import("@app/Editor/components/ColorField").then(({ ColorField }) => ({
     default: ColorField,
@@ -57,11 +62,21 @@ export default function VariableField(props: IVariableField) {
         </Suspense>
       );
     case "text":
-    case "border":
     case "box-shadow":
       return (
         <Suspense fallback={<SkeletonLoader height={40} />}>
           <TextField
+            variable={props.variable}
+            onBreakReference={props.onBreakReference}
+            onChange={props.onChange}
+            onChangeRelation={props.onChangeRelation}
+          />
+        </Suspense>
+      );
+    case "border":
+      return (
+        <Suspense fallback={<SkeletonLoader height={40} />}>
+          <BorderField
             variable={props.variable}
             onBreakReference={props.onBreakReference}
             onChange={props.onChange}

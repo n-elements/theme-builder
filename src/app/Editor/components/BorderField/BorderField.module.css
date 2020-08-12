@@ -1,0 +1,25 @@
+.BorderField {
+  position: relative;
+
+  & [data-iskeyword='true'] {
+    opacity: 0.2;
+    pointer-events: none;
+  }
+
+  & > * + * {
+    margin-top: 8px;
+  }
+}
+
+.Details {
+  padding: 16px;
+
+  & label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  & > * + * {
+    margin: 0;
+  }
+}
