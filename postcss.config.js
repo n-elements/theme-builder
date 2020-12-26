@@ -11,6 +11,9 @@ module.exports = [
   require("postcss-preset-env")({
     stage: 0,
     importFrom: ["./src/colors.js"],
+    features: {
+      "logical-properties-and-values": false,
+    },
   }),
   /* More info at https://github.com/jonathantneal/postcss-color-mod-function */
   require("postcss-color-mod-function")({
