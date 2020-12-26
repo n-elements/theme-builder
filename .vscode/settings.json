@@ -9,8 +9,11 @@
     ".stylelintrc": "json",
     "yarn.lock": "yaml",
   },
-  "stylelint.autoFixOnSave": true,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true,
+  },
   "[markdown]": {
     "editor.rulers": [100],
     "editor.wordWrapColumn": 100,
