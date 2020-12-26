@@ -1537,10 +1537,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@native-elements/core@1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@native-elements/core/-/core-1.5.1.tgz#69c66fe498c851c444740a3caa44f1c7b33bd3d8"
-  integrity sha512-asEFscgL7DVjiokYvZriWoFbXji+POQnN7moEL7BoUra0yxRUUOpOYC1/pu6jGkV2pXUHI4RbCbeH8mYH4YL/w==
+"@native-elements/core@1.5.3":
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/@native-elements/core/-/core-1.5.3.tgz#060bea9822bf7134a24d3e9ab85aee9fc9404aa3"
+  integrity sha512-Em+JWeMDyg+R5uj/3x5lsAlctZ7mhvAO0CHPOZpSXWHZA5sNjouzXTUQXHhRzNLbGwM8SkPdV/lSV056vFjyWQ==
   dependencies:
     camelcase "6.0.0"
     copyfiles "2.3.0"
